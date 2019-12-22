@@ -3,39 +3,47 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace BE
 {
     public class GuestRequest
     {
-        int GuestRequestKey;
-        string PrivateName;
-        string FamilyName;
-        string MailAddress;
-        bool Status;
-        DateTime RegistrationDate;
-        DateTime EntryDate;
-        DateTime ReleaseDate;
-        int Area;
-        int SubArea;
-        int Type;
-        int Adults;
-        int Children;
-        bool Pool;
-        bool Jacuzzi;
-        bool Garden;
-        bool ChildrensAttractions;
+        public int GuestRequestKey { get; private set; }
+        public String PrivateName { get; set; }
+        public String FamilyName { get; set; }
+        public String MailAddress { get; set; }
+        public Status Status { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public DateTime EntryDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
+        public Area Area { get; set; }
+        public String SubArea { get; set; }
+        public HostingType HostingType { get; set; }
+        public int Adults { get; set; }
+        public int Children { get; set; }
+        public Requirements Pool { get; set; }
+        public Requirements Jacuzzi { get; set; }
+        public Requirements Garden { get; set; }
+        public Requirements ChildrensAttractions { get; set; }
+        //********************
+        public Requirements SpredBads { get; set; }
+        public Requirements AirCondsner { get; set; }
+        public Requirements frisider { get; set; }
+        public Requirements SingogNaerBy { get; set; }
+        public Requirements NaerPublicTrensportion { get; set; }
 
-        //----------------function-------------------
-        GuestRequest()
+
+        public GuestRequest()
         {
-            if ((GuestRequestKey > 99999999) || (GuestRequestKey < 0))
-                throw new IndexOutOfRangeException();
-
+            GuestRequestKey = Configuration.serialGuestRequest++;
         }
+
         public override string ToString()
         {
-            return base.ToString();
+            return this.TostringProperties();
         }
+
     }
+
 }
