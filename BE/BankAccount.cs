@@ -14,7 +14,7 @@ namespace BE
         public int BranchNumber { get; set; }
         public String BranchAddress { get; set; }
         public String BranchCity { get; set; }
-        public int BankAccountNumber { get; set; }
+       
         public override string ToString()
         {
             return this.TostringProperties();

@@ -30,7 +30,7 @@ namespace DAL
         }
 
 
-        bool updateHostingUnit(HostingUnit hostingUnit)            // עדכון יחידת אירוח
+       public bool updateHostingUnit(HostingUnit hostingUnit)            // עדכון יחידת אירוח
         {
             foreach (var currentHostingUnit in DataSourceList.HostingUnits)
             {
@@ -40,8 +40,18 @@ namespace DAL
             return true;
         }
 
-        List<string> returnAllCastumer()                     // קבלת רשימת כל הלקוחות.
+      public  List<string> returnAllCastumer()                     // קבלת רשימת כל הלקוחות.
         {
+            /*
+            {
+            Order result = (from o in DataSourceList.GuestRequests
+                            select o.FamilyName +o.PrivateName);
+
+            return result.Clone();
+             }
+            */
+
+
             List<string> result=new List<string>();
             foreach (var order in DataSourceList.GuestRequests)
             {
@@ -49,10 +59,44 @@ namespace DAL
             }
             return result;
         }
-
-        List<string> returnAllLocelBank()                          // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
+      
+      public  List<string> returnAllLocelBank()                          // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
         {
             return new List<string> { "poelim","marcntil","laomi","disceunt","pagi" };
         }
-    }
+      
+      public   bool updateOrder(GuestRequest newInfo)
+ {
+            foreach (var currentGuestRequest in DataSourceList.GuestRequests)
+            {
+                if (currentGuestRequest.Equals(newInfo)) return false;
+            }
+            DataSourceList.GuestRequests.Add(newInfo);
+            return true;
+        }
+       
+      public  bool addHostinUnit(HostingUnit hostingUnit)                 {return true;}
+           
+      public  bool deleteHostingUnit(HostingUnit hostingUnit)              {return true;}
+          
+        
+
+      public  List<HostingUnit> returnHostingUnitList(Host host)  
+{
+             return (from o in DataSourceList.HostingUnits
+                            where o.Owner==host
+                            select o).ToList();
+                   }
+       
+      public  List<Order> reurenAllOrder()  
+      {
+return null;
+ }
+        
+     
+
+
 }
+}
+
+

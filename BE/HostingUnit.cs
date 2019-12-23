@@ -11,7 +11,7 @@ namespace BE
     public class HostingUnit
     {
         public int HostingUnitKey { get; private set; }
-        public String Owner { get; set; }
+        public Host Owner { get; set; }
         public String HostingUnitName { get; set; }
 
         [XmlIgnore]
