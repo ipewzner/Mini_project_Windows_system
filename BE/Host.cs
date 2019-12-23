@@ -9,6 +9,7 @@ namespace BE
 {
     public class Host
     {
+        
         public String HostKey { get; set; }
         public String PrivateName { get; set; }
         public String FamilyName { get; set; }

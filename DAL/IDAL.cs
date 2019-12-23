@@ -9,8 +9,9 @@ namespace DAL
         Order getOrder(int id);
  
         bool updateOrder(GuestRequest newInfo);                     
-        bool addHostinUnit(HostingUnit hostingUnit);                
+        bool addHostingUnit(HostingUnit hostingUnit);                
         bool deleteHostingUnit(HostingUnit hostingUnit);            
+        //bool updateHostingUnit();            
         bool updateHostingUnit(HostingUnit hostingUnit);            
         List<HostingUnit> returnHostingUnitList(Host host);         
         List<string> returnAllCastumer();                           

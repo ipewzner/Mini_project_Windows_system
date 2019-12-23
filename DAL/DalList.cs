@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DataSource;
+using System.Reflection;
 
 namespace DAL
 {
@@ -19,8 +20,30 @@ namespace DAL
             DataSourceList.Orders.Add(order.Clone());
             return true;
         }
-
-        public Order getOrder(int id)
+       
+        //may be need to be externel becuse it used in the PL as wall ***************
+        //****************************************************************************
+ void autoInfoUpdate<T>(T info)
+            {
+                Console.Clear();
+                Console.WriteLine("Please enter info:");
+                foreach (PropertyInfo p in info.GetType().GetProperties())
+                {
+                    Console.WriteLine("{0,5} , {1}\n", p.Name, p.GetValue(info, null));
+                    try
+                    {
+                        string input = Console.ReadLine();
+                        p.SetValue(info, Convert.ChangeType(input, p.PropertyType));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e.ToString());
+                    }
+                }
+            }
+        //****************************************************************************
+      
+  public Order getOrder(int id)
         {
             Order result = (from o in DataSourceList.Orders
                             where o.OrderKey == id
@@ -29,8 +52,22 @@ namespace DAL
             return result.Clone();
         }
 
+            //find the unit hom we want to update and update
+       public bool updateHostingUnit(HostingUnit hostingUnit)  
+        {
+            foreach (var currentHostingUnit in DataSourceList.HostingUnits)
+            {
+                if (currentHostingUnit.Equals(hostingUnit))
+{
+  autoInfoUpdate(currentHostingUnit);
+return true;
+           }
+}
+            return false;
+                }
 
-       public bool updateHostingUnit(HostingUnit hostingUnit)            // עדכון יחידת אירוח
+   /*
+     public bool updateHostingUnit(HostingUnit hostingUnit)            // עדכון יחידת אירוח
         {
             foreach (var currentHostingUnit in DataSourceList.HostingUnits)
             {
@@ -39,8 +76,9 @@ namespace DAL
             DataSourceList.HostingUnits.Add(hostingUnit);
             return true;
         }
-
-      public  List<string> returnAllCastumer()                     // קבלת רשימת כל הלקוחות.
+        */
+      
+public  List<string> returnAllCastumer()                     // קבלת רשימת כל הלקוחות.
         {
             /*
             {
@@ -75,7 +113,44 @@ namespace DAL
             return true;
         }
        
-      public  bool addHostinUnit(HostingUnit hostingUnit)                 {return true;}
+
+        //------------------------------------
+        //maybe use obect insntse of T?
+//           public bool addToList<T>(T newObject)
+          // public bool addToList(Object newObject)
+            //{                                      
+            /*
+        //   newObject= Convert.ChangeType(newObject.newObject.GetType()) ;
+           // newObject.GetType() ;
+           // ver type=newObject.GetType()  ;
+              //if (DataSourceList.type.Any(current => current.Key == newObject.Key))
+              if (DataSourceList.(newObject.GetType()).Any(current => current.Key == newObject.Key))
+                    return false;              
+                    *-/
+
+               foreach (PropertyInfo list in DataSourceList.GetType().GetProperties())
+	{
+                if(list.GetType()==newObject.GetType())  {
+                    if(list.any(current => current.Key == newObject.Key))return false;
+                                  
+	list.Add(newObject.Clone());           
+}                                                         
+}
+            return true;
+             }
+
+
+        //------------------------------------
+         */
+
+       public bool addHostingUnit(HostingUnit newHostingUnit) {
+            if (DataSourceList.HostingUnits.Any(hostingUnit => hostingUnit.HostingUnitKey == newHostingUnit.HostingUnitKey))
+            {
+                return false;
+            }
+            DataSourceList.HostingUnits.Add(newHostingUnit);
+            return true;
+        }
            
       public  bool deleteHostingUnit(HostingUnit hostingUnit)              {return true;}
           
