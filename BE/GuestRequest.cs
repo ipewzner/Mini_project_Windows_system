@@ -9,6 +9,7 @@ namespace BE
 {
     public class GuestRequest
     {
+        
         public int GuestRequestKey { get; private set; }
         public String PrivateName { get; set; }
         public String FamilyName { get; set; }
