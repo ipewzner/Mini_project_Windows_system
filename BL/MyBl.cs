@@ -17,7 +17,7 @@ namespace BL
             IDal instance = FactorySingletonDal.Instance;
 
             Order order = instance.getOrder(neworder.OrderKey);
-            if (order.Status == Status.CloseByApp || order.Status == Status.CloseByClient)
+            if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
             {
                 return false;
             }
@@ -33,7 +33,7 @@ namespace BL
         /// </summary>
         public void CloseOrder(Order order)
         {
-            if (order.Status == Status.CloseByClient)
+            if (order.Status == OrderStatus.CloseByClient)
             {
                 //TODO:
                 //close status for changes
@@ -59,7 +59,7 @@ namespace BL
 
                 //Change client STATUS 
                 //duffrante between close by app to close by client??
-                y.Status = Status.CloseByApp;
+                y.Status = ClientStatus.CloseByApp;
 
                
             }
@@ -128,7 +128,7 @@ namespace BL
         /// </summary>
         public void SendMail(Order order)
         {
-            if (order.Status == Status.MailSent)
+            if (order.Status == OrderStatus.MailSent)
             {
                 Console.WriteLine(
                     $"You order:\n" +
@@ -141,7 +141,7 @@ namespace BL
 
 
         #region ///// NOT IMPLAMENT /////
-        public bool IsAccountCharged(Host host)
+        public bool IsAccountCharged(Host host)j
         {
             //HOW TO CHECK IF ACCOUNT CHARGED??
             throw new NotImplementedException();
