@@ -29,9 +29,24 @@ namespace DAL
 
             return result.Clone();
         }
-        bool IDal.updateOrder(GuestRequest newInfo)
+        /*
+         bool IDal.updateOrder(GuestRequest newInfo)
+         {
+             throw new NotImplementedException();
+         }
+         */
+        void IDal.updateOrder(int OrderKey,Status status)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var g = from w in DataSourceList.Orders
+                        where w.OrderKey == OrderKey
+                        select w.Status = status;
+            }
+            catch(Exception ex)
+            {
+                throw new KeyNotFoundException("OrderKey not feund");
+            }
         }
         IEnumerable<Order> IDal.reurenAllOrder(Func<Order,bool> predicate=null)
         {
@@ -51,25 +66,43 @@ namespace DAL
             DataSourceList.HostingUnits.Add(hostingUnit);
             return true;
         }
-        bool IDal.deleteHostingUnit(HostingUnit hostingUnit)
-        {
-            throw new NotImplementedException();
-        }
-        bool IDal.updateHostingUnit(HostingUnit hostingUnit)            // עדכון יחידת אירוח
-        {
-            foreach (var currentHostingUnit in DataSourceList.HostingUnits)
-            {
-                if (currentHostingUnit.Equals(hostingUnit)) return false;
-            }
-            DataSourceList.HostingUnits.Add(hostingUnit);
-            return true;
-        }
 
-        bool updateHostingUnitStatus(HostingUnit hostingUnit)            // עדכון יחידת אירוח
+        bool IDal.deleteHostingUnit(HostingUnit hu)
         {
-            //To-Do
+            /*
+        bool IDal.deleteHostingUnit(int HostingUnitKey)
+        {
+            HostingUnit hu = DataSourceList.HostingUnits.find(HostingUnitKey);
+                if (hu == null) throw new Exception("hosting Unit with the same Hosting Unit Key not found...");
+                
+                //shude be in the BL layer
+                if (!hu.Diary.empty()) throw new Exception("this husting unit is still in use wwe can't delete it");
+           */
+            return DataSourceList.HostingUnits.Remove(hu);
+        }
+        bool IDal.updateHostingUnit(HostingUnit hu)            // עדכון יחידת אירוח
+        {
+            //Remove old
+            try
+            {
+                DataSourceList.HostingUnits.Remove(DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == hu.HostingUnitKey));
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+         
+            //insert new
+            DataSourceList.HostingUnits.Add(hu);
             return true;
         }
+        /*  isn't status to update
+        bool updateHostingUnitStatus(HostingUnit hostingUnit)            
+        {
+            DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == hu.HostingUnitKey);
+            return true;
+        } 
+        */
         IEnumerable<HostingUnit> IDal.returnHostingUnitList(Func<HostingUnit, bool> predicate = null)
         {
             if (predicate == null)
