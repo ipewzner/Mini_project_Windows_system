@@ -12,7 +12,9 @@ namespace PL
 {
     public class Program
     {
-        static void Main(string[] args)
+         
+        
+         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
@@ -57,6 +59,7 @@ namespace PL
                 Console.WriteLine("Your order received in the system");
                 Console.WriteLine("You will be notified by email about offers");
                 Console.WriteLine("thank you");
+
             }
 
             void hostingUnitScreen()
@@ -77,13 +80,12 @@ namespace PL
                         break;
                 }
             }
-
+                  
+           
             void personalAreaScreen()
             {
                 //To-Do
             }
-
-
 
             void newHostingUnitScreen()
             {
@@ -117,6 +119,7 @@ namespace PL
                 return result;
             }
 
+            
             void autoInfoUpdate<T>(T info)
             {
                 Console.Clear();
