@@ -14,11 +14,13 @@ namespace PL
     {
         static void Main(string[] args)
         {
+            var newBL = new MyBl();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
             MainScreen();
 
+            #region screen
             void MainScreen()
             {
                 Console.Clear();
@@ -47,20 +49,10 @@ namespace PL
                         break;
                 }
             }
-
             void customerDemandsScreen()
             {
-                GuestRequest NewCastumer = new GuestRequest();
-                autoInfoUpdate(NewCastumer);
-                Console.WriteLine("Your order received in the system");
-                Console.WriteLine("You will be notified by email about offers");
-                Console.WriteLine("thank you");
-                //Console.WriteLine("please press any key to continue");
-                //Console.ReadKey();
-                System.Threading.Thread.Sleep(5000);
-                MainScreen();
+                customerDemands();
             }
-
             void hostingUnitScreen()
             {
                 Console.Clear();
@@ -69,7 +61,7 @@ namespace PL
                 switch (getUserChoise( 2))
                 {
                     case 1:
-                        newHostingUnitScreen();
+                        newHostingUnit();
                         break;
                     case 2:
                         personalAreaScreen();
@@ -79,7 +71,34 @@ namespace PL
                         break;
                 }
             }
-                  
+            void OrderScreen()
+            {  /*
+                Console.Clear();
+                Console.WriteLine("Welcome to NetMotel");
+                Console.WriteLine("Please choose action");
+                Console.WriteLine("1) Customer demands");
+                Console.WriteLine("2) Hosting unit");
+                Console.WriteLine("3) Site manger");
+                Console.WriteLine("4) Exit");
+
+                switch (getUserChoise(4))
+                {
+                    case 1:
+                        customerDemandsScreen();
+                        break;
+                    case 2:
+                        hostingUnitScreen();
+                        break;
+                    case 3:
+                        siteMangerScreen();
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        MainScreen();
+                        break;
+                }*/
+            }
             void personalAreaScreen()
             {
                 Console.Clear();
@@ -91,13 +110,13 @@ namespace PL
                 switch (getUserChoise( 4))
                 {
                     case 1:
-                       // updateHustingUnit();
+                        updateHustingUnit();
                         break;
                     case 2:
-                     //   Order();
+                        OrderScreen();
                         break;
                     case 3:
-                     //   deleteHustingUnit();
+                        deleteHustingUnit();
                         break;
                     case 4:
                     default:
@@ -105,14 +124,31 @@ namespace PL
                         break;
                 }
             }
+            #endregion
+            
 
-            void newHostingUnitScreen()
+            #region function
+            void customerDemands()
+            {
+                GuestRequest NewCastumer = new GuestRequest();
+                autoInfoUpdate(NewCastumer);
+                if (newBL.AddGuestRequest(NewCastumer)) throw new Exception("adding fail!");
+                Console.WriteLine("Your order received in the system");
+                Console.WriteLine("You will be notified by email about offers");
+                Console.WriteLine("thank you");
+                System.Threading.Thread.Sleep(5000);
+                MainScreen();
+            }
+            void newHostingUnit()
             {
                 Console.Clear();
-                HostingUnit hostingUnit = new HostingUnit();
-                autoInfoUpdate(hostingUnit);
+                HostingUnit hu = new HostingUnit();
+                autoInfoUpdate(hu);
+                newBL.AddHostingUnit(hu);
                 Console.WriteLine("The new Hosting unit is register ");
                 Console.WriteLine("thank you");
+                System.Threading.Thread.Sleep(5000);
+                MainScreen();
             }
 
             void siteMangerScreen()
@@ -148,7 +184,29 @@ namespace PL
                         break;
                 }
             }
+            bool deleteHustingUnit()
+            {
+                Console.WriteLine("Enter hosting unit key");
+                return newBL.UnitRemove(inputSarielNumber(10000000));
+            }
 
+
+            void updateHustingUnit()
+            {
+                Console.WriteLine("Enter hosting unit key");
+                HostingUnit hu = newBL.GetHostingUnit(inputSarielNumber(10000000));
+                newBL.UnitRemove(hu.HostingUnitKey);
+                autoInfoUpdate(hu);
+                newBL.AddHostingUnit(hu);
+                Console.WriteLine("Your order received in the system");
+                Console.WriteLine("You will be notified by email about offers");
+                Console.WriteLine("thank you");
+                System.Threading.Thread.Sleep(5000);
+                MainScreen();
+            }
+
+            #endregion
+            #region helper functin
             int getUserChoise(int choises)
             {
                 int result;
@@ -161,11 +219,10 @@ namespace PL
                 catch (Exception)
                 {
                     Console.WriteLine("try again!");
-                    getUserChoise(choises);
+                    result = getUserChoise(choises);
                 }
                 return result;
             }
-                        
             void autoInfoUpdate<T>(T info)
             {
                 Console.Clear();
@@ -184,6 +241,22 @@ namespace PL
                     }
                 }
             }
+            int inputSarielNumber(int max) {
+                int result;
+                try
+                {
+                    result = Convert.ToInt32(Console.ReadLine());
+                    if (result < 0 || result > max)
+                        throw new IndexOutOfRangeException();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("try again!");
+                    result= inputSarielNumber(max);
+                }
+                return result;
+            }
+            #endregion
         }
 
     }

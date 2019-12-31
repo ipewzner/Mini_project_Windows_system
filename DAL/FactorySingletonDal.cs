@@ -8,11 +8,11 @@ namespace DAL
 {
     public static class FactorySingletonDal
     {
-        private static IDal instance = null;
+        private static IDAL instance = null;
 
         static FactorySingletonDal() { }
 
-        public static IDal Instance
+        public static IDAL Instance
         {
             get
             {

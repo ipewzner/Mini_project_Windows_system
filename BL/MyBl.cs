@@ -11,12 +11,28 @@ namespace BL
 {
     public class MyBl : IBL
     {
+
+        DalList myDAL = new DalList();
+
+        public bool AddGuestRequest(GuestRequest req)
+        {
+            //TODO
+            //check id and name and move to DAL
+            myDAL.AddGuestRequestToList(req);
+            return true;
+        }
+
+        public void AddHostingUnit(HostingUnit unit)
+        {
+            myDAL.AddHostingUnitToList(unit);
+        }
+
         /// <summary>
         /// create a new order
         /// </summary>
         public bool AddOrder(Order neworder)
         {
-            IDal instance = FactorySingletonDal.Instance;
+            IDAL instance = FactorySingletonDal.Instance;
 
             Order order = instance.getOrder(neworder.OrderKey);
             if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
@@ -41,8 +57,8 @@ namespace BL
                 //close status for changes
 
                 //TODO bring the orginals and remove x and y
-                HostingUnit x = FindHostUnit(Convert.ToInt32(order.HostingUnitKey));
-                GuestRequest y = FindGuset(Convert.ToInt32(order.GuestRequestKey));
+                HostingUnit x = GetHostingUnit(Convert.ToInt32(order.HostingUnitKey));
+                GuestRequest y = GetGusetRequest(Convert.ToInt32(order.GuestRequestKey));
                 int month = y.EntryDate.Month;
                 for (int day = y.EntryDate.Day; day < y.ReleaseDate.Day || y.ReleaseDate.Month != month; day++)
                 {
@@ -71,7 +87,7 @@ namespace BL
         public bool IsDateAvailable(DateTime start, DateTime end, int unitKey)
         {
 
-            HostingUnit x = FindHostUnit(unitKey);
+            HostingUnit x = GetHostingUnit(unitKey);
             int month = start.Month;
             for (int day = start.Day; day < end.Day || end.Month != month; day++)
             {
@@ -176,33 +192,36 @@ namespace BL
         /// <summary>
         /// Check if Unit can be remove
         /// </summary>
-        public bool UnitCanBeRemove(HostingUnit unit)
+        public bool UnitRemove(int unit)
         {
-            foreach (var item in DataSourceList.Orders)
+            string x ="";
+            foreach (var item in myDAL.reurenAllOrders())
             {
-                if (item.HostingUnitKey == unit.HostingUnitKey.ToString())
+                if (item.HostingUnitKey == unit.ToString())
                 {
                     if (item.Status == OrderStatus.UntreatedYet)
                     {
                         return false;
                     }
-
+                    x = item.HostingUnitKey;
                 }
             }
+            HostingUnit y = GetHostingUnit(Convert.ToInt32(x));
+            myDAL.deleteHostingUnit(y);
             return true;
         }
 
 
         #region ///// Helpers /////
 
-        GuestRequest FindGuset(int key)
+        GuestRequest GetGusetRequest(int key)
         {
-            return DataSourceList.GuestRequests.Find(x => x.GuestRequestKey == key);
+            return (myDAL.returnGuestRequestList(x => x.GuestRequestKey == key)).First();
         }
-
-        HostingUnit FindHostUnit(int key)
+            
+        public HostingUnit GetHostingUnit(int key)
         {
-            return DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == key);
+            return (myDAL.returnHostingUnitList(x => x.HostingUnitKey == key)).First();
         }
 
         #endregion

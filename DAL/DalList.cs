@@ -5,14 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DataSource;
+//using IDAL;
+
 
 
 namespace DAL
 {
-    class DalList : IDal
+    public class DalList : IDAL
     {
+        
         #region Order
-        bool IDal.addOrder(Order order)
+        public bool addOrder(Order order)
         {
             if (DataSourceList.Orders.Any(guest => guest.OrderKey == order.OrderKey))
             {
@@ -21,7 +24,7 @@ namespace DAL
             DataSourceList.Orders.Add(order.Clone());
             return true;
         }
-        Order IDal.getOrder(int id)
+        public Order getOrder(int id)
         {
             Order result = (from o in DataSourceList.Orders
                             where o.OrderKey == id
@@ -30,12 +33,12 @@ namespace DAL
             return result.Clone();
         }
         /*
-         bool IDal.updateOrder(GuestRequest newInfo)
+         bool IDAL.updateOrder(GuestRequest newInfo)
          {
              throw new NotImplementedException();
          }
          */
-        void IDal.updateOrder(int OrderKey,OrderStatus status)
+        public void updateOrder(int OrderKey,OrderStatus status)
         {
             try
             {
@@ -48,7 +51,7 @@ namespace DAL
                 throw new KeyNotFoundException("OrderKey not feund");
             }
         }
-        IEnumerable<Order> IDal.reurenAllOrder(Func<Order,bool> predicate=null)
+        public IEnumerable<Order> reurenAllOrders(Func<Order,bool> predicate=null)
         {
             if (predicate == null)
                 return DataSourceList.Orders.AsEnumerable();
@@ -57,7 +60,8 @@ namespace DAL
         #endregion
 
         #region HosingUnit
-        bool IDal.addHostinUnit(HostingUnit hostingUnit)
+                
+        public bool AddHostingUnitToList(HostingUnit hostingUnit)
         {
             foreach (var currentHostingUnit in DataSourceList.HostingUnits)
             {
@@ -66,21 +70,21 @@ namespace DAL
             DataSourceList.HostingUnits.Add(hostingUnit);
             return true;
         }
+            
+        public bool deleteHostingUnit(HostingUnit hu)
+        {
+         /*
+         bool IDAL.deleteHostingUnit(int huKey)
+         {
+             HostingUnit hu = DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == huKey);
+             if (hu == null) throw new Exception("hosting Unit with the same Hosting Unit Key not found...");
 
-        bool IDal.deleteHostingUnit(HostingUnit hu)
-        {
-            /*
-        bool IDal.deleteHostingUnit(int HostingUnitKey)
-        {
-            HostingUnit hu = DataSourceList.HostingUnits.find(HostingUnitKey);
-                if (hu == null) throw new Exception("hosting Unit with the same Hosting Unit Key not found...");
-                
-                //shude be in the BL layer
-                if (!hu.Diary.empty()) throw new Exception("this husting unit is still in use wwe can't delete it");
-           */
+                 //shude be in the BL layer
+                 if (!hu.Diary.empty()) throw new Exception("this husting unit is still in use wwe can't delete it");
+        */
             return DataSourceList.HostingUnits.Remove(hu);
         }
-        bool IDal.updateHostingUnit(HostingUnit hu)            // עדכון יחידת אירוח
+        public bool updateHostingUnit(HostingUnit hu)
         {
             //Remove old
             try
@@ -103,21 +107,21 @@ namespace DAL
             return true;
         } 
         */
-        IEnumerable<HostingUnit> IDal.returnHostingUnitList(Func<HostingUnit, bool> predicate = null)
+        public IEnumerable<HostingUnit> returnHostingUnitList(Func<HostingUnit, bool> predicate = null)
         {
             if (predicate == null)
                 return DataSourceList.HostingUnits.AsEnumerable();
             return DataSourceList.HostingUnits.Where(predicate);
         }
         #endregion
-        IEnumerable<GuestRequest> IDal.returnAllCastumer(Func<GuestRequest, bool> predicate = null)
+        public IEnumerable<GuestRequest> returnGuestRequestList(Func<GuestRequest, bool> predicate = null)
         {
             if (predicate == null)
                 return DataSourceList.GuestRequests.AsEnumerable();
             return DataSourceList.GuestRequests.Where(predicate);
         }
         /*
-        IEnumerable<string> IDal.returnAllCastumer()                     // קבלת רשימת כל הלקוחות.
+        IEnumerable<string> IDAL.returnAllCastumer()                     // קבלת רשימת כל הלקוחות.
         {  
             List<string> result = new List<string>();
             foreach (var order in DataSourceList.GuestRequests)
@@ -128,33 +132,16 @@ namespace DAL
            
         }    
         */
-        IEnumerable<string> IDal.returnAllLocelBank()                          // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
+        public IEnumerable<string> returnAllLocelBank()                          // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
         {
             return new List<string> { "poelim", "marcntil", "laomi", "disceunt", "pagi" };
         }
 
-
-        /*
-        public List<HostingUnit> returnHostingUnitList(Host host)
+        public void AddGuestRequestToList(GuestRequest gr)
         {
-            throw new NotImplementedException();
+           DataSourceList.GuestRequests.Add(gr);
         }
-
-        List<string> IDal.returnAllCastumer()
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<Order> reurenAllOrder()
-        {
-            throw new NotImplementedException();
-        }
-
-        List<string> IDal.returnAllLocelBank()
-        {
-            throw new NotImplementedException();
-        }
-          */
+        
 
     }
 }

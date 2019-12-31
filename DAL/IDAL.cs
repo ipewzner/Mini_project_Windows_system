@@ -4,27 +4,28 @@ using System.Collections.Generic;
 
 namespace DAL
 {
-    public interface IDal
+    public interface IDAL
     {
         bool addOrder(Order order);
         Order getOrder(int id);
 
         void updateOrder(int OrderKey, OrderStatus status);
-        //bool updateOrder(GuestRequest newInfo);                     // עדכון דרישת לקוח.
-        bool addHostinUnit(HostingUnit hostingUnit);                // הוספת יחידת אירוח
-        bool deleteHostingUnit(HostingUnit hostingUnit);            // מחיקת יחידת אירוח
-        bool updateHostingUnit(HostingUnit hostingUnit);            // עדכון יחידת אירוח
+        //bool updateOrder(GuestRequest newInfo);                  
+        bool AddHostingUnitToList(HostingUnit hostingUnit);
+        bool deleteHostingUnit(HostingUnit hostingUnit);           
+        //bool deleteHostingUnit(int hostingUnitKey);           
+        bool updateHostingUnit(HostingUnit hostingUnit);           
 
         /*
-        List<HostingUnit> returnHostingUnitList(Host host);         // קבלת רשימת כל יחידות האירוח
-        List<string> returnAllCastumer();                           // קבלת רשימת כל הלקוחות.
-        List<Order> reurenAllOrder();                               // קבלת רשימת כל ההזמנות
-        List<string> returnAllLocelBank();                          // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
+        List<HostingUnit> returnHostingUnitList(Host host);        
+        List<string> returnAllCastumer();                          
+        List<Order> reurenAllOrder();                              
+        List<string> returnAllLocelBank();                         
         */
-        IEnumerable<HostingUnit> returnHostingUnitList(Func<HostingUnit, bool> predicate = null);  // קבלת רשימת כל יחידות האירוח
-        IEnumerable<GuestRequest> returnAllCastumer(Func<GuestRequest, bool> predicate = null);                    // קבלת רשימת כל הלקוחות.
-        IEnumerable<Order> reurenAllOrder(Func<Order, bool> predicate = null);                        // קבלת רשימת כל ההזמנות
-        IEnumerable<string> returnAllLocelBank();                   // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
+        IEnumerable<HostingUnit> returnHostingUnitList(Func<HostingUnit, bool> predicate = null);  
+        IEnumerable<GuestRequest> returnGuestRequestList(Func<GuestRequest, bool> predicate = null);    
+        IEnumerable<Order> reurenAllOrders(Func<Order, bool> predicate = null);                     
+        IEnumerable<string> returnAllLocelBank();                   
 
 
 
