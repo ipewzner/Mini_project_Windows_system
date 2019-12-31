@@ -1,26 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utilities;
+﻿//Menachem Aharoni 
+//315147272
+
+//pewzner iasayahu
+//200328417
+
+using System;
 using BE;
 using BL;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace PL
 {
     public class Program
     {
+        static MyBl newBL = new MyBl();
+
         static void Main(string[] args)
         {
-            var newBL = new MyBl();
+           
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
+
             MainScreen();
 
-            #region screen
+            #region ///// Screens /////
+
             void MainScreen()
             {
                 Console.Clear();
@@ -49,10 +55,12 @@ namespace PL
                         break;
                 }
             }
+
             void customerDemandsScreen()
             {
                 customerDemands();
             }
+
             void hostingUnitScreen()
             {
                 Console.Clear();
@@ -71,34 +79,7 @@ namespace PL
                         break;
                 }
             }
-            void OrderScreen()
-            {  /*
-                Console.Clear();
-                Console.WriteLine("Welcome to NetMotel");
-                Console.WriteLine("Please choose action");
-                Console.WriteLine("1) Customer demands");
-                Console.WriteLine("2) Hosting unit");
-                Console.WriteLine("3) Site manger");
-                Console.WriteLine("4) Exit");
-
-                switch (getUserChoise(4))
-                {
-                    case 1:
-                        customerDemandsScreen();
-                        break;
-                    case 2:
-                        hostingUnitScreen();
-                        break;
-                    case 3:
-                        siteMangerScreen();
-                        break;
-                    case 4:
-                        break;
-                    default:
-                        MainScreen();
-                        break;
-                }*/
-            }
+           
             void personalAreaScreen()
             {
                 Console.Clear();
@@ -107,27 +88,37 @@ namespace PL
                 Console.WriteLine("3) Delete husting unit");
                 Console.WriteLine("4) Main screen");
 
-                switch (getUserChoise( 4))
+                switch (getUserChoise(4))
                 {
                     case 1:
                         updateHustingUnit();
                         break;
                     case 2:
-                        OrderScreen();
+                        foreach (var item in OrderScreen())
+                        {
+                            Console.WriteLine($"Guest key: {item.GuestKey} \n Unit key: {item.UnitKey}");
+                        }
+                       
                         break;
                     case 3:
                         deleteHustingUnit();
                         break;
                     case 4:
+                        break;
                     default:
                         MainScreen();
                         break;
                 }
             }
-            #endregion
-            
 
-            #region function
+            List<Offer> OrderScreen()
+            {
+                return Offer.ListOfOffers;
+            }
+            #endregion
+
+            #region ///// Internal Functions /////
+
             void customerDemands()
             {
                 GuestRequest NewCastumer = new GuestRequest();
@@ -139,6 +130,7 @@ namespace PL
                 System.Threading.Thread.Sleep(5000);
                 MainScreen();
             }
+
             void newHostingUnit()
             {
                 Console.Clear();
@@ -164,7 +156,7 @@ namespace PL
                 switch (getUserChoise(6))
                 {
                     case 1:
-                  //      customerListQuery();
+                       // customerListQuery();
                         break;
                     case 2:
                   //      hostingUnitListQuery();
@@ -184,13 +176,13 @@ namespace PL
                         break;
                 }
             }
+
             bool deleteHustingUnit()
             {
                 Console.WriteLine("Enter hosting unit key");
                 return newBL.UnitRemove(inputSarielNumber(10000000));
             }
 
-                      //
             void updateHustingUnit()
             {
                 Console.WriteLine("Enter hosting unit key");
@@ -206,7 +198,9 @@ namespace PL
             }
 
             #endregion
-            #region helper functin
+
+            #region ///// Helper Functions /////
+
             int getUserChoise(int choises)
             {
                 int result;
@@ -223,6 +217,7 @@ namespace PL
                 }
                 return result;
             }
+
             void autoInfoUpdate<T>(T info)
             {
                 Console.Clear();
@@ -241,6 +236,7 @@ namespace PL
                     }
                 }
             }
+
             int inputSarielNumber(int max) {
                 int result;
                 try
@@ -256,9 +252,11 @@ namespace PL
                 }
                 return result;
             }
+
             #endregion
         }
 
+        
     }
 }
 

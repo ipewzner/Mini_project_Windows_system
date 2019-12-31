@@ -18,7 +18,7 @@ namespace DAL
             {
                 if (instance == null)
                 {
-                    instance = new DalList();
+                    instance = new DALImp();
                 }
                 return instance;
             }

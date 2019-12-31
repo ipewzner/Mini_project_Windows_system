@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BE;
 using DAL;
-using DataSource;
 
 namespace BL
 {
     public class MyBl : IBL
     {
 
-        DalList myDAL = new DalList();
+        DALImp myDAL = new DALImp();
 
+        /// <summary>
+        /// Add Guest Request
+        /// </summary>
         public bool AddGuestRequest(GuestRequest req)
         {
             //TODO
@@ -22,6 +22,9 @@ namespace BL
             return true;
         }
 
+        /// <summary>
+        /// Add Hosting Unit
+        /// </summary>
         public void AddHostingUnit(HostingUnit unit)
         {
             myDAL.AddHostingUnitToList(unit);
@@ -161,7 +164,7 @@ namespace BL
         public int OrdersPerClient(GuestRequest req)
         {
             int counter = 0;
-            foreach (var item in DataSourceList.Orders)
+            foreach (var item in myDAL.reurenAllOrders())
             {
                 if (item.GuestRequestKey == req.GuestRequestKey.ToString())
                 {
@@ -178,7 +181,7 @@ namespace BL
         public int OrdersPerUnit(HostingUnit unit)
         {
             int counter = 0;
-            foreach (var item in DataSourceList.Orders)
+            foreach (var item in myDAL.reurenAllOrders())
             {
                 if (item.HostingUnitKey == unit.HostingUnitKey.ToString())
                 {
@@ -211,6 +214,81 @@ namespace BL
             return true;
         }
 
+        /// <summary>
+        /// Return all units available in given date range
+        /// </summary>
+        public List<HostingUnit> UintsAvailable(DateTime start, int numOfDays)
+        {
+            List<HostingUnit> listOfUnits = new List<HostingUnit>();
+
+            DateTime end = start.AddDays(numOfDays);
+            var x = myDAL.returnHostingUnitList(null);
+            foreach (var item in x)
+            {
+                int month = start.Month;
+                for (int day = start.Day; day < end.Day || end.Month != month; day++)
+                {
+
+                    if (!item.Diary[start.Month, day] == true)
+                    {
+                        break;
+                    }
+
+                    if (day == 31)
+                    {
+                        day = 0;
+                        month++;
+                    }
+                }
+
+                listOfUnits.Add(item);
+
+            }
+
+            return listOfUnits;
+        }
+
+        /// <summary>
+        /// Return Guest Request By any requirment
+        /// </summary>
+        public IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null)
+        {
+            if (predicate == null)
+                return myDAL.returnGuestRequestList().AsEnumerable();
+            return myDAL.returnGuestRequestList().Where(predicate);
+        }
+
+        /// <summary>
+        /// Creates Offers by area and available dates
+        /// </summary>
+        public void CreateOffer(GuestRequest req)
+        {
+            List<HostingUnit> hostingUnits = UintsAvailable(req.EntryDate, NumOfDays(req.EntryDate, req.EntryDate));
+            foreach (var item in hostingUnits)
+            {
+                Offer y = new Offer();
+
+                foreach (var guest in GuestRequestBy((x => x.Area == item.UnitArea)))
+                {
+
+                    y.GuestKey = guest.GuestRequestKey;
+                    y.UnitKey = item.HostingUnitKey;
+                }
+
+                if (y != null)
+                    Offer.ListOfOffers.Add(y);
+            }
+
+        }
+
+        /// <summary>
+        /// Return all Orders that created X dayes before 
+        /// </summary>
+        public List<Order> OrdersUntilDate(int days)
+        {
+            return myDAL.reurenAllOrders(x => NumOfDays(x.CreateDate) == days).ToList(); ;
+        }
+
 
         #region ///// Helpers /////
 
@@ -226,25 +304,61 @@ namespace BL
 
         #endregion
 
-        #region ///// NOT IMPLAMENT /////
+        #region ///// NOT IMPLAMENTED /////
+
         public bool IsAccountCharged(Host host)
         {
             //HOW TO CHECK IF ACCOUNT CHARGED??
             throw new NotImplementedException();
         }
 
-        public List<Order> OrdersUntilDate(int days)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HostingUnit> UintsAvailable(DateTime start, int numOfDays)
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
 
+        #region ///// Gruping /////
+
+        IEnumerable<IGrouping<Area, GuestRequest>> GuestRequestOrderBy_Location()
+        {
+            IEnumerable<IGrouping<Area, GuestRequest>> result =
+                from gr in myDAL.returnGuestRequestList()
+                group gr by gr.Area;
+            return result;
+        }
+
+        IEnumerable<IGrouping<int, GuestRequest>> GuestRequest_OrderBy_NumberOfVacationers()
+        {
+            IEnumerable<IGrouping<int, GuestRequest>> result =
+                  from gr in myDAL.returnGuestRequestList()
+                  group gr by (gr.Adults + gr.Children);
+            return result;
+        }
+
+        IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
+        {
+            IEnumerable<IGrouping<int, Host>> result =
+                     from hosts in myDAL.returnHostList()
+                     group hosts by NumOfHostingUnitsInHost(hosts);
+            return result;
+        }
+
+        public int NumOfHostingUnitsInHost(Host host)
+        {
+            int sum = 0;
+            foreach (var hu in myDAL.returnHostingUnitList())
+            {
+                if (hu.HostKey == host.HostKey)
+                    sum++;
+            }
+            return sum;
+        }
+
+        IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
+        {
+            IEnumerable<IGrouping<Area, HostingUnit>> result =
+                    from hu in myDAL.returnHostingUnitList()
+                    group hu by hu.UnitArea;
+            return result;
+        }
+        #endregion
 
     }
 }

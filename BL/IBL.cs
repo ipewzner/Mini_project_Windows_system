@@ -22,5 +22,8 @@ namespace BL
         List<Order> OrdersUntilDate(int days);
         int OrdersPerClient(GuestRequest req);
         int OrdersPerUnit(HostingUnit unit);
+        bool AddGuestRequest(GuestRequest req);
+        void AddHostingUnit(HostingUnit unit);
+        IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null);
     }
 }

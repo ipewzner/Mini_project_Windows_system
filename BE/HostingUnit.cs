@@ -13,6 +13,8 @@ namespace BE
         public int HostingUnitKey { get; private set; }
         public String Owner { get; set; }
         public String HostingUnitName { get; set; }
+        public Area UnitArea { get; set; }
+        public int HostKey { get; set; }
 
         [XmlIgnore]
         public bool[,] Diary { get; private set; }
