@@ -15,7 +15,7 @@ namespace BE
         public String GuestRequestKey { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime OrderDate { get; set; }
-        public Status Status { get; set; }
+        public OrderStatus Status { get; set; }
 
         public override string ToString()
         {

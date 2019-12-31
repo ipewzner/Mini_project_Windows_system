@@ -9,7 +9,7 @@ namespace DAL
         bool addOrder(Order order);
         Order getOrder(int id);
 
-        void updateOrder(int OrderKey, Status status);
+        void updateOrder(int OrderKey, OrderStatus status);
         //bool updateOrder(GuestRequest newInfo);                     // עדכון דרישת לקוח.
         bool addHostinUnit(HostingUnit hostingUnit);                // הוספת יחידת אירוח
         bool deleteHostingUnit(HostingUnit hostingUnit);            // מחיקת יחידת אירוח

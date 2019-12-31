@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace BE
 {
-    public enum Status
+    public enum ClientStatus
     {
-        NotYetApproved, MailSent, CloseByClient, CloseByApp
+        Open, CloseByApp, CloseByTimeOut
     }
+
+    public enum OrderStatus
+    {
+        UntreatedYet, MailSent, CloseByClientTimeOut, CloseByClient
+    }
+
 
     public enum Area
     {

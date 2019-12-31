@@ -35,7 +35,7 @@ namespace DAL
              throw new NotImplementedException();
          }
          */
-        void IDal.updateOrder(int OrderKey,Status status)
+        void IDal.updateOrder(int OrderKey,OrderStatus status)
         {
             try
             {
