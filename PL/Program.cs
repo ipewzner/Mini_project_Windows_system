@@ -12,16 +12,12 @@ namespace PL
 {
     public class Program
     {
-         
-        
-         static void Main(string[] args)
+        static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
             MainScreen();
-
-
 
             void MainScreen()
             {

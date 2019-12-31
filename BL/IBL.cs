@@ -11,9 +11,10 @@ namespace BL
     {
         bool IsDateCorrect(DateTime start, DateTime end);
         bool IsAccountCharged(Host host);
-        bool IsDateAvailable(DateTime start, DateTime end);
+        bool IsDateAvailable(DateTime start, DateTime end, int unitKey);
         void CloseOrder(Order order);
         void SendMail(Order order);
+        bool UnitCanBeRemove(HostingUnit unit);
 
         List<HostingUnit> UintsAvailable(DateTime start, int numOfDays);
         int NumOfDays(DateTime date);
@@ -21,8 +22,5 @@ namespace BL
         List<Order> OrdersUntilDate(int days);
         int OrdersPerClient(GuestRequest req);
         int OrdersPerUnit(HostingUnit unit);
-
-
-
     }
 }

@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using DAL;
+using DataSource;
+
 namespace BL
 {
     public class MyBl : IBL
@@ -39,8 +41,8 @@ namespace BL
                 //close status for changes
 
                 //TODO bring the orginals and remove x and y
-                HostingUnit x = new HostingUnit();
-                GuestRequest y = new GuestRequest();
+                HostingUnit x = FindHostUnit(Convert.ToInt32(order.HostingUnitKey));
+                GuestRequest y = FindGuset(Convert.ToInt32(order.GuestRequestKey));
                 int month = y.EntryDate.Month;
                 for (int day = y.EntryDate.Day; day < y.ReleaseDate.Day || y.ReleaseDate.Month != month; day++)
                 {
@@ -58,9 +60,7 @@ namespace BL
                 //To Where??
 
                 //Change client STATUS 
-                //duffrante between close by app to close by client??
                 y.Status = ClientStatus.CloseByApp;
-
 
             }
         }
@@ -68,14 +68,14 @@ namespace BL
         /// <summary>
         /// Is date available
         /// </summary>
-        public bool IsDateAvailable(DateTime start, DateTime end)
+        public bool IsDateAvailable(DateTime start, DateTime end, int unitKey)
         {
-            HostingUnit x = new HostingUnit();
-            GuestRequest y = new GuestRequest();
-            int month = y.EntryDate.Month;
-            for (int day = y.EntryDate.Day; day < y.ReleaseDate.Day || y.ReleaseDate.Month != month; day++)
+
+            HostingUnit x = FindHostUnit(unitKey);
+            int month = start.Month;
+            for (int day = start.Day; day < end.Day || end.Month != month; day++)
             {
-                if (x.Diary[y.EntryDate.Month, day] = true)
+                if (x.Diary[start.Month, day] == true)
                 {
                     return false;
                 }
@@ -139,35 +139,93 @@ namespace BL
             }
         }
 
+        /// <summary>
+        /// Return number of orders that sent to client
+        /// </summary>
+        public int OrdersPerClient(GuestRequest req)
+        {
+            int counter = 0;
+            foreach (var item in DataSourceList.Orders)
+            {
+                if (item.GuestRequestKey == req.GuestRequestKey.ToString())
+                {
+                    if (item.Status == OrderStatus.MailSent)
+                        counter++;
+                }
+            }
+            return counter;
+        }
+
+        /// <summary>
+        /// Return number of orders that seccessfully close
+        /// </summary>
+        public int OrdersPerUnit(HostingUnit unit)
+        {
+            int counter = 0;
+            foreach (var item in DataSourceList.Orders)
+            {
+                if (item.HostingUnitKey == unit.HostingUnitKey.ToString())
+                {
+                    if (item.Status == OrderStatus.CloseByClient)
+                        counter++;
+                }
+            }
+            return counter;
+        }
+
+        /// <summary>
+        /// Check if Unit can be remove
+        /// </summary>
+        public bool UnitCanBeRemove(HostingUnit unit)
+        {
+            foreach (var item in DataSourceList.Orders)
+            {
+                if (item.HostingUnitKey == unit.HostingUnitKey.ToString())
+                {
+                    if (item.Status == OrderStatus.UntreatedYet)
+                    {
+                        return false;
+                    }
+
+                }
+            }
+            return true;
+        }
+
+
+        #region ///// Helpers /////
+
+        GuestRequest FindGuset(int key)
+        {
+            return DataSourceList.GuestRequests.Find(x => x.GuestRequestKey == key);
+        }
+
+        HostingUnit FindHostUnit(int key)
+        {
+            return DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == key);
+        }
+
+        #endregion
 
         #region ///// NOT IMPLAMENT /////
         public bool IsAccountCharged(Host host)
         {
             //HOW TO CHECK IF ACCOUNT CHARGED??
             throw new NotImplementedException();
-    }
+        }
 
-    public int OrdersPerClient(GuestRequest req)
-    {
-        //COLACTION??
-        throw new NotImplementedException();
-    }
+        public List<Order> OrdersUntilDate(int days)
+        {
+            throw new NotImplementedException();
+        }
 
-    public int OrdersPerUnit(HostingUnit unit)
-    {
-        //COLACTION??
-        throw new NotImplementedException();
-    }
+        public List<HostingUnit> UintsAvailable(DateTime start, int numOfDays)
+        {
+            throw new NotImplementedException();
+        }
 
-    public List<Order> OrdersUntilDate(int days)
-    {
-        throw new NotImplementedException();
-    }
+        #endregion
 
-    public List<HostingUnit> UintsAvailable(DateTime start, int numOfDays)
-    {
-        throw new NotImplementedException();
+
     }
-    #endregion
-}
 }
