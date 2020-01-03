@@ -17,6 +17,7 @@ namespace BE
         public int BankAccountNumber { get; set; }
         public override string ToString()
         {
+            Console.WriteLine("pppp");
             return this.TostringProperties();
         }
     }

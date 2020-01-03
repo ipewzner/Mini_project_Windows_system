@@ -10,6 +10,18 @@ namespace BL
     {
 
         DALImp myDAL = new DALImp();
+       /*
+       public T Query<T>(T dateList,)
+        {
+
+            return null;
+        }
+
+          */
+
+
+
+
 
         /// <summary>
         /// Add Guest Request
@@ -316,30 +328,30 @@ namespace BL
 
         #region ///// Gruping /////
 
-        IEnumerable<IGrouping<Area, GuestRequest>> GuestRequestOrderBy_Location()
+        public IEnumerable<IGrouping<Area, GuestRequest>> GuestRequestOrderBy_Location()
         {
             IEnumerable<IGrouping<Area, GuestRequest>> result =
                 from gr in myDAL.returnGuestRequestList()
                 group gr by gr.Area;
             return result;
         }
-
-        IEnumerable<IGrouping<int, GuestRequest>> GuestRequest_OrderBy_NumberOfVacationers()
+         
+        public IEnumerable<IGrouping<int, GuestRequest>> GuestRequest_OrderBy_NumberOfVacationers()
         {
             IEnumerable<IGrouping<int, GuestRequest>> result =
                   from gr in myDAL.returnGuestRequestList()
                   group gr by (gr.Adults + gr.Children);
             return result;
         }
-
-        IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
+         
+        public IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
         {
             IEnumerable<IGrouping<int, Host>> result =
                      from hosts in myDAL.returnHostList()
                      group hosts by NumOfHostingUnitsInHost(hosts);
             return result;
         }
-
+         
         public int NumOfHostingUnitsInHost(Host host)
         {
             int sum = 0;
@@ -351,7 +363,7 @@ namespace BL
             return sum;
         }
 
-        IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
+        public IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
         {
             IEnumerable<IGrouping<Area, HostingUnit>> result =
                     from hu in myDAL.returnHostingUnitList()

@@ -40,10 +40,15 @@ namespace BE
             GuestRequestKey = Configuration.serialGuestRequest++;
         }
 
+
+        
+         
         public override string ToString()
         {
-            return this.TostringProperties();
-        }
+            
+             return this.TostringProperties();
+             
+        }   
 
     }
 

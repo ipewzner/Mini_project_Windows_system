@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using BE;
 using DataSource;
 
@@ -116,10 +117,33 @@ namespace DAL
             return DataSourceList.Hosts.Where(predicate);
         }
 
+
+
+
+
         public void AddGuestRequestToList(GuestRequest gr)
         {
             DataSourceList.GuestRequests.Add(gr);
         }
+
+
+       /*
+        public IEnumerable<Object> returnWishList(Func<Object, bool> predicate = null)
+        {
+
+            foreach (PropertyInfo p in DataSourceList.GetType().GetProperties())
+            {
+                result += String.Format("{0,-25} , {1}\n", p.Name, p.GetValue(t, null));
+            }
+            
+            if (predicate == null)
+                return DataSourceList.(predicate.Target).AsEnumerable();
+            return DataSourceList.B.Where(predicate);
+        }
+          */                      
+
+
+
     }
 }
 

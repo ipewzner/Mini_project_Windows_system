@@ -22,7 +22,8 @@ namespace PL
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
-
+            preCode preCode = new preCode();
+            preCode.initialize();
             MainScreen();
 
             #region ///// Screens /////
@@ -156,7 +157,13 @@ namespace PL
                 switch (getUserChoise(6))
                 {
                     case 1:
-                       // customerListQuery();
+                        // newBL.GuestRequestOrderBy_Location();
+                       // IEnumerable<GuestRequest> temp=   newBL.GuestRequestBy(null);
+                        foreach (var item in newBL.GuestRequestOrderBy_Location()) { Console.WriteLine(item.ToString()); }
+                        Console.ReadKey();
+                        MainScreen();
+
+
                         break;
                     case 2:
                   //      hostingUnitListQuery();
@@ -176,6 +183,7 @@ namespace PL
                         break;
                 }
             }
+
 
             bool deleteHustingUnit()
             {

@@ -21,17 +21,17 @@ namespace Utilities
         }
 
 
-                  /*
+         /*        
         public static T clone<T>(T info)
         {
 
-            (T)Activator.CreateInstance(typeof(T), info) m;
+            (T)Activator.CreateInstance(typeof(T), info);
             typeof(info) h;
             T t= new (info.GetType()) ;
             foreach (PropertyInfo p in info.GetType().GetProperties())
             {
                // p.GetValue(info, null);
-                
+              
                     p.SetValue(info, Convert.ChangeType(input, p.PropertyType));
                 PropertyInfo t = info.GetType().GetProperties();
 
@@ -40,8 +40,7 @@ namespace Utilities
 
         }
 
-
-  */
+           */
 
 
         //https://stackoverflow.com/questions/553824/serializing-an-array-of-integers-using-xmlserializer
