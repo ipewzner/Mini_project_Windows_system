@@ -157,12 +157,35 @@ namespace PL
                 switch (getUserChoise(6))
                 {
                     case 1:
-                        // newBL.GuestRequestOrderBy_Location();
-                       // IEnumerable<GuestRequest> temp=   newBL.GuestRequestBy(null);
-                        foreach (var item in newBL.GuestRequestOrderBy_Location()) { Console.WriteLine(item.ToString()); }
+
+                        /*
+                          foreach (var item in newBL.GuestRequestOrderBy_Location()) {
+
+                            foreach (var item1 in item)
+                            {
+                                Console.WriteLine(item1.ToString());
+
+                            }
+                        }   
+                        */
+                         /*
+                        foreach (var item in newBL.GuestRequest_OrderBy_NumberOfVacationers())
+                        {
+
+                            foreach (var item1 in item)
+                            {
+                                Console.WriteLine(item1.ToString());
+
+                            }
+                        }    
+                        */
+
+                        foreach (var item in newBL.GuestRequestBy((GuestRequest gr) => gr.Area.Equals(Area.Jerusalem))) { Console.WriteLine(item.ToString()); }
+
                         Console.ReadKey();
                         MainScreen();
 
+                       // GuestRequest_OrderBy_NumberOfVacationers
 
                         break;
                     case 2:

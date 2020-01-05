@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using BE;
 using System.Xml.Linq;
+using System.Reflection;
 
 namespace DAL
 {
     public static class BE_Extensions
     {
+       
         public static Order Clone(this Order order)
         {
             return new Order
@@ -22,6 +24,8 @@ namespace DAL
                 OrderDate = order.OrderDate
             };
         }
+                                           
+       
         public static XElement ToXML(this Order d)
         {
             return new XElement("Order",

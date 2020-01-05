@@ -117,30 +117,57 @@ namespace DAL
             return DataSourceList.Hosts.Where(predicate);
         }
 
-
-
-
-
         public void AddGuestRequestToList(GuestRequest gr)
         {
             DataSourceList.GuestRequests.Add(gr);
         }
 
 
-       /*
-        public IEnumerable<Object> returnWishList(Func<Object, bool> predicate = null)
-        {
+        /*
+         public IEnumerable<Object> returnWishList(Func<Object, bool> predicate = null)
+         {
 
-            foreach (PropertyInfo p in DataSourceList.GetType().GetProperties())
+             foreach (PropertyInfo p in DataSourceList.GetType().GetProperties())
+             {
+                 result += String.Format("{0,-25} , {1}\n", p.Name, p.GetValue(t, null));
+             }
+
+             if (predicate == null)
+                 return DataSourceList.(predicate.Target).AsEnumerable();
+             return DataSourceList.B.Where(predicate);
+         }
+           */
+
+/*
+
+        public IEnumerable<Object> returnQueryList(Func<Object, bool> predicate = null)
+        {
+            if (this.Equals( DataSourceList.GuestRequests.GetType()))
             {
-                result += String.Format("{0,-25} , {1}\n", p.Name, p.GetValue(t, null));
+                if (predicate == null)
+                    return DataSourceList.GuestRequests.AsEnumerable();
+                return DataSourceList.GuestRequests.Where(predicate);
+            }
+            if (this.Equals( DataSourceList.HostingUnits.GetType()))
+            {
+                if (predicate == null)
+                    return DataSourceList.HostingUnits.AsEnumerable();
+                return DataSourceList.HostingUnits.Where(predicate);
+            }
+            if (this.Equals( DataSourceList.Hosts.GetType()))
+            {
+                if (predicate == null)
+                    return DataSourceList.Hosts.AsEnumerable();
+                return DataSourceList.Hosts.Where(predicate);
             }
             
-            if (predicate == null)
-                return DataSourceList.(predicate.Target).AsEnumerable();
-            return DataSourceList.B.Where(predicate);
+                if (predicate == null)
+                    return DataSourceList.Orders.AsEnumerable();
+                return DataSourceList.Orders.Where(predicate);
+            
         }
-          */                      
+                    */
+
 
 
 

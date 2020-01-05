@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using BE;
+using System.Reflection;
+
 using DAL;
 
 namespace BL
@@ -10,16 +12,8 @@ namespace BL
     {
 
         DALImp myDAL = new DALImp();
-       /*
-       public T Query<T>(T dateList,)
-        {
 
-            return null;
-        }
-
-          */
-
-
+       
 
 
 
@@ -268,8 +262,8 @@ namespace BL
             if (predicate == null)
                 return myDAL.returnGuestRequestList().AsEnumerable();
             return myDAL.returnGuestRequestList().Where(predicate);
-        }
-
+        } 
+       
         /// <summary>
         /// Creates Offers by area and available dates
         /// </summary>

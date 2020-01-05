@@ -209,6 +209,8 @@ namespace PL
             mybl.AddGuestRequest(gr);
             #endregion kalmen_request
 
+           
+
             #region afreim_request
 
             gr = new GuestRequest();
