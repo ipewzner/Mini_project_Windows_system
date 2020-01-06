@@ -98,6 +98,10 @@ namespace DAL
 
         #endregion
 
+        public void AddHostToList(Host host)
+        {
+            DataSourceList.Hosts.Add(host);
+        }
         public IEnumerable<GuestRequest> returnGuestRequestList(Func<GuestRequest, bool> predicate = null)
         {
             if (predicate == null)
@@ -137,10 +141,18 @@ namespace DAL
              return DataSourceList.B.Where(predicate);
          }
            */
+        public static IEnumerable<T> GetResultByCondtion<T>( IEnumerable<T> src, Func<T, bool> predicate)
+        {
+            if (predicate == null)
+            {
+                return src;
+            }
+            return src.Where(predicate);
+           // var result = GetResultByCondtion<GuestRequest>(DataSourceList.GuestRequests, c => (c.Adults+c.Children) > 20);
+        }
 
-/*
-
-        public IEnumerable<Object> returnQueryList(Func<Object, bool> predicate = null)
+    /*
+            public IEnumerable<Object> returnQueryList(Func<Object, bool> predicate = null)
         {
             if (this.Equals( DataSourceList.GuestRequests.GetType()))
             {
@@ -166,8 +178,8 @@ namespace DAL
                 return DataSourceList.Orders.Where(predicate);
             
         }
-                    */
-
+               
+      */
 
 
 

@@ -11,10 +11,9 @@ namespace BE
     public class HostingUnit
     {
         public int HostingUnitKey { get; private set; }
-        public String Owner { get; set; }
+        public Host Owner { get; set; }
         public String HostingUnitName { get; set; }
         public Area UnitArea { get; set; }
-        public int HostKey { get; set; }
 
         [XmlIgnore]
         public bool[,] Diary { get; private set; }

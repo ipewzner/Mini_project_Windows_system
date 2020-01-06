@@ -268,6 +268,23 @@ namespace BL
         }
 
         /// <summary>
+        /// Add new Host
+        /// </summary>
+        public bool AddHost(Host host)
+        {
+            if (myDAL.returnHostList((x) => (x == host)) != null)
+            {
+                //myDAL.AddHostToList(host);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+       
+        /// <summary>
         /// Return Guest Request By any requirment
         /// </summary>
         public IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null)
@@ -364,7 +381,7 @@ namespace BL
             int sum = 0;
             foreach (var hu in myDAL.returnHostingUnitList())
             {
-                if (hu.HostKey == host.HostKey)
+                if (hu.Owner.HostKey == host.HostKey)
                     sum++;
             }
             return sum;
