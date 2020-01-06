@@ -13,9 +13,22 @@ namespace BL
 
         DALImp myDAL = new DALImp();
 
-       
-
-
+        /// <summary>
+        /// Add new Host
+        /// </summary>
+        public bool AddHost(Host host)
+        {
+            if(myDAL.returnHostList((x) => (x == host)) != null)
+            {
+                //myDAL.AddHostToList(host);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    
+        }
 
         /// <summary>
         /// Add Guest Request
