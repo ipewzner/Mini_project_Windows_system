@@ -10,12 +10,7 @@ namespace BL
 {
     public class MyBl : IBL
     {
-
         DALImp myDAL = new DALImp();
-
-       
-
-
 
         /// <summary>
         /// Add Guest Request
@@ -43,14 +38,14 @@ namespace BL
         {
             IDAL instance = FactorySingletonDal.Instance;
 
-            Order order = instance.getOrder(neworder.OrderKey);
+            Order order = instance.ReturenAllOrders((x)=> x.OrderKey == neworder.OrderKey).First();
             if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
             {
                 return false;
             }
             else
             {
-                instance.addOrder(neworder);
+                instance.AddOrderToList(neworder);
             }
             return true;
         }
@@ -170,7 +165,7 @@ namespace BL
         public int OrdersPerClient(GuestRequest req)
         {
             int counter = 0;
-            foreach (var item in myDAL.reurenAllOrders())
+            foreach (var item in myDAL.ReturenAllOrders())
             {
                 if (item.GuestRequestKey == req.GuestRequestKey.ToString())
                 {
@@ -187,7 +182,7 @@ namespace BL
         public int OrdersPerUnit(HostingUnit unit)
         {
             int counter = 0;
-            foreach (var item in myDAL.reurenAllOrders())
+            foreach (var item in myDAL.ReturenAllOrders())
             {
                 if (item.HostingUnitKey == unit.HostingUnitKey.ToString())
                 {
@@ -204,7 +199,7 @@ namespace BL
         public bool UnitRemove(int unit)
         {
             string x ="";
-            foreach (var item in myDAL.reurenAllOrders())
+            foreach (var item in myDAL.ReturenAllOrders())
             {
                 if (item.HostingUnitKey == unit.ToString())
                 {
@@ -216,7 +211,7 @@ namespace BL
                 }
             }
             HostingUnit y = GetHostingUnit(Convert.ToInt32(x));
-            myDAL.deleteHostingUnit(y);
+            myDAL.DeleteHostingUnit(y);
             return true;
         }
 
@@ -228,7 +223,7 @@ namespace BL
             List<HostingUnit> listOfUnits = new List<HostingUnit>();
 
             DateTime end = start.AddDays(numOfDays);
-            var x = myDAL.returnHostingUnitList(null);
+            var x = myDAL.ReturnHostingUnitList(null);
             foreach (var item in x)
             {
                 int month = start.Month;
@@ -277,8 +272,8 @@ namespace BL
         public IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null)
         {
             if (predicate == null)
-                return myDAL.returnGuestRequestList().AsEnumerable();
-            return myDAL.returnGuestRequestList().Where(predicate);
+                return myDAL.ReturnGuestRequestList().AsEnumerable();
+            return myDAL.ReturnGuestRequestList().Where(predicate);
         } 
        
         /// <summary>
@@ -309,20 +304,19 @@ namespace BL
         /// </summary>
         public List<Order> OrdersUntilDate(int days)
         {
-            return myDAL.reurenAllOrders(x => NumOfDays(x.CreateDate) == days).ToList(); ;
+            return myDAL.ReturenAllOrders(x => NumOfDays(x.CreateDate) == days).ToList(); ;
         }
-
 
         #region ///// Helpers /////
 
         GuestRequest GetGusetRequest(int key)
         {
-            return (myDAL.returnGuestRequestList(x => x.GuestRequestKey == key)).First();
+            return (myDAL.ReturnGuestRequestList(x => x.GuestRequestKey == key)).First();
         }
             
         public HostingUnit GetHostingUnit(int key)
         {
-            return (myDAL.returnHostingUnitList(x => x.HostingUnitKey == key)).First();
+            return (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).First();
         }
 
         #endregion
@@ -342,7 +336,7 @@ namespace BL
         public IEnumerable<IGrouping<Area, GuestRequest>> GuestRequestOrderBy_Location()
         {
             IEnumerable<IGrouping<Area, GuestRequest>> result =
-                from gr in myDAL.returnGuestRequestList()
+                from gr in myDAL.ReturnGuestRequestList()
                 group gr by gr.Area;
             return result;
         }
@@ -350,7 +344,7 @@ namespace BL
         public IEnumerable<IGrouping<int, GuestRequest>> GuestRequest_OrderBy_NumberOfVacationers()
         {
             IEnumerable<IGrouping<int, GuestRequest>> result =
-                  from gr in myDAL.returnGuestRequestList()
+                  from gr in myDAL.ReturnGuestRequestList()
                   group gr by (gr.Adults + gr.Children);
             return result;
         }
@@ -366,7 +360,7 @@ namespace BL
         public int NumOfHostingUnitsInHost(Host host)
         {
             int sum = 0;
-            foreach (var hu in myDAL.returnHostingUnitList())
+            foreach (var hu in myDAL.ReturnHostingUnitList())
             {
                 if (hu.Owner.HostKey == host.HostKey)
                     sum++;
@@ -377,7 +371,7 @@ namespace BL
         public IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
         {
             IEnumerable<IGrouping<Area, HostingUnit>> result =
-                    from hu in myDAL.returnHostingUnitList()
+                    from hu in myDAL.ReturnHostingUnitList()
                     group hu by hu.UnitArea;
             return result;
         }
