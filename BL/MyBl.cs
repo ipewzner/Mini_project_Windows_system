@@ -167,7 +167,7 @@ namespace BL
             int counter = 0;
             foreach (var item in myDAL.ReturenAllOrders())
             {
-                if (item.GuestRequestKey == req.GuestRequestKey.ToString())
+                if (item.GuestRequestKey == req.GuestRequestKey)
                 {
                     if (item.Status == OrderStatus.MailSent)
                         counter++;
@@ -184,7 +184,7 @@ namespace BL
             int counter = 0;
             foreach (var item in myDAL.ReturenAllOrders())
             {
-                if (item.HostingUnitKey == unit.HostingUnitKey.ToString())
+                if (item.HostingUnitKey == unit.HostingUnitKey)
                 {
                     if (item.Status == OrderStatus.CloseByClient)
                         counter++;
@@ -198,10 +198,10 @@ namespace BL
         /// </summary>
         public bool UnitRemove(int unit)
         {
-            string x ="";
+            int x =0;
             foreach (var item in myDAL.ReturenAllOrders())
             {
-                if (item.HostingUnitKey == unit.ToString())
+                if (item.HostingUnitKey == unit)
                 {
                     if (item.Status == OrderStatus.UntreatedYet)
                     {
@@ -309,11 +309,21 @@ namespace BL
 
         #region ///// Helpers /////
 
+        /// <summary>
+        /// Find Guset Request by ID
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         GuestRequest GetGusetRequest(int key)
         {
             return (myDAL.ReturnGuestRequestList(x => x.GuestRequestKey == key)).First();
         }
-            
+
+        /// <summary>
+        /// Find Hosting Unit by key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public HostingUnit GetHostingUnit(int key)
         {
             return (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).First();
@@ -333,6 +343,10 @@ namespace BL
 
         #region ///// Gruping /////
 
+        /// <summary>
+        /// Order Guest Request By Location
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IGrouping<Area, GuestRequest>> GuestRequestOrderBy_Location()
         {
             IEnumerable<IGrouping<Area, GuestRequest>> result =
@@ -340,7 +354,11 @@ namespace BL
                 group gr by gr.Area;
             return result;
         }
-         
+
+        /// <summary>
+        /// Order Guest Request By Number Of Vacationers
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IGrouping<int, GuestRequest>> GuestRequest_OrderBy_NumberOfVacationers()
         {
             IEnumerable<IGrouping<int, GuestRequest>> result =
@@ -348,7 +366,11 @@ namespace BL
                   group gr by (gr.Adults + gr.Children);
             return result;
         }
-         
+
+        /// <summary>
+        /// Order Hosts By Number Of Hosting Unit
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
         {
             IEnumerable<IGrouping<int, Host>> result =
@@ -356,7 +378,24 @@ namespace BL
                      group hosts by NumOfHostingUnitsInHost(hosts);
             return result;
         }
-         
+
+        /// <summary>
+        /// Order Hosting Unit By Location
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
+        {
+            IEnumerable<IGrouping<Area, HostingUnit>> result =
+                    from hu in myDAL.ReturnHostingUnitList()
+                    group hu by hu.UnitArea;
+            return result;
+        }
+
+        /// <summary>
+        /// Return the number Of Hosting Units In Host
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
         public int NumOfHostingUnitsInHost(Host host)
         {
             int sum = 0;
@@ -368,14 +407,46 @@ namespace BL
             return sum;
         }
 
-        public IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
-        {
-            IEnumerable<IGrouping<Area, HostingUnit>> result =
-                    from hu in myDAL.ReturnHostingUnitList()
-                    group hu by hu.UnitArea;
-            return result;
-        }
         #endregion
 
+
+
+        /// <summary>
+        /// Get Orders by predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public IEnumerable<Order> GetOrders(Func<Order, bool> predicate = null)
+        {
+            if (predicate == null)
+                return myDAL.ReturenAllOrders().AsEnumerable();
+            return myDAL.ReturenAllOrders().Where(predicate);
+        }
+
+        /// <summary>
+        /// return list of all the husting uint key for spasific host 
+        /// </summary>
+        /// <param name="hostKey"></param>
+        /// <returns></returns>
+        public IEnumerable<int> GetHostingUnitsKeysList(int hostKey)
+        {
+            List<int> result= new List <int>();
+            
+            foreach (var hostingUnit in myDAL.ReturnHostingUnitList(x => x.Owner.HostKey == hostKey) )
+                { result.Add(hostingUnit.HostingUnitKey); }
+            return result;
+        }
+
+        //need to replace the one in idal with this
+        public void UpdateOrder(Order order)
+        {
+            try
+            {
+                UpdateOrder(order);
+            }
+            catch 
+            {
+            }
+        }
     }
 }

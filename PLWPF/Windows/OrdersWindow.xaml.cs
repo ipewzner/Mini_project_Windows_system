@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PLWPF.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,23 @@ namespace PLWPF
     /// </summary>
     public partial class OrdersWindow : Window
     {
+        BE.Host host = new BE.Host();
         public OrdersWindow()
         {
             InitializeComponent();
         }
+
+        private void UpdateOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Window win = new UpdateOrderWindow(host.HostKey);
+            win.Show();
+        }
+
+        private void NewOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Window win = new NewOrderWindow();
+            win.Show();
+        }
+                            
     }
 }

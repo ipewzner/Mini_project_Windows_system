@@ -28,7 +28,6 @@ namespace PLWPF
             InitializeComponent();
             AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area)).Cast<BE.Area>();
             ChoiseComboBox1.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -59,7 +58,7 @@ namespace PLWPF
             }
             catch (Exception)
             {
-                MessageBox.Show("Fuck that shit!");
+                MessageBox.Show("problem!");
             }
 
         }

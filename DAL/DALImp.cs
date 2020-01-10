@@ -10,19 +10,25 @@ namespace DAL
 {
     public class DALImp : IDAL
     {
-        
+
         #region ///// Order /////
 
+        /// <summary>
+        /// Add Order To List
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         public bool AddOrderToList(Order order)
         {
-            if (DataSourceList.Orders.Any(guest => guest.OrderKey == order.OrderKey))
-            {
-                return false;
-            }
             DataSourceList.Orders.Add(order.Clone());
             return true;
         }
 
+        /// <summary>
+        ///  Update Order
+        /// </summary>
+        /// <param name="OrderKey"></param>
+        /// <param name="status"></param>
         public void UpdateOrder(int OrderKey,OrderStatus status)
         {
             try
@@ -37,6 +43,11 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Returen Orders from list using predicate for filtering
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<Order> ReturenAllOrders(Func<Order,bool> predicate=null)
         {
             if (predicate == null)
@@ -47,7 +58,12 @@ namespace DAL
         #endregion
 
         #region ///// HosingUnit /////
-                
+
+        /// <summary>
+        /// Add Hosting Unit To List
+        /// </summary>
+        /// <param name="hostingUnit"></param>
+        /// <returns></returns>
         public bool AddHostingUnitToList(HostingUnit hostingUnit)
         {
             foreach (var currentHostingUnit in DataSourceList.HostingUnits)
@@ -57,12 +73,22 @@ namespace DAL
             DataSourceList.HostingUnits.Add(hostingUnit);
             return true;
         }
-            
+
+        /// <summary>
+        /// Delete Hosting Unit from list
+        /// </summary>
+        /// <param name="hu"></param>
+        /// <returns></returns>
         public bool DeleteHostingUnit(HostingUnit hu)
         {
             return DataSourceList.HostingUnits.Remove(hu);
         }
 
+        /// <summary>
+        /// Update Hosting Unit
+        /// </summary>
+        /// <param name="hu"></param>
+        /// <returns></returns>
         public bool UpdateHostingUnit(HostingUnit hu)
         {
             //Remove old
@@ -80,6 +106,11 @@ namespace DAL
             return true;
         }
 
+        /// <summary>
+        /// Returen Hosting Unit from list using predicate for filtering
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<HostingUnit> ReturnHostingUnitList(Func<HostingUnit, bool> predicate = null)
         {
             if (predicate == null)
@@ -88,12 +119,23 @@ namespace DAL
         }
 
         #endregion
-     
+
         #region ///// Host /////
+
+        /// <summary>
+        /// Add Host To List
+        /// </summary>
+        /// <param name="host"></param>
         public void AddHostToList(Host host)
         {
             DataSourceList.Hosts.Add(host);
         }
+
+        /// <summary>
+        /// Returen Hosts from list using predicate for filtering
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<Host> returnHostList(Func<Host, bool> predicate = null)
         {
             if (predicate == null)
@@ -103,12 +145,23 @@ namespace DAL
         #endregion Host
 
         #region ///// GuestRequest /////
+
+        /// <summary>
+        /// Returen Guest Request from list using predicate for filtering
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<GuestRequest> ReturnGuestRequestList(Func<GuestRequest, bool> predicate = null)
         {
             if (predicate == null)
                 return DataSourceList.GuestRequests.AsEnumerable();
             return DataSourceList.GuestRequests.Where(predicate);
         }
+
+        /// <summary>
+        ///Add Guest Request To List
+        /// </summary>
+        /// <param name="gr"></param>
         public void AddGuestRequestToList(GuestRequest gr)
         {
             DataSourceList.GuestRequests.Add(gr);
@@ -117,6 +170,10 @@ namespace DAL
 
         #region ///// Bank /////
 
+        /// <summary>
+        /// Return All Locel Bank
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<string> ReturnAllLocelBank()
         {
             return new List<string> { "poelim", "marcntil", "laomi", "disceunt", "pagi" };
