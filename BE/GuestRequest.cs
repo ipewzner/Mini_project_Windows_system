@@ -30,7 +30,7 @@ namespace BE
         //********************
         public Requirements SpredBads { get; set; }
         public Requirements AirCondsner { get; set; }
-        public Requirements frisider { get; set; }
+        //public Requirements frisider { get; set; }
         public Requirements SingogNaerBy { get; set; }
         public Requirements NaerPublicTrensportion { get; set; }
 

@@ -175,7 +175,7 @@ namespace PL
             gr.ChildrensAttractions = Requirements.Necessary;
             gr.SpredBads = Requirements.NotNecessary;
             gr.AirCondsner = Requirements.Necessary;
-            gr.frisider = Requirements.Possible;
+            //gr.frisider = Requirements.Possible;
             gr.SingogNaerBy = Requirements.Necessary;
             gr.NaerPublicTrensportion = Requirements.Possible;
             mybl.AddGuestRequest(gr);
@@ -203,7 +203,7 @@ namespace PL
             gr.ChildrensAttractions = Requirements.NotNecessary;
             gr.SpredBads = Requirements.Necessary;
             gr.AirCondsner = Requirements.Necessary;
-            gr.frisider = Requirements.Necessary;
+            //gr.frisider = Requirements.Necessary;
             gr.SingogNaerBy = Requirements.Possible;
             gr.NaerPublicTrensportion = Requirements.Possible;
             mybl.AddGuestRequest(gr);
@@ -232,7 +232,7 @@ namespace PL
             gr.ChildrensAttractions = Requirements.Necessary;
             gr.SpredBads = Requirements.NotNecessary;
             gr.AirCondsner = Requirements.Necessary;
-            gr.frisider = Requirements.Necessary;
+           // gr.frisider = Requirements.Necessary;
             gr.SingogNaerBy = Requirements.Necessary;
             gr.NaerPublicTrensportion = Requirements.Necessary;
             mybl.AddGuestRequest(gr);
@@ -259,7 +259,7 @@ namespace PL
             gr.ChildrensAttractions = Requirements.Necessary;
             gr.SpredBads = Requirements.NotNecessary;
             gr.AirCondsner = Requirements.Necessary;
-            gr.frisider = Requirements.Possible;
+           //gr.frisider = Requirements.Possible;
             gr.SingogNaerBy = Requirements.Necessary;
             gr.NaerPublicTrensportion = Requirements.Possible;
             mybl.AddGuestRequest(gr);

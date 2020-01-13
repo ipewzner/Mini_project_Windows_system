@@ -6,20 +6,17 @@ namespace DAL
 {
     public interface IDAL
     {
-        bool addOrder(Order order);
-        Order getOrder(int id);
+        bool AddOrderToList(Order order);
 
-        void updateOrder(int OrderKey, OrderStatus status);             
+        void UpdateOrder(int OrderKey, OrderStatus status);             
         bool AddHostingUnitToList(HostingUnit hostingUnit);
-        bool deleteHostingUnit(HostingUnit hostingUnit);           
-        bool updateHostingUnit(HostingUnit hostingUnit);           
+        bool DeleteHostingUnit(HostingUnit hostingUnit);           
+        bool UpdateHostingUnit(HostingUnit hostingUnit);           
 
-        IEnumerable<HostingUnit> returnHostingUnitList(Func<HostingUnit, bool> predicate = null);  
-        IEnumerable<GuestRequest> returnGuestRequestList(Func<GuestRequest, bool> predicate = null);    
-        IEnumerable<Order> reurenAllOrders(Func<Order, bool> predicate = null);                     
-        IEnumerable<string> returnAllLocelBank();                   
-
-
+        IEnumerable<HostingUnit> ReturnHostingUnitList(Func<HostingUnit, bool> predicate = null);  
+        IEnumerable<GuestRequest> ReturnGuestRequestList(Func<GuestRequest, bool> predicate = null);    
+        IEnumerable<Order> ReturenAllOrders(Func<Order, bool> predicate = null);                     
+        IEnumerable<string> ReturnAllLocelBank();                   
 
     }
 }
