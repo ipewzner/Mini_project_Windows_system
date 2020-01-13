@@ -23,21 +23,31 @@ namespace PLWPF
     {
         MyBl myBL = new MyBl();
         Order order = new Order();
-        int hostKey;
-        public UpdateOrderWindow(int hostKey)
+        Host host;
+
+        /// <summary>
+        /// c-tor
+        /// </summary>
+        /// <param name="hostKey"></param>
+        public UpdateOrderWindow(Host host)
         {
-            this.hostKey = hostKey;
-           // InitializeComponent();
+            this.host = host;
+            InitializeComponent();
             StatusComboBox.ItemsSource = Enum.GetValues(typeof(BE.OrderStatus)).Cast<BE.OrderStatus>();
-            HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(hostKey);
+            HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(host.HostKey);
         }
 
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// finish order end close window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Continue_Click(object sender, RoutedEventArgs e)
         {
             myBL.UpdateOrder(order);
             this.Close();
         }
+        
         private void OrderKey_TextChanged(object sender, TextChangedEventArgs e)
         {
             order = myBL.GetOrders(x => x.OrderKey == Int32.Parse(OrderKey.Text)).FirstOrDefault();
@@ -99,8 +109,8 @@ namespace PLWPF
         {
             try
             {
-                //Enum.TryParse(StatusComboBox.SelectedItem.ToString(), out OrderStatus OrderStatus);
-                //order.Status = OrderStatus;
+               // StatusComboBox.SelectedItem.ToString();
+                
             }
             catch
             {
@@ -109,10 +119,7 @@ namespace PLWPF
             }
         }
 
-        private void HostingUnitKey_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
 //maybe singlton is needed    for thos to func not intersect "OrderKey_TextChanged" &"GuestRequestKey_TextChanged"

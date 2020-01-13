@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BL;
+using BE;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,44 @@ namespace PLWPF.Windows
     /// </summary>
     public partial class NewOrderWindow : Window
     {
-        public NewOrderWindow()
+        MyBl myBL = new MyBl();
+        Host host;
+        public NewOrderWindow(Host host )
         {
             InitializeComponent();
+            BE.Order order = new BE.Order();
+            this.host= host;
+            hostName.Text = host.FamilyName;
+            hostId.Text = host.HostKey.ToString();
+
+            guestRequestComboBox.ItemsSource = myBL.GuestRequestBy();
+            guestRequestComboBox.DisplayMemberPath = "GuestRequestKey";
+            
+            //guestRequestComboBox.SelectedItem = "{Binding Path=GuestRequestKey}";
+
+            HostingUnitKeyComboBox.ItemsSource = myBL.HustingUnitsBy(x=>x.Owner.HostKey==host.HostKey);
+            HostingUnitKeyComboBox.DisplayMemberPath = "HostingUnitName";
+
+        }
+
+        /// <summary>
+        /// Show the current guest request
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GuestRequest_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {                 
+            Right.Content = new GuestRequestPage(guestRequestComboBox.SelectedItem as GuestRequest);
+        }
+                                                            
+        /// <summary>
+        /// Show the current husting unit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HostingUnitKeyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+                Left.Content = new HostingUnitPage(HostingUnitKeyComboBox.SelectedItem as HostingUnit);
         }
     }
 }

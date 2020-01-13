@@ -1,0 +1,79 @@
+﻿<Page x:Class="PLWPF.Windows.GuestRequestPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PLWPF.Windows"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="GuestRequestPage">
+
+    <Grid>
+        <Label Content="PrivateName" HorizontalAlignment="Left" Margin="20,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PrivateName" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"  Margin="177,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="FamilyName" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FamilyName" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"   Margin="177,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="MailAddress" HorizontalAlignment="Left" Margin="20,80,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="MailAddress" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"  Margin="177,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Status" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Status" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"       Margin="177,110,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="RegistrationDate" HorizontalAlignment="Left" Margin="20,140,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="RegistrationDate" IsReadOnly="True"  HorizontalAlignment="Left" Height="23" Margin="177,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="EntryDate" HorizontalAlignment="Left" Margin="20,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="EntryDate" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"    Margin="177,170,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="ReleaseDate" HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ReleaseDate" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"  Margin="177,200,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Area" HorizontalAlignment="Left" Margin="20,230,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Area" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"         Margin="177,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="SubArea" HorizontalAlignment="Left" Margin="20,260,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="SubArea" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"      Margin="177,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="HostingType" HorizontalAlignment="Left" Margin="20,290,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="HostingType" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"  Margin="177,290,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Adults" HorizontalAlignment="Left" Margin="20,320,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Adults" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"       Margin="177,320,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Children" HorizontalAlignment="Left" Margin="20,350,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Children"  IsReadOnly="True" HorizontalAlignment="Left" Height="23"     Margin="177,350,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+         
+        <!-- *************  -->
+        
+        <Label Content="Pool" HorizontalAlignment="Left" Margin="350,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Pool" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"         Margin="457,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        
+        <Label Content="Jacuzzi" HorizontalAlignment="Left" Margin="350,260,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Jacuzzi" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"         Margin="457,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Garden" HorizontalAlignment="Left" Margin="350,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Garden" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"       Margin="457,50,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="ChildrensAttractions" HorizontalAlignment="Left" Margin="350,80,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="ChildrensAttractions" IsReadOnly="True"  HorizontalAlignment="Left" Height="23" Margin="457,80,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="SpredBads" HorizontalAlignment="Left" Margin="350,110,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="SpredBads" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"    Margin="457,110,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="AirCondsner" HorizontalAlignment="Left" Margin="350,140,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="AirCondsner" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"  Margin="457,140,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="frisider" HorizontalAlignment="Left" Margin="350,170,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="frisider" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"     Margin="457,170,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="SingogNaerBy" HorizontalAlignment="Left" Margin="350,200,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="SingogNaerBy" IsReadOnly="True"  HorizontalAlignment="Left" Height="23" Margin="457,200,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="NaerPublicTrensportion" HorizontalAlignment="Left" Margin="350,230,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NaerPublicTrensportion"  IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="457,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
+
+        
+    </Grid>
+</Page>

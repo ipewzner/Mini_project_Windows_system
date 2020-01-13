@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE;
 
 namespace PLWPF
 {
@@ -20,21 +21,22 @@ namespace PLWPF
     /// </summary>
     public partial class OrdersWindow : Window
     {
-        BE.Host host = new BE.Host();
-        public OrdersWindow()
+        Host host;
+        public OrdersWindow(Host host)
         {
+            this.host = host;
             InitializeComponent();
         }
 
         private void UpdateOrder_Click(object sender, RoutedEventArgs e)
         {
-            Window win = new UpdateOrderWindow(host.HostKey);
+            Window win = new UpdateOrderWindow(host);
             win.Show();
         }
 
         private void NewOrder_Click(object sender, RoutedEventArgs e)
         {
-            Window win = new NewOrderWindow();
+            Window win = new NewOrderWindow(host);
             win.Show();
         }
                             

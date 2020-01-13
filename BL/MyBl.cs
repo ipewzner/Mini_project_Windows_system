@@ -256,7 +256,7 @@ namespace BL
         {
             if (myDAL.returnHostList((x) => (x == host)) != null)
             {
-                //myDAL.AddHostToList(host);
+                myDAL.AddHostToList(host);
                 return true;
             }
             else
@@ -274,8 +274,17 @@ namespace BL
             if (predicate == null)
                 return myDAL.ReturnGuestRequestList().AsEnumerable();
             return myDAL.ReturnGuestRequestList().Where(predicate);
-        } 
-       
+        }
+
+        /// <summary>
+        /// Return Husting uinits By any requirment
+        /// </summary>
+        public IEnumerable<HostingUnit> HustingUnitsBy(Func<HostingUnit, bool> predicate = null)
+        {
+              return myDAL.ReturnHostingUnitList(predicate);
+        }
+
+
         /// <summary>
         /// Creates Offers by area and available dates
         /// </summary>
@@ -437,6 +446,15 @@ namespace BL
             return result;
         }
 
+        /// <summary>
+        /// Return host list
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Host> GetHosts()
+        {
+            return myDAL.returnHostList();
+        }
+
         //need to replace the one in idal with this
         public void UpdateOrder(Order order)
         {
@@ -444,9 +462,21 @@ namespace BL
             {
                 UpdateOrder(order);
             }
-            catch 
+            catch(Exception ex) 
             {
+                throw new Exception("Can't update order"+ex);
             }
         }
+       /*
+        public IEnumerable<int> GetGuestRequestKeysList<T>(IEnumerable<GuestRequest> list,PropertyInfo propertyInfo)
+        {
+            List<int> result = new List<int>();
+
+            foreach (var i in list)
+            { result.Add(i.GuestRequestKey); }
+            { result.Add(i.g; }
+            return result;
+        }
+         */
     }
 }

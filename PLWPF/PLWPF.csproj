@@ -55,6 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="preCode.cs" />
+    <Compile Include="Windows\GuestRequestPage.xaml.cs">
+      <DependentUpon>GuestRequestPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\HostingUnitPage.xaml.cs">
+      <DependentUpon>HostingUnitPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LogInWindow.xaml.cs">
+      <DependentUpon>LogInWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\NewOrderWindow.xaml.cs">
       <DependentUpon>NewOrderWindow.xaml</DependentUpon>
     </Compile>
@@ -62,6 +72,14 @@
       <DependentUpon>UpdateOrderWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Windows\AddRequestWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GuestRequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\HostingUnitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -87,6 +105,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\LogInWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\NewOrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

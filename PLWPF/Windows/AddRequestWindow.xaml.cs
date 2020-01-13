@@ -21,13 +21,20 @@ namespace PLWPF
     /// </summary>
     public partial class AddRequestWindow : Window
     {
-        MyBl myBL = new MyBl(); 
+        MyBl myBL = new MyBl();
 
         public AddRequestWindow()
         {
             InitializeComponent();
             AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area)).Cast<BE.Area>();
-            ChoiseComboBox1.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -37,28 +44,34 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            GuestRequest guest = new GuestRequest();
-            guest.PrivateName = FirstName.Text;
-            guest.FamilyName = LastName.Text;
-
-            Enum.TryParse(AreaComboBox.SelectedItem.ToString(), out Area area);
-            guest.Area = area;
-
-            guest.EntryDate = EntryDate.DisplayDate;
-            guest.ReleaseDate = ReleaseDate.DisplayDate;
-            guest.SubArea = SubArea.Text;
-
-            Enum.TryParse(AreaComboBox.SelectedItem.ToString(), out Requirements pool);
-            guest.Pool =pool;
-
             try
             {
+                GuestRequest guest = new GuestRequest();
+                guest.PrivateName = FirstName.Text;
+                guest.FamilyName = LastName.Text;
+
+                guest.Area = (Area)AreaComboBox.SelectedItem;
+
+                guest.EntryDate = EntryDate.DisplayDate;
+                guest.ReleaseDate = ReleaseDate.DisplayDate;
+                guest.SubArea = SubArea.Text;
+
+                guest.Pool = (Requirements)ComboBoxPool.SelectedItem;
+                guest.Jacuzzi = (Requirements)ComboBoxJacuzzi.SelectedItem;
+                guest.ChildrensAttractions = (Requirements)ComboBoxAttrac.SelectedItem;
+                guest.SpredBads = (Requirements)ComboBoxSpredBads.SelectedItem;
+                guest.AirCondsner = (Requirements)ComboBoxAirCondsner.SelectedItem;
+                guest.Garden = (Requirements)ComboBoxGarden.SelectedItem;
+                guest.SingogNaerBy = (Requirements)ComboBoxSingog.SelectedItem;
+                guest.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
+
+
                 myBL.AddGuestRequest(guest);
                 MessageBox.Show("Recived Seccessfully");
             }
             catch (Exception)
             {
-                MessageBox.Show("problem!");
+                MessageBox.Show("Error! Make sure you dont miss any field!");
             }
 
         }

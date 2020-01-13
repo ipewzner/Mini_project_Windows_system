@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BE;
+using PLWPF.Windows;
 
 namespace PLWPF
 {
@@ -20,9 +22,13 @@ namespace PLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        Host host = null;
+
         public MainWindow()
         {
             InitializeComponent();
+            preCode preCode = new preCode();
+            preCode.initialize();
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)
@@ -35,19 +41,39 @@ namespace PLWPF
 
         private void HostingUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window win = new HostingUnitWindow();
+            if (host != null)
+            {
+                Window win = new HostingUnitWindow();
             win.Show();
+            }
+            else MessageBox.Show("You need to register");
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
-            Window win = new OrdersWindow();
-            win.Show();
+            if (host != null)
+            {
+                Window win = new OrdersWindow(host);
+                win.Show();
+            }
+            else MessageBox.Show("You need to register");
         }
 
         private void Stat_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LogInWindow win = new LogInWindow();
+            win.ShowDialog();
+            if (win.DialogResult == true)
+            {
+                host = win.HostfromLogin;
+                user.Text = host.PrivateName+" "+  host.FamilyName;
+            }
         }
     }
 }
