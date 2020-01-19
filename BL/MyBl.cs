@@ -60,21 +60,13 @@ namespace BL
                 //TODO:
                 //close status for changes
 
-                //TODO bring the orginals and remove x and y
                 HostingUnit x = GetHostingUnit(Convert.ToInt32(order.HostingUnitKey));
                 GuestRequest y = GetGusetRequest(Convert.ToInt32(order.GuestRequestKey));
-                int month = y.EntryDate.Month;
-                for (int day = y.EntryDate.Day; day < y.ReleaseDate.Day || y.ReleaseDate.Month != month; day++)
+                for (DateTime i = y.EntryDate; i <= y.ReleaseDate; i.AddDays(1))
                 {
-                    x.Diary[y.EntryDate.Month, day] = true;
-
-                    if (day == 31)
-                    {
-                        day = 0;
-                        month++;
-                    }
-
+                    x.Diary.Add(i);
                 }
+
 
                 //TODO add Commision
                 //To Where??
@@ -92,20 +84,13 @@ namespace BL
         {
 
             HostingUnit x = GetHostingUnit(unitKey);
-            int month = start.Month;
-            for (int day = start.Day; day < end.Day || end.Month != month; day++)
+            start.AddDays(1);
+            for (DateTime i = start; i < end; i.AddDays(1))
             {
-                if (x.Diary[start.Month, day] == true)
+               if(x.Diary.FindIndex((z) => z == i) != -1 )
                 {
                     return false;
                 }
-
-                if (day == 31)
-                {
-                    day = 0;
-                    month++;
-                }
-
             }
 
             return true;
@@ -226,23 +211,11 @@ namespace BL
             var x = myDAL.ReturnHostingUnitList(null);
             foreach (var item in x)
             {
-                int month = start.Month;
-                for (int day = start.Day; day < end.Day || end.Month != month; day++)
+
+                if(IsDateAvailable(start, end, item.HostingUnitKey))
                 {
-
-                    if (!item.Diary[start.Month, day] == true)
-                    {
-                        break;
-                    }
-
-                    if (day == 31)
-                    {
-                        day = 0;
-                        month++;
-                    }
+                    listOfUnits.Add(item);
                 }
-
-                listOfUnits.Add(item);
 
             }
 
