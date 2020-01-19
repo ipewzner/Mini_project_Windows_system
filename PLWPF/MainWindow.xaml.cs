@@ -43,7 +43,7 @@ namespace PLWPF
         {
             if (host != null)
             {
-                Window win = new HostingUnitWindow();
+                Window win = new HostingUnitWindow(host);
             win.Show();
             }
             else MessageBox.Show("You need to register");
@@ -61,7 +61,8 @@ namespace PLWPF
 
         private void Stat_Click(object sender, RoutedEventArgs e)
         {
-
+            Window win = new StatisticsWindow();
+            win.Show();
         }
 
 

@@ -20,7 +20,8 @@ namespace DAL
         /// <returns></returns>
         public bool AddOrderToList(Order order)
         {
-            DataSourceList.Orders.Add(order.Clone());
+          //  DataSourceList.Orders.Add(order.Clone());
+            DataSourceList.Orders.Add(order);
             return true;
         }
 
@@ -164,6 +165,7 @@ namespace DAL
         /// <param name="gr"></param>
         public void AddGuestRequestToList(GuestRequest gr)
         {
+           // DataSourceList.GuestRequests.Add(Cloning.Copy(gr));
             DataSourceList.GuestRequests.Add(gr);
         }
         #endregion GuestRequest

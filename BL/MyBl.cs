@@ -295,9 +295,8 @@ namespace BL
             {
                 Offer y = new Offer();
 
-                foreach (var guest in GuestRequestBy((x => x.Area == item.UnitArea)))
+                foreach (var guest in GuestRequestBy((x => x.Area == item.Area)))
                 {
-
                     y.GuestKey = guest.GuestRequestKey;
                     y.UnitKey = item.HostingUnitKey;
                 }
@@ -396,7 +395,7 @@ namespace BL
         {
             IEnumerable<IGrouping<Area, HostingUnit>> result =
                     from hu in myDAL.ReturnHostingUnitList()
-                    group hu by hu.UnitArea;
+                    group hu by hu.Area;
             return result;
         }
 
@@ -418,7 +417,7 @@ namespace BL
 
         #endregion
 
-
+        
 
         /// <summary>
         /// Get Orders by predicate
@@ -467,7 +466,9 @@ namespace BL
                 throw new Exception("Can't update order"+ex);
             }
         }
-       /*
+
+      
+        /*
         public IEnumerable<int> GetGuestRequestKeysList<T>(IEnumerable<GuestRequest> list,PropertyInfo propertyInfo)
         {
             List<int> result = new List<int>();

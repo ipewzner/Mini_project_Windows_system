@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using BE;
 using BL;
+using PLWPF.Windows;
+
 namespace PLWPF
 {
     /// <summary>
@@ -55,7 +57,8 @@ namespace PLWPF
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
-
+            Window win = new Register();
+            win.Show();
         }
 
         private void ENTER_Click(object sender, RoutedEventArgs e)

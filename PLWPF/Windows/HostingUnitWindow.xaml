@@ -6,7 +6,18 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="HostingUnitWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid HorizontalAlignment="Left" Margin="0,0,-0.4,-526" Width="794">
+
+        <Label Content="HOST NAME" HorizontalAlignment="Left" Margin="67,0,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
+        <TextBox x:Name="hostName" HorizontalAlignment="Left" Height="23" Margin="67,26,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="HOST ID" HorizontalAlignment="Left" Margin="187,8,0,0" VerticalAlignment="Top" Height="26" Width="54" RenderTransformOrigin="0.487,0.288"/>
+        <TextBox x:Name="hostId" HorizontalAlignment="Left" Height="23" Margin="195,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+        <Label  Content="HUSTING UNIT" HorizontalAlignment="Left" Margin="67,58,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Height="26" Width="90"/>
+        <ComboBox x:Name="HostingUnitKeyComboBox" HorizontalAlignment="Left" Margin="67,84,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HostingUnitKeyComboBox_SelectionChanged" Height="22"/>
+        <Frame x:Name="HustingUnitFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Left" Height="301" Margin="0,111,0,0" VerticalAlignment="Top" Width="315" Navigated="HustingUnitFrame_Navigated"/>
+        <Button Content="Confirm" HorizontalAlignment="Left" Margin="23,483,0,0" VerticalAlignment="Top" Width="177" Height="36" Click="Confirm_Click"/>
+
     </Grid>
 </Window>

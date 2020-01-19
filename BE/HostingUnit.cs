@@ -8,12 +8,13 @@ using Utilities;
 
 namespace BE
 {
-    public class HostingUnit
+    public class HostingUnit   : requirement
     {
+        requirement requirement = new requirement();
         public int HostingUnitKey { get; private set; }
         public Host Owner { get; set; }
         public String HostingUnitName { get; set; }
-        public Area UnitArea { get; set; }
+
 
         [XmlIgnore]
         public bool[,] Diary { get; private set; }

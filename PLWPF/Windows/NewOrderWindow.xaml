@@ -28,8 +28,8 @@
         <Label  Content="HUSTING UNIT" HorizontalAlignment="Left" Margin="67,58,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Height="26" Width="90"/>
         <ComboBox x:Name="HostingUnitKeyComboBox" HorizontalAlignment="Left" Margin="67,3.4,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HostingUnitKeyComboBox_SelectionChanged" Grid.Row="1" Height="22"/>
 
-        <Label Content="GUEST REQUEST" HorizontalAlignment="Left" Margin="8.2,36,0,0" VerticalAlignment="Top" Height="26" Width="98" Grid.Column="1"/>
-        <ComboBox x:Name="guestRequestComboBox"   HorizontalAlignment="Left" Margin="8.2,62,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="GuestRequest_SelectionChanged" Height="22" Grid.RowSpan="2" Grid.Column="1"/>
+        <Label Content="GUEST REQUEST" HorizontalAlignment="Left" Margin="10.2,14,0,0" VerticalAlignment="Top" Height="26" Width="98" Grid.Column="1"/>
+        <ComboBox x:Name="guestRequestComboBox"   HorizontalAlignment="Left" Margin="10.2,41,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="GuestRequest_SelectionChanged" Height="22" Grid.Column="1"/>
 
     </Grid>
 </Window>

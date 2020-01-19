@@ -23,7 +23,7 @@ namespace PLWPF
             host.BankAccount = new BankAccount();
             host.BankAccount.BankAccountNumber = 11111111;
             host.BankAccount.BankName = "poalim";
-            host.BankAccount.BankNumber = "123";
+            host.BankAccount.BankNumber = 123;
             host.BankAccount.BranchAddress = "jefo 121";
             host.BankAccount.BranchCity = "jeruselm";
             host.BankAccount.BranchNumber = 432;
@@ -36,20 +36,20 @@ namespace PLWPF
             HostingUnit hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel clifornia";
-            hu.UnitArea = BE.Area.North;
+            hu.Area = BE.Area.North;
             mybl.AddHostingUnit(hu);
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel hong-kong";
-            hu.UnitArea = BE.Area.North;
+            hu.Area = BE.Area.North;
             mybl.AddHostingUnit(hu);
 
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel paris";
-            hu.UnitArea = BE.Area.North;
+            hu.Area = BE.Area.North;
             mybl.AddHostingUnit(hu);
 
             #endregion add_hosting_units_to_david
@@ -65,7 +65,7 @@ namespace PLWPF
             host.BankAccount = new BankAccount();
             host.BankAccount.BankAccountNumber = 11111112;
             host.BankAccount.BankName = "poalim";
-            host.BankAccount.BankNumber = "123";
+            host.BankAccount.BankNumber = 123;
             host.BankAccount.BranchAddress = "jefo 121";
             host.BankAccount.BranchCity = "jeruselm";
             host.BankAccount.BranchNumber = 432;
@@ -77,26 +77,26 @@ namespace PLWPF
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel tal-aviv";
-            hu.UnitArea = BE.Area.Center;
+            hu.Area = BE.Area.Center;
             mybl.AddHostingUnit(hu);
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel jeruselm";
-            hu.UnitArea = BE.Area.Jerusalem;
+            hu.Area = BE.Area.Jerusalem;
             mybl.AddHostingUnit(hu);
 
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel tavriea";
-            hu.UnitArea = BE.Area.North;
+            hu.Area = BE.Area.North;
             mybl.AddHostingUnit(hu);
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "hotel hifa";
-            hu.UnitArea = BE.Area.North;
+            hu.Area = BE.Area.North;
             mybl.AddHostingUnit(hu);
 
             #endregion add_hosting_units_to_moses
@@ -111,7 +111,7 @@ namespace PLWPF
             host.BankAccount = new BankAccount();
             host.BankAccount.BankAccountNumber = 1152582;
             host.BankAccount.BankName = "laomi";
-            host.BankAccount.BankNumber = "525";
+            host.BankAccount.BankNumber = 525;
             host.BankAccount.BranchAddress = "gargmel 1010";
             host.BankAccount.BranchCity = "heifa";
             host.BankAccount.BranchNumber = 852;
@@ -123,19 +123,19 @@ namespace PLWPF
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "zimer of the north";
-            hu.UnitArea = BE.Area.North;
+            hu.Area = BE.Area.North;
             mybl.AddHostingUnit(hu);
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "zimer of the Jerusalem";
-            hu.UnitArea = BE.Area.Jerusalem;
+            hu.Area = BE.Area.Jerusalem;
             mybl.AddHostingUnit(hu);
 
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "zimer of the South";
-            hu.UnitArea = BE.Area.South;
+            hu.Area = BE.Area.South;
             mybl.AddHostingUnit(hu);
 
 

@@ -9,7 +9,7 @@ namespace BE
 {
     public class BankAccount
     {
-        public String BankNumber { get; set; }
+        public int BankNumber { get; set; }
         public String BankName { get; set; }
         public int BranchNumber { get; set; }
         public String BranchAddress { get; set; }
@@ -17,7 +17,6 @@ namespace BE
         public int BankAccountNumber { get; set; }
         public override string ToString()
         {
-            Console.WriteLine("pppp");
             return this.TostringProperties();
         }
     }

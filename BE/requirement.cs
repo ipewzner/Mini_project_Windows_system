@@ -7,20 +7,9 @@ using Utilities;
 
 namespace BE
 {
-    public class GuestRequest : requirement
+    public class requirement
     {
-        requirement requirement = new requirement();
-    
-        
-        public int GuestRequestKey { get; private set; }
-        public String PrivateName { get; set; }
-        public String FamilyName { get; set; }
-        public String MailAddress { get; set; }
-        public ClientStatus Status { get; set; }
-        public DateTime RegistrationDate { get; set; }
-        public DateTime EntryDate { get; set; }
-        public DateTime ReleaseDate { get; set; }
-          /*
+       
         public Area Area { get; set; }
         public String SubArea { get; set; }
         public HostingType HostingType { get; set; }
@@ -36,15 +25,7 @@ namespace BE
         public Requirements frisider { get; set; }
         public Requirements SingogNaerBy { get; set; }
         public Requirements NaerPublicTrensportion { get; set; }
-                */
-        /// <summary>
-        /// c-tor
-        /// </summary>
-        public GuestRequest()
-        {
-            GuestRequestKey = Configuration.serialGuestRequest++;
-        }
-       
+
         /// <summary>
         /// to-string
         /// </summary>
@@ -52,8 +33,7 @@ namespace BE
         public override string ToString()
         {
             return this.TostringProperties();
-        }   
+        }
 
     }
-
 }
