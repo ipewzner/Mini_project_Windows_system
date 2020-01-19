@@ -27,6 +27,14 @@ namespace PLWPF.Windows
         {
             
             InitializeComponent();
+
+            foreach (var item in hostingUnit.Diary)
+            {
+                CalendarDateRange x = new CalendarDateRange(item);
+                calendarHU.BlackoutDates.Add(x);
+                
+            }
+
             // Clendar.BlackoutDates.Add(new CalendarDateRange(new DateTime(01 / 01 / 2020), new DateTime(01 / 01 / 2021)));
             //System.Windows.Controls.Calendar Calendar1 = new System.Windows.Controls.Calendar();
             //Calendar1.IsTodayHighlighted = true;

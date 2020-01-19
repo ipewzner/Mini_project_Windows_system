@@ -37,6 +37,9 @@ namespace PLWPF
             hu.Owner = host;
             hu.HostingUnitName = "hotel clifornia";
             hu.Area = BE.Area.North;
+            hu.Diary = new List<DateTime>{
+                new DateTime(2020, 1, 20)
+            };
             mybl.AddHostingUnit(hu);
 
             hu = new HostingUnit();

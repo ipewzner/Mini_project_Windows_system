@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="HostingUnitWindow" Height="450" Width="800">
+        Title="HostingUnitWindow" Height="700" Width="1200">
     <Grid HorizontalAlignment="Left" Margin="0,0,-0.4,-526" Width="794">
 
         <Label Content="HOST NAME" HorizontalAlignment="Left" Margin="67,0,0,0" VerticalAlignment="Top" Height="26" Width="77"/>

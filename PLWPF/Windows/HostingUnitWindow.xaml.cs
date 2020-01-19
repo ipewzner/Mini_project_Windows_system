@@ -53,6 +53,7 @@ namespace PLWPF
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
 
+            
             hostingUnit. Adults                        = ((HostingUnit)HustingUnitFrame.Content).Adults;
             hostingUnit. AirCondsner                   = ((HostingUnit)HustingUnitFrame.Content)  .  AirCondsner                    ;
             hostingUnit. Area                          = ((HostingUnit)HustingUnitFrame.Content)  .  Area                           ;
