@@ -60,5 +60,32 @@ namespace PLWPF.Windows
         {
                 Left.Content = new HostingUnitPage(HostingUnitKeyComboBox.SelectedItem as HostingUnit);
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Order order = new Order()
+            {
+                CreateDate = DateTime.Now,
+                GuestRequestKey = (guestRequestComboBox.SelectedItem as GuestRequest).GuestRequestKey,
+                HostingUnitKey = (HostingUnitKeyComboBox.SelectedItem as HostingUnit).HostingUnitKey,
+                OrderDate = DateTime.Now,
+                Status = OrderStatus.MailSent,
+                OrderKey = Configuration.serialOrder++
+
+            };
+
+            try
+            {
+                myBL.AddOrder(order);
+                MessageBox.Show("Order Created Seccessfuly!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error! please try again later");
+                this.Close();
+            }
+
+        }
     }
 }

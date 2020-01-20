@@ -46,7 +46,7 @@ namespace PLWPF
                 Window win = new HostingUnitWindow(host);
             win.Show();
             }
-            else MessageBox.Show("You need to register");
+            else MessageBox.Show("Select User Or Sign Up");
         }
 
         private void Orders_Click(object sender, RoutedEventArgs e)
@@ -56,7 +56,7 @@ namespace PLWPF
                 Window win = new OrdersWindow(host);
                 win.Show();
             }
-            else MessageBox.Show("You need to register");
+            else MessageBox.Show("Select User Or Sign Up");
         }
 
         private void Stat_Click(object sender, RoutedEventArgs e)
@@ -68,13 +68,23 @@ namespace PLWPF
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            LogInWindow win = new LogInWindow();
-            win.ShowDialog();
-            if (win.DialogResult == true)
+            try
             {
-                host = win.HostfromLogin;
-                user.Text = host.PrivateName+" "+  host.FamilyName;
+                LogInWindow win = new LogInWindow();
+                win.ShowDialog();
+                if (win.DialogResult == true)
+                {
+                    host = win.HostfromLogin;
+                    user.Text = host.PrivateName + " " + host.FamilyName;
+                }
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Select User Or Sign Up");
+
+            }
+
         }
     }
 }
