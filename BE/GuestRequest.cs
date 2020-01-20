@@ -7,6 +7,7 @@ using Utilities;
 
 namespace BE
 {
+    [Serializable]
     public class GuestRequest : requirement
     {
         requirement requirement = new requirement();

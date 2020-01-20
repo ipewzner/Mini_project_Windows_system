@@ -26,5 +26,11 @@ namespace DAL
                 return (T)formatter.Deserialize(stream);
             }
         }
+
+        public static IEnumerable<T> Clone<T>(this IEnumerable<T> listToClone)
+        {
+            return from item in listToClone
+                   select Cloning.Copy(item);
+        }
     }
 }

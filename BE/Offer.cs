@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE
 {
+    [Serializable]
     public class Offer
     {
         public static List<Offer> ListOfOffers = new List<Offer>();

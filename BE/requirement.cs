@@ -7,6 +7,7 @@ using Utilities;
 
 namespace BE
 {
+    [Serializable]
     public class requirement
     {
        

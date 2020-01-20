@@ -7,6 +7,7 @@ using Utilities;
 
 namespace BE
 {
+    [Serializable]
     public class Host
     {
         public int HostKey { get; set; }

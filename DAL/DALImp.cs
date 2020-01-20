@@ -20,9 +20,15 @@ namespace DAL
         /// <returns></returns>
         public bool AddOrderToList(Order order)
         {
-          //  DataSourceList.Orders.Add(order.Clone());
-            DataSourceList.Orders.Add(order);
-            return true;
+            try
+            {
+                DataSourceList.Orders.Add(Cloning.Copy(order));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to add Order to the list " + ex);
+            }
         }
 
         /// <summary>
@@ -30,17 +36,17 @@ namespace DAL
         /// </summary>
         /// <param name="OrderKey"></param>
         /// <param name="status"></param>
-        public void UpdateOrder(int OrderKey,OrderStatus status)
+        public void UpdateOrder(int OrderKey, OrderStatus status)
         {
             try
             {
-                var g = from w in DataSourceList.Orders
-                        where w.OrderKey == OrderKey
-                        select w.Status = status;
+                var temp = from order in DataSourceList.Orders
+                           where order.OrderKey == OrderKey
+                           select order.Status = status;
             }
-            catch(Exception)
+            catch (Exception ex)
             {
-                throw new KeyNotFoundException("OrderKey not feund");
+                throw new KeyNotFoundException("OrderKey not feund" + ex);
             }
         }
 
@@ -49,11 +55,18 @@ namespace DAL
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        public IEnumerable<Order> ReturenAllOrders(Func<Order,bool> predicate=null)
+        public IEnumerable<Order> ReturenAllOrders(Func<Order, bool> predicate = null)
         {
-            if (predicate == null)
-                return DataSourceList.Orders.AsEnumerable();
-            return DataSourceList.Orders.Where(predicate);
+            try
+            {
+                if (predicate == null)
+                    return Cloning.Clone(DataSourceList.Orders.AsEnumerable());
+                return Cloning.Clone(DataSourceList.Orders.Where(predicate));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to retrieve the Orders from the list " + ex);
+            }
         }
 
         #endregion
@@ -67,12 +80,19 @@ namespace DAL
         /// <returns></returns>
         public bool AddHostingUnitToList(HostingUnit hostingUnit)
         {
-            foreach (var currentHostingUnit in DataSourceList.HostingUnits)
+            try
             {
-                if (currentHostingUnit.Equals(hostingUnit)) return false;
+                foreach (var currentHostingUnit in DataSourceList.HostingUnits)
+                {
+                    if (currentHostingUnit.Equals(hostingUnit)) return false;
+                }
+                DataSourceList.HostingUnits.Add(Cloning.Copy(hostingUnit));
+                return true;
             }
-            DataSourceList.HostingUnits.Add(hostingUnit);
-            return true;
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to add the Hosting-Unit to the list " + ex);
+            }
         }
 
         /// <summary>
@@ -82,7 +102,14 @@ namespace DAL
         /// <returns></returns>
         public bool DeleteHostingUnit(HostingUnit hu)
         {
-            return DataSourceList.HostingUnits.Remove(hu);
+            try
+            {
+                return DataSourceList.HostingUnits.Remove(hu);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to delete the Hosting-Unit " + ex);
+            }
         }
 
         /// <summary>
@@ -90,21 +117,35 @@ namespace DAL
         /// </summary>
         /// <param name="hu"></param>
         /// <returns></returns>
-        public bool UpdateHostingUnit(HostingUnit hu)
+        public bool UpdateHostingUnit(HostingUnit hostingUnit)
         {
             //Remove old
             try
             {
-                DataSourceList.HostingUnits.Remove(DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == hu.HostingUnitKey));
+                try
+                {
+                    DataSourceList.HostingUnits.Remove(DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == hostingUnit.HostingUnitKey));
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("can't remove the old Hosting-Unit " + ex);
+                }
+
+                //insert new
+                try
+                {
+                    DataSourceList.HostingUnits.Add(Cloning.Copy(hostingUnit));
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("can't add the new Hosting-Unit " + ex);
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Fail to update Hosting-Unit becuse it " + ex);
             }
-         
-            //insert new
-            DataSourceList.HostingUnits.Add(hu);
-            return true;
         }
 
         /// <summary>
@@ -114,9 +155,16 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<HostingUnit> ReturnHostingUnitList(Func<HostingUnit, bool> predicate = null)
         {
-            if (predicate == null)
-                return DataSourceList.HostingUnits.AsEnumerable();
-            return DataSourceList.HostingUnits.Where(predicate);
+            try
+            {
+                if (predicate == null)
+                    return Cloning.Clone(DataSourceList.HostingUnits.AsEnumerable());
+                return Cloning.Clone(DataSourceList.HostingUnits.Where(predicate));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to retrieve the Hosting-Units from the list " + ex);
+            }
         }
 
         #endregion
@@ -129,7 +177,14 @@ namespace DAL
         /// <param name="host"></param>
         public void AddHostToList(Host host)
         {
-            DataSourceList.Hosts.Add(host);
+            try
+            {
+                DataSourceList.Hosts.Add(Cloning.Copy(host));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to add the Host to the list " + ex);
+            }
         }
 
         /// <summary>
@@ -139,9 +194,16 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<Host> returnHostList(Func<Host, bool> predicate = null)
         {
-            if (predicate == null)
-                return DataSourceList.Hosts.AsEnumerable();
-            return DataSourceList.Hosts.Where(predicate);
+            try
+            {
+                if (predicate == null)
+                    return Cloning.Clone(DataSourceList.Hosts.AsEnumerable());
+                return Cloning.Clone(DataSourceList.Hosts.Where(predicate));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to retrieve the Hosts from the list " + ex);
+            }
         }
         #endregion Host
 
@@ -154,9 +216,16 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<GuestRequest> ReturnGuestRequestList(Func<GuestRequest, bool> predicate = null)
         {
-            if (predicate == null)
-                return DataSourceList.GuestRequests.AsEnumerable();
-            return DataSourceList.GuestRequests.Where(predicate);
+            try
+            {
+                if (predicate == null)
+                    return Cloning.Clone(DataSourceList.GuestRequests.AsEnumerable());
+                return Cloning.Clone(DataSourceList.GuestRequests.Where(predicate));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to retrieve the Guest-Request from the list " + ex);
+            }
         }
 
         /// <summary>
@@ -165,8 +234,14 @@ namespace DAL
         /// <param name="gr"></param>
         public void AddGuestRequestToList(GuestRequest gr)
         {
-           // DataSourceList.GuestRequests.Add(Cloning.Copy(gr));
-            DataSourceList.GuestRequests.Add(gr);
+            try
+            {
+                DataSourceList.GuestRequests.Add(Cloning.Copy(gr));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to add the Guest Request to the list " + ex);
+            }
         }
         #endregion GuestRequest
 
@@ -178,68 +253,21 @@ namespace DAL
         /// <returns></returns>
         public IEnumerable<string> ReturnAllLocelBank()
         {
-            return new List<string> { "poelim", "marcntil", "laomi", "disceunt", "pagi" };
+            try
+            {
+                return new List<string> { "poelim", "marcntil", "laomi", "disceunt", "pagi" };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to return the Locel-Bank list " + ex);
+            }
         }
 
         #endregion
 
-        #region ///// In progres /////
 
-        /*
-         public IEnumerable<Object> returnWishList(Func<Object, bool> predicate = null)
-         {
 
-             foreach (PropertyInfo p in DataSourceList.GetType().GetProperties())
-             {
-                 result += String.Format("{0,-25} , {1}\n", p.Name, p.GetValue(t, null));
-             }
 
-             if (predicate == null)
-                 return DataSourceList.(predicate.Target).AsEnumerable();
-             return DataSourceList.B.Where(predicate);
-         }
-            */
-        public static IEnumerable<T> GetResultByCondtion<T>(IEnumerable<T> src, Func<T, bool> predicate)
-        {
-            if (predicate == null)
-            {
-                return src;
-            }
-            return src.Where(predicate);
-            // var result = GetResultByCondtion<GuestRequest>(DataSourceList.GuestRequests, c => (c.Adults+c.Children) > 20);
-        }
-
-            /*
-                public IEnumerable<Object> returnQueryList(Func<Object, bool> predicate = null)
-            {
-                if (this.Equals( DataSourceList.GuestRequests.GetType()))
-                {
-                    if (predicate == null)
-                        return DataSourceList.GuestRequests.AsEnumerable();
-                    return DataSourceList.GuestRequests.Where(predicate);
-                }
-                if (this.Equals( DataSourceList.HostingUnits.GetType()))
-                {
-                    if (predicate == null)
-                        return DataSourceList.HostingUnits.AsEnumerable();
-                    return DataSourceList.HostingUnits.Where(predicate);
-                }
-                if (this.Equals( DataSourceList.Hosts.GetType()))
-                {
-                    if (predicate == null)
-                        return DataSourceList.Hosts.AsEnumerable();
-                    return DataSourceList.Hosts.Where(predicate);
-                }
-
-                    if (predicate == null)
-                        return DataSourceList.Orders.AsEnumerable();
-                    return DataSourceList.Orders.Where(predicate);
-
-            }
-
-          */
-
-        #endregion
 
     }
 }

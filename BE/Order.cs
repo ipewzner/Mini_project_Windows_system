@@ -7,6 +7,7 @@ using Utilities;
 
 namespace BE
 {
+    [Serializable]
     public class Order
     {
         public int OrderKey { get; set; }

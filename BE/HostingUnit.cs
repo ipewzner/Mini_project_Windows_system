@@ -8,6 +8,7 @@ using Utilities;
 
 namespace BE
 {
+    [Serializable]
     public class HostingUnit   : requirement
     {
         requirement requirement = new requirement();
