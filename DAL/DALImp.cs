@@ -40,9 +40,15 @@ namespace DAL
         {
             try
             {
-                var temp = from order in DataSourceList.Orders
-                           where order.OrderKey == OrderKey
-                           select order.Status = status;
+                //var temp = from order in DataSourceList.Orders
+                //           where order.OrderKey == OrderKey
+                //           select order.Status = status;
+
+                int index = DataSourceList.Orders.FindIndex(x => x.OrderKey == OrderKey);
+                if (index != -1)
+                {
+                    DataSourceList.Orders[index].Status = status;
+                }
             }
             catch (Exception ex)
             {

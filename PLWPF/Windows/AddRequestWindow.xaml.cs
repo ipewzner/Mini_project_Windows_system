@@ -50,12 +50,13 @@ namespace PLWPF
                 guest.PrivateName = FirstName.Text;
                 guest.FamilyName = LastName.Text;
 
-                guest.Area = (Area)AreaComboBox.SelectedItem;
+               
 
                 guest.EntryDate = EntryDate.DisplayDate;
                 guest.ReleaseDate = ReleaseDate.DisplayDate;
                 guest.SubArea = SubArea.Text;
 
+                guest.Area = (Area)AreaComboBox.SelectedItem;
                 guest.Pool = (Requirements)ComboBoxPool.SelectedItem;
                 guest.Jacuzzi = (Requirements)ComboBoxJacuzzi.SelectedItem;
                 guest.ChildrensAttractions = (Requirements)ComboBoxAttrac.SelectedItem;

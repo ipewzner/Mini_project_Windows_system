@@ -13,23 +13,25 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="78*"/>
-            <RowDefinition Height="33*"/>
             <RowDefinition Height="310*"/>
         </Grid.RowDefinitions>
         <!--  -->
         <Frame x:Name="Right" HorizontalAlignment="Left" VerticalAlignment="Top"  NavigationUIVisibility="Hidden" Grid.RowSpan="2"  Grid.Column="1" Margin="0,32.4,-0.4,0" Grid.Row="1" Width="600"/>
-        <Frame x:Name="Left"  HorizontalAlignment="Left"  VerticalAlignment="Top" NavigationUIVisibility="Hidden" Grid.RowSpan="2"  Grid.Column="0" Margin="0,32.4,-0.4,0" Grid.Row="1" Width="600"/>
-        <Label Content="HOST NAME" HorizontalAlignment="Left" Margin="67,14,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
-        <TextBox x:Name="hostName" HorizontalAlignment="Left" Height="23" Margin="67,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Frame x:Name="Left"  HorizontalAlignment="Left"  VerticalAlignment="Top" NavigationUIVisibility="Hidden"  Grid.Column="0" Margin="33,32,0,0" Grid.Row="1" Width="567" Grid.ColumnSpan="2"/>
+        <Label Content="HOST NAME" HorizontalAlignment="Left" Margin="67,60,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
+        <TextBox x:Name="hostName" HorizontalAlignment="Left" Height="23" Margin="67,86,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="HOST ID" HorizontalAlignment="Left" Margin="195,14,0,0" VerticalAlignment="Top" Height="26" Width="54"/>
-        <TextBox x:Name="hostId" HorizontalAlignment="Left" Height="23" Margin="195,40,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <Label Content="HOST ID" HorizontalAlignment="Left" Margin="195,60,0,0" VerticalAlignment="Top" Height="26" Width="54"/>
+        <TextBox x:Name="hostId" HorizontalAlignment="Left" Height="23" Margin="195,86,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
-        <Label  Content="HUSTING UNIT" HorizontalAlignment="Left" Margin="67,58,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Height="26" Width="90"/>
-        <ComboBox x:Name="HostingUnitKeyComboBox" HorizontalAlignment="Left" Margin="67,3.4,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HostingUnitKeyComboBox_SelectionChanged" Grid.Row="1" Height="22"/>
+        <Label  Content="HUSTING UNIT" HorizontalAlignment="Left" Margin="333,60,0,0" VerticalAlignment="Top" Height="26" Width="90"/>
+        <ComboBox x:Name="HostingUnitKeyComboBox" HorizontalAlignment="Left" Margin="333,86,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="HostingUnitKeyComboBox_SelectionChanged" Height="22"/>
 
-        <Label Content="GUEST REQUEST" HorizontalAlignment="Left" Margin="10.2,14,0,0" VerticalAlignment="Top" Height="26" Width="98" Grid.Column="1"/>
-        <ComboBox x:Name="guestRequestComboBox"   HorizontalAlignment="Left" Margin="10.2,41,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="GuestRequest_SelectionChanged" Height="22" Grid.Column="1"/>
+        <Label Content="GUEST REQUEST KEY" HorizontalAlignment="Left" Margin="27,59,0,0" VerticalAlignment="Top" Height="26" Width="120" Grid.Column="1"/>
+        <ComboBox x:Name="guestRequestComboBox"   HorizontalAlignment="Left" Margin="27,86,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="GuestRequest_SelectionChanged" Height="22" Grid.Column="1"/>
+        <Label x:Name="label" Content="Hosting Unit" HorizontalAlignment="Left" Margin="22,10,0,0" VerticalAlignment="Top" Height="45" Width="154" FontSize="22"/>
+        <Label x:Name="label_Copy" Content="Gouest Request" HorizontalAlignment="Left" Margin="19,10,0,0" VerticalAlignment="Top" Height="45" Width="188" FontSize="22" Grid.Column="1"/>
+        <Button x:Name="button" Content="Open New Order" Grid.Column="1" HorizontalAlignment="Left" Margin="381,482,0,0" Grid.Row="1" VerticalAlignment="Top" Width="140" Height="33" Click="button_Click"/>
 
     </Grid>
 </Window>

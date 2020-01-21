@@ -35,58 +35,67 @@ namespace PLWPF
             HostingUnitKeyComboBox.ItemsSource = myBL.HustingUnitsBy(x => x.Owner.HostKey == host.HostKey);
             HostingUnitKeyComboBox.DisplayMemberPath = "HostingUnitName";
 
+
+            AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area)).Cast<BE.Area>();
+            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
         }
 
 
-
-        /// <summary>
-        /// Show the current husting unit
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void HostingUnitKeyComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            HustingUnitFrame.Content = new HostingUnitPage(HostingUnitKeyComboBox.SelectedItem as HostingUnit);
             hostingUnit = HostingUnitKeyComboBox.SelectedItem as HostingUnit;
+            InitialHostingUnit(hostingUnit);
         }
 
-        private void Confirm_Click(object sender, RoutedEventArgs e)
+        private void InitialHostingUnit(HostingUnit unit)
         {
-
-            
-            hostingUnit. Adults                        = ((HostingUnit)HustingUnitFrame.Content).Adults;
-            hostingUnit. AirCondsner                   = ((HostingUnit)HustingUnitFrame.Content)  .  AirCondsner                    ;
-            hostingUnit. Area                          = ((HostingUnit)HustingUnitFrame.Content)  .  Area                           ;
-             hostingUnit.Children                      = ((HostingUnit)HustingUnitFrame.Content)   .Children                        ;
-             hostingUnit.    ChildrensAttractions      = ((HostingUnit)HustingUnitFrame.Content)   .    ChildrensAttractions        ;
-             hostingUnit.frisider                      = ((HostingUnit)HustingUnitFrame.Content)   .frisider                        ;
-             hostingUnit.Garden                        = ((HostingUnit)HustingUnitFrame.Content)   .Garden                          ;
-             hostingUnit.HostingType                   = ((HostingUnit)HustingUnitFrame.Content)   .HostingType                     ;
-             hostingUnit.Jacuzzi                       = ((HostingUnit)HustingUnitFrame.Content)   .Jacuzzi                         ;
-             hostingUnit.NaerPublicTrensportion        = ((HostingUnit)HustingUnitFrame.Content)   .NaerPublicTrensportion          ;
-             hostingUnit.Pool                          = ((HostingUnit)HustingUnitFrame.Content)   .Pool                            ;
-             hostingUnit.SingogNaerBy                  = ((HostingUnit)HustingUnitFrame.Content)   .SingogNaerBy                    ;
-             hostingUnit.SpredBads                     = ((HostingUnit)HustingUnitFrame.Content). SpredBads                         ;
-            hostingUnit.SubArea = ((HostingUnit)HustingUnitFrame.Content).SubArea;
-                /* adultsTextBox.Text = hostingUnit.Adults.ToString();
-            airCondsnerTextBox.Text = hostingUnit.AirCondsner.ToString();
-            areaTextBox.Text = hostingUnit.Area.ToString();
-            childrenTextBox.Text = hostingUnit.Children.ToString();
-            childrensAttractionsTextBox.Text = hostingUnit.ChildrensAttractions.ToString();
-            frisiderTextBox.Text = hostingUnit.frisider.ToString();
-            gardenTextBox.Text = hostingUnit.Garden.ToString();
-            hostingTypeTextBox.Text = hostingUnit.HostingType.ToString();
-            jacuzziTextBox.Text = hostingUnit.Jacuzzi.ToString();
-            naerPublicTrensportionTextBox.Text = hostingUnit.NaerPublicTrensportion.ToString();
-            poolTextBox.Text = hostingUnit.Pool.ToString();
-            singogNaerByTextBox.Text = hostingUnit.SingogNaerBy.ToString();
-            spredBadsTextBox.Text = hostingUnit.SpredBads.ToString();
-            subAreaTextBox.Text = hostingUnit.SubArea.ToString();
-            */
+            AreaComboBox.SelectedItem = unit.Area;
+            SubArea.Text = unit.SubArea;
+            ComboBoxPool.SelectedItem = unit.Pool;
+            ComboBoxJacuzzi.SelectedItem = unit.Jacuzzi;
+            ComboBoxAttrac.SelectedItem = unit.ChildrensAttractions;
+            ComboBoxSpredBads.SelectedItem = unit.SpredBads;
+            ComboBoxAirCondsner.SelectedItem = unit.AirCondsner;
+            ComboBoxGarden.SelectedItem = unit.Garden;
+            ComboBoxSingog.SelectedItem = unit.SingogNaerBy;
+            ComboBoxTrensp.SelectedItem = unit.NaerPublicTrensportion;
         }
 
-        private void HustingUnitFrame_Navigated(object sender, System.Windows.Navigation.NavigationEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
+            hostingUnit.SubArea = SubArea.Text;
+            hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
+            hostingUnit.Pool = (Requirements)ComboBoxPool.SelectedItem;
+            hostingUnit.Jacuzzi = (Requirements)ComboBoxJacuzzi.SelectedItem;
+            hostingUnit.ChildrensAttractions = (Requirements)ComboBoxAttrac.SelectedItem;
+            hostingUnit.SpredBads = (Requirements)ComboBoxSpredBads.SelectedItem;
+            hostingUnit.AirCondsner = (Requirements)ComboBoxAirCondsner.SelectedItem;
+            hostingUnit.Garden = (Requirements)ComboBoxGarden.SelectedItem;
+            hostingUnit.SingogNaerBy = (Requirements)ComboBoxSingog.SelectedItem;
+            hostingUnit.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
+
+            try
+            {
+                myBL.UnitRemove(hostingUnit.HostingUnitKey);
+                myBL.AddHostingUnit(hostingUnit);
+                MessageBox.Show($"Hosting unit: {hostingUnit.HostingUnitName} updated Seccessfuly!");
+                this.Close();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show($"Error during Update {hostingUnit.HostingUnitName} please try again later!");
+                this.Close();
+
+            }
+
 
         }
     }

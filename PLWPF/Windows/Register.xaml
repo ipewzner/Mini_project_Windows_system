@@ -5,43 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF.Windows"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="800">
-    <Grid>     
-        <Label Content="Register" HorizontalAlignment="Left" Margin="134,10,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        Title="Register" Height="413.098" Width="565.262">
+    <Grid Margin="0,0,4,50">
+        <Label Content="Register" HorizontalAlignment="Left" Margin="36,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
 
-        <Label Content="Private Name" HorizontalAlignment="Left" Margin="51,54,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PrivateName" HorizontalAlignment="Left" Margin="51,80,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
+        <Label Content="Private Name" HorizontalAlignment="Left" Margin="40,73,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PrivateName" HorizontalAlignment="Left" Margin="40,99,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
 
-        <Label Content="Family Name" HorizontalAlignment="Left" Margin="194,54,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="FamilyName" HorizontalAlignment="Left" Margin="194,80,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
+        <Label Content="Family Name" HorizontalAlignment="Left" Margin="40,129,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FamilyName" HorizontalAlignment="Left" Margin="40,155,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
 
-        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="51,110,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="51,136,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="40,183,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="40,209,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
 
-        <Label Content="Mail Address" HorizontalAlignment="Left" Margin="194,111,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="MailAddress" HorizontalAlignment="Left" Margin="194,137,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
+        <Label Content="Mail Address" HorizontalAlignment="Left" Margin="40,242,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="MailAddress" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
 
-        <Label Content="Banking" HorizontalAlignment="Left" Margin="36,170,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+        <Label Content="Banking" HorizontalAlignment="Left" Margin="220,27,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
 
-        <Label Content="Bank" HorizontalAlignment="Left" Margin="36,213,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Bank_ComboBox" HorizontalAlignment="Left" Margin="36,244,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Bank" HorizontalAlignment="Left" Margin="220,70,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Bank_ComboBox" HorizontalAlignment="Left" Margin="220,101,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Branch city" HorizontalAlignment="Left" Margin="167,213,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="BranchCity_ComboBox" HorizontalAlignment="Left" Margin="167,244,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Branch city" HorizontalAlignment="Left" Margin="220,134,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="BranchCity_ComboBox" HorizontalAlignment="Left" Margin="220,165,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Branch Address" HorizontalAlignment="Left" Margin="302,213,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="BranchAddress_ComboBox" HorizontalAlignment="Left" Margin="302,244,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Branch Address" HorizontalAlignment="Left" Margin="220,194,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="BranchAddress_ComboBox" HorizontalAlignment="Left" Margin="220,225,0,0" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Bank Number" HorizontalAlignment="Left" Margin="38,295,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="BankNumber" HorizontalAlignment="Left" Height="23" Margin="37,325,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Bank Number" HorizontalAlignment="Left" Margin="362,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BankNumber" HorizontalAlignment="Left" Height="23" Margin="361,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Branch Number" HorizontalAlignment="Left" Margin="169,295,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="BranchNumber" HorizontalAlignment="Left" Height="23" Margin="167,325,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Branch Number" HorizontalAlignment="Left" Margin="363,135,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BranchNumber" HorizontalAlignment="Left" Height="23" Margin="361,165,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
 
-        <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="304,295,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="BankAccountNumber" HorizontalAlignment="Left" Height="23" Margin="302,325,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-       
-        <Button Content="Register" HorizontalAlignment="Left" Margin="49,391,0,0" VerticalAlignment="Top" Width="118" Click="Register_Click"/>
+        <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="360,195,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BankAccountNumber" HorizontalAlignment="Left" Height="23" Margin="362,225,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Button Content="Register" HorizontalAlignment="Left" Margin="364,300,0,0" VerticalAlignment="Top" Width="118" Click="Register_Click"/>
 
 
 

@@ -33,6 +33,9 @@ namespace PLWPF
         {
             this.host = host;
             InitializeComponent();
+            comboBox.ItemsSource = myBL.GetOrders(x => myBL.GetHostingUnit(x.HostingUnitKey).Owner.HostKey == host.HostKey);
+            comboBox.DisplayMemberPath = "OrderKey";
+
             StatusComboBox.ItemsSource = Enum.GetValues(typeof(BE.OrderStatus)).Cast<BE.OrderStatus>();
             HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(host.HostKey);
         }
@@ -44,6 +47,7 @@ namespace PLWPF
         /// <param name="e"></param>
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
+            order.Status = (OrderStatus)StatusComboBox.SelectedItem;
             myBL.UpdateOrder(order);
             this.Close();
         }
@@ -53,7 +57,8 @@ namespace PLWPF
             order = myBL.GetOrders(x => x.OrderKey == Int32.Parse(OrderKey.Text)).FirstOrDefault();
             if (order != null)
             {
-               // HostingUnitKey.Text = (order.HostingUnitKey).ToString(); ;
+                GuestRequestKey.Text = order.GuestRequestKey.ToString();
+                HostingUnitKeyComboBox.SelectedItem = (order.HostingUnitKey).ToString();
                 CreateDate.Text = order.CreateDate.ToString();
                 OrderDate.Text = order.OrderDate.ToString();
                 StatusComboBox.Text = order.Status.ToString();
@@ -68,22 +73,22 @@ namespace PLWPF
         }
         private void GuestRequestKey_TextChanged(object sender, TextChangedEventArgs e)
         {
-            order = myBL.GetOrders(x => x.GuestRequestKey == Int32.Parse(GuestRequestKey.Text)).FirstOrDefault();
-            if (order != null)
-            {
-                //HostingUnitKey.Text = (order.HostingUnitKey).ToString();
-                CreateDate.Text = order.CreateDate.ToString();
-                OrderDate.Text = order.OrderDate.ToString();
-                StatusComboBox.Text = order.Status.ToString();
-                OrderKey.Text = order.OrderKey.ToString();
-                Continue.Visibility = Visibility.Visible;
+            //order = myBL.GetOrders(x => x.GuestRequestKey == Int32.Parse(GuestRequestKey.Text)).FirstOrDefault();
+            //if (order != null)
+            //{
+            //    //HostingUnitKey.Text = (order.HostingUnitKey).ToString();
+            //    CreateDate.Text = order.CreateDate.ToString();
+            //    OrderDate.Text = order.OrderDate.ToString();
+            //    StatusComboBox.Text = order.Status.ToString();
+            //    OrderKey.Text = order.OrderKey.ToString();
+            //    Continue.Visibility = Visibility.Visible;
 
-            }
-            else
-            {
-                MessageBox.Show("No Order faund!");
-               // Continue.Visibility = Visibility.Hidden;
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("No Order faund!");
+            //   // Continue.Visibility = Visibility.Hidden;
+            //}
         }
           
 
@@ -119,7 +124,26 @@ namespace PLWPF
             }
         }
 
-        
+        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            order = myBL.GetOrders(x => x.OrderKey == (comboBox.SelectedItem as Order).OrderKey).FirstOrDefault();
+            if (order != null)
+            {
+                GuestRequestKey.Text = order.GuestRequestKey.ToString();
+                HostingUnitKeyComboBox.Text = order.HostingUnitKey.ToString();
+                CreateDate.Text = order.CreateDate.ToString();
+                OrderDate.Text = order.OrderDate.ToString();
+                StatusComboBox.Text = order.Status.ToString();
+                OrderKey.Text = order.OrderKey.ToString();
+                Continue.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                MessageBox.Show("No Order faund!");
+                // Continue.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
 //maybe singlton is needed    for thos to func not intersect "OrderKey_TextChanged" &"GuestRequestKey_TextChanged"

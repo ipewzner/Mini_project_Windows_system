@@ -5,29 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="UpdateOrderWindow" Height="450" Width="800">
-    <Grid>
+        Title="UpdateOrderWindow" Height="450" Width="468.907">
+    <Grid Margin="0,0,4,0">
 
-        <Label Content="Hosting Unit Key" HorizontalAlignment="Left" Margin="23,131,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="HostingUnitKeyComboBox" HorizontalAlignment="Left" Margin="23,162,0,231" Width="154" SelectionChanged="ComboBox_HostingUnitChanged" RenderTransformOrigin="0.39,-4.568"/>
+        <Label Content="Hosting Unit Key" HorizontalAlignment="Left" Margin="239,124,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="HostingUnitKeyComboBox" HorizontalAlignment="Left" Margin="239,155,0,238" Width="154" SelectionChanged="ComboBox_HostingUnitChanged" RenderTransformOrigin="0.39,-4.568"/>
 
-        <Label Content="Guest Request Key" HorizontalAlignment="Left" Margin="23,69,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="GuestRequestKey" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="23,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"  />
+        <Label Content="Guest Request Key" HorizontalAlignment="Left" Margin="53,194,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="GuestRequestKey" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="53,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"  />
 
-        <Label Content="Status" HorizontalAlignment="Left" Margin="23,216,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="StatusComboBox" HorizontalAlignment="Left" Margin="23,247,0,0" VerticalAlignment="Top" Width="154" Height="31" SelectionChanged="ComboBox_StatusChanged"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="239,189,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="StatusComboBox" HorizontalAlignment="Left" Margin="239,220,0,0" VerticalAlignment="Top" Width="154" Height="31" SelectionChanged="ComboBox_StatusChanged"/>
 
-        <Label Content="Order key" HorizontalAlignment="Left" Margin="32,0,0,384" VerticalAlignment="Bottom"/>
-        <TextBox x:Name="OrderKey" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="23,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"  />
+        <Label Content="Order key" HorizontalAlignment="Left" Margin="62,0,0,270" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="OrderKey" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="53,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"  />
 
 
-        <Button  x:Name="Continue"   Content="CONTINUE" Visibility="Visible" HorizontalAlignment="Left" Margin="366,367,0,0" VerticalAlignment="Top" Width="75" Click="Continue_Click"/>
+        <Button  x:Name="Continue"   Content="CONTINUE" Visibility="Visible" HorizontalAlignment="Left" Margin="308,362,0,0" VerticalAlignment="Top" Width="87" Click="Continue_Click" Height="27"/>
 
-        <Label Content="CreateDate" HorizontalAlignment="Left" Margin="258,70,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CreateDate" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="258,95,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"   />
+        <Label Content="CreateDate" HorizontalAlignment="Left" Margin="53,260,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CreateDate" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="53,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"   />
 
-        <Label Content="OrderDate" HorizontalAlignment="Left" Margin="260,133,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="OrderDate" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="258,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"   />
+        <Label Content="OrderDate" HorizontalAlignment="Left" Margin="241,260,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="OrderDate" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="239,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18"   />
+        <Label x:Name="label" Content="Update Order" HorizontalAlignment="Left" Margin="19,21,0,0" VerticalAlignment="Top" Height="52" Width="157" FontSize="22"/>
+        <Label x:Name="label1" Content="Choose Order:" HorizontalAlignment="Left" Margin="53,78,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="161,78,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboBox_SelectionChanged"/>
 
     </Grid>
 </Window>

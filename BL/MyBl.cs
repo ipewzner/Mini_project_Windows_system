@@ -38,15 +38,15 @@ namespace BL
         {
             IDAL instance = FactorySingletonDal.Instance;
 
-            Order order = instance.ReturenAllOrders((x)=> x.OrderKey == neworder.OrderKey).First();
-            if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
-            {
-                return false;
-            }
-            else
-            {
+            //Order order = instance.ReturenAllOrders((x)=> x.OrderKey == neworder.OrderKey).First();
+            //if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
                 instance.AddOrderToList(neworder);
-            }
+            //}
             return true;
         }
 
@@ -195,7 +195,7 @@ namespace BL
                     x = item.HostingUnitKey;
                 }
             }
-            HostingUnit y = GetHostingUnit(Convert.ToInt32(x));
+            HostingUnit y = GetHostingUnit(Convert.ToInt32(unit));
             myDAL.DeleteHostingUnit(y);
             return true;
         }
@@ -458,7 +458,7 @@ namespace BL
         {
             try
             {
-                UpdateOrder(order);
+               myDAL.UpdateOrder(order.OrderKey, order.Status);
             }
             catch(Exception ex) 
             {

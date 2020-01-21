@@ -12,7 +12,7 @@
         <Button Content="עריכת יחידת אירוח" HorizontalAlignment="Center" Height="43" Margin="79,217,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="HostingUnit_Click"/>
         <Button Content="הזמנת יחידת אירוח" HorizontalAlignment="Center" Height="44" Margin="79,272,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="Orders_Click"/>
         <Button Content="סטטיסטיקות" HorizontalAlignment="Center" Height="42" Margin="79,331,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="Stat_Click"/>
-        <Button Content="LOG-IN" HorizontalAlignment="Left" Margin="689,9,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <TextBox x:Name="user" HorizontalAlignment="Left" Height="23" Margin="526,10,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+        <Button Content="LOG-IN" HorizontalAlignment="Left" Margin="698,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="23"/>
+        <TextBox x:Name="user" HorizontalAlignment="Left" Height="23" Margin="559,13,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>
