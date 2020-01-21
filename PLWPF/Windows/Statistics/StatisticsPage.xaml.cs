@@ -10,22 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PLWPF.Windows
+namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for StatisticsWindow.xaml
+    /// Interaction logic for StatisticsPage.xaml
     /// </summary>
-    public partial class StatisticsWindow : Window
+    public partial class StatisticsPage : Page
     {
-        public StatisticsWindow()
+        public StatisticsPage()
         {
             InitializeComponent();
         }
 
         private void GuestRequestquery_Click(object sender, RoutedEventArgs e)
         {
+           // StatisticstFrame.Content = new GuestRequestQueryPage();
+
+           // NavigationService.Navigate(GuestRequestQueryPage());
 
         }
 

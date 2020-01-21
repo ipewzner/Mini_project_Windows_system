@@ -10,6 +10,12 @@ namespace DAL
 {
     static class Cloning
     {
+        /// <summary>
+        /// clone object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static T Copy<T>(this T source)
         {
             var isNotSerializable = !typeof(T).IsSerializable;
@@ -27,6 +33,12 @@ namespace DAL
             }
         }
 
+        /// <summary>
+        /// Clone list of objects
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="listToClone"></param>
+        /// <returns></returns>
         public static IEnumerable<T> Clone<T>(this IEnumerable<T> listToClone)
         {
             return from item in listToClone

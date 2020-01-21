@@ -390,7 +390,33 @@ namespace BL
 
         #endregion
 
-        
+
+        public Dictionary<Area, int> GuestRequestPerArea()
+        {
+            return new Dictionary<Area, int>
+            {
+                { Area.Center , GuestRequestBy().Count(p => p.Area == Area.Center) },
+                { Area.Jerusalem , GuestRequestBy().Count(p => p.Area == Area.Jerusalem) },
+                { Area.North , GuestRequestBy().Count(p => p.Area == Area.North) } ,
+                { Area.South , GuestRequestBy().Count(p => p.Area == Area.South) }
+            };
+        }
+        public Dictionary<String, int> GuestRequestPerRquirement(Requirements requirements)
+        {
+            return new Dictionary<String, int>
+            {
+                { "Pool"                   , GuestRequestBy().Count(p => p.Pool == requirements) },
+                { "Jacuzzi"                , GuestRequestBy().Count(p => p.Jacuzzi              == requirements) },
+                { "Garden"                 , GuestRequestBy().Count(p => p.Garden               == requirements) },
+                { "ChildrensAttractions"   , GuestRequestBy().Count(p => p.ChildrensAttractions == requirements) },
+                { "SpredBads"              , GuestRequestBy().Count(p => p.SpredBads            == requirements) },
+                { "AirCondsner"            , GuestRequestBy().Count(p => p.AirCondsner          == requirements) },
+                { "frisider"               , GuestRequestBy().Count(p => p.frisider             == requirements) },
+                { "SingogNaerBy"           , GuestRequestBy().Count(p => p.SingogNaerBy         == requirements) },
+                { "NaerPublicTrensportion" , GuestRequestBy().Count(p => p.NaerPublicTrensportion==requirements) }
+               };
+        }
+
 
         /// <summary>
         /// Get Orders by predicate
