@@ -12,7 +12,7 @@ namespace BE
     public class HostingUnit   : requirement
     {
         requirement requirement = new requirement();
-        public int HostingUnitKey { get; private set; }
+        public int HostingUnitKey { get; set; }
         public Host Owner { get; set; }
         public String HostingUnitName { get; set; }
 

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using BE;
 using System.Xml.Linq;
 using System.Reflection;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace DAL
 {
@@ -88,7 +90,7 @@ namespace DAL
                 //To-Do
             };
         }
-       
+
 
 
 
@@ -100,11 +102,60 @@ namespace DAL
                                  new XElement("OrderKey", d.OrderKey.ToString()),
                                  new XElement("HostingUnitKey", d.HostingUnitKey.ToString()),
                                  new XElement("GuestRequestKey", d.GuestRequestKey.ToString()),
-                                 new XElement("CreateDate", d.CreateDate.ToString()),
-                                 new XElement("OrderDate", d.OrderDate.ToString()),
+                                 new XElement("CreateDate", d.CreateDate.ToString("o")),
+                                 new XElement("OrderDate", d.OrderDate.ToString("o")),
                                  new XElement("Status", d.Status.ToString())
                                   );
         }
-        
+
+        //public static XElement ToXML(this BattlePlayer b)
+        //{
+        //    return new XElement("BattlePlayer",
+        //                         new XElement("Name", b.Name.ToString()),
+        //                         new XElement("Board",
+        //                                (from v in b.Board.ToString()
+        //                                 select v).ToArray(),
+        //                                (from v in b.OpponentBoard.ToString()
+        //                                 select v).ToArray()
+        //                             )
+        //                         );
+        //}
+
+        public static void SaveToXML<T>(T source, string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Create);
+            XmlSerializer xmlSerializer = new XmlSerializer(source.GetType());
+            xmlSerializer.Serialize(file, source);
+            file.Close();
+        }
+
+        public static T LoadFromXML<T>(string path)
+        {
+            FileStream file = new FileStream(path, FileMode.Open);
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+            T result = (T)xmlSerializer.Deserialize(file);
+            file.Close();
+            return result;
+        }
+
+        public static string ToXMLstring<T>(this T toSerialize)
+        {
+            using (StringWriter textWriter = new StringWriter())
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                xmlSerializer.Serialize(textWriter, toSerialize);
+                return textWriter.ToString();
+            }
+        }
+        public static T ToObject<T>(this string toDeserialize)
+        {
+            using (StringReader textReader = new StringReader(toDeserialize))
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
+                return (T)xmlSerializer.Deserialize(textReader);
+            }
+        }
+
+
     }
 }

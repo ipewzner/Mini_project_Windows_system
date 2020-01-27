@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataSourceList.cs" />
+    <Compile Include="DataSourceXML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +50,13 @@
       <Project>{6e73959a-2cc3-4f9a-b557-a9a948b98e7d}</Project>
       <Name>BE</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataXML\GuestRequestXml.xml" />
+    <Content Include="DataXML\HostingUnitXml.xml" />
+    <Content Include="DataXML\HostXml.xml" />
+    <Content Include="DataXML\OrderXml.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

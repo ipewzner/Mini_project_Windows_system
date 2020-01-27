@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace PL
 {
-
+    
     public class preCode
     {
         BL.MyBl mybl = new MyBl();
@@ -208,8 +208,6 @@ namespace PL
             gr.NaerPublicTrensportion = Requirements.Possible;
             mybl.AddGuestRequest(gr);
             #endregion kalmen_request
-
-           
 
             #region afreim_request
 

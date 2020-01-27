@@ -10,17 +10,24 @@ namespace BL
 {
     public class MyBl : IBL
     {
-        DALImp myDAL = new DALImp();
+        DalXML myDAL = new DalXML();
 
         /// <summary>
         /// Add Guest Request
         /// </summary>
         public bool AddGuestRequest(GuestRequest req)
         {
-            //TODO
-            //check id and name and move to DAL
-            myDAL.AddGuestRequestToList(req);
-            return true;
+
+            if(myDAL.ReturnGuestRequestList((x)=> x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
+            {
+                myDAL.addGuestRequest(req);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
 
         /// <summary>
@@ -28,15 +35,23 @@ namespace BL
         /// </summary>
         public void AddHostingUnit(HostingUnit unit)
         {
-            myDAL.AddHostingUnitToList(unit);
+            if (myDAL.ReturnHostingUnitList((x) => x.HostingUnitKey == unit.HostingUnitKey).ToList().Count == 0)
+            {
+                myDAL.addHostingUnit(unit);
+               
+            }
+            else
+            {
+                
+            }
+           
         }
 
         /// <summary>
         /// create a new order
         /// </summary>
         public bool AddOrder(Order neworder)
-        {
-            IDAL instance = FactorySingletonDal.Instance;
+        { 
 
             //Order order = instance.ReturenAllOrders((x)=> x.OrderKey == neworder.OrderKey).First();
             //if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
@@ -45,7 +60,7 @@ namespace BL
             //}
             //else
             //{
-                instance.AddOrderToList(neworder);
+               myDAL.addOrder(neworder);
             //}
             return true;
         }
@@ -227,15 +242,18 @@ namespace BL
         /// </summary>
         public bool AddHost(Host host)
         {
-            if (myDAL.returnHostList((x) => (x == host)) != null)
+            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
             {
-                myDAL.AddHostToList(host);
+                myDAL.addHost(host);
                 return true;
             }
             else
             {
                 return false;
             }
+
+           
+
 
         }
        
@@ -245,8 +263,8 @@ namespace BL
         public IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null)
         {
             if (predicate == null)
-                return myDAL.ReturnGuestRequestList().AsEnumerable();
-            return myDAL.ReturnGuestRequestList().Where(predicate);
+                return myDAL.getAllGuestRequests().AsEnumerable();
+            return myDAL.getAllGuestRequests().Where(predicate);
         }
 
         /// <summary>
@@ -352,13 +370,13 @@ namespace BL
         /// Order Hosts By Number Of Hosting Unit
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
-        {
-            IEnumerable<IGrouping<int, Host>> result =
-                     from hosts in myDAL.returnHostList()
-                     group hosts by NumOfHostingUnitsInHost(hosts);
-            return result;
-        }
+        //public IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
+        //{
+        //    IEnumerable<IGrouping<int, Host>> result =
+        //             from hosts in myDAL.returnHostList()
+        //             group hosts by NumOfHostingUnitsInHost(hosts);
+        //    return result;
+        //}
 
         /// <summary>
         /// Order Hosting Unit By Location
@@ -450,7 +468,8 @@ namespace BL
         /// <returns></returns>
         public IEnumerable<Host> GetHosts()
         {
-            return myDAL.returnHostList();
+            //return myDAL.returnHostList();
+            return myDAL.getAllHosts();
         }
 
         //need to replace the one in idal with this

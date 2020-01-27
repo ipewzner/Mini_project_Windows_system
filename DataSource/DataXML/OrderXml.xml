@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Orders>
+  <lastSerial>10000008</lastSerial>
+  <Order>
+    <OrderKey>10000007</OrderKey>
+    <HostingUnitKey>10000003</HostingUnitKey>
+    <GuestRequestKey>10000001</GuestRequestKey>
+    <CreateDate>2020-01-27T20:40:58.9922545+02:00</CreateDate>
+    <OrderDate>2020-01-27T20:40:58.9922545+02:00</OrderDate>
+    <Status>MailSent</Status>
+  </Order>
+  <Order>
+    <OrderKey>10000008</OrderKey>
+    <HostingUnitKey>10000003</HostingUnitKey>
+    <GuestRequestKey>10000001</GuestRequestKey>
+    <CreateDate>2020-01-27T20:41:17.1073695+02:00</CreateDate>
+    <OrderDate>2020-01-27T20:41:17.1073695+02:00</OrderDate>
+    <Status>MailSent</Status>
+  </Order>
+</Orders>
