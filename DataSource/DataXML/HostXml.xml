@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Hosts>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>11111111</HostKey>
+    <PrivateName>david</PrivateName>
+    <FamilyName>cohn</FamilyName>
+    <PhoneNumber>054-5555555</PhoneNumber>
+    <MailAddress>sale@gmai.com</MailAddress>
+    <BankAccount>
+      <BankNumber>123</BankNumber>
+      <BankName>poalim</BankName>
+      <BranchNumber>432</BranchNumber>
+      <BranchAddress>jefo 121</BranchAddress>
+      <BranchCity>jeruselm</BranchCity>
+      <BankAccountNumber>11111111</BankAccountNumber>
+    </BankAccount>
+    <CollectionClearance />
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>22222222</HostKey>
+    <PrivateName>moses</PrivateName>
+    <FamilyName>levi</FamilyName>
+    <PhoneNumber>054-6666666</PhoneNumber>
+    <MailAddress>hotel@gmai.com</MailAddress>
+    <BankAccount>
+      <BankNumber>123</BankNumber>
+      <BankName>poalim</BankName>
+      <BranchNumber>432</BranchNumber>
+      <BranchAddress>jefo 121</BranchAddress>
+      <BranchCity>jeruselm</BranchCity>
+      <BankAccountNumber>11111112</BankAccountNumber>
+    </BankAccount>
+    <CollectionClearance />
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>33333333</HostKey>
+    <PrivateName>dan</PrivateName>
+    <FamilyName>danon</FamilyName>
+    <PhoneNumber>054-1010101</PhoneNumber>
+    <MailAddress>zimer@gmai.com</MailAddress>
+    <BankAccount>
+      <BankNumber>525</BankNumber>
+      <BankName>laomi</BankName>
+      <BranchNumber>852</BranchNumber>
+      <BranchAddress>gargmel 1010</BranchAddress>
+      <BranchCity>heifa</BranchCity>
+      <BankAccountNumber>1152582</BankAccountNumber>
+    </BankAccount>
+    <CollectionClearance />
+  </Host>
+</Hosts>

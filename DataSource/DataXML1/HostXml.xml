@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Hosts>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>123</HostKey>
+    <PrivateName>d ca suffit</PrivateName>
+    <FamilyName>qwere</FamilyName>
+    <PhoneNumber>3324</PhoneNumber>
+    <MailAddress>daas@hhh.jjj</MailAddress>
+    <BankAccount>3123</BankAccount>
+    <CollectionClearance>Yes</CollectionClearance>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>5555</HostKey>
+    <PrivateName>qwre</PrivateName>
+    <FamilyName>adsa</FamilyName>
+    <PhoneNumber>232</PhoneNumber>
+    <MailAddress>fdsf</MailAddress>
+    <BankAccount>12321</BankAccount>
+    <CollectionClearance>Yes</CollectionClearance>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>1424</HostKey>
+    <PrivateName>buffalo</PrivateName>
+    <FamilyName>Falery Chisqkar Destin</FamilyName>
+    <PhoneNumber>052</PhoneNumber>
+    <MailAddress>aaaa@gmail.com</MailAddress>
+    <BankAccount>15141</BankAccount>
+    <CollectionClearance>Maybe</CollectionClearance>
+  </Host>
+</Hosts>

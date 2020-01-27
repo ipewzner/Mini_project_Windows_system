@@ -19,8 +19,8 @@ namespace PLWPF
             myBL.bootingUp();
 
             InitializeComponent();
-            preCode preCode = new preCode();
-            preCode.initialize();
+            //preCode preCode = new preCode();
+            //preCode.initialize();
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)

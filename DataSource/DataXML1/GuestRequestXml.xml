@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GuestRequests>
+  <lastSerial>1000001</lastSerial>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>1000000</GuestRequestKey>
+    <PrivateName>ASDA</PrivateName>
+    <FamilyName>ASDAS</FamilyName>
+    <MailAddress>AS@HH.KK</MailAddress>
+    <Status>NotYetApproved</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-01-19T11:52:17.9355397+02:00</EntryDate>
+    <ReleaseDate>2020-01-21T11:52:17.9355397+02:00</ReleaseDate>
+    <Area>Jerusalem</Area>
+    <SubArea>ASD</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>2</Adults>
+    <Children>3</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <GuestRequestKey>1000001</GuestRequestKey>
+    <PrivateName>dxs</PrivateName>
+    <FamilyName>EFG</FamilyName>
+    <MailAddress>GR@GG.GG</MailAddress>
+    <Status>NotYetApproved</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-01-19T11:53:23.7121693+02:00</EntryDate>
+    <ReleaseDate>2020-01-21T11:53:23.7121693+02:00</ReleaseDate>
+    <Area>Jerusalem</Area>
+    <SubArea>asd</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>55</Adults>
+    <Children>54</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+  </GuestRequest>
+</GuestRequests>
