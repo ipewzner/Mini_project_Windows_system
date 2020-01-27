@@ -65,6 +65,7 @@ namespace PLWPF
         {
             try
             {
+                
                 if (myBL.CheckePassword(host.PasswordKey, Int32.Parse(PasswordHidden.Password)))
                 {
                     DialogResult = true;

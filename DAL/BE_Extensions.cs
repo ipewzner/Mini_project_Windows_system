@@ -97,7 +97,7 @@ namespace DAL
 
         #endregion Clones
 
-        public static XElement ToXML(this Order d)
+      
 
        public static XElement ToXML(this Order d)
 

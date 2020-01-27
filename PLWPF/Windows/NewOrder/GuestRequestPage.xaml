@@ -44,12 +44,12 @@
 
         <Label Content="Children" HorizontalAlignment="Left" Margin="20,350,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Children"  IsReadOnly="True" HorizontalAlignment="Left" Height="23"     Margin="177,350,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-         
+
         <!-- *************  -->
-        
+
         <Label Content="Pool" HorizontalAlignment="Left" Margin="350,20,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Pool" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"         Margin="457,20,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-        
+
         <Label Content="Jacuzzi" HorizontalAlignment="Left" Margin="350,260,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Jacuzzi" IsReadOnly="True"  HorizontalAlignment="Left" Height="23"         Margin="457,260,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
@@ -74,6 +74,6 @@
         <Label Content="NaerPublicTrensportion" HorizontalAlignment="Left" Margin="350,230,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="NaerPublicTrensportion"  IsReadOnly="True" HorizontalAlignment="Left" Height="23" Margin="457,230,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
 
-        
+
     </Grid>
 </Page>

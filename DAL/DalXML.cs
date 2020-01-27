@@ -13,8 +13,8 @@ namespace DAL
     {
         private static int serialGuestRequest;
         private static int serialOrder;
-        private static double commision;  //10 shekels -- zol meod public DalXML()
-        private static string serialHostingUnit;
+       // private static double commision;  //10 shekels -- zol meod public DalXML()
+       // private static string serialHostingUnit;
 
         public DalXML()
         {
@@ -150,7 +150,7 @@ namespace DAL
             {
                 return false;
             }
-            //TO DO
+  
             return true;
         }
 
