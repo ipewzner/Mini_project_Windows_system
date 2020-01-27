@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +13,7 @@ namespace DAL
 {
     public static class BE_Extensions
     {
+
         #region Clones
         /// <summary>
         /// Clone
@@ -97,6 +98,9 @@ namespace DAL
         #endregion Clones
 
         public static XElement ToXML(this Order d)
+
+       public static XElement ToXML(this Order d)
+
         {
             return new XElement("Order",
                                  new XElement("OrderKey", d.OrderKey.ToString()),

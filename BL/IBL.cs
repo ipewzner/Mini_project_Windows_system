@@ -25,5 +25,8 @@ namespace BL
         bool AddGuestRequest(GuestRequest req);
         void AddHostingUnit(HostingUnit unit);
         IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null);
+        double averageOrdersPerClient();
+        double averageOrdersPerHostingUnit();
+
     }
 }

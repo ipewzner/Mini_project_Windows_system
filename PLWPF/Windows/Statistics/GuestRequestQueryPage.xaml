@@ -9,16 +9,10 @@
       Title="GuestRequestQueryPage">
 
     <Grid>
+        
         <Label Content="GuestRequestQueryPage" HorizontalAlignment="Left" Margin="260,54,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CenterResult" HorizontalAlignment="Left" Height="23" Margin="209,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="JerusalemResult" HorizontalAlignment="Left" Height="23" Margin="209,154,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="NorthResult" HorizontalAlignment="Left" Height="23" Margin="209,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name="SouthResult" HorizontalAlignment="Left" Height="23" Margin="209,211,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <Label Content="Center" HorizontalAlignment="Left" Margin="40,166,0,0" VerticalAlignment="Top"/>
-        <Label Content="Jerusalem" HorizontalAlignment="Left" Margin="40,126,0,0" VerticalAlignment="Top"/>
-        <Label Content="North" HorizontalAlignment="Left" Margin="40,237,0,0" VerticalAlignment="Top"/>
-        <Label Content="South" HorizontalAlignment="Left" Margin="40,197,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="40,254,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <UserControl x:Name="PerArea"  HorizontalAlignment="Left"  VerticalAlignment="Top"  Grid.Column="0" Margin="33,32,0,0" Grid.Row="1" Width="567" Grid.ColumnSpan="2"/>
+
 
 
         <Label Content= "Pool"                    HorizontalAlignment="Left" Margin="354,149,0,0" VerticalAlignment="Top"/>
@@ -31,17 +25,18 @@
         <Label Content= "SingogNaerBy"            HorizontalAlignment="Left" Margin="354,311,0,0" VerticalAlignment="Top"/>
         <Label Content= "NaerPublicTrensportion"  HorizontalAlignment="Left" Margin="354,368,0,0" VerticalAlignment="Top"/>
 
-        <TextBox x:Name= "Pool"                     HorizontalAlignment="Left" Height="23" Margin="523,109,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "Jacuzzi"                  HorizontalAlignment="Left" Height="23" Margin="523,137,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "Garden"                   HorizontalAlignment="Left" Height="23" Margin="523,167,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "ChildrensAttractions"     HorizontalAlignment="Left" Height="23" Margin="523,194,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "SpredBads"                HorizontalAlignment="Left" Height="23" Margin="523,228,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "AirCondsner"              HorizontalAlignment="Left" Height="23" Margin="523,256,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "frisider"                 HorizontalAlignment="Left" Height="23" Margin="523,286,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "SingogNaerBy"             HorizontalAlignment="Left" Height="23" Margin="523,314,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
-        <TextBox x:Name= "NaerPublicTrensportion"   HorizontalAlignment="Left" Height="23" Margin="523,342,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "Pool"                     HorizontalAlignment="Left" Height="23" Margin="523,109,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "Jacuzzi"                  HorizontalAlignment="Left" Height="23" Margin="523,137,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "Garden"                   HorizontalAlignment="Left" Height="23" Margin="523,167,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "ChildrensAttractions"     HorizontalAlignment="Left" Height="23" Margin="523,194,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "SpredBads"                HorizontalAlignment="Left" Height="23" Margin="523,228,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "AirCondsner"              HorizontalAlignment="Left" Height="23" Margin="523,256,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "frisider"                 HorizontalAlignment="Left" Height="23" Margin="523,286,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "SingogNaerBy"             HorizontalAlignment="Left" Height="23" Margin="523,314,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
+        <TextBox x:Name= "NaerPublicTrensportion"   HorizontalAlignment="Left" Height="23" Margin="523,342,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" />
 
-        <Button Content="Button2"   HorizontalAlignment="Left" Margin="423,396,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click2"/>
-        
-    </Grid>
+        <ComboBox x:Name="LevelOfDemand_ComboBox" HorizontalAlignment="Left" Margin="523,71,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="LevelOfDemand_ComboBox_SelectionChanged"/>
+
+        </Grid>
+
 </Page>

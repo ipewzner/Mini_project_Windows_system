@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="StatisticsWindow" Height="450" Width="800">
     <Grid>
-        <Frame x:Name="StatisticstFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+        <TabControl HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+            <TabItem Header="Guest Request">
+                <Grid>
+                    <Frame x:Name="GuestRequestQueryFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid> 
+            </TabItem>
+            <TabItem Header="Hosting Unit">
+                <Grid>
+                    <Frame x:Name="HostingUnitQueryFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="  Order  ">
+                <Grid>
+                    <Frame x:Name="OrdersQueryFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="  Extra  ">
+                <Grid>
+                    <Frame x:Name="alsecFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

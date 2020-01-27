@@ -8,10 +8,25 @@
         Title="LogInWindow" Height="450" Width="800">
     <Grid>
         <Label Content="LOG-IN" FontSize="36" HorizontalAlignment="Left" Margin="321,39,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.563,0.549"/>
-        <ComboBox x:Name="HostComboBox" Text="USER" HorizontalAlignment="Left" Margin="329,122,0,0" VerticalAlignment="Top" Width="120"  RenderTransformOrigin="1.106,2.024" SelectionChanged="Host_SelectionChanged"/>
-        <TextBox x:Name="Password"  Text="Password" HorizontalAlignment="Left" Height="23" Margin="329,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="Password_TextChanged"/>
-        <Button Content="ENTER" HorizontalAlignment="Left" Margin="329,217,0,0" VerticalAlignment="Top" Width="120" Click="ENTER_Click"/>
+        <ComboBox x:Name="HostComboBox" IsEditable="True" IsReadOnly="True"  Text="Select Host"  HorizontalAlignment="Left" Margin="329,122,0,0" VerticalAlignment="Top" Width="120"  RenderTransformOrigin="1.106,2.024" SelectionChanged="Host_SelectionChanged"/>
+        <Button x:Name="ENTER_Button" Content="ENTER" IsEnabled="False" HorizontalAlignment="Left" Margin="329,225,0,0" VerticalAlignment="Top" Width="120" Click="ENTER_Click"/>
         <Button Content="REGISTER" HorizontalAlignment="Left" Margin="329,255,0,0" VerticalAlignment="Top" Width="120" Click="Register_Click"/>
+
+        <Label Content="Password" HorizontalAlignment="Left" Margin="329,149,0,0" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="PasswordHidden"   PasswordChanged="Password_PasswordChanged" HorizontalAlignment="Left" Margin="329,175,344.6,216" VerticalAlignment="Top" Width="120" Height="30"/>
+        <Label x:Name="lll"   Visibility="Hidden"  HorizontalAlignment="Left" Margin="329,174,0,0" VerticalAlignment="Top"  Width="120" Height="17"/>
+
+        <TextBlock x:Name="ForgetYourPassword" IsEnabled="False"
+                   Text="Forget you'r password?"  VerticalAlignment="Center"
+                   PreviewMouseDown="ForgetYourPassword_PreviewMouseDown" Margin="329,196,331.6,195"/>
+        <TextBox Name="PasswordUnmask" Visibility="Hidden" Margin="329,175,344.6,216"/>
+        <TextBlock x:Name="ShowPassword" 
+                   Text="SHOW" 
+                   PreviewMouseDown="ShowPassword_PreviewMouseDown"
+                   PreviewMouseUp="ShowPassword_PreviewMouseUp" 
+                   MouseLeave="ShowPassword_MouseLeave" 
+                   Margin="467,178,282.6,212"/>
+
 
     </Grid>
 </Window>

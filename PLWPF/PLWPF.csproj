@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -46,9 +48,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -59,23 +63,29 @@
     <Compile Include="Windows\Statistics\GuestRequestQueryPage.xaml.cs">
       <DependentUpon>GuestRequestQueryPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\Statistics\StatisticsPage.xaml.cs">
-      <DependentUpon>StatisticsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\GuestRequestPage.xaml.cs">
+    <Compile Include="Windows\NewOrder\GuestRequestPage.xaml.cs">
       <DependentUpon>GuestRequestPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\HostingUnitPage.xaml.cs">
+    <Compile Include="Windows\NewOrder\HostingUnitPage.xaml.cs">
       <DependentUpon>HostingUnitPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\LogInWindow.xaml.cs">
       <DependentUpon>LogInWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\NewOrderWindow.xaml.cs">
+    <Compile Include="Windows\NewOrder\NewOrderWindow.xaml.cs">
       <DependentUpon>NewOrderWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Statistics\HostingUnitQueryPage.xaml.cs">
+      <DependentUpon>HostingUnitQueryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Statistics\OrdersQueryPage.xaml.cs">
+      <DependentUpon>OrdersQueryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Statistics\ShowPerArea.xaml.cs">
+      <DependentUpon>ShowPerArea.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\Statistics\StatisticsWindow.xaml.cs">
       <DependentUpon>StatisticsWindow.xaml</DependentUpon>
@@ -87,19 +97,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\Statistics\StatisticsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\AddRequestWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\GuestRequestPage.xaml">
+    <Page Include="Windows\NewOrder\GuestRequestPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\HostingUnitPage.xaml">
+    <Page Include="Windows\NewOrder\HostingUnitPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +135,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\NewOrderWindow.xaml">
+    <Page Include="Windows\NewOrder\NewOrderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -138,6 +144,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\Register.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Statistics\HostingUnitQueryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Statistics\OrdersQueryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Statistics\ShowPerArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
