@@ -31,9 +31,6 @@ namespace BE
     {
         Necessary, Possible, NotNecessary
     }
-    public enum Requirements2
-    {
-        Available, NotAvailable
-    }
+    
 
 }

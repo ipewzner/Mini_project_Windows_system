@@ -11,15 +11,18 @@ namespace PLWPF
         BL.MyBl mybl = new MyBl();
         public void initialize()
         {
-            
+
             #region add_hosts_and_HusingUnit
+
             Host host = new Host();
             host.HostKey = 11111111;
             host.PrivateName = "david";
             host.FamilyName = "cohn";
             host.PhoneNumber = "054-5555555";
             host.MailAddress = "sale@gmai.com";
+           
             #region david_BankAccount
+
             host.BankAccount = new BankAccount();
             host.BankAccount.BankAccountNumber = 11111111;
             host.BankAccount.BankName = "poalim";
@@ -27,7 +30,9 @@ namespace PLWPF
             host.BankAccount.BranchAddress = "jefo 121";
             host.BankAccount.BranchCity = "jeruselm";
             host.BankAccount.BranchNumber = 432;
+           
             #endregion david_BankAccount
+
             host.CollectionClearance = "";
             mybl.AddHost(host);
 
@@ -110,7 +115,9 @@ namespace PLWPF
             host.FamilyName = "danon";
             host.PhoneNumber = "054-1010101";
             host.MailAddress = "zimer@gmai.com";
+
             #region dan_BankAccount
+
             host.BankAccount = new BankAccount();
             host.BankAccount.BankAccountNumber = 1152582;
             host.BankAccount.BankName = "laomi";
@@ -118,17 +125,13 @@ namespace PLWPF
             host.BankAccount.BranchAddress = "gargmel 1010";
             host.BankAccount.BranchCity = "heifa";
             host.BankAccount.BranchNumber = 852;
+
             #endregion dan_BankAccount
+
             host.CollectionClearance = "";
             mybl.AddHost(host);
             #region add_hosting_units_to_dan
-
-            hu = new HostingUnit();
-            hu.Owner = host;
-            hu.HostingUnitName = "zimer of the north";
-            hu.Area = BE.Area.North;
-            mybl.AddHostingUnit(hu);
-
+            
             hu = new HostingUnit();
             hu.Owner = host;
             hu.HostingUnitName = "zimer of the Jerusalem";
@@ -144,15 +147,41 @@ namespace PLWPF
 
             #endregion add_hosting_units_to_dan
 
+            host = new Host();
+            host.HostKey = 44444444;
+            host.PrivateName = "isaya";
+            host.FamilyName = "pewzner";
+            host.PhoneNumber = "054-1010101";
+            host.MailAddress = "ipewzner@g.jct.ac.il";
+
+            host.BankAccount = new BankAccount();
+            host.BankAccount.BankAccountNumber = 1152582;
+            host.BankAccount.BankName = "laomi";
+            host.BankAccount.BankNumber = 525;
+            host.BankAccount.BranchAddress = "gargmel 1010";
+            host.BankAccount.BranchCity = "heifa";
+            host.BankAccount.BranchNumber = 852;
+
+            host.CollectionClearance = "";
+            mybl.AddHost(host);
+
+
+            hu = new HostingUnit();
+            hu.Owner = host;
+            hu.HostingUnitName = "zimer of the north";
+            hu.Area = BE.Area.North;
+            mybl.AddHostingUnit(hu);
+
             #endregion add_hosts_and_HusingUnit
 
 
             #region guestRequests
+
             #region parz_request
             GuestRequest gr = new GuestRequest();
-            gr.PrivateName = "zareh";
-            gr.FamilyName = "parz";
-            gr.MailAddress = "penhes@gmail.com";
+            gr.PrivateName = "Meni";
+            gr.FamilyName = "Meni";
+            gr.MailAddress = "Meni3a@gmail.com";
             gr.Status = BE.ClientStatus.Open;
             gr.RegistrationDate = new DateTime(1 / 1 / 2020);
             gr.EntryDate = new DateTime(25 / 4 / 2020);
@@ -173,7 +202,32 @@ namespace PLWPF
             gr.NaerPublicTrensportion = Requirements.Possible;
             mybl.AddGuestRequest(gr);
             #endregion parz_request
-                            
+
+            #region Pewzner
+            gr = new GuestRequest();
+            gr.PrivateName = "Iasayau";
+            gr.FamilyName = "Pewzner";
+            gr.MailAddress = "ipewzner@gmail.com";
+            gr.Status = BE.ClientStatus.Open;
+            gr.RegistrationDate = new DateTime(1 / 1 / 2020);
+            gr.EntryDate = new DateTime(25 / 4 / 2020);
+            gr.ReleaseDate = new DateTime(1 / 5 / 2020);
+            gr.Area = Area.Jerusalem;
+            gr.SubArea = "old city";
+            gr.HostingType = HostingType.Hotel;
+            gr.Adults = 2;
+            gr.Children = 1;
+            gr.Pool = Requirements.Necessary;
+            gr.Jacuzzi = Requirements.NotNecessary;
+            gr.Garden = Requirements.NotNecessary;
+            gr.ChildrensAttractions = Requirements.Necessary;
+            gr.SpredBads = Requirements.NotNecessary;
+            gr.AirCondsner = Requirements.Necessary;
+            gr.frisider = Requirements.Possible;
+            gr.SingogNaerBy = Requirements.Necessary;
+            gr.NaerPublicTrensportion = Requirements.Possible;
+            mybl.AddGuestRequest(gr);
+            #endregion Pewzner
 
             #region kalmen_request
 

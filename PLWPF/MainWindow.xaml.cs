@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BE;
+using BL;
 using PLWPF.Windows;
 
 namespace PLWPF
@@ -23,9 +12,12 @@ namespace PLWPF
     public partial class MainWindow : Window
     {
         Host host = null;
+        MyBl myBL = new MyBl();
 
         public MainWindow()
         {
+            myBL.bootingUp();
+
             InitializeComponent();
             preCode preCode = new preCode();
             preCode.initialize();
@@ -75,7 +67,7 @@ namespace PLWPF
                 if (win.DialogResult == true)
                 {
                     host = win.HostfromLogin;
-                    user.Text = host.PrivateName + " " + host.FamilyName;
+                    user.Content = host.PrivateName + " " + host.FamilyName;
                 }
             }
             catch (Exception)

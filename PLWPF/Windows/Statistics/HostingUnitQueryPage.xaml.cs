@@ -1,4 +1,4 @@
-﻿using PLWPF.Windows.Statistics;
+﻿using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,23 +11,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PLWPF.Windows
+namespace PLWPF.Windows.Statistics
 {
     /// <summary>
-    /// Interaction logic for StatisticsWindow.xaml
+    /// Interaction logic for HostingUnitQueryPage.xaml
     /// </summary>
-    public partial class StatisticsWindow : Window
+    public partial class HostingUnitQueryPage : Page
     {
-        public StatisticsWindow()
+        MyBl myBL = new MyBl();
+
+        public HostingUnitQueryPage()
         {
             InitializeComponent();
+            PerArea.Content = new ShowPerArea(myBL.HostingUnitPerArea());
 
-            GuestRequestQueryFrame.Content = new GuestRequestQueryPage();
-            HostingUnitQueryFrame.Content  = new HostingUnitQueryPage();
-            OrdersQueryFrame.Content = new OrdersQueryPage();
         }
+
+        //
 
     }
 }

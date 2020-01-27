@@ -77,12 +77,20 @@ namespace PLWPF.Windows
             try
             {
                 myBL.AddOrder(order);
-                MessageBox.Show("Order Created Seccessfuly!");
+                try
+                {
+                    myBL.SendMail(order);
+                }
+                catch(Exception ex)
+                {
+                    throw new Exception("Can't sand mail ", ex);
+                }
+              MessageBox.Show("Order Created Seccessfuly!");
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error! please try again later");
+                MessageBox.Show("Error! please try again later "+ex);
                 this.Close();
             }
 
