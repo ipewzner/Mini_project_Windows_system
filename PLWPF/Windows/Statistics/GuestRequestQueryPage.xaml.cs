@@ -18,7 +18,6 @@ namespace PLWPF.Windows.Statistics
             InitializeComponent();
             LevelOfDemand_ComboBox.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
             PerArea.Content = new ShowPerArea(myBL.GuestRequestPerArea());
-
         }
 
 
@@ -42,9 +41,4 @@ namespace PLWPF.Windows.Statistics
     }
 }
 
-
-/*
- 
-      var v = myBL.GuestRequestOrderBy_Location();
-            var t = v.Where(x => x.Key == Area.Jerusalem).FirstOrDefault().ToList().Count;
-           */
+                   

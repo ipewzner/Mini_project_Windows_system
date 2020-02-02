@@ -37,6 +37,8 @@ namespace PLWPF
             {
                 Window win = new HostingUnitWindow(host);
             win.Show();
+                Window win2 = new HostUpdateWindow(host);
+                win2.Show();
             }
             else MessageBox.Show("Select User Or Sign Up");
         }

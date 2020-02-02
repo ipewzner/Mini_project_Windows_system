@@ -59,7 +59,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="HostUpdateWindow.xaml.cs">
+      <DependentUpon>HostUpdateWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostUserControl.xaml.cs">
+      <DependentUpon>HostUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Password.xaml.cs">
+      <DependentUpon>Password.xaml</DependentUpon>
+    </Compile>
     <Compile Include="preCode.cs" />
+    <Compile Include="Windows\HostingUnitWindows\HostingUnitUserControl.xaml.cs">
+      <DependentUpon>HostingUnitUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Statistics\GuestRequestQueryPage.xaml.cs">
       <DependentUpon>GuestRequestQueryPage.xaml</DependentUpon>
     </Compile>
@@ -93,6 +105,22 @@
     <Compile Include="Windows\UpdateOrderWindow.xaml.cs">
       <DependentUpon>UpdateOrderWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="HostUpdateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Password.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\HostingUnitWindows\HostingUnitUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\Statistics\GuestRequestQueryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\HostingUnitWindow.xaml">
+    <Page Include="Windows\HostingUnitWindows\HostingUnitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -124,7 +152,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Windows\HostingUnitWindow.xaml.cs">
+    <Compile Include="Windows\HostingUnitWindows\HostingUnitWindow.xaml.cs">
       <DependentUpon>HostingUnitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

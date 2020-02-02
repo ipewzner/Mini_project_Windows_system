@@ -8,6 +8,7 @@ using DAL;
 using System.Net.Mail;
 using System.Net;
 using System.Windows;
+using System.Threading;
 
 namespace BL
 {
@@ -41,11 +42,10 @@ namespace BL
             if (myDAL.ReturnHostingUnitList((x) => x.HostingUnitKey == unit.HostingUnitKey).ToList().Count == 0)
             {
                 myDAL.addHostingUnit(unit);
-
             }
             else
             {
-
+                throw new Exception("This Hosting unit exist already!");
             }
 
         }
@@ -95,6 +95,11 @@ namespace BL
             }
         }
 
+        public void RemoveHost(Host host)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Is date available
         /// </summary>
@@ -120,14 +125,12 @@ namespace BL
         /// </summary>
         public bool IsDateCorrect(DateTime start, DateTime end)
         {
-            if (end > start)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return(end > start)? true:false;
+        }
+
+        public void UpdateHost(Host host)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -199,24 +202,45 @@ namespace BL
         /// <summary>
         /// Check if Unit can be remove
         /// </summary>
-        public bool UnitRemove(int unit)
+        public void UnitRemove(int unitKey)
         {
-            int x = 0;
             foreach (var item in myDAL.ReturenAllOrders())
             {
-                if (item.HostingUnitKey == unit)
+                if ((item.HostingUnitKey == unitKey) && (item.Status == OrderStatus.UntreatedYet))
                 {
-                    if (item.Status == OrderStatus.UntreatedYet)
-                    {
-                        return false;
-                    }
-                    x = item.HostingUnitKey;
+                    throw new Exception("Can't delete this unit, whan some order still open!");
                 }
             }
-            HostingUnit y = GetHostingUnit(Convert.ToInt32(unit));
-            myDAL.DeleteHostingUnit(y);
-            return true;
+            HostingUnit hostingUnit = GetHostingUnit(Convert.ToInt32(unitKey));
+            try
+            {
+                myDAL.DeleteHostingUnit(hostingUnit);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("" + ex);
+            }
         }
+
+        /// <summary>
+        /// Update Unit
+        /// </summary>
+        /// <param name="hostingUnit"></param>
+        public void UpdateUnit(HostingUnit hostingUnit)
+        {
+            try
+            {
+                UnitRemove(hostingUnit.HostingUnitKey);
+                AddHostingUnit(hostingUnit);
+                MessageBox.Show($"Hosting unit: {hostingUnit.HostingUnitName} updated Seccessfuly!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during Update {hostingUnit.HostingUnitName} please try again later! " + ex);
+            }
+        }
+
+
 
         /// <summary>
         /// Return all units available in given date range
@@ -561,17 +585,35 @@ namespace BL
         /// </summary>
         public void bootingUp()
         {
-            try {
-                GetBankInfoFromTheWeb();
-            } catch (Exception ex) {
+            try
+            {
+                Thread thread = new Thread(GetBankInfoFromTheWeb);
+                thread.Start();
+            }
+            catch (Exception ex)
+            {
                 // throw new Exception("Can't get bank info from the web " + ex);
                 MessageBox.Show("Can't get bank info from the web\n " + ex);
             }
 
+            if(NewDay())
+            {
+                try
+                {
+                    Thread thread = new Thread(RefreshDatabase);
+                    thread.Start();
+                }
+                catch (Exception ex)
+                {
+                    // throw new Exception("Can't get bank info from the web " + ex);
+                    MessageBox.Show("Fail to refresh the database! \n " + ex);
+                }
+            }
+
         }
 
-
-
+        private void RefreshDatabase() { }
+        private bool NewDay() { return true; }
 
         /// <summary>
         /// Sending Email to client 
@@ -593,7 +635,8 @@ namespace BL
 
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
-            smtp.Credentials = new System.Net.NetworkCredential("ipewzner@g.jct.ac.il", "Reptor17");
+             smtp.Credentials = new System.Net.NetworkCredential("ipewzner@g.jct.ac.il", "Reptor17");
+           // smtp.Credentials = from;
             smtp.EnableSsl = true;
 
             try
@@ -707,5 +750,6 @@ namespace BL
             }
             return sum;
         }
+       
     }
 }

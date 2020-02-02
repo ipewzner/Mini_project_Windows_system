@@ -65,9 +65,9 @@ namespace PLWPF
         {
             try
             {
-                
-                if (myBL.CheckePassword(host.PasswordKey, Int32.Parse(PasswordHidden.Password)))
+                if (myBL.CheckePassword(host.PasswordKey, Int32.Parse(Password.PasswordHidden.Password)))
                 {
+                    //DialogResult is return to main window
                     DialogResult = true;
                     Close();
                 }
@@ -88,7 +88,7 @@ namespace PLWPF
         }
 
         /// <summary>
-        /// The event call to ShowPasswordFunction 
+        /// The event call to Worker_SendMailWithNewPassword 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -100,7 +100,6 @@ namespace PLWPF
             {
                 try
                 {
-                   
                     if (worker.IsBusy != true) worker.RunWorkerAsync();
                     MessageBox.Show("Email was sent!","Massage", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
@@ -114,61 +113,6 @@ namespace PLWPF
         }
 
 
-        #region ShowPassword   
-
-        /// <summary>
-        /// The event call to ShowPasswordFunction 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowPassword_PreviewMouseDown(object sender, MouseButtonEventArgs e) => ShowPasswordFunction();
-
-        /// <summary>
-        /// The event call to HidePasswordFunction
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowPassword_PreviewMouseUp(object sender, MouseButtonEventArgs e) => HidePasswordFunction();
-
-        /// <summary>
-        /// The event call to HidePasswordFunction
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ShowPassword_MouseLeave(object sender, MouseEventArgs e) => HidePasswordFunction();
-
-        /// <summary>
-        /// make the password visible
-        /// </summary>
-        private void ShowPasswordFunction()
-        {
-            ShowPassword.Text = "HIDE";
-            PasswordUnmask.Visibility = Visibility.Visible;
-            PasswordHidden.Visibility = Visibility.Hidden;
-            PasswordUnmask.Text = PasswordHidden.Password;
-        }
-
-        /// <summary>
-        /// make the password unvisible
-        /// </summary>
-        private void HidePasswordFunction()
-        {
-            ShowPassword.Text = "SHOW";
-            PasswordUnmask.Visibility = Visibility.Hidden;
-            PasswordHidden.Visibility = Visibility.Visible;
-        }
-
-        /// <summary>
-        /// update the password unmask
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            lll.Content = PasswordHidden.Password;
-            PasswordUnmask.Text = PasswordHidden.Password;
-        }
-       
-        #endregion ShowPassword
+      
     }
 }

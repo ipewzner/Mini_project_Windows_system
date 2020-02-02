@@ -1,18 +1,9 @@
 ﻿using BL;
 using BE;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace PLWPF.Windows
 {
@@ -23,6 +14,11 @@ namespace PLWPF.Windows
     {
         MyBl myBL = new MyBl();
         Host host;
+
+        /// <summary>
+        /// c-tor
+        /// </summary>
+        /// <param name="host"></param>
         public NewOrderWindow(Host host )
         {
             InitializeComponent();
@@ -61,6 +57,18 @@ namespace PLWPF.Windows
                 Left.Content = new HostingUnitPage(HostingUnitKeyComboBox.SelectedItem as HostingUnit);
         }
 
+        BackgroundWorker worker = new BackgroundWorker();
+
+        private void Worker_SendMailWithNewOffer(object sender, DoWorkEventArgs e)
+        {
+            myBL.SendMail(e.Argument as Order);
+        }
+
+        /// <summary>
+        /// Make Order send email and change status
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Order order = new Order()
@@ -71,15 +79,31 @@ namespace PLWPF.Windows
                 OrderDate = DateTime.Now,
                 Status = OrderStatus.MailSent,
                 OrderKey = Configuration.serialOrder++
-
             };
 
             try
             {
                 myBL.AddOrder(order);
+                worker.DoWork += Worker_SendMailWithNewOffer;
+                worker.RunWorkerAsync(order);
                 try
                 {
-                    myBL.SendMail(order);
+                    if (worker.IsBusy != true) worker.RunWorkerAsync();
+                    MessageBox.Show("Email was sent!", "Massage", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Fail to send the Email\n" + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+
+
+
+
+
+                    try
+                {
+                    myBL.SendMail(order);                    
                 }
                 catch(Exception ex)
                 {

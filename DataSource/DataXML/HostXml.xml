@@ -48,4 +48,20 @@
     </BankAccount>
     <CollectionClearance />
   </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>0</HostKey>
+    <PrivateName>manster</PrivateName>
+    <FamilyName>frankinstin</FamilyName>
+    <PhoneNumber>666</PhoneNumber>
+    <MailAddress>hall</MailAddress>
+    <PasswordKey>0</PasswordKey>
+    <BankAccount>
+      <BankNumber>852</BankNumber>
+      <BankName />
+      <BranchNumber>852</BranchNumber>
+      <BranchAddress />
+      <BranchCity />
+      <BankAccountNumber>85</BankAccountNumber>
+    </BankAccount>
+  </Host>
 </Hosts>

@@ -208,10 +208,10 @@ namespace PL
             }
 
 
-            bool deleteHustingUnit()
+            void deleteHustingUnit()
             {
                 Console.WriteLine("Enter hosting unit key");
-                return newBL.UnitRemove(inputSarielNumber(10000000));
+                 newBL.UnitRemove(inputSarielNumber(10000000));
             }
 
             void updateHustingUnit()

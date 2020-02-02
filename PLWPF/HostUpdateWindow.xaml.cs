@@ -1,5 +1,4 @@
 ﻿using BE;
-using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,18 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace PLWPF.Windows
+namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for Register.xaml
+    /// Interaction logic for HostUpdateWindow.xaml
     /// </summary>
-    public partial class Register : Window
+    public partial class HostUpdateWindow : Window
     {
-
-        public Register()
+        public HostUpdateWindow(Host host)
         {
             InitializeComponent();
-            Host_UserControl.Content = new HostUserControl(null,false);
+            UpdateHostFrame.Content = new HostUserControl(host,false);
+            DeleteHostFrame.Content = new HostUserControl(host,true);
         }
     }
 }

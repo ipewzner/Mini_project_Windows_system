@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF.Windows"
+        xmlns:plwpf="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="LogInWindow" Height="450" Width="800">
     <Grid>
@@ -13,19 +14,11 @@
         <Button Content="REGISTER" HorizontalAlignment="Left" Margin="329,255,0,0" VerticalAlignment="Top" Width="120" Click="Register_Click"/>
 
         <Label Content="Password" HorizontalAlignment="Left" Margin="329,149,0,0" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="PasswordHidden"   PasswordChanged="Password_PasswordChanged" HorizontalAlignment="Left" Margin="329,175,344.6,216" VerticalAlignment="Top" Width="120" Height="30"/>
-        <Label x:Name="lll"   Visibility="Hidden"  HorizontalAlignment="Left" Margin="329,174,0,0" VerticalAlignment="Top"  Width="120" Height="17"/>
 
         <TextBlock x:Name="ForgetYourPassword" IsEnabled="False"
                    Text="Forget you'r password?"  VerticalAlignment="Center"
                    PreviewMouseDown="ForgetYourPassword_PreviewMouseDown" Margin="329,196,331.6,195"/>
-        <TextBox Name="PasswordUnmask" Visibility="Hidden" Margin="329,175,344.6,216"/>
-        <TextBlock x:Name="ShowPassword" 
-                   Text="SHOW" 
-                   PreviewMouseDown="ShowPassword_PreviewMouseDown"
-                   PreviewMouseUp="ShowPassword_PreviewMouseUp" 
-                   MouseLeave="ShowPassword_MouseLeave" 
-                   Margin="467,178,282.6,212"/>
+        <plwpf:Password x:Name="Password"  Margin="329,172,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164"/>
 
 
     </Grid>

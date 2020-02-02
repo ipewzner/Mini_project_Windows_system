@@ -14,7 +14,7 @@ namespace BL
         bool IsDateAvailable(DateTime start, DateTime end, int unitKey);
         void CloseOrder(Order order);
         void SendMail(Order order);
-        bool UnitRemove(int unit);
+        void UnitRemove(int unit);
 
         List<HostingUnit> UintsAvailable(DateTime start, int numOfDays);
         int NumOfDays(DateTime date);

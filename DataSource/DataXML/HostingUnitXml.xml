@@ -330,8 +330,38 @@
     </Owner>
     <HostingUnitName>zimer of the South</HostingUnitName>
   </HostingUnit>
-
-
-
-
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>vc</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000040</HostingUnitKey>
+<Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>    
+<HostingUnitName>vvvv</HostingUnitName>
+  </HostingUnit>
 </HostingUnits>
