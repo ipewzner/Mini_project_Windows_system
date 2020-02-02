@@ -2,14 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BE;
-using DAL;
 using System.Reflection;
-using DAL;
-using System.Net.Mail;
-using System.Net;
-using System.Windows;
-using System.Threading.Tasks;
-using System.Reflection;
+
 using DAL;
 using System.Net.Mail;
 using System.Net;
@@ -20,24 +14,13 @@ namespace BL
 {
     public class MyBl : IBL
     {
-
-        /// <summary>
-        /// create a new order
-        /// </summary>
-        public bool AddOrder(Order neworder)
-
-        DalXML myDAL = new DalXML();
+        DalXML myDAL = FactorySingletonDal.Instance;
 
         /// <summary>
         /// Add Guest Request
         /// </summary>
         public bool AddGuestRequest(GuestRequest req)
-
         {
-
-
-            Order order = instance.getOrder(neworder.OrderKey);
-            //if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
 
             if (myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
             {
@@ -95,7 +78,6 @@ namespace BL
                 //TODO:
                 //close status for changes
 
-
                 HostingUnit x = GetHostingUnit(Convert.ToInt32(order.HostingUnitKey));
                 GuestRequest y = GetGusetRequest(Convert.ToInt32(order.GuestRequestKey));
                 for (DateTime i = y.EntryDate; i <= y.ReleaseDate; i.AddDays(1))
@@ -108,7 +90,6 @@ namespace BL
                 //To Where??
 
                 //Change client STATUS 
-
                 y.Status = ClientStatus.CloseByApp;
 
             }
@@ -136,6 +117,7 @@ namespace BL
             }
 
             return true;
+
         }
 
         /// <summary>
@@ -143,6 +125,12 @@ namespace BL
         /// </summary>
         public bool IsDateCorrect(DateTime start, DateTime end)
         {
+            return (end > start) ? true : false;
+        }
+
+        public void UpdateHost(Host host)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -161,41 +149,9 @@ namespace BL
             return (int)(SecondDate - firstDate).TotalDays;
         }
 
- 
-
-        #region ///// NOT IMPLAMENT /////
-        public bool IsAccountCharged(Host host)j
-        {
-            //HOW TO CHECK IF ACCOUNT CHARGED??
-            throw new NotImplementedException();
-        }
-
-        public int OrdersPerClient(GuestRequest req)
-        {
-            //COLACTION??
-            throw new NotImplementedException();
-        }
-
-        public int OrdersPerUnit(HostingUnit unit)
-        {
-            //COLACTION??
-            throw new NotImplementedException();
-        }
-
-        public List<Order> OrdersUntilDate(int days)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HostingUnit> UintsAvailable(DateTime start, int numOfDays)
-        {
-            throw new NotImplementedException();
-        }
-      
-
-    }
-}
-  #endregion
+        /// <summary>
+        /// Sending Email to client 
+        /// </summary>
         //public void SendMail(Order order)
         //{
         //    if (order.Status == OrderStatus.MailSent)
@@ -520,19 +476,6 @@ namespace BL
         }
 
         /// <summary>
-        /// Get Banks by predicate
-        /// </summary>
-        /// <param name="predicate"></param>
-        /// <returns></returns>
-        public IEnumerable<BankDetails> GetBanks(Func<BankDetails, bool> predicate = null)
-        {
-            if (predicate == null)
-                return myDAL.ReturnAllLocelBank().AsEnumerable();
-            return myDAL.ReturnAllLocelBank().Where(predicate);
-        }
-
-
-        /// <summary>
         /// return list of all the husting uint key for spasific host 
         /// </summary>
         /// <param name="hostKey"></param>
@@ -581,7 +524,7 @@ namespace BL
             return result;
         }
          */
-    
+
 
 
         /// <summary>
@@ -615,6 +558,11 @@ namespace BL
 
 
 
+
+
+
+
+
         /// <summary>
         /// Average Orders per hosting unit
         /// </summary>
@@ -629,22 +577,6 @@ namespace BL
             return sum;
         }
 
-
-        ///// <summary>
-        ///// BootingUp the progrem.  
-        ///// 1) Receive bank data from the web
-        ///// 2)
-        ///// </summary>
-        //public void bootingUp()
-        //{
-        //    try {
-        //        GetBankInfoFromTheWeb();
-        //    } catch (Exception ex) {
-        //        // throw new Exception("Can't get bank info from the web " + ex);
-        //        MessageBox.Show("Can't get bank info from the web\n " + ex);
-        //    }
-
-        //}
 
         /// <summary>
         /// BootingUp the progrem.  
@@ -664,7 +596,7 @@ namespace BL
                 MessageBox.Show("Can't get bank info from the web\n " + ex);
             }
 
-            if(NewDay())
+            if (NewDay())
             {
                 try
                 {
@@ -704,7 +636,7 @@ namespace BL
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Credentials = new System.Net.NetworkCredential("ipewzner@g.jct.ac.il", "Reptor17");
-
+            // smtp.Credentials = from;
             smtp.EnableSsl = true;
 
             try
@@ -782,6 +714,33 @@ namespace BL
 
 
 
+        /// <summary>
+        /// GetBankInfoFromTheWeb
+        /// </summary>
+        public void GetBankInfoFromTheWeb()
+        {
+            //C:\Users\ipewz\Documents\GitHub\Mini_project_Windows_system
+            //const string xmlLocalPath = @"atm.xml";
+            const string xmlLocalPath = @"ATM.xml";
+            WebClient wc = new WebClient();
+            try
+            {
+                string xmlServerPath =
+               @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            catch (Exception)
+            {
+                string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            finally
+            {
+                wc.Dispose();
+            }
+
+        }
+
         public double averageOrdersPerClient()
         {
             double sum = 0;
@@ -791,6 +750,17 @@ namespace BL
             }
             return sum;
         }
+
+        /// <summary>
+        /// Get Banks by predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public IEnumerable<BankDetails> GetBanks(Func<BankDetails, bool> predicate = null)
+        {
+            if (predicate == null)
+                return myDAL.ReturnAllLocelBank().AsEnumerable();
+            return myDAL.ReturnAllLocelBank().Where(predicate);
+        }
     }
 }
-

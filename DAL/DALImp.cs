@@ -9,7 +9,7 @@ using DataSource;
 namespace DAL
 {
 
-    public class DALImp : 
+    public class DALImp  
 
     {
 

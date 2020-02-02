@@ -10,11 +10,11 @@ namespace DAL
     public static class FactorySingletonDal
     {
        
-        private static IDAL instance = null;
+        private static DalXML instance = null;
 
         static FactorySingletonDal() { }
 
-        public static IDAL Instance
+        public static DalXML Instance
         {
 
             get

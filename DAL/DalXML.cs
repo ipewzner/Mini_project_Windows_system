@@ -2,20 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using BE;
 using DataSource;
 using System.Net;
-using BE;
-using DataSource;
-
 
 namespace DAL
 {
-    public class DalXML : IDAL
+    public class DalXML 
     {
         private static int serialGuestRequest;
         private static int serialOrder;
@@ -447,7 +443,7 @@ namespace DAL
                     using (FileStream stream = File.OpenRead("ATM.xml"))
                     {
                         List<ATM> dezerializedList = (List<ATM>)serializer.Deserialize(stream);
-    
+                        stream.Close();
                         foreach (var item in dezerializedList)
                         {
                             int findBank = DataSourceList.banks.FindIndex((x) => x.BankNumber == Convert.ToInt32(item.קוד_בנק));
@@ -481,6 +477,8 @@ namespace DAL
                                 }
                             }
                         }
+
+                  
                     }
                 }
                 catch (Exception ex)

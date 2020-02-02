@@ -12,7 +12,7 @@
         <Label Content="First Name" HorizontalAlignment="Left" Margin="45,65,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="LastName" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="45,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18" />
         <Label Content="Last Name" HorizontalAlignment="Left" Margin="45,127,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="46,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18" />
+        <TextBox x:Name="mailAddress" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="31" Margin="46,215,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18" />
         <Label Content="Mail" HorizontalAlignment="Left" Margin="47,189,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="EntryDate" HorizontalAlignment="Left" Margin="45,282,0,0" VerticalAlignment="Top" Height="27" Width="157"/>
         <Label Content="Entry Date" HorizontalAlignment="Left" Margin="45,256,0,0" VerticalAlignment="Top"/>

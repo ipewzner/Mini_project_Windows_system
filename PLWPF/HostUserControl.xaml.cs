@@ -30,7 +30,8 @@ namespace PLWPF
         public HostUserControl(Host hosts, bool deleteHost)
         {
             InitializeComponent();
-
+            DataContext = this;
+            Banks = myBL.GetBanks();
             if (hosts != null)
             {
                 host = hosts;
@@ -44,30 +45,29 @@ namespace PLWPF
 
             ContinueButton.Content = (deleteHost==true)?"Delete":"Save";
 
-           
         }
 
         private void FillTheFeilds()
         {
-            FamilyNameTextBox.Text= host.FamilyName;
+            //FamilyNameTextBox.Text= host.FamilyName;
             PrivateName.Text= host.PrivateName;
             PhoneNumber.Text= host.PhoneNumber ;
             MailAddress.Text= host.MailAddress ;
             
             Bank_ComboBox.Text=bankAccount.BankName;
-            BranchCity_ComboBox.Text= bankAccount.BranchCity;
-            BranchAddress_ComboBox.Text= bankAccount.BranchAddress;
+            //BranchCity_ComboBox.Text= bankAccount.BranchCity;
+            //BranchAddress_ComboBox.Text= bankAccount.BranchAddress;
             BankNumber.Text= bankAccount.BankNumber             .ToString()   ;
-            BranchNumber.Text= bankAccount.BranchNumber         .ToString()   ;
+            //BranchNumber.Text= bankAccount.BranchNumber         .ToString()   ;
             BankAccountNumber.Text=bankAccount.BankAccountNumber.ToString()   ;
         }
 
-/// <summary>
-/// check password Match
-/// </summary>
-/// <param name="sender"></param>
-/// <param name="e"></param>
-private void PasswordChanged(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// check password Match
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PasswordChanged(object sender, RoutedEventArgs e)
         {
                 if ((FirstPassword.PasswordHidden.Password) != (SecundPassword.PasswordHidden.Password))
                 {
@@ -84,16 +84,16 @@ private void PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (!newHost) FillTheFeilds();
             else {
-                FamilyNameTextBox.Text =null;
+                FamilyName.Text =null;
                 PrivateName.Text = null;
                 PhoneNumber.Text = null;
                 MailAddress.Text = null;
 
                 Bank_ComboBox.Text = null;
-                BranchCity_ComboBox.Text =   null;
-                BranchAddress_ComboBox.Text =null;
+                BranchCity.Text =   null;
+                //BranchAddress_ComboBox.Text =null;
                 BankNumber.Text =            null;
-                BranchNumber.Text = null;
+                BranchNumber_ComboBox.Text = null;
                 BankAccountNumber.Text = null;
             }
         }
@@ -114,7 +114,7 @@ private void PasswordChanged(object sender, RoutedEventArgs e)
                     {
                         host = new Host();
                         bankAccount = new BankAccount();
-                        host.FamilyName = FamilyNameTextBox.Text;
+                        //host.FamilyName = FamilyNameTextBox.Text;
 
                     }
 
@@ -127,10 +127,10 @@ private void PasswordChanged(object sender, RoutedEventArgs e)
                     }
 
                     bankAccount.BankName = Bank_ComboBox.Text;
-                    bankAccount.BranchCity = BranchCity_ComboBox.Text;
-                    bankAccount.BranchAddress = BranchAddress_ComboBox.Text;
+                    //bankAccount.BranchCity = BranchCity_ComboBox.Text;
+                    //bankAccount.BranchAddress = BranchAddress_ComboBox.Text;
                     bankAccount.BankNumber = Convert.ToInt32(BankNumber.Text);
-                    bankAccount.BranchNumber = Convert.ToInt32(BranchNumber.Text);
+                    //bankAccount.BranchNumber = Convert.ToInt32(BranchNumber.Text);
                     bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
 
                     host.BankAccount = bankAccount;
@@ -152,6 +152,78 @@ private void PasswordChanged(object sender, RoutedEventArgs e)
                     MessageBox.Show("Fail! "+ex);
                 }
             }
+        }
+
+        public IEnumerable<BankDetails> Banks { get; set; }
+        public string selectedBank { get; set; }
+
+       // public ObservableCollection<BankBranch> Branches { get; set; }
+
+        //public IEnumerable<BankBranch> Branches
+        //{
+        //    get { return _Branches; }
+        //    set
+        //    {
+        //        if (_Branches == null)
+        //        {
+        //            _Branches = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
+
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
+
+
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Host host = new Host();
+                BankAccount bankAccount = new BankAccount();
+
+                host.PrivateName = PrivateName.Text;
+                host.FamilyName = FamilyName.Text;
+                host.PhoneNumber = PhoneNumber.Text;
+                host.MailAddress = MailAddress.Text;
+
+                bankAccount.BankName = Bank_ComboBox.Text;
+                bankAccount.BranchCity = BranchCity.Text;
+                //bankAccount.BranchAddress = Convert.ToInt32(.Text);
+                bankAccount.BankNumber = Convert.ToInt32(BankNumber.Text);
+                bankAccount.BranchNumber = Convert.ToInt32(BranchNumber_ComboBox.SelectedItem);
+                bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
+
+                host.BankAccount = bankAccount;
+
+                myBL.AddHost(host);
+                MessageBox.Show("Recived Seccessfully");
+               
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error! Make sure you dont miss any field!");
+            }
+        }
+
+        private void Bank_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BranchNumber_ComboBox.ItemsSource = (Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches);
+            BranchNumber_ComboBox.DisplayMemberPath = "BranchNumber";
+            //Branches = new ObservableCollection<BankBranch>((Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches));
+            BankNumber.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).BankNumber.ToString();
+        }
+
+        private void BranchNumber_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BranchCity.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches.ElementAt(BranchNumber_ComboBox.SelectedIndex).BranchCity;
         }
     }
 }
