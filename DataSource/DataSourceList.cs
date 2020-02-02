@@ -9,6 +9,30 @@ namespace DataSource
 {
     public static class DataSourceList
     {
+<<<<<<< Updated upstream
+=======
+
+        //static void con()
+        //{
+        //    Stream stream = File.OpenRead(Environment.CurrentDirectory + "\\hosts.xml");
+        //    XmlSerializer xmlser = new XmlSerializer(typeof(List<Host>));
+        //    var x = xmlser.Deserialize(stream);
+        //    Console.WriteLine(x);
+
+        //}
+
+        //static void des()
+        //{
+        //    Stream stream = File.OpenWrite(Environment.CurrentDirectory + "\\hosts.xml");
+        //    XmlSerializer xmlser = new XmlSerializer(typeof(List<Host>));
+        //    xmlser.Serialize(stream, Hosts);
+        //    stream.Close();
+        //}
+
+
+        public static List<BankDetails> banks = new List<BankDetails>();
+
+>>>>>>> Stashed changes
         public static List<Host> Hosts = new List<Host>();
         public static List<HostingUnit> HostingUnits = new List<HostingUnit>();
         public static List<Order> Orders = new List<Order>();

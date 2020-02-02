@@ -27,6 +27,13 @@ namespace DAL
         IEnumerable<string> returnAllLocelBank();                   // קבלת רשימת כל סניפי הבנק הקיימים בארץ 
 
 
+<<<<<<< Updated upstream
+=======
+        IEnumerable<HostingUnit> ReturnHostingUnitList(Func<HostingUnit, bool> predicate = null);  
+        IEnumerable<GuestRequest> ReturnGuestRequestList(Func<GuestRequest, bool> predicate = null);    
+        IEnumerable<Order> ReturenAllOrders(Func<Order, bool> predicate = null);
+        IEnumerable<BankDetails> ReturnAllLocelBank(Func<BankDetails, bool> predicate = null);
+>>>>>>> Stashed changes
 
     }
 }
