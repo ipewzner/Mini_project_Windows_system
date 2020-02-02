@@ -14,7 +14,7 @@ namespace BL
 {
     public class MyBl : IBL
     {
-        DalXML myDAL = new DalXML();
+        DalXML myDAL = FactorySingletonDal.Instance;
 
         /// <summary>
         /// Add Guest Request
@@ -125,7 +125,7 @@ namespace BL
         /// </summary>
         public bool IsDateCorrect(DateTime start, DateTime end)
         {
-            return(end > start)? true:false;
+            return (end > start) ? true : false;
         }
 
         public void UpdateHost(Host host)
@@ -524,7 +524,7 @@ namespace BL
             return result;
         }
          */
-    
+
 
 
         /// <summary>
@@ -596,7 +596,7 @@ namespace BL
                 MessageBox.Show("Can't get bank info from the web\n " + ex);
             }
 
-            if(NewDay())
+            if (NewDay())
             {
                 try
                 {
@@ -635,8 +635,8 @@ namespace BL
 
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
-             smtp.Credentials = new System.Net.NetworkCredential("ipewzner@g.jct.ac.il", "Reptor17");
-           // smtp.Credentials = from;
+            smtp.Credentials = new System.Net.NetworkCredential("ipewzner@g.jct.ac.il", "Reptor17");
+            // smtp.Credentials = from;
             smtp.EnableSsl = true;
 
             try
@@ -750,6 +750,17 @@ namespace BL
             }
             return sum;
         }
-       
+
+        /// <summary>
+        /// Get Banks by predicate
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        public IEnumerable<BankDetails> GetBanks(Func<BankDetails, bool> predicate = null)
+        {
+            if (predicate == null)
+                return myDAL.ReturnAllLocelBank().AsEnumerable();
+            return myDAL.ReturnAllLocelBank().Where(predicate);
+        }
     }
 }

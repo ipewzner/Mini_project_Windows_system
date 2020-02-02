@@ -1,15 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using BE;
 using DataSource;
+using System.Net;
 
 namespace DAL
 {
-    public class DalXML : IDAL
+    public class DalXML 
     {
         private static int serialGuestRequest;
         private static int serialOrder;
@@ -18,9 +20,12 @@ namespace DAL
 
         public DalXML()
         {
+
+            GetAndStoreBankInfo();
+
             serialOrder = Int32.Parse(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
             serialGuestRequest = Int32.Parse(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
-            // TO DO
+       
         }
 
         public bool addGuestRequest(GuestRequest gr)
@@ -382,21 +387,112 @@ namespace DAL
         /// Return All Locel Bank
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<string> ReturnAllLocelBank()
+
+        public IEnumerable<BankDetails> ReturnAllLocelBank(Func<BankDetails, bool> predicate = null)
         {
             try
             {
-                return new List<string> { "poelim", "marcntil", "laomi", "disceunt", "pagi" };
+                if (predicate == null)
+                    return DataSourceList.banks.AsEnumerable();
+                return DataSourceList.banks.Where(predicate);
             }
             catch (Exception ex)
             {
-                throw new Exception("Fail to return the Locel-Bank list " + ex);
-            }
-        }
+                throw new Exception("Fail to retrieve the Guest-Request from the list " + ex);
 
+     }}
         #endregion
+
+
+        /// <summary>
+        /// GetBankInfoFromTheWeb
+        /// </summary>
+        public void GetAndStoreBankInfo()
+        {
+            //C:\Users\ipewz\Documents\GitHub\Mini_project_Windows_system
+            //const string xmlLocalPath = @"atm.xml";
+            const string xmlLocalPath = @"ATM.xml";
+            WebClient wc = new WebClient();
+            Task.Run(() =>
+            {
+                try
+                {
+                    string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                }
+                catch (Exception)
+                {
+                    string xmlServerPath =
+                    @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                }
+                finally
+                {
+                    wc.Dispose();
+                }
+
+                try
+                {
+
+                    XmlRootAttribute xRoot = new XmlRootAttribute();
+                    xRoot.ElementName = "ATMs";
+                    xRoot.IsNullable = true;
+
+                    XmlSerializer serializer = new XmlSerializer(typeof(List<ATM>), xRoot);
+
+                    using (FileStream stream = File.OpenRead("ATM.xml"))
+                    {
+                        List<ATM> dezerializedList = (List<ATM>)serializer.Deserialize(stream);
+                        stream.Close();
+                        foreach (var item in dezerializedList)
+                        {
+                            int findBank = DataSourceList.banks.FindIndex((x) => x.BankNumber == Convert.ToInt32(item.קוד_בנק));
+                            if (findBank == -1)
+                            {
+                                DataSourceList.banks.Add(new BankDetails { 
+                                    BankName = item.שם_בנק,
+                                    BankNumber = Convert.ToInt32(item.קוד_בנק),
+                                    Branches = new List<BankBranch>()
+                                    {
+                                        new BankBranch
+                                        {
+                                            BranchCity = item.ישוב,
+                                            BranchNumber =  Convert.ToInt32(item.קוד_סניף)
+
+                                        }
+                                    }
+                                
+                                });
+                            }
+                            else
+                            {
+                                int findBranch = DataSourceList.banks[findBank].Branches.FindIndex((x) => x.BranchNumber == Convert.ToInt32(item.קוד_סניף));
+                                if (findBranch == -1)
+                                {
+                                    DataSourceList.banks[findBank].Branches.Add(new BankBranch
+                                    {
+                                        BranchNumber = Convert.ToInt32( item.קוד_סניף),
+                                        BranchCity = item.ישוב
+                                    });
+                                }
+                            }
+                        }
+
+                  
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Fail to return the Locel-Bank list " + ex);
+                }
+            });
+
+
+        }
 
 
 
     }
 }
+
+

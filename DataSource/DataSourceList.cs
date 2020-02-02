@@ -31,6 +31,8 @@ namespace DataSource
 
 
 
+        public static List<BankDetails> banks = new List<BankDetails>();
+
         public static List<Host> Hosts = new List<Host>();
 
         public static List<HostingUnit> HostingUnits = new List<HostingUnit>();

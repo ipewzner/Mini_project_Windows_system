@@ -8,7 +8,9 @@ using DataSource;
 
 namespace DAL
 {
-    public class DALImp : IDAL
+
+    public class DALImp  
+
     {
 
         #region ///// Order /////

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Orders>
-  <lastSerial>10000009</lastSerial>
+  <lastSerial>10000012</lastSerial>
   <Order>
     <OrderKey>10000007</OrderKey>
     <HostingUnitKey>10000003</HostingUnitKey>
@@ -23,6 +23,30 @@
     <GuestRequestKey>10000003</GuestRequestKey>
     <CreateDate>2020-01-27T21:34:06.2123047+02:00</CreateDate>
     <OrderDate>2020-01-27T21:34:06.2123047+02:00</OrderDate>
+    <Status>MailSent</Status>
+  </Order>
+  <Order>
+    <OrderKey>10000010</OrderKey>
+    <HostingUnitKey>10000036</HostingUnitKey>
+    <GuestRequestKey>10000000</GuestRequestKey>
+    <CreateDate>2020-02-02T18:15:12.2749809+02:00</CreateDate>
+    <OrderDate>2020-02-02T18:15:12.2749809+02:00</OrderDate>
+    <Status>MailSent</Status>
+  </Order>
+  <Order>
+    <OrderKey>10000011</OrderKey>
+    <HostingUnitKey>10000036</HostingUnitKey>
+    <GuestRequestKey>10000024</GuestRequestKey>
+    <CreateDate>2020-02-02T18:17:17.2024417+02:00</CreateDate>
+    <OrderDate>2020-02-02T18:17:17.2024417+02:00</OrderDate>
+    <Status>MailSent</Status>
+  </Order>
+  <Order>
+    <OrderKey>10000012</OrderKey>
+    <HostingUnitKey>10000010</HostingUnitKey>
+    <GuestRequestKey>10000024</GuestRequestKey>
+    <CreateDate>2020-02-02T18:23:44.5159822+02:00</CreateDate>
+    <OrderDate>2020-02-02T18:23:44.5159822+02:00</OrderDate>
     <Status>MailSent</Status>
   </Order>
 </Orders>

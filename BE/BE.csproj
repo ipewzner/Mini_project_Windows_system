@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ATM.cs" />
     <Compile Include="BankAccount.cs" />
+    <Compile Include="BankDetails.cs" />
     <Compile Include="Enum.cs" />
     <Compile Include="Configuration.cs" />
     <Compile Include="GuestRequest.cs" />

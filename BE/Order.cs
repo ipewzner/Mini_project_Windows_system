@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +19,7 @@ namespace BE
         public DateTime OrderDate { get; set; }
 
         public DateTime CreateDate { get; set; }
+
         public OrderStatus Status { get; set; }
 
         public override string ToString()
