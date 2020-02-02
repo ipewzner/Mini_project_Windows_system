@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace DataSource
 {
-    public static class DataSourceList
+   static public class DataSourceList
     {
-<<<<<<< Updated upstream
-=======
 
         //static void con()
         //{
@@ -30,12 +30,15 @@ namespace DataSource
         //}
 
 
+
         public static List<BankDetails> banks = new List<BankDetails>();
 
->>>>>>> Stashed changes
         public static List<Host> Hosts = new List<Host>();
+
         public static List<HostingUnit> HostingUnits = new List<HostingUnit>();
+
         public static List<Order> Orders = new List<Order>();
+
         public static List<GuestRequest> GuestRequests = new List<GuestRequest>();
     }
 }

@@ -1,10 +1,11 @@
-﻿<Window x:Class="PLWPF.Windows.Register"
+<Window x:Class="PLWPF.Windows.Register"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF.Windows"
         mc:Ignorable="d"
+
         Title="Register" Height="413.098" Width="565.262">
     <Grid Margin="0,0,4,50">
         <Label Content="Register" HorizontalAlignment="Left" Margin="36,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
@@ -46,7 +47,9 @@
         <ComboBox x:Name="BranchNumber_ComboBox" HorizontalAlignment="Left" Margin="221,155,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="BranchNumber_ComboBox_SelectionChanged"/>
 
 
-
+        Title="Register" Height="470" Width="565.262">
+    <Grid >
+        <Frame x:Name="Host_UserControl" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
 
     </Grid>
 </Window>

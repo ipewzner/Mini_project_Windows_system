@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Orders>
+  <lastSerial>25</lastSerial>
+  <Order>
+    <OrderKey>23</OrderKey>
+    <HostingUnitKey>10000010</HostingUnitKey>
+    <GuestRequestKey>10000025</GuestRequestKey>
+    <CreateDate>30/12/2019 16:52:25</CreateDate>
+    <OrderDate>02/01/2020 16:52:25</OrderDate>
+    <Status>NotYetApproved</Status>
+  </Order>
+ <Order>
+    <OrderKey>24</OrderKey>
+    <HostingUnitKey>12123</HostingUnitKey>
+    <GuestRequestKey>10000005</GuestRequestKey>
+    <CreateDate>30/12/2019 16:52:25</CreateDate>
+    <OrderDate>02/01/2020 16:52:25</OrderDate>
+    <Status>NotYetApproved</Status>
+  </Order>
+ <Order>
+    <OrderKey>25</OrderKey>
+    <HostingUnitKey>12123</HostingUnitKey>
+    <GuestRequestKey>10000005</GuestRequestKey>
+    <CreateDate>30/12/2019 16:52:25</CreateDate>
+    <OrderDate>02/01/2020 16:52:25</OrderDate>
+    <Status>NotYetApproved</Status>
+  </Order>
+</Orders>

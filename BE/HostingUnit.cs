@@ -8,26 +8,30 @@ using Utilities;
 
 namespace BE
 {
-    public class HostingUnit
+    [Serializable]
+    public class HostingUnit   : requirement
     {
-        public int HostingUnitKey { get; private set; }
-        public String Owner { get; set; }
+        requirement requirement = new requirement();
+        public int HostingUnitKey { get; set; }
+        public Host Owner { get; set; }
         public String HostingUnitName { get; set; }
 
-        [XmlIgnore]
-        public bool[,] Diary { get; private set; }
 
-        [XmlArray("Diary")]
-        public bool[] DiaryDto
-        {
-            get { return Diary.Flatten(); }
-            set { Diary = value.Expand(12); }
-        }
+        [XmlIgnore]
+        //public bool[,] Diary { get; private set; }
+        public List<DateTime> Diary { get; set; }
+
+        //[XmlArray("Diary")]
+        //public bool[] DiaryDto
+        //{
+        //    get { return Diary.Flatten(); }
+        //    set { Diary = value.Expand(12); }
+        //}
 
 
         public HostingUnit()
         {
-            Diary = new bool[12, 31];
+            Diary = new List<DateTime>();
             HostingUnitKey = Configuration.serialHostingUnit++;
         }
 

@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BE_Extensions.cs" />
-    <Compile Include="DalList.cs" />
+    <Compile Include="Cloning.cs" />
+    <Compile Include="DALImp.cs" />
+    <Compile Include="DalXML.cs" />
+    <Compile Include="Dal_XML_imp.cs" />
     <Compile Include="FactorySingletonDal.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

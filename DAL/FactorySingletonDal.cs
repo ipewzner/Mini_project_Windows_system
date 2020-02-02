@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataSource;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,21 @@ namespace DAL
 {
     public static class FactorySingletonDal
     {
-        private static IDal instance = null;
+       
+        private static IDAL instance = null;
 
         static FactorySingletonDal() { }
 
-        public static IDal Instance
+        public static IDAL Instance
         {
+
             get
             {
+
                 if (instance == null)
                 {
-                    instance = new DalList();
+                    instance = new DalXML();
+                    
                 }
                 return instance;
             }

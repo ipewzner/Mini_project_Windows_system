@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="PLWPF.HostUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="513.6">
+    <Grid Margin="0,0,0,-0.4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Width="505">
+
+        <Label Content="Hosts" HorizontalAlignment="Left" Margin="36,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+
+
+        <Label Content="Family Name" HorizontalAlignment="Left" Margin="40,75,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FamilyNameTextBox" HorizontalAlignment="Left" Margin="40,101,0,0"  TextWrapping="Wrap"  Height="23" Width="120" VerticalAlignment="Top"/>
+
+        <Label Content="Private Name" HorizontalAlignment="Left" Margin="40,128,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PrivateName" HorizontalAlignment="Left" Margin="40,155,0,0" TextWrapping="Wrap" Text="" Height="23" Width="120" VerticalAlignment="Top"/>
+
+        <Label Content="Phone Number" HorizontalAlignment="Left" Margin="40,183,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="PhoneNumber" HorizontalAlignment="Left" Margin="40,209,0,0" TextWrapping="Wrap"  Height="23" Width="120" VerticalAlignment="Top"/>
+
+        <Label Content="Mail Address" HorizontalAlignment="Left" Margin="40,242,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="MailAddress" HorizontalAlignment="Left" Margin="40,268,0,0" TextWrapping="Wrap" Height="23" Width="120" VerticalAlignment="Top"/>
+
+        <Label Content="Banking" HorizontalAlignment="Left" Margin="220,27,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
+
+        <Label Content="Bank" HorizontalAlignment="Left" Margin="220,70,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Bank_ComboBox" HorizontalAlignment="Left" Margin="220,101,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Branch city" HorizontalAlignment="Left" Margin="220,125,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="BranchCity_ComboBox" HorizontalAlignment="Left" Margin="220,156,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Branch Address" HorizontalAlignment="Left" Margin="220,179,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="BranchAddress_ComboBox" HorizontalAlignment="Left" Margin="220,210,0,0" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Bank Number" HorizontalAlignment="Left" Margin="362,71,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BankNumber" HorizontalAlignment="Left" Height="23" Margin="361,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Branch Number" HorizontalAlignment="Left" Margin="362,125,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BranchNumber" HorizontalAlignment="Left" Height="23" Margin="360,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="360,179,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="BankAccountNumber" HorizontalAlignment="Left" Height="23" Margin="362,209,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+
+        <Label Content="New password" HorizontalAlignment="Left" Margin="42,303,0,0" VerticalAlignment="Top"/>
+        <Label Content="Repeat password" HorizontalAlignment="Left" Margin="220,303,0,0" VerticalAlignment="Top"/>
+        <local:Password x:Name="FirstPassword" PasswordBox.PasswordChanged="PasswordChanged" Margin="40,334,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164"/>
+        <local:Password x:Name="SecundPassword" PasswordBox.PasswordChanged="PasswordChanged"  Margin="220,334,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="166"/>
+        <Button x:Name="ContinueButton"  HorizontalAlignment="Left" Margin="372,399,0,0" VerticalAlignment="Top" Height="23" Width="118" Click="Continue_Click"/>
+        <Label x:Name="passwordMatchError" Visibility="Hidden" Content="The password not match!" HorizontalAlignment="Left" Margin="42,369,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.057,0.688"/>
+        <Label x:Name="CancelChanges" Content="Cancel changes" PreviewMouseDown="CancelChanges_PreviewMouseDown" HorizontalAlignment="Left" Margin="40,396,0,0" VerticalAlignment="Top"/>
+
+
+
+    </Grid>
+</UserControl>

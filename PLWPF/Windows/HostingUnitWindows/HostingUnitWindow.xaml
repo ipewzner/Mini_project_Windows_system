@@ -1,0 +1,30 @@
+﻿<Window x:Class="PLWPF.HostingUnitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="HostingUnitWindow" Height="700" Width="804">
+    <Grid HorizontalAlignment="Left" Margin="0,0,-0.4,-526" Width="794">
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="Add new Hosting Unit">
+                <Grid>
+                    <Frame x:Name="AddNewUnitFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Update Hosting Unit" >
+                <Grid>
+                    <Frame x:Name="UpdateUnitFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Delete Hosting Unit">
+                <Grid>
+                    <Frame x:Name="DeleteUnitFrame" NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

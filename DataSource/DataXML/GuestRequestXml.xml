@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<GuestRequests>
+  <lastSerial>10000005</lastSerial>
+ <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <SubArea>old city</SubArea>
+    <HostingType>Hotel</HostingType>
+    <Adults>2</Adults>
+    <Children>1</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>NotNecessary</Jacuzzi>
+    <Garden>NotNecessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>NotNecessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Possible</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000000</GuestRequestKey>
+    <PrivateName>zareh</PrivateName>
+    <FamilyName>parz</FamilyName>
+    <MailAddress>penhes@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>tabrios</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>4</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>NotNecessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000001</GuestRequestKey>
+    <PrivateName>kalmen</PrivateName>
+    <FamilyName>kalmenovitz</FamilyName>
+    <MailAddress>kalmenovitz@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Center</Area>
+    <SubArea>tal aviv</SubArea>
+    <HostingType>RentingRoom</HostingType>
+    <Adults>2</Adults>
+    <Children>2</Children>
+    <Pool>NotNecessary</Pool>
+    <Jacuzzi>NotNecessary</Jacuzzi>
+    <Garden>NotNecessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>NotNecessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <GuestRequestKey>10000003</GuestRequestKey>
+    <PrivateName>afreim</PrivateName>
+    <FamilyName>cohn</FamilyName>
+    <MailAddress>cohn@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <SubArea>old city</SubArea>
+    <HostingType>Hotel</HostingType>
+    <Adults>2</Adults>
+    <Children>5</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>NotNecessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>NotNecessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Possible</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000006</GuestRequestKey>
+    <PrivateName>aser</PrivateName>
+    <FamilyName>golomb</FamilyName>
+    <MailAddress>golomb@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+</GuestRequests>

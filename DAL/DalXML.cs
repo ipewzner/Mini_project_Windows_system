@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,6 +9,9 @@ using System.Xml.Serialization;
 using BE;
 using DataSource;
 using System.Net;
+using BE;
+using DataSource;
+
 
 namespace DAL
 {
@@ -21,12 +24,12 @@ namespace DAL
 
         public DalXML()
         {
+
             GetAndStoreBankInfo();
 
             serialOrder = Int32.Parse(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
             serialGuestRequest = Int32.Parse(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
        
-
         }
 
         public bool addGuestRequest(GuestRequest gr)
@@ -343,7 +346,7 @@ namespace DAL
             }
         }
         #endregion Host
-        
+
         #region ///// GuestRequest /////
 
         /// <summary>
@@ -388,6 +391,7 @@ namespace DAL
         /// Return All Locel Bank
         /// </summary>
         /// <returns></returns>
+
         public IEnumerable<BankDetails> ReturnAllLocelBank(Func<BankDetails, bool> predicate = null)
         {
             try
@@ -399,9 +403,8 @@ namespace DAL
             catch (Exception ex)
             {
                 throw new Exception("Fail to retrieve the Guest-Request from the list " + ex);
-            }
-        }
 
+     }}
         #endregion
 
 
@@ -493,6 +496,5 @@ namespace DAL
 
     }
 }
-
 
 

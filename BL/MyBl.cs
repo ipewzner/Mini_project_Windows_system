@@ -1,40 +1,87 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BE;
-<<<<<<< Updated upstream
 using DAL;
-=======
 using System.Reflection;
 using DAL;
 using System.Net.Mail;
 using System.Net;
 using System.Windows;
 using System.Threading.Tasks;
+using System.Reflection;
+using DAL;
+using System.Net.Mail;
+using System.Net;
+using System.Windows;
+using System.Threading;
 
->>>>>>> Stashed changes
 namespace BL
 {
     public class MyBl : IBL
     {
+
+        /// <summary>
+        /// create a new order
+        /// </summary>
+        public bool AddOrder(Order neworder)
+
+        DalXML myDAL = new DalXML();
+
+        /// <summary>
+        /// Add Guest Request
+        /// </summary>
+        public bool AddGuestRequest(GuestRequest req)
+
+        {
+
+
+            Order order = instance.getOrder(neworder.OrderKey);
+            //if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
+
+            if (myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
+            {
+                myDAL.addGuestRequest(req);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        /// <summary>
+        /// Add Hosting Unit
+        /// </summary>
+        public void AddHostingUnit(HostingUnit unit)
+        {
+            if (myDAL.ReturnHostingUnitList((x) => x.HostingUnitKey == unit.HostingUnitKey).ToList().Count == 0)
+            {
+                myDAL.addHostingUnit(unit);
+            }
+            else
+            {
+                throw new Exception("This Hosting unit exist already!");
+            }
+
+        }
+
         /// <summary>
         /// create a new order
         /// </summary>
         public bool AddOrder(Order neworder)
         {
-            IDal instance = FactorySingletonDal.Instance;
 
-            Order order = instance.getOrder(neworder.OrderKey);
-            if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
-            {
-                return false;
-            }
-            else
-            {
-                instance.addOrder(neworder);
-            }
+            //Order order = instance.ReturenAllOrders((x)=> x.OrderKey == neworder.OrderKey).First();
+            //if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            myDAL.addOrder(neworder);
+            //}
             return true;
         }
 
@@ -48,58 +95,47 @@ namespace BL
                 //TODO:
                 //close status for changes
 
-                //TODO bring the orginals and remove x and y
-                HostingUnit x = new HostingUnit();
-                GuestRequest y = new GuestRequest();
-                int month = y.EntryDate.Month;
-                for (int day = y.EntryDate.Day; day < y.ReleaseDate.Day||y.ReleaseDate.Month!=month; day++)
-                {
-                    x.Diary[y.EntryDate.Month, day] = true;
 
-                    if (day == 31)
-                    {
-                        day = 0;
-                        month++;
-                    }
-                   
+                HostingUnit x = GetHostingUnit(Convert.ToInt32(order.HostingUnitKey));
+                GuestRequest y = GetGusetRequest(Convert.ToInt32(order.GuestRequestKey));
+                for (DateTime i = y.EntryDate; i <= y.ReleaseDate; i.AddDays(1))
+                {
+                    x.Diary.Add(i);
                 }
+
 
                 //TODO add Commision
                 //To Where??
 
                 //Change client STATUS 
-                //duffrante between close by app to close by client??
+
                 y.Status = ClientStatus.CloseByApp;
 
-               
             }
+        }
+
+        public void RemoveHost(Host host)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
         /// Is date available
         /// </summary>
-        public bool IsDateAvailable(DateTime start, DateTime end)
+        public bool IsDateAvailable(DateTime start, DateTime end, int unitKey)
         {
-            HostingUnit x = new HostingUnit();
-            GuestRequest y = new GuestRequest();
-            int month = y.EntryDate.Month;
-            for (int day = y.EntryDate.Day; day < y.ReleaseDate.Day || y.ReleaseDate.Month != month; day++)
+
+            HostingUnit x = GetHostingUnit(unitKey);
+            start.AddDays(1);
+            for (DateTime i = start; i < end; i.AddDays(1))
             {
-                if(x.Diary[y.EntryDate.Month, day] = true)
+                if (x.Diary.FindIndex((z) => z == i) != -1)
                 {
                     return false;
-                }   
-
-                if (day == 31)
-                {
-                    day = 0;
-                    month++; 
                 }
-
             }
 
             return true;
-            
         }
 
         /// <summary>
@@ -107,14 +143,6 @@ namespace BL
         /// </summary>
         public bool IsDateCorrect(DateTime start, DateTime end)
         {
-            if (end > start)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         /// <summary>
@@ -133,22 +161,7 @@ namespace BL
             return (int)(SecondDate - firstDate).TotalDays;
         }
 
-        /// <summary>
-        /// Sending Email to client 
-        /// </summary>
-        public void SendMail(Order order)
-        {
-            if (order.Status == OrderStatus.MailSent)
-            {
-                Console.WriteLine(
-                    $"You order:\n" +
-                    $"Create Date: {order.CreateDate}\n" +
-                    $"Order Date: {order.OrderDate}\n" +
-                    $"Hosting Unit Key: {order.HostingUnitKey}\n"
-                    );
-            }
-        }
-
+ 
 
         #region ///// NOT IMPLAMENT /////
         public bool IsAccountCharged(Host host)j
@@ -178,11 +191,293 @@ namespace BL
         {
             throw new NotImplementedException();
         }
-        #endregion
-<<<<<<< Updated upstream
+      
+
     }
 }
-=======
+  #endregion
+        //public void SendMail(Order order)
+        //{
+        //    if (order.Status == OrderStatus.MailSent)
+        //    {
+        //        Console.WriteLine(
+        //            $"You order:\n" +
+        //            $"Create Date: {order.CreateDate}\n" +
+        //            $"Order Date: {order.OrderDate}\n" +
+        //            $"Hosting Unit Key: {order.HostingUnitKey}\n"
+        //            );
+        //    }
+        //}
+
+        /// <summary>
+        /// Return number of orders that sent to client
+        /// </summary>
+        public int OrdersPerClient(GuestRequest req)
+        {
+            int counter = 0;
+            foreach (var item in myDAL.ReturenAllOrders())
+            {
+                if (item.GuestRequestKey == req.GuestRequestKey)
+                {
+                    if (item.Status == OrderStatus.MailSent)
+                        counter++;
+                }
+            }
+            return counter;
+        }
+
+        /// <summary>
+        /// Return number of orders that seccessfully close
+        /// </summary>
+        public int OrdersPerUnit(HostingUnit unit)
+        {
+            int counter = 0;
+            foreach (var item in myDAL.ReturenAllOrders())
+            {
+                if (item.HostingUnitKey == unit.HostingUnitKey)
+                {
+                    if (item.Status == OrderStatus.CloseByClient)
+                        counter++;
+                }
+            }
+            return counter;
+        }
+
+        /// <summary>
+        /// Check if Unit can be remove
+        /// </summary>
+        public void UnitRemove(int unitKey)
+        {
+            foreach (var item in myDAL.ReturenAllOrders())
+            {
+                if ((item.HostingUnitKey == unitKey) && (item.Status == OrderStatus.UntreatedYet))
+                {
+                    throw new Exception("Can't delete this unit, whan some order still open!");
+                }
+            }
+            HostingUnit hostingUnit = GetHostingUnit(Convert.ToInt32(unitKey));
+            try
+            {
+                myDAL.DeleteHostingUnit(hostingUnit);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("" + ex);
+            }
+        }
+
+        /// <summary>
+        /// Update Unit
+        /// </summary>
+        /// <param name="hostingUnit"></param>
+        public void UpdateUnit(HostingUnit hostingUnit)
+        {
+            try
+            {
+                UnitRemove(hostingUnit.HostingUnitKey);
+                AddHostingUnit(hostingUnit);
+                MessageBox.Show($"Hosting unit: {hostingUnit.HostingUnitName} updated Seccessfuly!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during Update {hostingUnit.HostingUnitName} please try again later! " + ex);
+            }
+        }
+
+
+
+        /// <summary>
+        /// Return all units available in given date range
+        /// </summary>
+        public List<HostingUnit> UintsAvailable(DateTime start, int numOfDays)
+        {
+            List<HostingUnit> listOfUnits = new List<HostingUnit>();
+
+            DateTime end = start.AddDays(numOfDays);
+            var x = myDAL.ReturnHostingUnitList(null);
+            foreach (var item in x)
+            {
+
+                if (IsDateAvailable(start, end, item.HostingUnitKey))
+                {
+                    listOfUnits.Add(item);
+                }
+
+            }
+
+            return listOfUnits;
+        }
+
+        /// <summary>
+        /// Add new Host
+        /// </summary>
+        public bool AddHost(Host host)
+        {
+            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
+            {
+                myDAL.addHost(host);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+
+        }
+
+        /// <summary>
+        /// Return Guest Request By any requirment
+        /// </summary>
+        public IEnumerable<GuestRequest> GuestRequestBy(Func<GuestRequest, bool> predicate = null)
+        {
+            if (predicate == null)
+                return myDAL.getAllGuestRequests().AsEnumerable();
+            return myDAL.getAllGuestRequests().Where(predicate);
+        }
+
+        /// <summary>
+        /// Return Husting uinits By any requirment
+        /// </summary>
+        public IEnumerable<HostingUnit> HustingUnitsBy(Func<HostingUnit, bool> predicate = null)
+        {
+            return myDAL.ReturnHostingUnitList(predicate);
+        }
+
+
+        /// <summary>
+        /// Creates Offers by area and available dates
+        /// </summary>
+        public void CreateOffer(GuestRequest req)
+        {
+            List<HostingUnit> hostingUnits = UintsAvailable(req.EntryDate, NumOfDays(req.EntryDate, req.EntryDate));
+            foreach (var item in hostingUnits)
+            {
+                Offer y = new Offer();
+
+                foreach (var guest in GuestRequestBy((x => x.Area == item.Area)))
+                {
+                    y.GuestKey = guest.GuestRequestKey;
+                    y.UnitKey = item.HostingUnitKey;
+                }
+
+                if (y != null)
+                    Offer.ListOfOffers.Add(y);
+            }
+
+        }
+
+        /// <summary>
+        /// Return all Orders that created X dayes before 
+        /// </summary>
+        public List<Order> OrdersUntilDate(int days)
+        {
+            return myDAL.ReturenAllOrders(x => NumOfDays(x.CreateDate) == days).ToList(); ;
+        }
+
+        #region ///// Helpers /////
+
+        /// <summary>
+        /// Find Guset Request by ID
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        GuestRequest GetGusetRequest(int key)
+        {
+            return (myDAL.ReturnGuestRequestList(x => x.GuestRequestKey == key)).First();
+        }
+
+        /// <summary>
+        /// Find Hosting Unit by key
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public HostingUnit GetHostingUnit(int key)
+        {
+            return (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).First();
+        }
+
+        #endregion
+
+        #region ///// NOT IMPLAMENTED /////
+
+        public bool IsAccountCharged(Host host)
+        {
+            //HOW TO CHECK IF ACCOUNT CHARGED??
+            throw new NotImplementedException();
+        }
+
+        #endregion
+
+        #region ///// Gruping /////
+
+        /// <summary>
+        /// Order Guest Request By Location
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<Area, GuestRequest>> GuestRequestOrderBy_Location()
+        {
+            IEnumerable<IGrouping<Area, GuestRequest>> result =
+                from gr in myDAL.ReturnGuestRequestList()
+                group gr by gr.Area;
+            return result;
+        }
+
+        /// <summary>
+        /// Order Guest Request By Number Of Vacationers
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<int, GuestRequest>> GuestRequest_OrderBy_NumberOfVacationers()
+        {
+            IEnumerable<IGrouping<int, GuestRequest>> result =
+                  from gr in myDAL.ReturnGuestRequestList()
+                  group gr by (gr.Adults + gr.Children);
+            return result;
+        }
+
+        /// <summary>
+        /// Order Hosts By Number Of Hosting Unit
+        /// </summary>
+        /// <returns></returns>
+        //public IEnumerable<IGrouping<int, Host>> Hosts_OrderBy_NumberOfHostingUnit()
+        //{
+        //    IEnumerable<IGrouping<int, Host>> result =
+        //             from hosts in myDAL.returnHostList()
+        //             group hosts by NumOfHostingUnitsInHost(hosts);
+        //    return result;
+        //}
+
+        /// <summary>
+        /// Order Hosting Unit By Location
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<IGrouping<Area, HostingUnit>> HostingUnit_OrderBy_Location()
+        {
+            IEnumerable<IGrouping<Area, HostingUnit>> result =
+                    from hu in myDAL.ReturnHostingUnitList()
+                    group hu by hu.Area;
+            return result;
+        }
+
+        /// <summary>
+        /// Return the number Of Hosting Units In Host
+        /// </summary>
+        /// <param name="host"></param>
+        /// <returns></returns>
+        public int NumOfHostingUnitsInHost(Host host)
+        {
+            int sum = 0;
+            foreach (var hu in myDAL.ReturnHostingUnitList())
+            {
+                if (hu.Owner.HostKey == host.HostKey)
+                    sum++;
+            }
+            return sum;
+        }
+
+        #endregion
 
 
         public Dictionary<Area, int> GuestRequestPerArea()
@@ -319,6 +614,7 @@ namespace BL
         }
 
 
+
         /// <summary>
         /// Average Orders per hosting unit
         /// </summary>
@@ -350,8 +646,42 @@ namespace BL
 
         //}
 
+        /// <summary>
+        /// BootingUp the progrem.  
+        /// 1) Receive bank data from the web
+        /// 2)
+        /// </summary>
+        public void bootingUp()
+        {
+            try
+            {
+                Thread thread = new Thread(GetBankInfoFromTheWeb);
+                thread.Start();
+            }
+            catch (Exception ex)
+            {
+                // throw new Exception("Can't get bank info from the web " + ex);
+                MessageBox.Show("Can't get bank info from the web\n " + ex);
+            }
 
+            if(NewDay())
+            {
+                try
+                {
+                    Thread thread = new Thread(RefreshDatabase);
+                    thread.Start();
+                }
+                catch (Exception ex)
+                {
+                    // throw new Exception("Can't get bank info from the web " + ex);
+                    MessageBox.Show("Fail to refresh the database! \n " + ex);
+                }
+            }
 
+        }
+
+        private void RefreshDatabase() { }
+        private bool NewDay() { return true; }
 
         /// <summary>
         /// Sending Email to client 
@@ -374,6 +704,7 @@ namespace BL
             SmtpClient smtp = new SmtpClient();
             smtp.Host = "smtp.gmail.com";
             smtp.Credentials = new System.Net.NetworkCredential("ipewzner@g.jct.ac.il", "Reptor17");
+
             smtp.EnableSsl = true;
 
             try
@@ -449,7 +780,7 @@ namespace BL
             return Math.Sin(password) * Math.Sqrt(password);
         }
 
-        
+
 
         public double averageOrdersPerClient()
         {
@@ -463,4 +794,3 @@ namespace BL
     }
 }
 
->>>>>>> Stashed changes

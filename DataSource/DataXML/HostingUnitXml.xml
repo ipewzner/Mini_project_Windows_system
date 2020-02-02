@@ -1,0 +1,367 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HostingUnits>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <Owner>
+      <HostKey>11111111</HostKey>
+      <PrivateName>david</PrivateName>
+      <FamilyName>cohn</FamilyName>
+      <PhoneNumber>054-5555555</PhoneNumber>
+      <MailAddress>sale@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111111</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel clifornia</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000001</HostingUnitKey>
+    <Owner>
+      <HostKey>11111111</HostKey>
+      <PrivateName>david</PrivateName>
+      <FamilyName>cohn</FamilyName>
+      <PhoneNumber>054-5555555</PhoneNumber>
+      <MailAddress>sale@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111111</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel hong-kong</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000003</HostingUnitKey>
+    <Owner>
+      <HostKey>11111111</HostKey>
+      <PrivateName>david</PrivateName>
+      <FamilyName>cohn</FamilyName>
+      <PhoneNumber>054-5555555</PhoneNumber>
+      <MailAddress>sale@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111111</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel paris</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Center</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000006</HostingUnitKey>
+    <Owner>
+      <HostKey>22222222</HostKey>
+      <PrivateName>moses</PrivateName>
+      <FamilyName>levi</FamilyName>
+      <PhoneNumber>054-6666666</PhoneNumber>
+      <MailAddress>hotel@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111112</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel tal-aviv</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000010</HostingUnitKey>
+    <Owner>
+      <HostKey>22222222</HostKey>
+      <PrivateName>moses</PrivateName>
+      <FamilyName>levi</FamilyName>
+      <PhoneNumber>054-6666666</PhoneNumber>
+      <MailAddress>hotel@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111112</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel jeruselm</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000015</HostingUnitKey>
+    <Owner>
+      <HostKey>22222222</HostKey>
+      <PrivateName>moses</PrivateName>
+      <FamilyName>levi</FamilyName>
+      <PhoneNumber>054-6666666</PhoneNumber>
+      <MailAddress>hotel@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111112</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel tavriea</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000021</HostingUnitKey>
+    <Owner>
+      <HostKey>22222222</HostKey>
+      <PrivateName>moses</PrivateName>
+      <FamilyName>levi</FamilyName>
+      <PhoneNumber>054-6666666</PhoneNumber>
+      <MailAddress>hotel@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>123</BankNumber>
+        <BankName>poalim</BankName>
+        <BranchNumber>432</BranchNumber>
+        <BranchAddress>jefo 121</BranchAddress>
+        <BranchCity>jeruselm</BranchCity>
+        <BankAccountNumber>11111112</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>hotel hifa</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000028</HostingUnitKey>
+    <Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>zimer of the north</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000036</HostingUnitKey>
+    <Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>zimer of the Jerusalem</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>South</Area>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000045</HostingUnitKey>
+    <Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>zimer of the South</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>vc</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000040</HostingUnitKey>
+<Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>    
+<HostingUnitName>vvvv</HostingUnitName>
+  </HostingUnit>
+</HostingUnits>

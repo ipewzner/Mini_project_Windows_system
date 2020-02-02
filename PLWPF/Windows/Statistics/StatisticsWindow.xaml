@@ -1,0 +1,33 @@
+﻿<Window x:Class="PLWPF.Windows.StatisticsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.Windows"
+        mc:Ignorable="d"
+        Title="StatisticsWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" >
+            <TabItem Header="Guest Request">
+                <Grid>
+                    <Frame x:Name="GuestRequestQueryFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid> 
+            </TabItem>
+            <TabItem Header="Hosting Unit">
+                <Grid>
+                    <Frame x:Name="HostingUnitQueryFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="  Order  ">
+                <Grid>
+                    <Frame x:Name="OrdersQueryFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="  Extra  ">
+                <Grid>
+                    <Frame x:Name="alsecFrame"  NavigationUIVisibility="Hidden" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

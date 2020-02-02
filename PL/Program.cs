@@ -1,27 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Utilities;
+﻿//Menachem Aharoni 
+//315147272
+
+//pewzner iasayahu
+//200328417
+
+using System;
 using BE;
 using BL;
 using System.Reflection;
+using System.Collections.Generic;
 
 namespace PL
 {
     public class Program
     {
-         
-        
-         static void Main(string[] args)
+        static MyBl newBL = new MyBl();
+
+        static void Main(string[] args)
         {
+           
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.Clear();
+            preCode preCode = new preCode();
+            preCode.initialize();
             MainScreen();
 
-
+            #region ///// Screens /////
 
             void MainScreen()
             {
@@ -33,7 +38,7 @@ namespace PL
                 Console.WriteLine("3) Site manger");
                 Console.WriteLine("4) Exit");
 
-                switch (getUserChoise(1, 4))
+                switch (getUserChoise( 4))
                 {
                     case 1:
                         customerDemandsScreen();
@@ -54,12 +59,7 @@ namespace PL
 
             void customerDemandsScreen()
             {
-                GuestRequest NewCastumer = new GuestRequest();
-                autoInfoUpdate(NewCastumer);
-                Console.WriteLine("Your order received in the system");
-                Console.WriteLine("You will be notified by email about offers");
-                Console.WriteLine("thank you");
-
+                customerDemands();
             }
 
             void hostingUnitScreen()
@@ -67,10 +67,10 @@ namespace PL
                 Console.Clear();
                 Console.WriteLine("1) new hosting unit");
                 Console.WriteLine("2) Personal area");
-                switch (getUserChoise(1, 2))
+                switch (getUserChoise( 2))
                 {
                     case 1:
-                        newHostingUnitScreen();
+                        newHostingUnit();
                         break;
                     case 2:
                         personalAreaScreen();
@@ -80,46 +80,175 @@ namespace PL
                         break;
                 }
             }
-                  
            
             void personalAreaScreen()
             {
-                //To-Do
+                Console.Clear();
+                Console.WriteLine("1) Update husting unit");
+                Console.WriteLine("2) Order");
+                Console.WriteLine("3) Delete husting unit");
+                Console.WriteLine("4) Main screen");
+
+                switch (getUserChoise(4))
+                {
+                    case 1:
+                        updateHustingUnit();
+                        break;
+                    case 2:
+                        foreach (var item in OrderScreen())
+                        {
+                            Console.WriteLine($"Guest key: {item.GuestKey} \n Unit key: {item.UnitKey}");
+                        }
+                       
+                        break;
+                    case 3:
+                        deleteHustingUnit();
+                        break;
+                    case 4:
+                        break;
+                    default:
+                        MainScreen();
+                        break;
+                }
             }
 
-            void newHostingUnitScreen()
+            List<Offer> OrderScreen()
             {
-                HostingUnit hostingUnit = new HostingUnit();
-                autoInfoUpdate(hostingUnit);
+                return Offer.ListOfOffers;
+            }
+            #endregion
+
+            #region ///// Internal Functions /////
+
+            void customerDemands()
+            {
+                GuestRequest NewCastumer = new GuestRequest();
+                autoInfoUpdate(NewCastumer);
+                if (newBL.AddGuestRequest(NewCastumer)) throw new Exception("adding fail!");
+                Console.WriteLine("Your order received in the system");
+                Console.WriteLine("You will be notified by email about offers");
+                Console.WriteLine("thank you");
+                System.Threading.Thread.Sleep(5000);
+                MainScreen();
+            }
+
+            void newHostingUnit()
+            {
+                Console.Clear();
+                HostingUnit hu = new HostingUnit();
+                autoInfoUpdate(hu);
+                newBL.AddHostingUnit(hu);
                 Console.WriteLine("The new Hosting unit is register ");
                 Console.WriteLine("thank you");
+                System.Threading.Thread.Sleep(5000);
+                MainScreen();
             }
-
-
 
             void siteMangerScreen()
             {
-                //To-Do
+                Console.Clear();
+                Console.WriteLine("1) Customer list query");
+                Console.WriteLine("2) Hosting unit list query");
+                Console.WriteLine("3) Order list query");
+                Console.WriteLine("4) Host list query");
+                Console.WriteLine("5) Statistics");
+                Console.WriteLine("6) Main screen");
+
+                switch (getUserChoise(6))
+                {
+                    case 1:
+
+                        /*
+                          foreach (var item in newBL.GuestRequestOrderBy_Location()) {
+
+                            foreach (var item1 in item)
+                            {
+                                Console.WriteLine(item1.ToString());
+
+                            }
+                        }   
+                        */
+                         /*
+                        foreach (var item in newBL.GuestRequest_OrderBy_NumberOfVacationers())
+                        {
+
+                            foreach (var item1 in item)
+                            {
+                                Console.WriteLine(item1.ToString());
+
+                            }
+                        }    
+                        */
+
+                        foreach (var item in newBL.GuestRequestBy((GuestRequest gr) => gr.Area.Equals(Area.Jerusalem))) { Console.WriteLine(item.ToString()); }
+
+                        Console.ReadKey();
+                        MainScreen();
+
+                       // GuestRequest_OrderBy_NumberOfVacationers
+
+                        break;
+                    case 2:
+                  //      hostingUnitListQuery();
+                        break;
+                    case 3:
+                  //      orderListQuery();
+                        break;
+                    case 4:
+                  //      hostListQuery();
+                        break;
+                    case 5:
+                   //     statistics();
+                        break;
+                    case 6:
+                    default:
+                        MainScreen();
+                        break;
+                }
             }
 
-            int getUserChoise(int min, int max)
+
+            void deleteHustingUnit()
+            {
+                Console.WriteLine("Enter hosting unit key");
+                 newBL.UnitRemove(inputSarielNumber(10000000));
+            }
+
+            void updateHustingUnit()
+            {
+                Console.WriteLine("Enter hosting unit key");
+                HostingUnit hu = newBL.GetHostingUnit(inputSarielNumber(10000000));
+                newBL.UnitRemove(hu.HostingUnitKey);
+                autoInfoUpdate(hu);
+                newBL.AddHostingUnit(hu);
+                Console.WriteLine("Your order received in the system");
+                Console.WriteLine("You will be notified by email about offers");
+                Console.WriteLine("thank you");
+                System.Threading.Thread.Sleep(5000);
+                MainScreen();
+            }
+
+            #endregion
+
+            #region ///// Helper Functions /////
+
+            int getUserChoise(int choises)
             {
                 int result;
                 try
                 {
                     result = Convert.ToInt32(Console.ReadLine());
-                    if (result < min || result > max)
+                    if (result < 1 || result > choises)
                         throw new IndexOutOfRangeException();
                 }
                 catch (Exception)
                 {
                     Console.WriteLine("try again!");
-                    getUserChoise(min, max);
+                    result = getUserChoise(choises);
                 }
                 return result;
             }
 
-            
             void autoInfoUpdate<T>(T info)
             {
                 Console.Clear();
@@ -138,8 +267,27 @@ namespace PL
                     }
                 }
             }
+
+            int inputSarielNumber(int max) {
+                int result;
+                try
+                {
+                    result = Convert.ToInt32(Console.ReadLine());
+                    if (result < 0 || result > max)
+                        throw new IndexOutOfRangeException();
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("try again!");
+                    result= inputSarielNumber(max);
+                }
+                return result;
+            }
+
+            #endregion
         }
 
+        
     }
 }
 
