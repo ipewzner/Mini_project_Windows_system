@@ -129,6 +129,11 @@ namespace DAL
 
         }
 
+        public void DeleteHost(Host host)
+        {
+            throw new NotImplementedException();
+        }
+
         public string getserialGuestRequest()
         {
             String result = DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value;

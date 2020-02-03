@@ -23,6 +23,9 @@ namespace PLWPF
     {
         MyBl myBL = new MyBl();
 
+        /// <summary>
+        /// c-tor
+        /// </summary>
         public AddRequestWindow()
         {
             InitializeComponent();
@@ -37,11 +40,11 @@ namespace PLWPF
             ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Add the Request
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -73,6 +76,30 @@ namespace PLWPF
                 MessageBox.Show("Error! Make sure you dont miss any field!");
             }
 
+        }
+
+        /// <summary>
+        /// Cancel change in the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CancelChanges_PreviewMouseDown(object sender, RoutedEventArgs e)
+        {
+            FirstName.Text = "";
+            LastName.Text = "";
+            EntryDate.Text = "";
+            ReleaseDate.Text = "";
+            SubArea.Text = "";
+            mailAddress.Text = "";
+            AreaComboBox.SelectedItem = null;
+            ComboBoxPool.SelectedItem = null;
+            ComboBoxJacuzzi.SelectedItem = null;
+            ComboBoxAttrac.SelectedItem = null;
+            ComboBoxSpredBads.SelectedItem = null;
+            ComboBoxAirCondsner.SelectedItem = null;
+            ComboBoxGarden.SelectedItem = null;
+            ComboBoxSingog.SelectedItem = null;
+            ComboBoxTrensp.SelectedItem = null;
         }
     }
 }

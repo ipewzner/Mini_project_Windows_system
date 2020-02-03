@@ -7,11 +7,14 @@ namespace DAL
     public interface IDAL
     {
         bool AddOrderToList(Order order);
+        bool AddHostingUnitToList(HostingUnit hostingUnit);
 
         void UpdateOrder(int OrderKey, OrderStatus status);             
-        bool AddHostingUnitToList(HostingUnit hostingUnit);
-        bool DeleteHostingUnit(HostingUnit hostingUnit);           
-        bool UpdateHostingUnit(HostingUnit hostingUnit);           
+        bool UpdateHostingUnit(HostingUnit hostingUnit);
+
+        bool DeleteHostingUnit(HostingUnit hostingUnit);
+        bool DeleteHost(Host host);
+
 
         IEnumerable<HostingUnit> ReturnHostingUnitList(Func<HostingUnit, bool> predicate = null);  
         IEnumerable<GuestRequest> ReturnGuestRequestList(Func<GuestRequest, bool> predicate = null);    

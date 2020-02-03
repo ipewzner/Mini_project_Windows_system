@@ -3,17 +3,9 @@ using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PLWPF
 {
@@ -32,24 +24,23 @@ namespace PLWPF
             InitializeComponent();
             DataContext = this;
             Banks = myBL.GetBanks();
+
+            //if this not a new host
             if (hosts != null)
             {
                 host = hosts;
                 bankAccount = host.BankAccount;
                 FillTheFeilds();
+                this.deleteHost = deleteHost;
             }
             else { newHost = true; }
 
-            this.deleteHost = deleteHost;
-
-
             ContinueButton.Content = (deleteHost==true)?"Delete":"Save";
-
         }
 
         private void FillTheFeilds()
         {
-            //FamilyNameTextBox.Text= host.FamilyName;
+            FamilyName.Text= host.FamilyName;
             PrivateName.Text= host.PrivateName;
             PhoneNumber.Text= host.PhoneNumber ;
             MailAddress.Text= host.MailAddress ;

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BE;
-using System.Reflection;
 
 using DAL;
 using System.Net.Mail;
@@ -24,14 +23,17 @@ namespace BL
 
             if (myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
             {
-                myDAL.addGuestRequest(req);
-                return true;
+                try
+                {
+                    myDAL.addGuestRequest(req);
+                    return true;
+                } 
+                catch(Exception ex)
+                {
+                    throw new Exception("Fail to add this Guest Request! " + ex);
+                }
             }
-            else
-            {
-                return false;
-            }
-
+            else return false;
         }
 
         /// <summary>
@@ -95,9 +97,82 @@ namespace BL
             }
         }
 
+
+        /// <summary>
+        /// Add new Host
+        /// </summary>
+        public bool AddHost(Host host)
+        {
+            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
+            {
+                try
+                {
+                    myDAL.addHost(host);
+                    return true;
+                }     
+                catch(Exception ex)
+                {
+                    throw new Exception("Fail to add the host! "+ex);
+                }
+            }
+            else return false;
+         }
+
+        /// <summary>
+        /// Update Host
+        /// </summary>
+        /// <param name="host"></param>
+        public void UpdateHost(Host host)
+        {
+            try
+            {
+                RemoveHost(host);
+                AddHost(host);
+                MessageBox.Show($"Host: {host.FamilyName} updated Seccessfuly!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during Update {host.FamilyName} please try again later! " + ex);
+            }
+        }
+
+        /// <summary>
+        /// Remove Host and all is units
+        /// </summary>
+        /// <param name="host"></param>
         public void RemoveHost(Host host)
         {
-            throw new NotImplementedException();
+            //check if all the unit that blonge to this host can be deleted
+            foreach (var unit in myDAL.ReturnHostingUnitList(x => x.Owner.HostKey == host.HostKey))
+            {
+                if (!CanUnitBeDeleted(unit.HostingUnitKey))
+                {
+                    throw new Exception("Can't delete the Host, whan some order still open in some of the units!");
+                }
+            }
+
+            //delete all the unit that blonge to this host 
+            foreach (var unit in myDAL.ReturnHostingUnitList(x => x.Owner.HostKey == host.HostKey))
+            {
+                try
+                {
+                    UnitRemove(unit.HostingUnitKey);
+                }
+                catch (Exception ex)
+                {                                           
+                    throw new Exception("Fail to delete the Host " + ex);
+                }
+            }
+
+            //delete the host
+            try
+            {
+                myDAL.DeleteHost(host);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to delete the Host, but delete all is HostingUnit " + ex);
+            }
         }
 
         /// <summary>
@@ -128,11 +203,6 @@ namespace BL
             return (end > start) ? true : false;
         }
 
-        public void UpdateHost(Host host)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Return number of days from date until now
         /// </summary>
@@ -149,21 +219,7 @@ namespace BL
             return (int)(SecondDate - firstDate).TotalDays;
         }
 
-        /// <summary>
-        /// Sending Email to client 
-        /// </summary>
-        //public void SendMail(Order order)
-        //{
-        //    if (order.Status == OrderStatus.MailSent)
-        //    {
-        //        Console.WriteLine(
-        //            $"You order:\n" +
-        //            $"Create Date: {order.CreateDate}\n" +
-        //            $"Order Date: {order.OrderDate}\n" +
-        //            $"Hosting Unit Key: {order.HostingUnitKey}\n"
-        //            );
-        //    }
-        //}
+       
 
         /// <summary>
         /// Return number of orders that sent to client
@@ -204,13 +260,9 @@ namespace BL
         /// </summary>
         public void UnitRemove(int unitKey)
         {
-            foreach (var item in myDAL.ReturenAllOrders())
-            {
-                if ((item.HostingUnitKey == unitKey) && (item.Status == OrderStatus.UntreatedYet))
-                {
-                    throw new Exception("Can't delete this unit, whan some order still open!");
-                }
-            }
+            if(!CanUnitBeDeleted(unitKey))
+                throw new Exception("Can't delete this unit, whan some order still open!");
+
             HostingUnit hostingUnit = GetHostingUnit(Convert.ToInt32(unitKey));
             try
             {
@@ -218,8 +270,25 @@ namespace BL
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception("Fail to delete the unit! " + ex);
             }
+        }
+
+        /// <summary>
+        /// Can Unit Be Deleted? jest if no order that conected to this unit, have Status Untreated Yet!
+        /// </summary>
+        /// <param name="unitKey"></param>
+        /// <returns></returns>
+        private bool CanUnitBeDeleted(int unitKey)
+        {
+            foreach (var order in myDAL.ReturenAllOrders())
+            {
+                if ((order.HostingUnitKey == unitKey) && (order.Status == OrderStatus.UntreatedYet))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>
@@ -264,26 +333,7 @@ namespace BL
             return listOfUnits;
         }
 
-        /// <summary>
-        /// Add new Host
-        /// </summary>
-        public bool AddHost(Host host)
-        {
-            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
-            {
-                myDAL.addHost(host);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-
-
-
-        }
-
+       
         /// <summary>
         /// Return Guest Request By any requirment
         /// </summary>
