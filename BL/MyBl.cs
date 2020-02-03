@@ -20,6 +20,8 @@ namespace BL
         /// </summary>
         public bool AddGuestRequest(GuestRequest req)
         {
+            if (!IsDateCorrect(req.EntryDate, req.ReleaseDate))
+                throw new Exception("can't add this request, Release Date before Entry Date!");
 
             if (myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
             {

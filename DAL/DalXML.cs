@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using BE;
 using DataSource;
 using System.Net;
+using System.Windows.Forms;
 
 namespace DAL
 {
@@ -427,9 +428,17 @@ namespace DAL
                 }
                 catch (Exception)
                 {
-                    string xmlServerPath =
+                    try
+                    {
+                        string xmlServerPath =
                     @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
-                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                        wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("fail to downlode banks file");
+
+                    }
                 }
                 finally
                 {
@@ -488,7 +497,9 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Fail to return the Locel-Bank list " + ex);
+                   // throw new Exception("Fail to return the Locel-Bank list " + ex);
+                    MessageBox.Show("fail to downlode banks file");
+
                 }
             });
 

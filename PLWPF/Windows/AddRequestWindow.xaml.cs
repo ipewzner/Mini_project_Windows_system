@@ -47,7 +47,9 @@ namespace PLWPF
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (!myBL.IsDateCorrect(EntryDate.DisplayDate, ReleaseDate.DisplayDate))
+                MessageBox.Show("can't add this request, Release Date before Entry Date!");
+            else try
             {
                 GuestRequest guest = new GuestRequest();
                 guest.PrivateName = FirstName.Text;
@@ -101,5 +103,15 @@ namespace PLWPF
             ComboBoxSingog.SelectedItem = null;
             ComboBoxTrensp.SelectedItem = null;
         }
+
+        private void EntryDate_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            ReleaseDate.DisplayDateStart = EntryDate.DisplayDate;
+
+            ReleaseDate.BringIntoView();
+
+           // ReleaseDate.UpdateLayout();
+        }
+          
     }
 }
