@@ -20,22 +20,26 @@ namespace BL
         /// </summary>
         public bool AddGuestRequest(GuestRequest req)
         {
-            if (!IsDateCorrect(req.EntryDate, req.ReleaseDate))
-                throw new Exception("can't add this request, Release Date before Entry Date!");
-
-            if (myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
+            if (IsDateCorrect(req.EntryDate, req.ReleaseDate))
             {
+
                 try
                 {
                     myDAL.addGuestRequest(req);
                     return true;
-                } 
-                catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
-                    throw new Exception("Fail to add this Guest Request! " + ex);
+                    //throw new Exception("Fail to add this Guest Request! " + ex);
+                    return false;
                 }
             }
-            else return false;
+            else
+            {
+                //throw new Exception("can't add this request, Release Date before Entry Date!");
+                return false;
+            }
+            
         }
 
         /// <summary>
@@ -43,14 +47,9 @@ namespace BL
         /// </summary>
         public void AddHostingUnit(HostingUnit unit)
         {
-            if (myDAL.ReturnHostingUnitList((x) => x.HostingUnitKey == unit.HostingUnitKey).ToList().Count == 0)
-            {
+
                 myDAL.addHostingUnit(unit);
-            }
-            else
-            {
-                throw new Exception("This Hosting unit exist already!");
-            }
+
 
         }
 
@@ -219,9 +218,7 @@ namespace BL
         public int NumOfDays(DateTime firstDate, DateTime SecondDate)
         {
             return (int)(SecondDate - firstDate).TotalDays;
-        }
-
-       
+        }  
 
         /// <summary>
         /// Return number of orders that sent to client
@@ -673,7 +670,8 @@ namespace BL
         public void SendMail(Order order)
         {
             MailMessage mail = new MailMessage();
-            mail.To.Add(GuestRequestBy(x => x.GuestRequestKey == order.GuestRequestKey).First().MailAddress);
+            //mail.To.Add(GuestRequestBy(x => x.GuestRequestKey == order.GuestRequestKey).First().MailAddress);
+            mail.To.Add(GetGusetRequest(order.GuestRequestKey).MailAddress);
             mail.From = new MailAddress(GetHostingUnit(order.HostingUnitKey).Owner.MailAddress);
             mail.Subject = "Resort offeras as you request";
             mail.Body = "<p>You'r request: </p>" +

@@ -47,7 +47,15 @@ namespace PLWPF
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (!myBL.IsDateCorrect(EntryDate.DisplayDate, ReleaseDate.DisplayDate))
+            DateTime startDate = EntryDate.SelectedDate ?? DateTime.Now;
+            DateTime endDate = ReleaseDate.SelectedDate ?? DateTime.Now;
+
+            if(startDate < DateTime.Now)
+            {
+                MessageBox.Show("can't order ealier date than today");
+            }
+
+            if (!myBL.IsDateCorrect(startDate, endDate))
                 MessageBox.Show("can't add this request, Release Date before Entry Date!");
             else try
             {
@@ -55,8 +63,8 @@ namespace PLWPF
                 guest.PrivateName = FirstName.Text;
                 guest.FamilyName = LastName.Text;
 
-                guest.EntryDate = EntryDate.DisplayDate;
-                guest.ReleaseDate = ReleaseDate.DisplayDate;
+                guest.EntryDate = startDate;
+                guest.ReleaseDate = endDate;
                 guest.SubArea = SubArea.Text;
                 guest.MailAddress = mailAddress.Text;
                 guest.Area = (Area)AreaComboBox.SelectedItem;
@@ -70,12 +78,13 @@ namespace PLWPF
                 guest.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
 
 
-                myBL.AddGuestRequest(guest);
+                bool check = myBL.AddGuestRequest(guest);
+                if(check)
                 MessageBox.Show("Recived Seccessfully");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error! Make sure you dont miss any field!");
+                MessageBox.Show("Error! Make sure you dont miss any field and !");
             }
 
         }

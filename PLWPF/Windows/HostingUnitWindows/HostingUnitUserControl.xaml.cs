@@ -145,6 +145,10 @@ namespace PLWPF.Windows.HostingUnitWindows
                 hostingUnit.SingogNaerBy = (Requirements)ComboBoxSingog.SelectedItem;
                 hostingUnit.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
 
+                myBL.AddHostingUnit(hostingUnit);
+                MessageBox.Show("Adding Hosting Unit Secsessfully!");
+                
+
                 try
                 {
                     if (newUnit == false)

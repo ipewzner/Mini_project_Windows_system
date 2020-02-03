@@ -68,7 +68,6 @@
     <Compile Include="Password.xaml.cs">
       <DependentUpon>Password.xaml</DependentUpon>
     </Compile>
-    <Compile Include="preCode.cs" />
     <Compile Include="Windows\HostingUnitWindows\HostingUnitUserControl.xaml.cs">
       <DependentUpon>HostingUnitUserControl.xaml</DependentUpon>
     </Compile>

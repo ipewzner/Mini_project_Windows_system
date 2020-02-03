@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestRequests>
-  <lastSerial>10000024</lastSerial>
+  <lastSerial>1000000910000010</lastSerial>
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Area>Jerusalem</Area>
     <SubArea>old city</SubArea>
@@ -112,13 +112,85 @@
     <frisider>Necessary</frisider>
     <SingogNaerBy>Possible</SingogNaerBy>
     <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
-    <GuestRequestKey>10000024</GuestRequestKey>
+    <GuestRequestKey>10000007</GuestRequestKey>
     <PrivateName>p</PrivateName>
     <FamilyName>p</FamilyName>
     <Status>Open</Status>
-     <MailAddress>ipewzner@g.jct.ac.il</MailAddress>
+    <MailAddress>ipewzner@g.jct.ac.il</MailAddress>
     <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
     <EntryDate>2020-02-02T00:00:00+02:00</EntryDate>
     <ReleaseDate>2020-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>dfgdf</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>NotNecessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000008</GuestRequestKey>
+    <PrivateName>dfgdfggdfg</PrivateName>
+    <FamilyName>d</FamilyName>
+    <MailAddress>fgdf</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-04T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-29T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>dfgfd</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000009</GuestRequestKey>
+    <PrivateName>dfgdf</PrivateName>
+    <FamilyName>dfgdf</FamilyName>
+    <MailAddress>gdfg</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-14T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-29T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>fdgg</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <GuestRequestKey>10000010</GuestRequestKey>
+    <PrivateName>dfg</PrivateName>
+    <FamilyName>fdfg</FamilyName>
+    <MailAddress>dfg</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-05T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-15T00:00:00</ReleaseDate>
   </GuestRequest>
 </GuestRequests>

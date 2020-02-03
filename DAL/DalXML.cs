@@ -14,8 +14,8 @@ namespace DAL
 {
     public class DalXML 
     {
-        private static int serialGuestRequest;
-        private static int serialOrder;
+        private static Int64 serialGuestRequest;
+        private static Int64 serialOrder;
        // private static double commision;  //10 shekels -- zol meod public DalXML()
        // private static string serialHostingUnit;
 
@@ -24,15 +24,16 @@ namespace DAL
 
             GetAndStoreBankInfo();
 
-            serialOrder = Int32.Parse(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
-            serialGuestRequest = Int32.Parse(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
+            serialOrder = Convert.ToInt64(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
+            serialGuestRequest = Convert.ToInt64(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
        
         }
 
         public bool addGuestRequest(GuestRequest gr)
         {
             XElement guestRequestElement = XElement.Parse(gr.ToXMLstring());
-            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value = guestRequestElement.Element("GuestRequestKey").Value;
+            guestRequestElement.Element("GuestRequestKey").Value = (++serialGuestRequest).ToString();
+            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value += serialGuestRequest.ToString(); 
             DataSource.DataSourceXML.SaveGuestRequests();
             DataSource.DataSourceXML.GuestRequests.Add(guestRequestElement);
             DataSource.DataSourceXML.SaveGuestRequests();
@@ -67,11 +68,11 @@ namespace DAL
             //    //throw new Exception("order alraedy exist");
             //    return false;
             //}
-            serialOrder = Int32.Parse(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
-            neworder.OrderKey = ++serialOrder;
-            DataSource.DataSourceXML.Orders.Add(neworder.ToXML());
+            XElement OrderElement = XElement.Parse(neworder.ToXMLstring());
+            OrderElement.Element("OrderKey").Value = (++serialOrder).ToString();
+            DataSource.DataSourceXML.Orders.Element("lastSerial").Value += serialOrder.ToString();
+            DataSource.DataSourceXML.Orders.Add(OrderElement);
             DataSource.DataSourceXML.SaveOrders();
-            DataSource.DataSourceXML.Orders.Element("lastSerial").Value = neworder.OrderKey.ToString();
             DataSource.DataSourceXML.SaveOrders();
             return true;
         }
@@ -436,7 +437,7 @@ namespace DAL
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("fail to downlode banks file");
+                        Console.WriteLine(ex.Message);
 
                     }
                 }
@@ -498,7 +499,7 @@ namespace DAL
                 catch (Exception ex)
                 {
                    // throw new Exception("Fail to return the Locel-Bank list " + ex);
-                    MessageBox.Show("fail to downlode banks file");
+                    //MessageBox.Show("fail to downlode banks file");
 
                 }
             });
