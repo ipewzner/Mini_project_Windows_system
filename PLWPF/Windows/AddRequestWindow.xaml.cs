@@ -30,14 +30,14 @@ namespace PLWPF
         {
             InitializeComponent();
             AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area)).Cast<BE.Area>();
-            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
         }
 
         /// <summary>
@@ -68,14 +68,14 @@ namespace PLWPF
                 guest.SubArea = SubArea.Text;
                 guest.MailAddress = mailAddress.Text;
                 guest.Area = (Area)AreaComboBox.SelectedItem;
-                guest.Pool = (Requirements)ComboBoxPool.SelectedItem;
-                guest.Jacuzzi = (Requirements)ComboBoxJacuzzi.SelectedItem;
-                guest.ChildrensAttractions = (Requirements)ComboBoxAttrac.SelectedItem;
-                guest.SpredBads = (Requirements)ComboBoxSpredBads.SelectedItem;
-                guest.AirCondsner = (Requirements)ComboBoxAirCondsner.SelectedItem;
-                guest.Garden = (Requirements)ComboBoxGarden.SelectedItem;
-                guest.SingogNaerBy = (Requirements)ComboBoxSingog.SelectedItem;
-                guest.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
+                guest.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
+                guest.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
+                guest.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
+                guest.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
+                guest.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
+                guest.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
+                guest.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
+                guest.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
 
 
                 bool check = myBL.AddGuestRequest(guest);

@@ -495,7 +495,7 @@ namespace BL
                 { Area.South , GuestRequestBy().Count(p => p.Area == Area.South) }
             };
         }
-        public Dictionary<String, int> GuestRequestPerRquirement(Requirements requirements)
+        public Dictionary<String, int> GuestRequestPerRquirement(GestRequirements requirements)
         {
             return new Dictionary<String, int>
             {

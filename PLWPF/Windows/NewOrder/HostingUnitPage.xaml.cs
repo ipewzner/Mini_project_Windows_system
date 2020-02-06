@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 using BE;
 using BL;
 
@@ -58,19 +44,19 @@ namespace PLWPF.Windows
             //}
             
             adultsTextBox.Text = hostingUnit.Adults.ToString();
-            airCondsnerTextBox.Text = hostingUnit.AirCondsner.ToString();
+            airCondsnerTextBox.Text = ((UnitRequirements)hostingUnit.AirCondsner).ToString();
             areaTextBox.Text = hostingUnit.Area.ToString();
-            childrenTextBox.Text = hostingUnit.Children.ToString();
-            childrensAttractionsTextBox.Text = hostingUnit.ChildrensAttractions.ToString();
-            frisiderTextBox.Text = hostingUnit.frisider.ToString();
-            gardenTextBox.Text = hostingUnit.Garden.ToString();
-            hostingTypeTextBox.Text = hostingUnit.HostingType.ToString();
-            jacuzziTextBox.Text = hostingUnit.Jacuzzi.ToString();
-            naerPublicTrensportionTextBox.Text = hostingUnit.NaerPublicTrensportion.ToString();
-            poolTextBox.Text = hostingUnit.Pool.ToString();
-            singogNaerByTextBox.Text = hostingUnit.SingogNaerBy.ToString();
-            spredBadsTextBox.Text = hostingUnit.SpredBads.ToString();
-            //subAreaTextBox.Text = hostingUnit.SubArea.ToString();
+            childrenTextBox.Text = ((UnitRequirements)hostingUnit.Children).ToString();
+            childrensAttractionsTextBox.Text = ((UnitRequirements)hostingUnit.ChildrensAttractions).ToString();
+            frisiderTextBox.Text = ((UnitRequirements)hostingUnit.frisider).ToString();
+            gardenTextBox.Text = ((UnitRequirements)hostingUnit.Garden).ToString();
+            hostingTypeTextBox.Text = ((UnitRequirements)hostingUnit.HostingType).ToString();
+            jacuzziTextBox.Text = ((UnitRequirements)hostingUnit.Jacuzzi).ToString();
+            naerPublicTrensportionTextBox.Text = ((UnitRequirements)hostingUnit.NaerPublicTrensportion).ToString();
+            poolTextBox.Text = ((UnitRequirements)hostingUnit.Pool).ToString();
+            singogNaerByTextBox.Text = ((UnitRequirements)hostingUnit.SingogNaerBy).ToString();
+            spredBadsTextBox.Text = ((UnitRequirements)hostingUnit.SpredBads).ToString();
+           // subAreaTextBox.Text = hostingUnit.SubArea.ToString();
         }
     }  
 }

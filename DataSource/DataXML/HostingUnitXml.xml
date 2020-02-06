@@ -504,4 +504,142 @@
     </Owner>
     <HostingUnitName>rege</HostingUnitName>
   </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>South</Area>
+    <SubArea>renaana</SubArea>
+    <HostingType>Hotel</HostingType>
+    <Adults>2</Adults>
+    <Children>1</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <Owner>
+      <HostKey>55555555</HostKey>
+      <PrivateName>manster</PrivateName>
+      <FamilyName>frankinstin</FamilyName>
+      <PhoneNumber>666</PhoneNumber>
+      <MailAddress>hall</MailAddress>
+      <PasswordKey>0</PasswordKey>
+      <BankAccount>
+        <BankNumber>852</BankNumber>
+        <BankName />
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress />
+        <BranchCity />
+        <BankAccountNumber>85</BankAccountNumber>
+      </BankAccount>
+    </Owner>
+    <HostingUnitName>gordon hotel</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>South</Area>
+    <SubArea>renaana</SubArea>
+    <HostingType>Hotel</HostingType>
+    <Adults>2</Adults>
+    <Children>1</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <Owner>
+      <HostKey>55555555</HostKey>
+      <PrivateName>manster</PrivateName>
+      <FamilyName>frankinstin</FamilyName>
+      <PhoneNumber>666</PhoneNumber>
+      <MailAddress>hall</MailAddress>
+      <PasswordKey>0</PasswordKey>
+      <BankAccount>
+        <BankNumber>852</BankNumber>
+        <BankName />
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress />
+        <BranchCity />
+        <BankAccountNumber>85</BankAccountNumber>
+      </BankAccount>
+    </Owner>
+    <HostingUnitName>gordon hotel</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>fddj</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>5</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <PasswordKey>0</PasswordKey>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>meroko</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>fddj</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>5</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <PasswordKey>0</PasswordKey>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>meroko</HostingUnitName>
+  </HostingUnit>
 </HostingUnits>

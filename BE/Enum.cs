@@ -27,10 +27,13 @@ namespace BE
         Zimmer, Hotel, Camping, RentingRoom
     }
 
-    public enum Requirements 
+    public enum GestRequirements 
     {
         Necessary, Possible, NotNecessary
     }
-    
+    public enum UnitRequirements
+    {
+        Available, NotAvailable
+    }
 
 }
