@@ -3,61 +3,101 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
-      
       mc:Ignorable="d" 
+      GridViewColumnHeader.Click="ListViewColumnHeaderClick"
       d:DesignHeight="704.4" d:DesignWidth="1000"
       Title="GuestRequestQueryPage">
 
+
+
+
+
     <Grid  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+
         <ListView Name="GuestRequestListView"  SelectionChanged="GuestRequestListView_SelectionChanged" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView.Resources>
+                <Style TargetType="Grid" x:Key="HeaderGridStyle">
+                    <Setter Property="Height" Value="20" />
+                </Style>
 
+                <Style TargetType="TextBlock" x:Key="HeaderTextBlockStyle">
+                    <Setter Property="Margin" Value="5,0,0,0" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                </Style>
+
+                <Style TargetType="Path" x:Key="HeaderPathStyle">
+                    <Setter Property="StrokeThickness" Value="1" />
+                    <Setter Property="Fill" Value="Gray" />
+                    <Setter Property="Width" Value="20" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="Margin" Value="5,0,5,0" />
+                    <Setter Property="SnapsToDevicePixels" Value="True" />
+                </Style>
+
+                <DataTemplate x:Key="HeaderTemplateDefault">
+                    <Grid Style="{StaticResource HeaderGridStyle}">
+                        <TextBlock Text="{Binding }" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </Grid>
+                </DataTemplate>
+
+
+                <DataTemplate x:Key="HeaderTemplateArrowUp">
+                    <Grid Style="{StaticResource HeaderGridStyle}">
+                        <Path Data="M 7,3 L 13,3 L 10,0 L 7,3" Style="{StaticResource HeaderPathStyle}" />
+                        <TextBlock Text="{Binding }" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </Grid>
+                </DataTemplate>
+
+
+                <DataTemplate x:Key="HeaderTemplateArrowDown">
+                    <Grid Style="{StaticResource HeaderGridStyle}">
+                        <Path Data="M 7,0 L 10,3 L 13,0 L 7,0"  Style="{StaticResource HeaderPathStyle}" />
+                        <TextBlock Text="{Binding }" Style="{StaticResource HeaderTextBlockStyle}" />
+                    </Grid>
+                </DataTemplate>
+
+            </ListView.Resources>
             <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Area" Width="50" DisplayMemberBinding="{Binding Area}" />
-                        <GridViewColumn Header="FamilyName" Width="50" DisplayMemberBinding="{Binding FamilyName}" />
-                        <GridViewColumn Header="PrivateName" Width="50" DisplayMemberBinding="{Binding PrivateName}" />
-                        <GridViewColumn Header="GuestRequestKey" Width="50" DisplayMemberBinding="{Binding GuestRequestKey}" />
+                <GridView>
 
-                        <GridViewColumn Header="MailAddress" Width="50" >  
-                                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                    <TextBlock Text="{Binding MailAddress}"  TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
-                            </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding Status}" />
-                        <GridViewColumn Header="RegistrationDate" Width="50" DisplayMemberBinding="{Binding RegistrationDate}" />
-                        <GridViewColumn Header="EntryDate" Width="50" DisplayMemberBinding="{Binding EntryDate }" />
-                        <GridViewColumn Header="ReleaseDate" Width="50" DisplayMemberBinding="{Binding ReleaseDate}" />
 
-                        <GridViewColumn Header="SubArea"                  Width="50"         DisplayMemberBinding="{Binding   SubArea                }" />
-                        <GridViewColumn Header="HostingType"              Width="50"         DisplayMemberBinding="{Binding   HostingType            }" />
-                        <GridViewColumn Header="Adults"                   Width="50"         DisplayMemberBinding="{Binding   Adults                 }" />
-                        <GridViewColumn Header="Children"                 Width="50"         DisplayMemberBinding="{Binding   Children               }" />
-                        <GridViewColumn Header="Pool"                     Width="50"         DisplayMemberBinding="{Binding   Pool                   }" />
-                        <GridViewColumn Header="Jacuzzi"                  Width="50"         DisplayMemberBinding="{Binding   Jacuzzi                }" />
-                        <GridViewColumn Header="Garden"                   Width="50"         DisplayMemberBinding="{Binding   Garden                 }" />
-                        <GridViewColumn Header="ChildrensAttractions"     Width="50"         DisplayMemberBinding="{Binding   ChildrensAttractions   }" />
-                        <GridViewColumn Header="SpredBads"                Width="50"         DisplayMemberBinding="{Binding   SpredBads              }" />
-                        <GridViewColumn Header="AirCondsner"              Width="50"         DisplayMemberBinding="{Binding   AirCondsner            }" />
-                        <GridViewColumn Header="frisider"                 Width="50"         DisplayMemberBinding="{Binding   frisider               }" />
-                        <GridViewColumn Header="SingogNaerBy"             Width="50"         DisplayMemberBinding="{Binding   SingogNaerBy           }" />
-                        <GridViewColumn Header="NaerPublicTrensportion"   Width="50"         DisplayMemberBinding="{Binding   NaerPublicTrensportion }" />
-                        
-                        
-                    </GridView>
-                </ListView.View>
-                <ListView.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.HeaderTemplate>
+                    <GridViewColumn Header="Area" Width="50"  DisplayMemberBinding="{Binding Area}" />
+                    <GridViewColumn Header="FamilyName" Width="50" DisplayMemberBinding="{Binding FamilyName}" />
+                    <GridViewColumn Header="PrivateName" Width="50" DisplayMemberBinding="{Binding PrivateName}" />
+                    <GridViewColumn Header="GuestRequestKey" Width="50" DisplayMemberBinding="{Binding GuestRequestKey}" />
+
+                    <GridViewColumn Header="MailAddress" Width="50" >
+                        <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock FontWeight="Bold" FontSize="14" Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding MailAddress}"  TextDecorations="Underline" Foreground="Blue" Cursor="Hand" />
                             </DataTemplate>
-                        </GroupStyle.HeaderTemplate>
-                    </GroupStyle>
-                </ListView.GroupStyle>
-            
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                    <GridViewColumn Header="Status"                   Width="50"         DisplayMemberBinding="{Binding   Status                 }" />
+                    <GridViewColumn Header="RegistrationDate"         Width="50"         DisplayMemberBinding="{Binding   RegistrationDate       }" />
+                    <GridViewColumn Header="EntryDate"                Width="50"         DisplayMemberBinding="{Binding   EntryDate              }" />
+                    <GridViewColumn Header="ReleaseDate"              Width="50"         DisplayMemberBinding="{Binding   ReleaseDate            }" />
+                    <GridViewColumn Header="SubArea"                  Width="50"         DisplayMemberBinding="{Binding   SubArea                }" />
+                    <GridViewColumn Header="HostingType"              Width="50"         DisplayMemberBinding="{Binding   HostingType            }" />
+                    <GridViewColumn Header="Adults"                   Width="50"         DisplayMemberBinding="{Binding   Adults                 }" />
+                    <GridViewColumn Header="Children"                 Width="50"         DisplayMemberBinding="{Binding   Children               }" />
+                    <GridViewColumn Header="Pool"                     Width="50"         DisplayMemberBinding="{Binding   Pool                   }" />
+                    <GridViewColumn Header="Jacuzzi"                  Width="50"         DisplayMemberBinding="{Binding   Jacuzzi                }" />
+                    <GridViewColumn Header="Garden"                   Width="50"         DisplayMemberBinding="{Binding   Garden                 }" />
+                    <GridViewColumn Header="ChildrensAttractions"     Width="50"         DisplayMemberBinding="{Binding   ChildrensAttractions   }" />
+                    <GridViewColumn Header="SpredBads"                Width="50"         DisplayMemberBinding="{Binding   SpredBads              }" />
+                    <GridViewColumn Header="AirCondsner"              Width="50"         DisplayMemberBinding="{Binding   AirCondsner            }" />
+                    <GridViewColumn Header="frisider"                 Width="50"         DisplayMemberBinding="{Binding   frisider               }" />
+                    <GridViewColumn Header="SingogNaerBy"             Width="50"         DisplayMemberBinding="{Binding   SingogNaerBy           }" />
+                    <GridViewColumn Header="NaerPublicTrensportion"   Width="50"         DisplayMemberBinding="{Binding   NaerPublicTrensportion }" />
+
+
+                </GridView>
+            </ListView.View>
+
+
         </ListView>
-        </Grid>
+    </Grid>
 </Page>
