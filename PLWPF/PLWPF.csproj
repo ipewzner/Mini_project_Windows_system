@@ -71,6 +71,21 @@
     <Compile Include="Windows\HostingUnitWindows\HostingUnitUserControl.xaml.cs">
       <DependentUpon>HostingUnitUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\ShowInfoWindows\HostInfoPage.xaml.cs">
+      <DependentUpon>HostInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ShowInfoWindows\OrderInfoPage.xaml.cs">
+      <DependentUpon>OrderInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ShowInfoWindows\RequestInfoPage.xaml.cs">
+      <DependentUpon>RequestInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ShowInfoWindows\ShowInfoWindow.xaml.cs">
+      <DependentUpon>ShowInfoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ShowInfoWindows\UnitInfoPage.xaml.cs">
+      <DependentUpon>UnitInfoPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Statistics\GuestRequestQueryPage.xaml.cs">
       <DependentUpon>GuestRequestQueryPage.xaml</DependentUpon>
     </Compile>
@@ -117,6 +132,26 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\HostingUnitWindows\HostingUnitUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ShowInfoWindows\HostInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ShowInfoWindows\OrderInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ShowInfoWindows\RequestInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ShowInfoWindows\ShowInfoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ShowInfoWindows\UnitInfoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -234,6 +269,9 @@
       <Project>{bf5157d4-7cff-4af9-8517-27f0a2a7242f}</Project>
       <Name>BL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="Windows\SplashScreen1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
