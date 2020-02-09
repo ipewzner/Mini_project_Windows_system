@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="PLWPF.Windows.Statistics.GraphBarsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="500">
+    <Grid x:Name="bars" HorizontalAlignment="Stretch"   VerticalAlignment="Stretch" >
+         <Grid.ColumnDefinitions>                     
+ 
+            <ColumnDefinition x:Name="Column0" Width="{Binding first}" />
+            <ColumnDefinition x:Name="Column1"  Width="{Binding second}" />
+            <ColumnDefinition x:Name="Column2" Width="{Binding third}" />
+            <ColumnDefinition x:Name="Column3" Width="{Binding fourth}" />
+            <ColumnDefinition x:Name="Column4" Width="{Binding fifth}" />
+        </Grid.ColumnDefinitions>
+
+        <Rectangle HorizontalAlignment="Stretch" Grid.Column="0" Fill="Green"   VerticalAlignment="Stretch"/>
+        <Rectangle HorizontalAlignment="Stretch" Grid.Column="1" Fill="Red"  VerticalAlignment="Stretch"/>
+        <Rectangle HorizontalAlignment="Stretch" Grid.Column="2" Fill="Blue"  VerticalAlignment="Stretch" />
+        <Rectangle HorizontalAlignment="Stretch" Grid.Column="3" Fill="Violet"   VerticalAlignment="Stretch"/>
+        <Rectangle HorizontalAlignment="Stretch" Grid.Column="4" Fill="Orange"  VerticalAlignment="Stretch" />
+
+        <Label x:Name="Labe1"  HorizontalAlignment="Center" Grid.Column="0"  VerticalAlignment="Center" />
+        <Label x:Name="Labe2"  HorizontalAlignment="Center" Grid.Column="1"  VerticalAlignment="Center" />
+        <Label x:Name="Labe3"  HorizontalAlignment="Center" Grid.Column="2"  VerticalAlignment="Center" />
+        <Label x:Name="Labe4"  HorizontalAlignment="Center" Grid.Column="3"  VerticalAlignment="Center" />
+        <Label x:Name="Labe5"  HorizontalAlignment="Center" Grid.Column="4"  VerticalAlignment="Center" />
+    </Grid>
+</UserControl>
+
+
+

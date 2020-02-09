@@ -1,18 +1,6 @@
-﻿using BL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using BE;
+using BL;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PLWPF.Windows.Statistics
 {
@@ -26,8 +14,16 @@ namespace PLWPF.Windows.Statistics
         public HostingUnitQueryPage()
         {
             InitializeComponent();
-            PerArea.Content = new ShowPerArea(myBL.HostingUnitPerArea());
+             PerArea.Content = new ShowPerArea(myBL.HostingUnitPerArea());
+            var v = myBL.HostingUnitPerArea();
+            float sum = v[Area.Jerusalem] + v[Area.Center] + v[Area.North] + v[Area.South];
+            float avr=sum / 100;
 
+            PerAreaGraphBar.Content=new GraphBarsUserControl(
+                v[Area.Jerusalem] / avr,
+                v[Area.Center] / avr,
+                v[Area.North] / avr,
+                v[Area.South] / avr);
         }
 
         //

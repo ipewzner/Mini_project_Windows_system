@@ -86,6 +86,12 @@
     <Compile Include="Windows\ShowInfoWindows\UnitInfoPage.xaml.cs">
       <DependentUpon>UnitInfoPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\Statistics\checker.xaml.cs">
+      <DependentUpon>checker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Statistics\GraphBarsUserControl.xaml.cs">
+      <DependentUpon>GraphBarsUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Statistics\GuestRequestQueryPage.xaml.cs">
       <DependentUpon>GuestRequestQueryPage.xaml</DependentUpon>
     </Compile>
@@ -152,6 +158,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\ShowInfoWindows\UnitInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Statistics\checker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\Statistics\GraphBarsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
