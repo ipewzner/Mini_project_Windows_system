@@ -23,11 +23,11 @@
     <PhoneNumber>054-6666666</PhoneNumber>
     <MailAddress>hotel@gmai.com</MailAddress>
     <BankAccount>
-      <BankNumber>123</BankNumber>
-      <BankName>poalim</BankName>
-      <BranchNumber>432</BranchNumber>
+      <BankNumber>54</BankNumber>
+      <BankName>בנק ירושלים בע"מ</BankName>
+      <BranchNumber>96</BranchNumber>
       <BranchAddress>jefo 121</BranchAddress>
-      <BranchCity>jeruselm</BranchCity>
+      <BranchCity>כרמיאל</BranchCity>
       <BankAccountNumber>11111112</BankAccountNumber>
     </BankAccount>
     <CollectionClearance />
