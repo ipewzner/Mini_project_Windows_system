@@ -93,28 +93,25 @@ namespace PLWPF.Windows
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Fail to send the Email\n" + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("Fail to send the Email\n", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
-
-
-
-
-
-                    try
+                try
                 {
                     myBL.SendMail(order);                    
                 }
                 catch(Exception ex)
                 {
-                    throw new Exception("Can't sand mail ", ex);
+                    MessageBox.Show("Can't sand mail");
+                    Console.WriteLine("Can't sand mail" + ex.Message);
                 }
               MessageBox.Show("Order Created Seccessfuly!");
                 this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error! please try again later "+ex);
+                MessageBox.Show("Error! please try again later");
+                Console.WriteLine(ex.Message);
                 this.Close();
             }
 

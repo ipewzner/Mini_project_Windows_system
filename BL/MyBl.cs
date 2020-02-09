@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BE;
-
 using DAL;
 using System.Net.Mail;
 using System.Net;
@@ -127,8 +126,7 @@ namespace BL
         {
             try
             {
-                RemoveHost(host);
-                AddHost(host);
+               myDAL.UpdateHost(host);
                 MessageBox.Show($"Host: {host.FamilyName} updated Seccessfuly!");
             }
             catch (Exception ex)
@@ -148,6 +146,7 @@ namespace BL
             {
                 if (!CanUnitBeDeleted(unit.HostingUnitKey))
                 {
+                    myDAL.DeleteHost(host);
                     throw new Exception("Can't delete the Host, whan some order still open in some of the units!");
                 }
             }
@@ -298,8 +297,8 @@ namespace BL
         {
             try
             {
-                UnitRemove(hostingUnit.HostingUnitKey);
-                AddHostingUnit(hostingUnit);
+
+               myDAL.UpdateHostingUnit(hostingUnit);
                 MessageBox.Show($"Hosting unit: {hostingUnit.HostingUnitName} updated Seccessfuly!");
             }
             catch (Exception ex)

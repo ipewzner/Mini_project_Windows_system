@@ -1,4 +1,5 @@
 ﻿using BE;
+using BE;
 using BL;
 using System;
 using System.Linq;
@@ -123,7 +124,8 @@ namespace PLWPF.Windows.HostingUnitWindows
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Fail to delete unit \n " + ex);
+                        MessageBox.Show("Fail to delete unit");
+                        Console.WriteLine("Fail to delete unit \n " + ex);
                     }
                 }
             }
@@ -149,21 +151,24 @@ namespace PLWPF.Windows.HostingUnitWindows
                 hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
                 hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
 
-                myBL.AddHostingUnit(hostingUnit);
-                MessageBox.Show("Adding Hosting Unit Secsessfully!");
-                
-
-                try
+                if (newUnit == true)
                 {
-                    if (newUnit == false)
+                    myBL.AddHostingUnit(hostingUnit);
+                    MessageBox.Show("Adding Hosting Unit Secsessfully!");
+                }
+                else
+                {
+                    try
+                    {
                         myBL.UpdateUnit(hostingUnit);
-                    else
-                        myBL.AddHostingUnit(hostingUnit);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"cannot add or update {hostingUnit.HostingUnitName}");
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex);
-                }
+
 
             }
         }

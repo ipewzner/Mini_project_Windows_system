@@ -75,7 +75,8 @@ namespace PLWPF
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Problem with the password \n" + ex);
+                MessageBox.Show("Problem with the password \n");
+                Console.WriteLine(ex.Message);
             }
         }
 
