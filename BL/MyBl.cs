@@ -21,8 +21,8 @@ namespace BL
         /// </summary>
         public bool AddGuestRequest(GuestRequest req)
         {
-
-            if (myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0)
+            //myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0
+            if (true)
             {
                 myDAL.addGuestRequest(req);
                 return true;
