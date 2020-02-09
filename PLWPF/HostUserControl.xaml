@@ -41,8 +41,6 @@
 
         <Label Content="Bank Account Number" HorizontalAlignment="Left" Margin="361,129,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="BankAccountNumber" HorizontalAlignment="Left" Height="23" Margin="361,155,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-
-        <Button Content="Register" HorizontalAlignment="Left" Margin="364,300,0,0" VerticalAlignment="Top" Width="118" Click="Register_Click"/>
         <Label x:Name="label" Content="{Binding check}" HorizontalAlignment="Left" Margin="418,26,0,0" VerticalAlignment="Top"/>
         <ComboBox x:Name="BranchNumber_ComboBox" HorizontalAlignment="Left" Margin="221,155,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="BranchNumber_ComboBox_SelectionChanged"/>
 

@@ -10,15 +10,15 @@
     <Grid>
         <Label Content="LOG-IN" FontSize="36" HorizontalAlignment="Left" Margin="321,39,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.563,0.549"/>
         <ComboBox x:Name="HostComboBox" IsEditable="True" IsReadOnly="True"  Text="Select Host"  HorizontalAlignment="Left" Margin="329,122,0,0" VerticalAlignment="Top" Width="120"  RenderTransformOrigin="1.106,2.024" SelectionChanged="Host_SelectionChanged"/>
-        <Button x:Name="ENTER_Button" Content="ENTER" IsEnabled="False" HorizontalAlignment="Left" Margin="329,225,0,0" VerticalAlignment="Top" Width="120" Click="ENTER_Click"/>
-        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="329,255,0,0" VerticalAlignment="Top" Width="120" Click="Register_Click"/>
+        <Button x:Name="ENTER_Button" Content="ENTER" IsEnabled="False" HorizontalAlignment="Left" Margin="329,243,0,0" VerticalAlignment="Top" Width="120" Click="ENTER_Click"/>
+        <Button Content="REGISTER" HorizontalAlignment="Left" Margin="329,273,0,0" VerticalAlignment="Top" Width="120" Click="Register_Click"/>
 
         <Label Content="Password" HorizontalAlignment="Left" Margin="329,149,0,0" VerticalAlignment="Top" Width="120"/>
 
         <TextBlock x:Name="ForgetYourPassword" IsEnabled="False"
                    Text="Forget you'r password?"  VerticalAlignment="Center"
-                   PreviewMouseDown="ForgetYourPassword_PreviewMouseDown" Margin="329,196,331.6,195"/>
-        <plwpf:Password x:Name="Password"  Margin="329,172,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164"/>
+                   PreviewMouseDown="ForgetYourPassword_PreviewMouseDown" Margin="329,208,332,193" Height="20"/>
+        <plwpf:Password x:Name="Password"  Margin="329,172,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="164" Height="36"/>
 
 
     </Grid>

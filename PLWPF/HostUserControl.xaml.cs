@@ -1,5 +1,6 @@
 ﻿using BE;
 using BL;
+using PLWPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,12 +46,12 @@ namespace PLWPF
             PhoneNumber.Text= host.PhoneNumber ;
             MailAddress.Text= host.MailAddress ;
             
-            Bank_ComboBox.Text=bankAccount.BankName;
-            //BranchCity_ComboBox.Text= bankAccount.BranchCity;
-            //BranchAddress_ComboBox.Text= bankAccount.BranchAddress;
-            BankNumber.Text= bankAccount.BankNumber             .ToString()   ;
-            //BranchNumber.Text= bankAccount.BranchNumber         .ToString()   ;
-            BankAccountNumber.Text=bankAccount.BankAccountNumber.ToString()   ;
+            Bank_ComboBox.SelectedItem= bankAccount.BankNumber;
+            BranchCity.Text= bankAccount.BranchCity;
+            //BranchAddress.Text= bankAccount.BranchAddress;
+            BankNumber.Text= bankAccount.BankNumber             .ToString();
+            BranchNumber_ComboBox.SelectedItem = bankAccount.BranchNumber.ToString();
+            BankAccountNumber.Text=bankAccount.BankAccountNumber.ToString();
         }
 
         /// <summary>
@@ -91,58 +92,80 @@ namespace PLWPF
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
-            if (deleteHost)
+            if (IsValidEmail(MailAddress.Text))
             {
-                try { myBL.RemoveHost(host); }
-                catch (Exception ex) { throw new Exception(""+ex); }
-                MessageBox.Show("Host remove seccessfully");
+                if (deleteHost)
+                {
+                    try { myBL.RemoveHost(host); }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Unable to delete host");
+                        Console.WriteLine("Unable to delete host" + ex.Message);
+                    }
+                    MessageBox.Show("Host remove seccessfully");
+                }
+                else
+                {
+                    try
+                    {
+                        if (newHost)
+                        {
+                            host = new Host();
+                            bankAccount = new BankAccount();
+                            //host.FamilyName = FamilyNameTextBox.Text;
+
+                        }
+                        host.FamilyName = FamilyName.Text;
+                        host.PrivateName = PrivateName.Text;
+                        host.PhoneNumber = PhoneNumber.Text;
+                        host.MailAddress = MailAddress.Text;
+                        if (FirstPassword.PasswordHidden.Password != null)
+                        {
+                            host.PasswordKey = myBL.KeyForPassword(Int32.Parse(FirstPassword.PasswordHidden.Password));
+                        }
+
+                        bankAccount.BankName = ((BankDetails)Bank_ComboBox.SelectedItem).BankName;
+                        bankAccount.BranchCity = BranchCity.Text;
+                        //bankAccount.BranchAddress = BranchAddress_ComboBox.Text;
+                        bankAccount.BankNumber = Convert.ToInt32(BankNumber.Text);
+                        bankAccount.BranchNumber = ((BankBranch)BranchNumber_ComboBox.SelectedItem).BranchNumber;
+                        bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
+
+                        host.BankAccount = bankAccount;
+
+                        if (newHost)
+                        {
+                            if (myBL.AddHost(host))
+                            {
+                                MessageBox.Show("Recived Seccessfully");
+
+                            }
+
+                            else MessageBox.Show("Error! Make sure you dont miss any field!");
+                        }
+                        else
+                        {
+                            try { myBL.UpdateHost(host); }
+                            catch (Exception ex)
+                            {
+
+                                MessageBox.Show("Unable to update host");
+                                Console.WriteLine("Unable to update host" + ex.Message);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Fail!");
+                        Console.WriteLine(ex.Message);
+                    }
+                }
             }
             else
             {
-                try
-                {
-                    if (newHost)
-                    {
-                        host = new Host();
-                        bankAccount = new BankAccount();
-                        //host.FamilyName = FamilyNameTextBox.Text;
-
-                    }
-
-                    host.PrivateName = PrivateName.Text;
-                    host.PhoneNumber = PhoneNumber.Text;
-                    host.MailAddress = MailAddress.Text;
-                    if (FirstPassword.PasswordHidden.Password != null)
-                    {
-                        host.PasswordKey = myBL.KeyForPassword(Int32.Parse(FirstPassword.PasswordHidden.Password));
-                    }
-
-                    bankAccount.BankName = Bank_ComboBox.Text;
-                    //bankAccount.BranchCity = BranchCity_ComboBox.Text;
-                    //bankAccount.BranchAddress = BranchAddress_ComboBox.Text;
-                    bankAccount.BankNumber = Convert.ToInt32(BankNumber.Text);
-                    //bankAccount.BranchNumber = Convert.ToInt32(BranchNumber.Text);
-                    bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
-
-                    host.BankAccount = bankAccount;
-
-                    if (newHost)
-                    {
-                        if (myBL.AddHost(host))
-                            MessageBox.Show("Recived Seccessfully");
-                        else MessageBox.Show("Error! Make sure you dont miss any field!");
-                    }
-                    else
-                    {
-                        try { myBL.UpdateHost(host); }
-                        catch (Exception ex) { throw new Exception("" + ex); }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Fail! "+ex);
-                }
+                MessageBox.Show("Error in mail format please try again");
             }
+
         }
 
         public IEnumerable<BankDetails> Banks { get; set; }
@@ -216,5 +239,19 @@ namespace PLWPF
         {
             BranchCity.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches.ElementAt(BranchNumber_ComboBox.SelectedIndex).BranchCity;
         }
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

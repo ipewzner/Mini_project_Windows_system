@@ -16,6 +16,7 @@ namespace DAL
     {
         private static Int64 serialGuestRequest;
         private static Int64 serialOrder;
+        private static Int64 serialHost;
        // private static double commision;  //10 shekels -- zol meod public DalXML()
        // private static string serialHostingUnit;
 
@@ -26,14 +27,15 @@ namespace DAL
 
             serialOrder = Convert.ToInt64(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
             serialGuestRequest = Convert.ToInt64(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
-       
+            serialHost = Convert.ToInt64(DataSource.DataSourceXML.Hosts.Element("lastSerial").Value);
+
         }
 
         public bool addGuestRequest(GuestRequest gr)
         {
             XElement guestRequestElement = XElement.Parse(gr.ToXMLstring());
             guestRequestElement.Element("GuestRequestKey").Value = (++serialGuestRequest).ToString();
-            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value += serialGuestRequest.ToString(); 
+            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value = serialGuestRequest.ToString(); 
             DataSource.DataSourceXML.SaveGuestRequests();
             DataSource.DataSourceXML.GuestRequests.Add(guestRequestElement);
             DataSource.DataSourceXML.SaveGuestRequests();
@@ -42,10 +44,14 @@ namespace DAL
 
         public bool addHost(Host host)
         {
-            DataSource.DataSourceXML.Hosts.Add(XElement.Parse(host.ToXMLstring()));
-             DataSource.DataSourceXML.SaveHosts();
-            //DataSource.DataSourceXML.Hosts.Element("lastSerial").Value = host.HostKey.ToXMLstring();
+
+            XElement hostElement = XElement.Parse(host.ToXMLstring());
+            hostElement.Element("HostKey").Value = (++serialHost).ToString();
+            DataSource.DataSourceXML.Hosts.Element("lastSerial").Value = serialHost.ToString();
             DataSource.DataSourceXML.SaveHosts();
+            DataSource.DataSourceXML.Hosts.Add(hostElement);
+            DataSource.DataSourceXML.SaveHosts();
+
             return true;
         }
 
@@ -70,10 +76,11 @@ namespace DAL
             //}
             XElement OrderElement = XElement.Parse(neworder.ToXMLstring());
             OrderElement.Element("OrderKey").Value = (++serialOrder).ToString();
-            DataSource.DataSourceXML.Orders.Element("lastSerial").Value += serialOrder.ToString();
+            DataSource.DataSourceXML.Orders.Element("lastSerial").Value = serialOrder.ToString();
+            DataSource.DataSourceXML.SaveOrders();
             DataSource.DataSourceXML.Orders.Add(OrderElement);
             DataSource.DataSourceXML.SaveOrders();
-            DataSource.DataSourceXML.SaveOrders();
+ 
             return true;
         }
 
@@ -131,25 +138,68 @@ namespace DAL
 
         }
 
-        public void DeleteHost(Host host)
+        public bool DeleteHost(Host host)
         {
-            throw new NotImplementedException();
+            try
+            {
+                XElement hostElement = (from o in DataSourceXML.Hosts.Elements("Host")
+                                        where Int32.Parse(o.Element("HostKey").Value) == host.HostKey
+                                        select o).FirstOrDefault();
+                if (hostElement != null)
+                {
+
+                    hostElement.Remove();
+                    DataSourceXML.SaveHosts();
+
+
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Fail to delete the Hosting-Unit " + ex);
+            }
         }
 
-        public string getserialGuestRequest()
+        public bool UpdateHost(Host host)
         {
-            String result = DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value;
-            return result;
-        }
+            try
+            {
+                XElement hostElement = (from o in DataSourceXML.Hosts.Elements("Host")
+                                        where Int32.Parse(o.Element("HostKey").Value) == host.HostKey
+                                        select o).FirstOrDefault();
+                if (hostElement != null)
+                {
+                    hostElement.Element("PrivateName").Value = host.PrivateName.ToString();
+                    hostElement.Element("FamilyName").Value = host.FamilyName;
+                    hostElement.Element("PhoneNumber").Value = host.PhoneNumber.ToString();
+                    hostElement.Element("MailAddress").Value = host.MailAddress.ToString();
+                    hostElement.Element("BankAccount").Element("BankNumber").Value = host.BankAccount.BankNumber.ToString();
+                    hostElement.Element("BankAccount").Element("BankName").Value = host.BankAccount.BankName.ToString();
+                    hostElement.Element("BankAccount").Element("BranchNumber").Value = host.BankAccount.BranchNumber.ToString();
+                    hostElement.Element("BankAccount").Element("BranchCity").Value = host.BankAccount.BranchCity.ToString();
+                    hostElement.Element("BankAccount").Element("BankAccountNumber").Value = host.BankAccount.BankAccountNumber.ToString();
 
-        public bool updateGuestRequest(GuestRequest guestRequest)
-        {
-            throw new NotImplementedException();
-        }
 
-        public bool updateHost(Host host)
-        {
-            throw new NotImplementedException();
+                    DataSourceXML.SaveHosts();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
+
         }
 
         public bool updateOrder(Order updateorder)
@@ -247,10 +297,23 @@ namespace DAL
         {
             try
             {
-                return DataSourceList.HostingUnits.Remove(hu);
+                XElement hostingUnits = (from o in DataSourceXML.HostingUnits.Elements("HostingUnit")
+                                    where Int32.Parse(o.Element("HostingUnitKey").Value) == hu.HostingUnitKey
+                                    select o).FirstOrDefault();
+                if (hostingUnits != null)
+                {
+
+                    hostingUnits.Remove();
+                    DataSourceXML.SaveHostingUnits();
+
+
+                }
+                return true;
+
             }
             catch (Exception ex)
             {
+
                 throw new Exception("Fail to delete the Hosting-Unit " + ex);
             }
         }
@@ -262,33 +325,45 @@ namespace DAL
         /// <returns></returns>
         public bool UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            //Remove old
             try
             {
-                try
+                XElement hostingUnits = (from o in DataSourceXML.HostingUnits.Elements("HostingUnit")
+                                         where Int32.Parse(o.Element("HostingUnitKey").Value) == hostingUnit.HostingUnitKey
+                                         select o).FirstOrDefault();
+                if (hostingUnits != null)
                 {
-                    DataSourceList.HostingUnits.Remove(DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == hostingUnit.HostingUnitKey));
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("can't remove the old Hosting-Unit " + ex);
-                }
+                    hostingUnits.Element("Area").Value = hostingUnit.Area.ToString();
+                    hostingUnits.Element("SubArea").Value = hostingUnit.SubArea;
+                    hostingUnits.Element("HostingType").Value = hostingUnit.HostingType.ToString();
+                    hostingUnits.Element("Adults").Value = hostingUnit.Adults.ToString();
+                    hostingUnits.Element("Children").Value = hostingUnit.Children.ToString();
+                    hostingUnits.Element("Pool").Value = hostingUnit.Pool.ToString();
+                    hostingUnits.Element("Jacuzzi").Value = hostingUnit.Jacuzzi.ToString();
+                    hostingUnits.Element("Garden").Value = hostingUnit.Garden.ToString();
+                    hostingUnits.Element("ChildrensAttractions").Value = hostingUnit.ChildrensAttractions.ToString();
+                    hostingUnits.Element("SpredBads").Value = hostingUnit.SpredBads.ToString();
+                    hostingUnits.Element("AirCondsner").Value = hostingUnit.AirCondsner.ToString();
+                    hostingUnits.Element("frisider").Value = hostingUnit.frisider.ToString();
+                    hostingUnits.Element("SingogNaerBy").Value = hostingUnit.SingogNaerBy.ToString();
+                    hostingUnits.Element("NaerPublicTrensportion").Value = hostingUnit.NaerPublicTrensportion.ToString();
+  
+                    DataSourceXML.SaveHostingUnits();
 
-                //insert new
-                try
-                {
-                    DataSourceList.HostingUnits.Add(Cloning.Copy(hostingUnit));
                     return true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    throw new Exception("can't add the new Hosting-Unit " + ex);
+                    return false;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Fail to update Hosting-Unit becuse it " + ex);
+
+                Console.WriteLine(ex.Message);
+                return false;
             }
+
+
         }
 
         /// <summary>

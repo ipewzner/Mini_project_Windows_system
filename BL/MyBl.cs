@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BE;
-
 using DAL;
 using System.Net.Mail;
 using System.Net;
@@ -104,8 +103,7 @@ namespace BL
         /// </summary>
         public bool AddHost(Host host)
         {
-            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
-            {
+
                 try
                 {
                     myDAL.addHost(host);
@@ -115,8 +113,7 @@ namespace BL
                 {
                     throw new Exception("Fail to add the host! "+ex);
                 }
-            }
-            else return false;
+
          }
 
         /// <summary>
@@ -127,8 +124,7 @@ namespace BL
         {
             try
             {
-                RemoveHost(host);
-                AddHost(host);
+               myDAL.UpdateHost(host);
                 MessageBox.Show($"Host: {host.FamilyName} updated Seccessfuly!");
             }
             catch (Exception ex)
@@ -148,6 +144,7 @@ namespace BL
             {
                 if (!CanUnitBeDeleted(unit.HostingUnitKey))
                 {
+                    myDAL.DeleteHost(host);
                     throw new Exception("Can't delete the Host, whan some order still open in some of the units!");
                 }
             }
@@ -298,8 +295,8 @@ namespace BL
         {
             try
             {
-                UnitRemove(hostingUnit.HostingUnitKey);
-                AddHostingUnit(hostingUnit);
+
+               myDAL.UpdateHostingUnit(hostingUnit);
                 MessageBox.Show($"Hosting unit: {hostingUnit.HostingUnitName} updated Seccessfuly!");
             }
             catch (Exception ex)
@@ -401,7 +398,21 @@ namespace BL
         /// <returns></returns>
         public HostingUnit GetHostingUnit(int key)
         {
-            return (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).First();
+            try
+            {
+                var unit = (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).First();
+                return unit;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("no orders to show");
+                return new HostingUnit();
+            }
+        
+
+           
+
         }
 
         #endregion
@@ -671,7 +682,7 @@ namespace BL
         {
             MailMessage mail = new MailMessage();
             //mail.To.Add(GuestRequestBy(x => x.GuestRequestKey == order.GuestRequestKey).First().MailAddress);
-            mail.To.Add(GetGusetRequest(order.GuestRequestKey).MailAddress);
+            mail.To.Add((GetGusetRequest(order.GuestRequestKey).MailAddress).ToString());
             mail.From = new MailAddress(GetHostingUnit(order.HostingUnitKey).Owner.MailAddress);
             mail.Subject = "Resort offeras as you request";
             mail.Body = "<p>You'r request: </p>" +

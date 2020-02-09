@@ -55,8 +55,14 @@ namespace PLWPF
                 MessageBox.Show("can't order ealier date than today");
             }
 
-            if (!myBL.IsDateCorrect(startDate, endDate))
+            else if (!myBL.IsDateCorrect(startDate, endDate))
+            {
                 MessageBox.Show("can't add this request, Release Date before Entry Date!");
+            }
+            else if (!IsValidEmail(mailAddress.Text))
+            {
+                MessageBox.Show("error in mail address format");
+            }
             else try
             {
                 GuestRequest guest = new GuestRequest();
@@ -121,6 +127,19 @@ namespace PLWPF
 
            // ReleaseDate.UpdateLayout();
         }
-          
+
+        bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BE;
+using BE;
 using BL;
 using System;
 using System.Linq;
@@ -123,7 +124,8 @@ namespace PLWPF.Windows.HostingUnitWindows
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Fail to delete unit \n " + ex);
+                        MessageBox.Show("Fail to delete unit");
+                        Console.WriteLine("Fail to delete unit \n " + ex);
                     }
                 }
             }
@@ -135,35 +137,48 @@ namespace PLWPF.Windows.HostingUnitWindows
                     hostingUnit.HostingUnitName = HostingUnitKeyTextBox.Text;
                     hostingUnit.Owner = host;
                 }
-                hostingUnit.HostingType = (HostingType)ComboBoxHostingType.SelectedItem;
-                hostingUnit.Children = Int32.Parse(Children.Text);
-                hostingUnit.Adults = Int32.Parse(Adults.Text);
-                hostingUnit.SubArea = SubArea.Text;
-                hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
-                hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
-                hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
-                hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
-                hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
-                hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
-                hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
-                hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
-                hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
-
-                myBL.AddHostingUnit(hostingUnit);
-                MessageBox.Show("Adding Hosting Unit Secsessfully!");
-                
 
                 try
                 {
-                    if (newUnit == false)
-                        myBL.UpdateUnit(hostingUnit);
-                    else
-                        myBL.AddHostingUnit(hostingUnit);
+                    hostingUnit.HostingType = (HostingType)ComboBoxHostingType.SelectedItem;
+                    hostingUnit.Children = Int32.Parse(Children.Text);
+                    hostingUnit.Adults = Int32.Parse(Adults.Text);
+                    hostingUnit.SubArea = SubArea.Text;
+                    hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
+                    hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
+                    hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
+                    hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
+                    hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
+                    hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
+                    hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
+                    hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
+                    hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    MessageBox.Show("" + ex);
+
+                    MessageBox.Show("missing fields");
                 }
+               
+
+                if (newUnit == true)
+                {
+                    myBL.AddHostingUnit(hostingUnit);
+                    MessageBox.Show("Adding Hosting Unit Secsessfully!");
+                }
+                else
+                {
+                    try
+                    {
+                        myBL.UpdateUnit(hostingUnit);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"cannot add or update {hostingUnit.HostingUnitName}");
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+
 
             }
         }
