@@ -33,11 +33,20 @@ namespace PLWPF
         {
             this.host = host;
             InitializeComponent();
-            comboBox.ItemsSource = myBL.GetOrders(x => myBL.GetHostingUnit(x.HostingUnitKey).Owner.HostKey == host.HostKey);
-            comboBox.DisplayMemberPath = "OrderKey";
+            var source = myBL.GetOrders(x => myBL.GetHostingUnit(x.HostingUnitKey).Owner.HostKey == host.HostKey);
+            if (source != null)
+            {
+                comboBox.ItemsSource = source;
+                comboBox.DisplayMemberPath = "OrderKey";
 
-            StatusComboBox.ItemsSource = Enum.GetValues(typeof(BE.OrderStatus)).Cast<BE.OrderStatus>();
-            HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(host.HostKey);
+                StatusComboBox.ItemsSource = Enum.GetValues(typeof(BE.OrderStatus)).Cast<BE.OrderStatus>();
+                HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(host.HostKey);
+            }
+            else
+            {
+                MessageBox.Show("No orders to show");
+                this.Close();
+            }
         }
 
         /// <summary>

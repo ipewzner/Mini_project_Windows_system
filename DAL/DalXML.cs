@@ -70,10 +70,11 @@ namespace DAL
             //}
             XElement OrderElement = XElement.Parse(neworder.ToXMLstring());
             OrderElement.Element("OrderKey").Value = (++serialOrder).ToString();
-            DataSource.DataSourceXML.Orders.Element("lastSerial").Value += serialOrder.ToString();
+            DataSource.DataSourceXML.Orders.Element("lastSerial").Value = serialOrder.ToString();
+            DataSource.DataSourceXML.SaveOrders();
             DataSource.DataSourceXML.Orders.Add(OrderElement);
             DataSource.DataSourceXML.SaveOrders();
-            DataSource.DataSourceXML.SaveOrders();
+ 
             return true;
         }
 

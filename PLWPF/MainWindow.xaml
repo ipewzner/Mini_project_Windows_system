@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Label Content="ברוכים הבאים לתוכנת האירוח" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Height="50" Width="428" FontSize="26"/>
-        <Button x:Name="guestButton" Content="הוספת דרישות לקוח" HorizontalAlignment="Center" Height="43" Margin="79,128,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="AddRequest_Click"/>
+        <Button x:Name="guestButton" Content="הוספת דרישות לקוח" HorizontalAlignment="Center" Height="43" Margin="79,160,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="AddRequest_Click"/>
         <Button x:Name="editUnitButton" Content="עריכת יחידת אירוח" HorizontalAlignment="Center" Height="43" Margin="79,217,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="HostingUnit_Click" Visibility="Hidden"/>
         <Button x:Name="orderButton" Content="הזמנת יחידת אירוח" HorizontalAlignment="Center" Height="44" Margin="79,272,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="Orders_Click"  Visibility="Hidden"/>
         <Button x:Name="statButton" Content="סטטיסטיקות" HorizontalAlignment="Center" Height="42" Margin="79,321,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="Stat_Click" Visibility="Visible"/>
