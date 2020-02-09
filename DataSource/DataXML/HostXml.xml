@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
-  <lastSerial>10000064</lastSerial>
+  <lastSerial>10000065</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>11111111</HostKey>
     <PrivateName>david</PrivateName>
@@ -111,18 +111,18 @@
     </BankAccount>
   </Host>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>10000064</HostKey>
-    <PrivateName>ert</PrivateName>
-    <FamilyName>ert</FamilyName>
-    <PhoneNumber>345</PhoneNumber>
-    <MailAddress>ert@weewr.cpm</MailAddress>
-    <PasswordKey>-10.104273848989083</PasswordKey>
+    <HostKey>10000065</HostKey>
+    <PrivateName>roman</PrivateName>
+    <FamilyName>zadorov</FamilyName>
+    <PhoneNumber>5454345</PhoneNumber>
+    <MailAddress>ksdjffh@djklf.com</MailAddress>
+    <PasswordKey>-5.1005764529180357</PasswordKey>
     <BankAccount>
-      <BankNumber>11</BankNumber>
-      <BankName>בנק דיסקונט לישראל בע"מ</BankName>
-      <BranchNumber>515</BranchNumber>
-      <BranchCity>תל אביב -יפו</BranchCity>
-      <BankAccountNumber>345</BankAccountNumber>
+      <BankNumber>4</BankNumber>
+      <BankName>בנק יהב לעובדי המדינה בע"מ</BankName>
+      <BranchNumber>129</BranchNumber>
+      <BranchCity>ירושלים</BranchCity>
+      <BankAccountNumber>123123</BankAccountNumber>
     </BankAccount>
   </Host>
 </Hosts>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Orders>
-  <lastSerial>10000018</lastSerial>
+  <lastSerial>10000020</lastSerial>
   <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <OrderKey>10000013</OrderKey>
     <HostingUnitKey>10000001</HostingUnitKey>
@@ -47,6 +47,22 @@
     <GuestRequestKey>10000007</GuestRequestKey>
     <OrderDate>2020-02-09T17:36:28.9725862+02:00</OrderDate>
     <CreateDate>2020-02-09T17:36:28.9725862+02:00</CreateDate>
+    <Status>MailSent</Status>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <OrderKey>10000019</OrderKey>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <GuestRequestKey>10000010</GuestRequestKey>
+    <OrderDate>2020-02-09T20:43:54.5285785+02:00</OrderDate>
+    <CreateDate>2020-02-09T20:43:54.5285785+02:00</CreateDate>
+    <Status>MailSent</Status>
+  </Order>
+  <Order xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <OrderKey>10000020</OrderKey>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <GuestRequestKey>10000010</GuestRequestKey>
+    <OrderDate>2020-02-09T20:51:18.4025025+02:00</OrderDate>
+    <CreateDate>2020-02-09T20:51:18.4025025+02:00</CreateDate>
     <Status>MailSent</Status>
   </Order>
 </Orders>

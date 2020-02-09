@@ -137,19 +137,29 @@ namespace PLWPF.Windows.HostingUnitWindows
                     hostingUnit.HostingUnitName = HostingUnitKeyTextBox.Text;
                     hostingUnit.Owner = host;
                 }
-                hostingUnit.HostingType = (HostingType)ComboBoxHostingType.SelectedItem;
-                hostingUnit.Children = Int32.Parse(Children.Text);
-                hostingUnit.Adults = Int32.Parse(Adults.Text);
-                hostingUnit.SubArea = SubArea.Text;
-                hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
-                hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
-                hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
-                hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
-                hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
-                hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
-                hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
-                hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
-                hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
+
+                try
+                {
+                    hostingUnit.HostingType = (HostingType)ComboBoxHostingType.SelectedItem;
+                    hostingUnit.Children = Int32.Parse(Children.Text);
+                    hostingUnit.Adults = Int32.Parse(Adults.Text);
+                    hostingUnit.SubArea = SubArea.Text;
+                    hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
+                    hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
+                    hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
+                    hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
+                    hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
+                    hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
+                    hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
+                    hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
+                    hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("missing fields");
+                }
+               
 
                 if (newUnit == true)
                 {
