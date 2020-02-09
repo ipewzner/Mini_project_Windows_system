@@ -2,8 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using BE;
-using System.Reflection;
-
 using DAL;
 using System.Net.Mail;
 using System.Net;
@@ -21,17 +19,31 @@ namespace BL
         /// </summary>
         public bool AddGuestRequest(GuestRequest req)
         {
+<<<<<<< HEAD
             //myDAL.ReturnGuestRequestList((x) => x.GuestRequestKey == req.GuestRequestKey).ToList().Count == 0
             if (true)
+=======
+            if (IsDateCorrect(req.EntryDate, req.ReleaseDate))
+>>>>>>> e44bcfb71dcb90a7ca4e31c8f54010e6f28a0bfe
             {
-                myDAL.addGuestRequest(req);
-                return true;
+
+                try
+                {
+                    myDAL.addGuestRequest(req);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    //throw new Exception("Fail to add this Guest Request! " + ex);
+                    return false;
+                }
             }
             else
             {
+                //throw new Exception("can't add this request, Release Date before Entry Date!");
                 return false;
             }
-
+            
         }
 
         /// <summary>
@@ -39,14 +51,9 @@ namespace BL
         /// </summary>
         public void AddHostingUnit(HostingUnit unit)
         {
-            if (myDAL.ReturnHostingUnitList((x) => x.HostingUnitKey == unit.HostingUnitKey).ToList().Count == 0)
-            {
+
                 myDAL.addHostingUnit(unit);
-            }
-            else
-            {
-                throw new Exception("This Hosting unit exist already!");
-            }
+
 
         }
 
@@ -95,9 +102,82 @@ namespace BL
             }
         }
 
+
+        /// <summary>
+        /// Add new Host
+        /// </summary>
+        public bool AddHost(Host host)
+        {
+            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
+            {
+                try
+                {
+                    myDAL.addHost(host);
+                    return true;
+                }     
+                catch(Exception ex)
+                {
+                    throw new Exception("Fail to add the host! "+ex);
+                }
+            }
+            else return false;
+         }
+
+        /// <summary>
+        /// Update Host
+        /// </summary>
+        /// <param name="host"></param>
+        public void UpdateHost(Host host)
+        {
+            try
+            {
+               myDAL.UpdateHost(host);
+                MessageBox.Show($"Host: {host.FamilyName} updated Seccessfuly!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error during Update {host.FamilyName} please try again later! " + ex);
+            }
+        }
+
+        /// <summary>
+        /// Remove Host and all is units
+        /// </summary>
+        /// <param name="host"></param>
         public void RemoveHost(Host host)
         {
-            throw new NotImplementedException();
+            //check if all the unit that blonge to this host can be deleted
+            foreach (var unit in myDAL.ReturnHostingUnitList(x => x.Owner.HostKey == host.HostKey))
+            {
+                if (!CanUnitBeDeleted(unit.HostingUnitKey))
+                {
+                    myDAL.DeleteHost(host);
+                    throw new Exception("Can't delete the Host, whan some order still open in some of the units!");
+                }
+            }
+
+            //delete all the unit that blonge to this host 
+            foreach (var unit in myDAL.ReturnHostingUnitList(x => x.Owner.HostKey == host.HostKey))
+            {
+                try
+                {
+                    UnitRemove(unit.HostingUnitKey);
+                }
+                catch (Exception ex)
+                {                                           
+                    throw new Exception("Fail to delete the Host " + ex);
+                }
+            }
+
+            //delete the host
+            try
+            {
+                myDAL.DeleteHost(host);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Fail to delete the Host, but delete all is HostingUnit " + ex);
+            }
         }
 
         /// <summary>
@@ -128,11 +208,6 @@ namespace BL
             return (end > start) ? true : false;
         }
 
-        public void UpdateHost(Host host)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Return number of days from date until now
         /// </summary>
@@ -147,23 +222,7 @@ namespace BL
         public int NumOfDays(DateTime firstDate, DateTime SecondDate)
         {
             return (int)(SecondDate - firstDate).TotalDays;
-        }
-
-        /// <summary>
-        /// Sending Email to client 
-        /// </summary>
-        //public void SendMail(Order order)
-        //{
-        //    if (order.Status == OrderStatus.MailSent)
-        //    {
-        //        Console.WriteLine(
-        //            $"You order:\n" +
-        //            $"Create Date: {order.CreateDate}\n" +
-        //            $"Order Date: {order.OrderDate}\n" +
-        //            $"Hosting Unit Key: {order.HostingUnitKey}\n"
-        //            );
-        //    }
-        //}
+        }  
 
         /// <summary>
         /// Return number of orders that sent to client
@@ -204,13 +263,9 @@ namespace BL
         /// </summary>
         public void UnitRemove(int unitKey)
         {
-            foreach (var item in myDAL.ReturenAllOrders())
-            {
-                if ((item.HostingUnitKey == unitKey) && (item.Status == OrderStatus.UntreatedYet))
-                {
-                    throw new Exception("Can't delete this unit, whan some order still open!");
-                }
-            }
+            if(!CanUnitBeDeleted(unitKey))
+                throw new Exception("Can't delete this unit, whan some order still open!");
+
             HostingUnit hostingUnit = GetHostingUnit(Convert.ToInt32(unitKey));
             try
             {
@@ -218,8 +273,25 @@ namespace BL
             }
             catch (Exception ex)
             {
-                throw new Exception("" + ex);
+                throw new Exception("Fail to delete the unit! " + ex);
             }
+        }
+
+        /// <summary>
+        /// Can Unit Be Deleted? jest if no order that conected to this unit, have Status Untreated Yet!
+        /// </summary>
+        /// <param name="unitKey"></param>
+        /// <returns></returns>
+        private bool CanUnitBeDeleted(int unitKey)
+        {
+            foreach (var order in myDAL.ReturenAllOrders())
+            {
+                if ((order.HostingUnitKey == unitKey) && (order.Status == OrderStatus.UntreatedYet))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         /// <summary>
@@ -230,8 +302,8 @@ namespace BL
         {
             try
             {
-                UnitRemove(hostingUnit.HostingUnitKey);
-                AddHostingUnit(hostingUnit);
+
+               myDAL.UpdateHostingUnit(hostingUnit);
                 MessageBox.Show($"Hosting unit: {hostingUnit.HostingUnitName} updated Seccessfuly!");
             }
             catch (Exception ex)
@@ -264,26 +336,7 @@ namespace BL
             return listOfUnits;
         }
 
-        /// <summary>
-        /// Add new Host
-        /// </summary>
-        public bool AddHost(Host host)
-        {
-            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
-            {
-                myDAL.addHost(host);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
-
-
-
-        }
-
+       
         /// <summary>
         /// Return Guest Request By any requirment
         /// </summary>
@@ -446,7 +499,7 @@ namespace BL
                 { Area.South , GuestRequestBy().Count(p => p.Area == Area.South) }
             };
         }
-        public Dictionary<String, int> GuestRequestPerRquirement(Requirements requirements)
+        public Dictionary<String, int> GuestRequestPerRquirement(GestRequirements requirements)
         {
             return new Dictionary<String, int>
             {
@@ -621,7 +674,8 @@ namespace BL
         public void SendMail(Order order)
         {
             MailMessage mail = new MailMessage();
-            mail.To.Add(GuestRequestBy(x => x.GuestRequestKey == order.GuestRequestKey).First().MailAddress);
+            //mail.To.Add(GuestRequestBy(x => x.GuestRequestKey == order.GuestRequestKey).First().MailAddress);
+            mail.To.Add(GetGusetRequest(order.GuestRequestKey).MailAddress);
             mail.From = new MailAddress(GetHostingUnit(order.HostingUnitKey).Owner.MailAddress);
             mail.Subject = "Resort offeras as you request";
             mail.Body = "<p>You'r request: </p>" +
