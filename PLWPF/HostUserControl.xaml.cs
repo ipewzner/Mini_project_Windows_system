@@ -3,17 +3,9 @@ using BL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PLWPF
 {
@@ -32,34 +24,33 @@ namespace PLWPF
             InitializeComponent();
             DataContext = this;
             Banks = myBL.GetBanks();
+
+            //if this not a new host
             if (hosts != null)
             {
                 host = hosts;
                 bankAccount = host.BankAccount;
                 FillTheFeilds();
+                this.deleteHost = deleteHost;
             }
             else { newHost = true; }
 
-            this.deleteHost = deleteHost;
-
-
             ContinueButton.Content = (deleteHost==true)?"Delete":"Save";
-
         }
 
         private void FillTheFeilds()
         {
-            //FamilyNameTextBox.Text= host.FamilyName;
+            FamilyName.Text= host.FamilyName;
             PrivateName.Text= host.PrivateName;
             PhoneNumber.Text= host.PhoneNumber ;
             MailAddress.Text= host.MailAddress ;
             
-            Bank_ComboBox.Text=bankAccount.BankName;
-            //BranchCity_ComboBox.Text= bankAccount.BranchCity;
-            //BranchAddress_ComboBox.Text= bankAccount.BranchAddress;
-            BankNumber.Text= bankAccount.BankNumber             .ToString()   ;
-            //BranchNumber.Text= bankAccount.BranchNumber         .ToString()   ;
-            BankAccountNumber.Text=bankAccount.BankAccountNumber.ToString()   ;
+            Bank_ComboBox.SelectedItem= bankAccount.BankNumber;
+            BranchCity.Text= bankAccount.BranchCity;
+            //BranchAddress.Text= bankAccount.BranchAddress;
+            BankNumber.Text= bankAccount.BankNumber             .ToString();
+            BranchNumber_ComboBox.SelectedItem = bankAccount.BranchNumber.ToString();
+            BankAccountNumber.Text=bankAccount.BankAccountNumber.ToString();
         }
 
         /// <summary>
@@ -103,7 +94,10 @@ namespace PLWPF
             if (deleteHost)
             {
                 try { myBL.RemoveHost(host); }
-                catch (Exception ex) { throw new Exception(""+ex); }
+                catch (Exception ex) {
+                    MessageBox.Show("Unable to delete host");
+                    Console.WriteLine("Unable to delete host" + ex.Message); 
+                }
                 MessageBox.Show("Host remove seccessfully");
             }
             else
@@ -126,11 +120,11 @@ namespace PLWPF
                         host.PasswordKey = myBL.KeyForPassword(Int32.Parse(FirstPassword.PasswordHidden.Password));
                     }
 
-                    bankAccount.BankName = Bank_ComboBox.Text;
-                    //bankAccount.BranchCity = BranchCity_ComboBox.Text;
+                    bankAccount.BankName = ((BankDetails)Bank_ComboBox.SelectedItem).BankName;
+                    bankAccount.BranchCity = BranchCity.Text;
                     //bankAccount.BranchAddress = BranchAddress_ComboBox.Text;
                     bankAccount.BankNumber = Convert.ToInt32(BankNumber.Text);
-                    //bankAccount.BranchNumber = Convert.ToInt32(BranchNumber.Text);
+                    bankAccount.BranchNumber = ((BankBranch)BranchNumber_ComboBox.SelectedItem).BranchNumber;
                     bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
 
                     host.BankAccount = bankAccount;
@@ -144,12 +138,17 @@ namespace PLWPF
                     else
                     {
                         try { myBL.UpdateHost(host); }
-                        catch (Exception ex) { throw new Exception("" + ex); }
+                        catch (Exception ex) {
+
+                            MessageBox.Show("Unable to update host");
+                            Console.WriteLine("Unable to update host" + ex.Message);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Fail! "+ex);
+                    MessageBox.Show("Fail!");
+                    Console.WriteLine(ex.Message);
                 }
             }
         }

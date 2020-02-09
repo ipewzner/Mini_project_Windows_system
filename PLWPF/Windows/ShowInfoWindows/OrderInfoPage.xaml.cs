@@ -1,36 +1,35 @@
-﻿using BL;
-using System.Linq;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.ComponentModel;
 using System.Windows.Data;
-using System.Windows;
+using BL;
+using System.ComponentModel;
 
-namespace PLWPF.Windows.Statistics
+namespace PLWPF.Windows.ShowInfoWindows
 {
     /// <summary>
-    /// Interaction logic for GuestRequestQueryPage.xaml
+    /// Interaction logic for OrderInfoPage.xaml
     /// </summary>
-    public partial class GuestRequestQueryPage : Page
+    public partial class OrderInfoPage : Page
     {
+        public OrderInfoPage()
+        {
+            InitializeComponent();
+            OrderListView.ItemsSource = myBL.GetOrders();
+            view = (CollectionView)CollectionViewSource.GetDefaultView(OrderListView.ItemsSource);
+        }
+
         MyBl myBL = new MyBl();
         CollectionView view;
 
-        public GuestRequestQueryPage()
+        private void OrderListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            InitializeComponent();
-            GuestRequestListView.ItemsSource = myBL.GuestRequestBy();
-            view = (CollectionView)CollectionViewSource.GetDefaultView(GuestRequestListView.ItemsSource);
         }
 
-        private void GuestRequestListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-        }
-        
         //-----------------------------------------------------------------------------------------------
 
         GridViewColumnHeader _lastHeaderClicked = null;
 
-        private void ListViewColumnHeaderClick(object sender, System.Windows.RoutedEventArgs e)
+        private void ListViewColumnHeaderClick(object sender, RoutedEventArgs e)
         {
             GridViewColumnHeader headerClicked = e.OriginalSource as GridViewColumnHeader;
 
@@ -45,12 +44,14 @@ namespace PLWPF.Windows.Statistics
                 return;
 
             var direction = ApplySort(view, sortingColumn);
-                  
+            //var direction = ApplySort(Items, sortingColumn);
+
 
             if (direction == ListSortDirection.Ascending)
             {
-                headerClicked.Column.HeaderTemplate =
-                    Resources["HeaderTemplateArrowUp"] as DataTemplate;
+
+                headerClicked.Column.HeaderTemplate = Resources["HeaderTemplateArrowUp"] as DataTemplate;
+
             }
             else
             {

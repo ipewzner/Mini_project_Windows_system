@@ -130,7 +130,7 @@ namespace DataSource
             }
         }
 
-          private static XElement LoadData(string path)
+        private static XElement LoadData(string path)
         {
             XElement root;
             try

@@ -10,22 +10,20 @@ namespace BE
     [Serializable]
     public class requirement
     {
-       
         public Area Area { get; set; }
         public String SubArea { get; set; }
         public HostingType HostingType { get; set; }
-        public int Adults { get; set; }
+        public int Adults   { get; set; }
         public int Children { get; set; }
-        public Requirements Pool { get; set; }
-        public Requirements Jacuzzi { get; set; }
-        public Requirements Garden { get; set; }
-        public Requirements ChildrensAttractions { get; set; }
-        //********************
-        public Requirements SpredBads { get; set; }
-        public Requirements AirCondsner { get; set; }
-        public Requirements frisider { get; set; }
-        public Requirements SingogNaerBy { get; set; }
-        public Requirements NaerPublicTrensportion { get; set; }
+        public GestRequirements Pool { get; set; }
+        public GestRequirements Jacuzzi { get; set; }
+        public GestRequirements Garden { get; set; }
+        public GestRequirements ChildrensAttractions { get; set; }
+        public GestRequirements SpredBads { get; set; }
+        public GestRequirements AirCondsner { get; set; }
+        public GestRequirements frisider { get; set; }
+        public GestRequirements SingogNaerBy { get; set; }
+        public GestRequirements NaerPublicTrensportion { get; set; }
 
         /// <summary>
         /// to-string

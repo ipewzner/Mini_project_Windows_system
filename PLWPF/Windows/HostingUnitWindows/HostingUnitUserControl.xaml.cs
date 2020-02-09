@@ -1,4 +1,5 @@
 ﻿using BE;
+using BE;
 using BL;
 using System;
 using System.Linq;
@@ -35,7 +36,7 @@ namespace PLWPF.Windows.HostingUnitWindows
             hostName.Text = host.FamilyName;
             hostId.Text = host.HostKey.ToString();
 
-            //depend on what page you in
+            //depend on which page you in
             button.Content = (deleteUnit == false) ? "Save" : "Delete";
 
             //if you add new unit you need to change the comboBox to TextBox
@@ -53,18 +54,18 @@ namespace PLWPF.Windows.HostingUnitWindows
                 HostingUnitKeyComboBox.ItemsSource = myBL.HustingUnitsBy(x => x.Owner.HostKey == host.HostKey);
                 HostingUnitKeyComboBox.DisplayMemberPath = "HostingUnitName";
             }
-
+            
             //ComboBox Items Source
             ComboBoxHostingType.ItemsSource= Enum.GetValues(typeof(BE.HostingType)).Cast<BE.HostingType>();
             AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area)).Cast<BE.Area>();
-            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
+            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.UnitRequirements)).Cast<BE.UnitRequirements>();
            
         }
 
@@ -80,7 +81,7 @@ namespace PLWPF.Windows.HostingUnitWindows
         }
 
         /// <summary>
-        /// Feel the Textbox & ComboBox with the Unit details
+        /// Fills the Textbox & ComboBox with the Unit details
         /// </summary>
         /// <param name="unit"></param>
         private void InitialHostingUnit(HostingUnit unit)
@@ -90,15 +91,19 @@ namespace PLWPF.Windows.HostingUnitWindows
             Children.Text = unit.Children.ToString();
             AreaComboBox.SelectedItem = unit.Area;
             SubArea.Text = unit.SubArea;
-            ComboBoxPool.SelectedItem = unit.Pool;
-            ComboBoxJacuzzi.SelectedItem = unit.Jacuzzi;
-            ComboBoxAttrac.SelectedItem = unit.ChildrensAttractions;
-            ComboBoxSpredBads.SelectedItem = unit.SpredBads;
-            ComboBoxAirCondsner.SelectedItem = unit.AirCondsner;
-            ComboBoxGarden.SelectedItem = unit.Garden;
-            ComboBoxSingog.SelectedItem = unit.SingogNaerBy;
-            ComboBoxTrensp.SelectedItem = unit.NaerPublicTrensportion;
+            ComboBoxPool.SelectedItem = (UnitRequirements)unit.Pool;
+            ComboBoxJacuzzi.SelectedItem = (UnitRequirements)unit.Jacuzzi;
+            ComboBoxAttrac.SelectedItem = (UnitRequirements)unit.ChildrensAttractions;
+            ComboBoxSpredBads.SelectedItem = (UnitRequirements)unit.SpredBads;
+            ComboBoxAirCondsner.SelectedItem = (UnitRequirements)unit.AirCondsner;
+            ComboBoxGarden.SelectedItem =(UnitRequirements)unit.Garden;
+            ComboBoxSingog.SelectedItem =(UnitRequirements)unit.SingogNaerBy;
+            ComboBoxTrensp.SelectedItem = (UnitRequirements)unit.NaerPublicTrensportion;
+
+           // NaerByTextBox.Text = ((UnitRequirements)hostingUnit.SingogNaerBy).ToString();
+          
         }
+    
 
         /// <summary>
         /// button_Click will save the changes, or will delete the unit, depende the page. 
@@ -119,7 +124,8 @@ namespace PLWPF.Windows.HostingUnitWindows
                     }
                     catch (Exception ex)
                     {
-                        throw new Exception("Fail to delete unit \n " + ex);
+                        MessageBox.Show("Fail to delete unit");
+                        Console.WriteLine("Fail to delete unit \n " + ex);
                     }
                 }
             }
@@ -136,26 +142,33 @@ namespace PLWPF.Windows.HostingUnitWindows
                 hostingUnit.Adults = Int32.Parse(Adults.Text);
                 hostingUnit.SubArea = SubArea.Text;
                 hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
-                hostingUnit.Pool = (Requirements)ComboBoxPool.SelectedItem;
-                hostingUnit.Jacuzzi = (Requirements)ComboBoxJacuzzi.SelectedItem;
-                hostingUnit.ChildrensAttractions = (Requirements)ComboBoxAttrac.SelectedItem;
-                hostingUnit.SpredBads = (Requirements)ComboBoxSpredBads.SelectedItem;
-                hostingUnit.AirCondsner = (Requirements)ComboBoxAirCondsner.SelectedItem;
-                hostingUnit.Garden = (Requirements)ComboBoxGarden.SelectedItem;
-                hostingUnit.SingogNaerBy = (Requirements)ComboBoxSingog.SelectedItem;
-                hostingUnit.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
+                hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
+                hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
+                hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
+                hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
+                hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
+                hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
+                hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
+                hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
 
-                try
+                if (newUnit == true)
                 {
-                    if (newUnit == false)
+                    myBL.AddHostingUnit(hostingUnit);
+                    MessageBox.Show("Adding Hosting Unit Secsessfully!");
+                }
+                else
+                {
+                    try
+                    {
                         myBL.UpdateUnit(hostingUnit);
-                    else
-                        myBL.AddHostingUnit(hostingUnit);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"cannot add or update {hostingUnit.HostingUnitName}");
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("" + ex);
-                }
+
 
             }
         }

@@ -8,13 +8,14 @@ using System.Xml.Serialization;
 using BE;
 using DataSource;
 using System.Net;
+using System.Windows.Forms;
 
 namespace DAL
 {
     public class DalXML 
     {
-        private static int serialGuestRequest;
-        private static int serialOrder;
+        private static Int64 serialGuestRequest;
+        private static Int64 serialOrder;
        // private static double commision;  //10 shekels -- zol meod public DalXML()
        // private static string serialHostingUnit;
 
@@ -23,15 +24,16 @@ namespace DAL
 
             GetAndStoreBankInfo();
 
-            serialOrder = Int32.Parse(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
-            serialGuestRequest = Int32.Parse(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
+            serialOrder = Convert.ToInt64(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
+            serialGuestRequest = Convert.ToInt64(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
        
         }
 
         public bool addGuestRequest(GuestRequest gr)
         {
             XElement guestRequestElement = XElement.Parse(gr.ToXMLstring());
-            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value = guestRequestElement.Element("GuestRequestKey").Value;
+            guestRequestElement.Element("GuestRequestKey").Value = (++serialGuestRequest).ToString();
+            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value += serialGuestRequest.ToString(); 
             DataSource.DataSourceXML.SaveGuestRequests();
             DataSource.DataSourceXML.GuestRequests.Add(guestRequestElement);
             DataSource.DataSourceXML.SaveGuestRequests();
@@ -66,11 +68,11 @@ namespace DAL
             //    //throw new Exception("order alraedy exist");
             //    return false;
             //}
-            serialOrder = Int32.Parse(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
-            neworder.OrderKey = ++serialOrder;
-            DataSource.DataSourceXML.Orders.Add(neworder.ToXML());
+            XElement OrderElement = XElement.Parse(neworder.ToXMLstring());
+            OrderElement.Element("OrderKey").Value = (++serialOrder).ToString();
+            DataSource.DataSourceXML.Orders.Element("lastSerial").Value += serialOrder.ToString();
+            DataSource.DataSourceXML.Orders.Add(OrderElement);
             DataSource.DataSourceXML.SaveOrders();
-            DataSource.DataSourceXML.Orders.Element("lastSerial").Value = neworder.OrderKey.ToString();
             DataSource.DataSourceXML.SaveOrders();
             return true;
         }
@@ -129,20 +131,68 @@ namespace DAL
 
         }
 
-        public string getserialGuestRequest()
+        public bool DeleteHost(Host host)
         {
-            String result = DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value;
-            return result;
+            try
+            {
+                XElement hostElement = (from o in DataSourceXML.Hosts.Elements("Host")
+                                        where Int32.Parse(o.Element("HostKey").Value) == host.HostKey
+                                        select o).FirstOrDefault();
+                if (hostElement != null)
+                {
+
+                    hostElement.Remove();
+                    DataSourceXML.SaveHosts();
+
+
+                }
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception("Fail to delete the Hosting-Unit " + ex);
+            }
         }
 
-        public bool updateGuestRequest(GuestRequest guestRequest)
+        public bool UpdateHost(Host host)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                XElement hostElement = (from o in DataSourceXML.Hosts.Elements("Host")
+                                        where Int32.Parse(o.Element("HostKey").Value) == host.HostKey
+                                        select o).FirstOrDefault();
+                if (hostElement != null)
+                {
+                    hostElement.Element("PrivateName").Value = host.PrivateName.ToString();
+                    hostElement.Element("FamilyName").Value = host.FamilyName;
+                    hostElement.Element("PhoneNumber").Value = host.PhoneNumber.ToString();
+                    hostElement.Element("MailAddress").Value = host.MailAddress.ToString();
+                    hostElement.Element("BankAccount").Element("BankNumber").Value = host.BankAccount.BankNumber.ToString();
+                    hostElement.Element("BankAccount").Element("BankName").Value = host.BankAccount.BankName.ToString();
+                    hostElement.Element("BankAccount").Element("BranchNumber").Value = host.BankAccount.BranchNumber.ToString();
+                    hostElement.Element("BankAccount").Element("BranchCity").Value = host.BankAccount.BranchCity.ToString();
+                    hostElement.Element("BankAccount").Element("BankAccountNumber").Value = host.BankAccount.BankAccountNumber.ToString();
 
-        public bool updateHost(Host host)
-        {
-            throw new NotImplementedException();
+
+                    DataSourceXML.SaveHosts();
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
+
         }
 
         public bool updateOrder(Order updateorder)
@@ -240,10 +290,23 @@ namespace DAL
         {
             try
             {
-                return DataSourceList.HostingUnits.Remove(hu);
+                XElement hostingUnits = (from o in DataSourceXML.HostingUnits.Elements("HostingUnit")
+                                    where Int32.Parse(o.Element("HostingUnitKey").Value) == hu.HostingUnitKey
+                                    select o).FirstOrDefault();
+                if (hostingUnits != null)
+                {
+
+                    hostingUnits.Remove();
+                    DataSourceXML.SaveHostingUnits();
+
+
+                }
+                return true;
+
             }
             catch (Exception ex)
             {
+
                 throw new Exception("Fail to delete the Hosting-Unit " + ex);
             }
         }
@@ -255,33 +318,45 @@ namespace DAL
         /// <returns></returns>
         public bool UpdateHostingUnit(HostingUnit hostingUnit)
         {
-            //Remove old
             try
             {
-                try
+                XElement hostingUnits = (from o in DataSourceXML.HostingUnits.Elements("HostingUnit")
+                                         where Int32.Parse(o.Element("HostingUnitKey").Value) == hostingUnit.HostingUnitKey
+                                         select o).FirstOrDefault();
+                if (hostingUnits != null)
                 {
-                    DataSourceList.HostingUnits.Remove(DataSourceList.HostingUnits.Find(x => x.HostingUnitKey == hostingUnit.HostingUnitKey));
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("can't remove the old Hosting-Unit " + ex);
-                }
+                    hostingUnits.Element("Area").Value = hostingUnit.Area.ToString();
+                    hostingUnits.Element("SubArea").Value = hostingUnit.SubArea;
+                    hostingUnits.Element("HostingType").Value = hostingUnit.HostingType.ToString();
+                    hostingUnits.Element("Adults").Value = hostingUnit.Adults.ToString();
+                    hostingUnits.Element("Children").Value = hostingUnit.Children.ToString();
+                    hostingUnits.Element("Pool").Value = hostingUnit.Pool.ToString();
+                    hostingUnits.Element("Jacuzzi").Value = hostingUnit.Jacuzzi.ToString();
+                    hostingUnits.Element("Garden").Value = hostingUnit.Garden.ToString();
+                    hostingUnits.Element("ChildrensAttractions").Value = hostingUnit.ChildrensAttractions.ToString();
+                    hostingUnits.Element("SpredBads").Value = hostingUnit.SpredBads.ToString();
+                    hostingUnits.Element("AirCondsner").Value = hostingUnit.AirCondsner.ToString();
+                    hostingUnits.Element("frisider").Value = hostingUnit.frisider.ToString();
+                    hostingUnits.Element("SingogNaerBy").Value = hostingUnit.SingogNaerBy.ToString();
+                    hostingUnits.Element("NaerPublicTrensportion").Value = hostingUnit.NaerPublicTrensportion.ToString();
+  
+                    DataSourceXML.SaveHostingUnits();
 
-                //insert new
-                try
-                {
-                    DataSourceList.HostingUnits.Add(Cloning.Copy(hostingUnit));
                     return true;
                 }
-                catch (Exception ex)
+                else
                 {
-                    throw new Exception("can't add the new Hosting-Unit " + ex);
+                    return false;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Fail to update Hosting-Unit becuse it " + ex);
+
+                Console.WriteLine(ex.Message);
+                return false;
             }
+
+
         }
 
         /// <summary>
@@ -422,9 +497,17 @@ namespace DAL
                 }
                 catch (Exception)
                 {
-                    string xmlServerPath =
+                    try
+                    {
+                        string xmlServerPath =
                     @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
-                    wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                        wc.DownloadFile(xmlServerPath, xmlLocalPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+
+                    }
                 }
                 finally
                 {
@@ -483,7 +566,9 @@ namespace DAL
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception("Fail to return the Locel-Bank list " + ex);
+                   // throw new Exception("Fail to return the Locel-Bank list " + ex);
+                    //MessageBox.Show("fail to downlode banks file");
+
                 }
             });
 

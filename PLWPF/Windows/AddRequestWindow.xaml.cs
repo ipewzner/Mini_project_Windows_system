@@ -23,56 +23,104 @@ namespace PLWPF
     {
         MyBl myBL = new MyBl();
 
+        /// <summary>
+        /// c-tor
+        /// </summary>
         public AddRequestWindow()
         {
             InitializeComponent();
             AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.Area)).Cast<BE.Area>();
-            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
-            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.Requirements)).Cast<BE.Requirements>();
+            ComboBoxPool.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxJacuzzi.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxAttrac.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxSpredBads.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxAirCondsner.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxGarden.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxSingog.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
+            ComboBoxTrensp.ItemsSource = Enum.GetValues(typeof(BE.GestRequirements)).Cast<BE.GestRequirements>();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Add the Request
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            try
+            DateTime startDate = EntryDate.SelectedDate ?? DateTime.Now;
+            DateTime endDate = ReleaseDate.SelectedDate ?? DateTime.Now;
+
+            if(startDate < DateTime.Now)
+            {
+                MessageBox.Show("can't order ealier date than today");
+            }
+
+            if (!myBL.IsDateCorrect(startDate, endDate))
+                MessageBox.Show("can't add this request, Release Date before Entry Date!");
+            else try
             {
                 GuestRequest guest = new GuestRequest();
                 guest.PrivateName = FirstName.Text;
                 guest.FamilyName = LastName.Text;
 
-                guest.EntryDate = EntryDate.DisplayDate;
-                guest.ReleaseDate = ReleaseDate.DisplayDate;
+                guest.EntryDate = startDate;
+                guest.ReleaseDate = endDate;
                 guest.SubArea = SubArea.Text;
                 guest.MailAddress = mailAddress.Text;
                 guest.Area = (Area)AreaComboBox.SelectedItem;
-                guest.Pool = (Requirements)ComboBoxPool.SelectedItem;
-                guest.Jacuzzi = (Requirements)ComboBoxJacuzzi.SelectedItem;
-                guest.ChildrensAttractions = (Requirements)ComboBoxAttrac.SelectedItem;
-                guest.SpredBads = (Requirements)ComboBoxSpredBads.SelectedItem;
-                guest.AirCondsner = (Requirements)ComboBoxAirCondsner.SelectedItem;
-                guest.Garden = (Requirements)ComboBoxGarden.SelectedItem;
-                guest.SingogNaerBy = (Requirements)ComboBoxSingog.SelectedItem;
-                guest.NaerPublicTrensportion = (Requirements)ComboBoxTrensp.SelectedItem;
+                guest.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
+                guest.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
+                guest.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
+                guest.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
+                guest.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
+                guest.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
+                guest.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
+                guest.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
 
 
-                myBL.AddGuestRequest(guest);
+                bool check = myBL.AddGuestRequest(guest);
+                if(check)
                 MessageBox.Show("Recived Seccessfully");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Error! Make sure you dont miss any field!");
+                MessageBox.Show("Error! Make sure you dont miss any field and !");
             }
 
         }
+
+        /// <summary>
+        /// Cancel change in the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CancelChanges_PreviewMouseDown(object sender, RoutedEventArgs e)
+        {
+            FirstName.Text = "";
+            LastName.Text = "";
+            EntryDate.Text = "";
+            ReleaseDate.Text = "";
+            SubArea.Text = "";
+            mailAddress.Text = "";
+            AreaComboBox.SelectedItem = null;
+            ComboBoxPool.SelectedItem = null;
+            ComboBoxJacuzzi.SelectedItem = null;
+            ComboBoxAttrac.SelectedItem = null;
+            ComboBoxSpredBads.SelectedItem = null;
+            ComboBoxAirCondsner.SelectedItem = null;
+            ComboBoxGarden.SelectedItem = null;
+            ComboBoxSingog.SelectedItem = null;
+            ComboBoxTrensp.SelectedItem = null;
+        }
+
+        private void EntryDate_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            ReleaseDate.DisplayDateStart = EntryDate.DisplayDate;
+
+            ReleaseDate.BringIntoView();
+
+           // ReleaseDate.UpdateLayout();
+        }
+          
     }
 }

@@ -7,11 +7,11 @@
     <PhoneNumber>054-5555555</PhoneNumber>
     <MailAddress>sale@gmai.com</MailAddress>
     <BankAccount>
-      <BankNumber>123</BankNumber>
-      <BankName>poalim</BankName>
-      <BranchNumber>432</BranchNumber>
+      <BankNumber>13</BankNumber>
+      <BankName>בנק אגוד לישראל בע"מ</BankName>
+      <BranchNumber>75</BranchNumber>
       <BranchAddress>jefo 121</BranchAddress>
-      <BranchCity>jeruselm</BranchCity>
+      <BranchCity>רעננה</BranchCity>
       <BankAccountNumber>11111111</BankAccountNumber>
     </BankAccount>
     <CollectionClearance />
@@ -23,11 +23,11 @@
     <PhoneNumber>054-6666666</PhoneNumber>
     <MailAddress>hotel@gmai.com</MailAddress>
     <BankAccount>
-      <BankNumber>123</BankNumber>
-      <BankName>poalim</BankName>
-      <BranchNumber>432</BranchNumber>
+      <BankNumber>54</BankNumber>
+      <BankName>בנק ירושלים בע"מ</BankName>
+      <BranchNumber>96</BranchNumber>
       <BranchAddress>jefo 121</BranchAddress>
-      <BranchCity>jeruselm</BranchCity>
+      <BranchCity>כרמיאל</BranchCity>
       <BankAccountNumber>11111112</BankAccountNumber>
     </BankAccount>
     <CollectionClearance />
@@ -47,22 +47,6 @@
       <BankAccountNumber>1152582</BankAccountNumber>
     </BankAccount>
     <CollectionClearance />
-  </Host>
-  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>55555555</HostKey>
-    <PrivateName>manster</PrivateName>
-    <FamilyName>frankinstin</FamilyName>
-    <PhoneNumber>666</PhoneNumber>
-    <MailAddress>hall</MailAddress>
-    <PasswordKey>0</PasswordKey>
-    <BankAccount>
-      <BankNumber>852</BankNumber>
-      <BankName />
-      <BranchNumber>852</BranchNumber>
-      <BranchAddress />
-      <BranchCity />
-      <BankAccountNumber>85</BankAccountNumber>
-    </BankAccount>
   </Host>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>00000000</HostKey>

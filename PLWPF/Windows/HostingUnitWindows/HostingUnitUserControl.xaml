@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PLWPF.Windows.HostingUnitWindows"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Margin="0,0,0,-149.4">
+             d:DesignHeight="650" d:DesignWidth="800">
+    <Grid  HorizontalAlignment="Stretch"  VerticalAlignment="Stretch">
 
         <Label Content="HOST NAME" HorizontalAlignment="Left" Margin="69,14,0,0" VerticalAlignment="Top" Height="26" Width="77"/>
         <TextBox x:Name="hostName" HorizontalAlignment="Left" Height="22" Margin="70,40,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
@@ -22,7 +22,8 @@
         <Label Content="Area" HorizontalAlignment="Left" Margin="72,189,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="SubArea" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="32" Margin="72,277,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18" />
         <Label   Content="Sub Area" HorizontalAlignment="Left" Margin="74,251,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.603,0.158"/>
-        <ComboBox Name="ComboBoxPool" HorizontalAlignment="Left" Margin="72,339,0,0" VerticalAlignment="Top" Width="156" Height="32"/>
+        <ComboBox x:Name="ComboBoxPool" HorizontalAlignment="Left" Margin="72,339,0,0" VerticalAlignment="Top" Width="156" Height="32"/>
+
         <ComboBox Name="ComboBoxJacuzzi" HorizontalAlignment="Left" Margin="72,401,0,0" VerticalAlignment="Top" Width="156" Height="32"/>
         <Label Content="Pool" HorizontalAlignment="Left" Margin="72,313,0,0" VerticalAlignment="Top"/>
         <Label Content="Jacuzzi" HorizontalAlignment="Left" Margin="72,375,0,0" VerticalAlignment="Top"/>

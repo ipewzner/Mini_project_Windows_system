@@ -58,6 +58,12 @@ namespace PLWPF
             win.Show();
         }
 
+        private void ShowInfo_Click(object sender, RoutedEventArgs e)
+        {
+            Window win = new Windows.ShowInfoWindows.ShowInfoWindow();
+            win.Show();
+        }
+
         private void editHost_Click(object sender, RoutedEventArgs e)
         {
             Window win = new HostUpdateWindow(host);
@@ -97,5 +103,7 @@ namespace PLWPF
             }
 
         }
+
+      
     }
 }
