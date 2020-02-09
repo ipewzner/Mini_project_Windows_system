@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
+  <lastSerial>10000064</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>11111111</HostKey>
     <PrivateName>david</PrivateName>
@@ -62,6 +63,66 @@
       <BranchAddress />
       <BranchCity />
       <BankAccountNumber>85</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000058</HostKey>
+    <PrivateName>poster</PrivateName>
+    <FamilyName>hoster</FamilyName>
+    <PhoneNumber>3455</PhoneNumber>
+    <MailAddress>sdfs@sd.co</MailAddress>
+    <PasswordKey>-10.104273848989083</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>322</BranchNumber>
+      <BranchCity>תל אביב -יפו</BranchCity>
+      <BankAccountNumber>345345</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000061</HostKey>
+    <PrivateName>dfgdf</PrivateName>
+    <FamilyName>dfgdfg</FamilyName>
+    <PhoneNumber>54654</PhoneNumber>
+    <MailAddress>dftg@sdf.cp</MailAddress>
+    <PasswordKey>15.278957396835896</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>322</BranchNumber>
+      <BranchCity>תל אביב -יפו</BranchCity>
+      <BankAccountNumber>23423</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000062</HostKey>
+    <PrivateName>dfgdf</PrivateName>
+    <FamilyName>dfgg</FamilyName>
+    <PhoneNumber>3454</PhoneNumber>
+    <MailAddress>erte@sdf.com</MailAddress>
+    <PasswordKey>15.278957396835896</PasswordKey>
+    <BankAccount>
+      <BankNumber>11</BankNumber>
+      <BankName>בנק דיסקונט לישראל בע"מ</BankName>
+      <BranchNumber>515</BranchNumber>
+      <BranchCity>תל אביב -יפו</BranchCity>
+      <BankAccountNumber>23423</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000064</HostKey>
+    <PrivateName>ert</PrivateName>
+    <FamilyName>ert</FamilyName>
+    <PhoneNumber>345</PhoneNumber>
+    <MailAddress>ert@weewr.cpm</MailAddress>
+    <PasswordKey>-10.104273848989083</PasswordKey>
+    <BankAccount>
+      <BankNumber>11</BankNumber>
+      <BankName>בנק דיסקונט לישראל בע"מ</BankName>
+      <BranchNumber>515</BranchNumber>
+      <BranchCity>תל אביב -יפו</BranchCity>
+      <BankAccountNumber>345</BankAccountNumber>
     </BankAccount>
   </Host>
 </Hosts>

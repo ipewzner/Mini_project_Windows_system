@@ -77,21 +77,23 @@ namespace PLWPF
                 win.ShowDialog();
                 if (win.DialogResult == true)
                 {
-                    orderButton.Visibility = Visibility.Visible;
-                    editUnitButton.Visibility = Visibility.Visible;
-                    editHostButton.Visibility = Visibility.Visible;
-                    
+  
                     host = win.HostfromLogin;
                     user.Content = host.PrivateName + " " + host.FamilyName;
-
-                    if(host.HostKey == 00000000)
+                    guestButton.Visibility = Visibility.Hidden;
+                    logout.Visibility = Visibility.Visible;
+                    if (host.HostKey == 00000000)
                     {
+                        ShowInfoButton.Visibility = Visibility.Visible;
                         statButton.Visibility = Visibility.Visible;
                     }
                     else
                     {
+                        orderButton.Visibility = Visibility.Visible;
+                        editUnitButton.Visibility = Visibility.Visible;
+                        editHostButton.Visibility = Visibility.Visible;
                         statButton.Visibility = Visibility.Hidden;
-                        guestButton.Visibility = Visibility.Hidden;
+  
                     }
                 }
             }
@@ -104,6 +106,16 @@ namespace PLWPF
 
         }
 
-      
+        private void button_Click_1(object sender, RoutedEventArgs e)
+        {
+            host = null;
+            user.Content = "";
+            guestButton.Visibility = Visibility.Visible;
+            orderButton.Visibility = Visibility.Hidden;
+            editUnitButton.Visibility = Visibility.Hidden;
+            editHostButton.Visibility = Visibility.Hidden;
+            statButton.Visibility = Visibility.Hidden;
+            ShowInfoButton.Visibility = Visibility.Hidden;
+        }
     }
 }

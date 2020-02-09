@@ -16,6 +16,7 @@ namespace DAL
     {
         private static Int64 serialGuestRequest;
         private static Int64 serialOrder;
+        private static Int64 serialHost;
        // private static double commision;  //10 shekels -- zol meod public DalXML()
        // private static string serialHostingUnit;
 
@@ -26,14 +27,15 @@ namespace DAL
 
             serialOrder = Convert.ToInt64(DataSource.DataSourceXML.Orders.Element("lastSerial").Value);
             serialGuestRequest = Convert.ToInt64(DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value);
-       
+            serialHost = Convert.ToInt64(DataSource.DataSourceXML.Hosts.Element("lastSerial").Value);
+
         }
 
         public bool addGuestRequest(GuestRequest gr)
         {
             XElement guestRequestElement = XElement.Parse(gr.ToXMLstring());
             guestRequestElement.Element("GuestRequestKey").Value = (++serialGuestRequest).ToString();
-            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value += serialGuestRequest.ToString(); 
+            DataSource.DataSourceXML.GuestRequests.Element("lastSerial").Value = serialGuestRequest.ToString(); 
             DataSource.DataSourceXML.SaveGuestRequests();
             DataSource.DataSourceXML.GuestRequests.Add(guestRequestElement);
             DataSource.DataSourceXML.SaveGuestRequests();
@@ -42,10 +44,14 @@ namespace DAL
 
         public bool addHost(Host host)
         {
-            DataSource.DataSourceXML.Hosts.Add(XElement.Parse(host.ToXMLstring()));
-             DataSource.DataSourceXML.SaveHosts();
-            //DataSource.DataSourceXML.Hosts.Element("lastSerial").Value = host.HostKey.ToXMLstring();
+
+            XElement hostElement = XElement.Parse(host.ToXMLstring());
+            hostElement.Element("HostKey").Value = (++serialHost).ToString();
+            DataSource.DataSourceXML.Hosts.Element("lastSerial").Value = serialHost.ToString();
             DataSource.DataSourceXML.SaveHosts();
+            DataSource.DataSourceXML.Hosts.Add(hostElement);
+            DataSource.DataSourceXML.SaveHosts();
+
             return true;
         }
 

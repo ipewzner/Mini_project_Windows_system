@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestRequests>
-  <lastSerial>1000000910000010</lastSerial>
+  <lastSerial>10000009</lastSerial>
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Area>Jerusalem</Area>
     <SubArea>old city</SubArea>

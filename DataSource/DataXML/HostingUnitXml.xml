@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HostingUnits>
+  <lastSerial>10000043</lastSerial>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <Area>North</Area>
     <HostingType>Zimmer</HostingType>

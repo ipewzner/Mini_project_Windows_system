@@ -103,8 +103,7 @@ namespace BL
         /// </summary>
         public bool AddHost(Host host)
         {
-            if (myDAL.returnHostList((x) => x.HostKey == host.HostKey).ToList().Count == 0)
-            {
+
                 try
                 {
                     myDAL.addHost(host);
@@ -114,8 +113,7 @@ namespace BL
                 {
                     throw new Exception("Fail to add the host! "+ex);
                 }
-            }
-            else return false;
+
          }
 
         /// <summary>
