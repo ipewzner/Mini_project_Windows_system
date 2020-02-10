@@ -9,6 +9,6 @@
         Title="Register" Height="613.098" Width="565.262">
     <Grid Margin="0,0,4,50">
         <Frame x:Name="Host_UserControl" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-
+          
     </Grid>
 </Window>

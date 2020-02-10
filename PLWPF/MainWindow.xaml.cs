@@ -16,18 +16,13 @@ namespace PLWPF
 
         public MainWindow()
         {
-
             InitializeComponent();
-            //preCode preCode = new preCode();
-            //preCode.initialize();
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)
         {
-            //Task t = new Task(() => { });
             Window win = new AddRequestWindow();
-                win.Show();
-
+            win.Show();
         }
 
         private void HostingUnit_Click(object sender, RoutedEventArgs e)
@@ -36,8 +31,6 @@ namespace PLWPF
             {
                 Window win = new HostingUnitWindow(host);
             win.Show();
-
-
             }
             else MessageBox.Show("Select User Or Sign Up");
         }

@@ -85,7 +85,9 @@ namespace PLWPF
 
         private void Worker_SendMailWithNewPassword(object sender, DoWorkEventArgs e)
         {
-            myBL.SendMailWithNewPassword(host);
+           if( myBL.SendMailWithNewPassword(host))
+            MessageBox.Show("Email was sent!", "Massage", MessageBoxButton.OK, MessageBoxImage.Information);
+
         }
 
         /// <summary>
@@ -102,11 +104,10 @@ namespace PLWPF
                 try
                 {
                     if (worker.IsBusy != true) worker.RunWorkerAsync();
-                    MessageBox.Show("Email was sent!","Massage", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Fail to send the Email\n" + ex, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(""+ ex.Message);
                 }
             }
             

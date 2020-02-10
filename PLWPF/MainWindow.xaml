@@ -3,9 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="ברוכים הבאים לתוכנת האירוח" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,58,0,0" VerticalAlignment="Top" Height="50" Width="428" FontSize="26"/>
         <Button x:Name="guestButton" Content="הוספת דרישות לקוח" HorizontalAlignment="Center" Height="43" Margin="79,160,79.6,0" VerticalAlignment="Top" Width="635" Background="#FFEEEEEE" Click="AddRequest_Click"/>

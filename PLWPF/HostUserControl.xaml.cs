@@ -19,9 +19,10 @@ namespace PLWPF
         bool newHost, deleteHost;
         Host host;
         BankAccount bankAccount;
-
-        public HostUserControl(Host hosts, bool deleteHost)
+        Window win;
+        public HostUserControl(Host hosts, bool deleteHost, Window register)
         {
+            this.win = register ;
             InitializeComponent();
             DataContext = this;
             Banks = myBL.GetBanks();
@@ -138,6 +139,7 @@ namespace PLWPF
                             if (myBL.AddHost(host))
                             {
                                 MessageBox.Show("Recived Seccessfully");
+                                win.Close();
 
                             }
 
@@ -171,7 +173,7 @@ namespace PLWPF
         public IEnumerable<BankDetails> Banks { get; set; }
         public string selectedBank { get; set; }
 
-       // public ObservableCollection<BankBranch> Branches { get; set; }
+        // public ObservableCollection<BankBranch> Branches { get; set; }
 
         //public IEnumerable<BankBranch> Branches
         //{
@@ -195,7 +197,7 @@ namespace PLWPF
         //}
 
 
-
+        /*
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -216,17 +218,15 @@ namespace PLWPF
                 bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
 
                 host.BankAccount = bankAccount;
-
                 myBL.AddHost(host);
                 MessageBox.Show("Recived Seccessfully");
-               
             }
             catch (Exception)
             {
                 MessageBox.Show("Error! Make sure you dont miss any field!");
             }
         }
-
+         */
         private void Bank_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             BranchNumber_ComboBox.ItemsSource = (Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches);

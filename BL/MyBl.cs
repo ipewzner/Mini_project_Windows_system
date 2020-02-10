@@ -716,7 +716,7 @@ namespace BL
         /// Send email with new password
         /// </summary>
         /// <param name="host"></param>
-        public void SendMailWithNewPassword(Host host)
+        public bool SendMailWithNewPassword(Host host)
         {
             // Manager manager = new Manager();
             // manager.MailAddress = "dotnetproject2020@gmail.com";
@@ -727,7 +727,7 @@ namespace BL
             MailMessage mail = new MailMessage();
             mail.To.Add(host.MailAddress);
             // mail.From = new MailAddress("ipewzner@g.jct.ac.il");
-            mail.From = new MailAddress(" dotnetproject2020 @gmail.com");
+            mail.From = new MailAddress("dotnetproject2020 @gmail.com");
 
             mail.Subject = "New password - do not replay!";
             mail.Body = "You'r new password is: " + password +
@@ -739,16 +739,35 @@ namespace BL
             smtp.Host = "smtp.gmail.com";
             smtp.Credentials = new System.Net.NetworkCredential("dotnetproject2020@gmail.com", "kuku4ever");
             smtp.EnableSsl = true;
-
             try
             {
                 smtp.Send(mail);
+                return true;
             }
-            catch (Exception ex)
+            catch (SmtpFailedRecipientsException ex)
             {
-                throw new Exception("Email error " + ex);
+                MessageBox.Show(ex.Message+ " Can't send the message for one or more of the recipients");
+                return false;
             }
-
+            catch (SmtpException ex)
+            {
+                MessageBox.Show(ex.Message + " Server conction error");
+                return false;
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show(ex.Message + " Message is empty");
+                return false;
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message + "Some info is missing or incorrect");
+                return false;
+            }
+            finally
+            {
+                mail.Dispose();
+            }
         }
 
         /// <summary>

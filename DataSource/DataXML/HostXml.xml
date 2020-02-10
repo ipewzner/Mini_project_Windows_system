@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
-  <lastSerial>10000065</lastSerial>
+  <lastSerial>10000074</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>11111111</HostKey>
     <PrivateName>david</PrivateName>
@@ -123,6 +123,141 @@
       <BranchNumber>129</BranchNumber>
       <BranchCity>ירושלים</BranchCity>
       <BankAccountNumber>123123</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000066</HostKey>
+    <PrivateName>bin</PrivateName>
+    <FamilyName>mrbin</FamilyName>
+    <PhoneNumber>852</PhoneNumber>
+    <MailAddress>c@f.com</MailAddress>
+    <PasswordKey>-5.1005764529180357</PasswordKey>
+    <BankAccount>
+      <BankNumber>13</BankNumber>
+      <BankName>בנק אגוד לישראל בע"מ</BankName>
+      <BranchNumber>70</BranchNumber>
+      <BranchCity>פתח תקווה</BranchCity>
+      <BankAccountNumber>741</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000067</HostKey>
+    <PrivateName>bin</PrivateName>
+    <FamilyName>mrbin</FamilyName>
+    <PhoneNumber>852</PhoneNumber>
+    <MailAddress>c@f.com</MailAddress>
+    <PasswordKey>-5.1005764529180357</PasswordKey>
+    <BankAccount>
+      <BankNumber>13</BankNumber>
+      <BankName>בנק אגוד לישראל בע"מ</BankName>
+      <BranchNumber>70</BranchNumber>
+      <BranchCity>פתח תקווה</BranchCity>
+      <BankAccountNumber>741</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000068</HostKey>
+    <PrivateName>malcolem</PrivateName>
+    <FamilyName>mlc</FamilyName>
+    <PhoneNumber>852</PhoneNumber>
+    <MailAddress>gfd@g.com</MailAddress>
+    <PasswordKey>-0.041516320590781877</PasswordKey>
+    <BankAccount>
+      <BankNumber>12</BankNumber>
+      <BankName>בנק הפועלים בע"מ</BankName>
+      <BranchNumber>785</BranchNumber>
+      <BranchCity>חולון</BranchCity>
+      <BankAccountNumber>63852</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000069</HostKey>
+    <PrivateName>malcolem</PrivateName>
+    <FamilyName>mlc</FamilyName>
+    <PhoneNumber>852</PhoneNumber>
+    <MailAddress>gfd@g.com</MailAddress>
+    <PasswordKey>-0.041516320590781877</PasswordKey>
+    <BankAccount>
+      <BankNumber>12</BankNumber>
+      <BankName>בנק הפועלים בע"מ</BankName>
+      <BranchNumber>785</BranchNumber>
+      <BranchCity>חולון</BranchCity>
+      <BankAccountNumber>63852</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000070</HostKey>
+    <PrivateName>cd</PrivateName>
+    <FamilyName>vcd</FamilyName>
+    <PhoneNumber>855623</PhoneNumber>
+    <MailAddress>csc@cxc.vc</MailAddress>
+    <PasswordKey>-1.5136049906158564</PasswordKey>
+    <BankAccount>
+      <BankNumber>12</BankNumber>
+      <BankName>בנק הפועלים בע"מ</BankName>
+      <BranchNumber>791</BranchNumber>
+      <BranchCity>חיפה</BranchCity>
+      <BankAccountNumber>520524512</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000071</HostKey>
+    <PrivateName>gfd</PrivateName>
+    <FamilyName>cvx</FamilyName>
+    <PhoneNumber>43</PhoneNumber>
+    <MailAddress>ds@fd</MailAddress>
+    <PasswordKey>-3.31659230915868</PasswordKey>
+    <BankAccount>
+      <BankNumber>11</BankNumber>
+      <BankName>בנק דיסקונט לישראל בע"מ</BankName>
+      <BranchNumber>510</BranchNumber>
+      <BranchCity>מבשרת ציון</BranchCity>
+      <BankAccountNumber>85298562</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000072</HostKey>
+    <PrivateName>gfd</PrivateName>
+    <FamilyName>cvx</FamilyName>
+    <PhoneNumber>43</PhoneNumber>
+    <MailAddress>ds@fd</MailAddress>
+    <PasswordKey>-3.31659230915868</PasswordKey>
+    <BankAccount>
+      <BankNumber>11</BankNumber>
+      <BankName>בנק דיסקונט לישראל בע"מ</BankName>
+      <BranchNumber>510</BranchNumber>
+      <BranchCity>מבשרת ציון</BranchCity>
+      <BankAccountNumber>85298562</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000073</HostKey>
+    <PrivateName>edcxsx</PrivateName>
+    <FamilyName>xsxs</FamilyName>
+    <PhoneNumber>41</PhoneNumber>
+    <MailAddress>cd@fds</MailAddress>
+    <PasswordKey>0.8414709848078965</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>362</BranchNumber>
+      <BranchCity>חיפה</BranchCity>
+      <BankAccountNumber>523063</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000074</HostKey>
+    <PrivateName>pewzner</PrivateName>
+    <FamilyName>iasayau</FamilyName>
+    <PhoneNumber>0548410620</PhoneNumber>
+    <MailAddress>ipewzner@mail.com</MailAddress>
+    <PasswordKey>0.066778548244450411</PasswordKey>
+    <BankAccount>
+      <BankNumber>10</BankNumber>
+      <BankName>בנק לאומי לישראל בע"מ</BankName>
+      <BranchNumber>946</BranchNumber>
+      <BranchCity>כפר סבא</BranchCity>
+      <BankAccountNumber>520</BankAccountNumber>
     </BankAccount>
   </Host>
 </Hosts>

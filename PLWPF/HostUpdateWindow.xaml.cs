@@ -23,8 +23,8 @@ namespace PLWPF
         public HostUpdateWindow(Host host)
         {
             InitializeComponent();
-            UpdateHostFrame.Content = new HostUserControl(host,false);
-            DeleteHostFrame.Content = new HostUserControl(host,true);
+            UpdateHostFrame.Content = new HostUserControl(host,false,this);
+            DeleteHostFrame.Content = new HostUserControl(host,true,this);
         }
     }
 }
