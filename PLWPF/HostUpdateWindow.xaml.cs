@@ -31,6 +31,7 @@ namespace PLWPF
             InitializeComponent();
             UpdateHostFrame.Content = new HostUserControl(host,false,this);
             DeleteHostFrame.Content = new HostUserControl(host,true,this);
+            
         }
 
         private void Window_Closed(object sender, EventArgs e)

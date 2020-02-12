@@ -32,8 +32,8 @@ namespace PLWPF
             {
                 host = hosts;
                 bankAccount = host.BankAccount;
-                FillTheFeilds();
                 this.deleteHost = deleteHost;
+                FillTheFeilds();
             }
             else { newHost = true; }
 
@@ -42,17 +42,44 @@ namespace PLWPF
 
         private void FillTheFeilds()
         {
+
             FamilyName.Text= host.FamilyName;
             PrivateName.Text= host.PrivateName;
             PhoneNumber.Text= host.PhoneNumber ;
             MailAddress.Text= host.MailAddress ;
-            
-            Bank_ComboBox.SelectedItem= bankAccount.BankNumber;
+
+
             BranchCity.Text= bankAccount.BranchCity;
             //BranchAddress.Text= bankAccount.BranchAddress;
             BankNumber.Text= bankAccount.BankNumber             .ToString();
             BranchNumber_ComboBox.SelectedItem = bankAccount.BranchNumber.ToString();
             BankAccountNumber.Text=bankAccount.BankAccountNumber.ToString();
+        }
+
+        void bank_loaded(object sender, RoutedEventArgs e)
+        {
+            SetBankData();
+
+        }
+
+        void SetBankData()
+        {
+            foreach (var item in Banks)
+            {
+                if (item.BankName == bankAccount.BankName)
+                {
+                    Bank_ComboBox.SelectedItem = item;
+
+                    foreach (var k in item.Branches)
+                    {
+                        if (k.BranchNumber == bankAccount.BranchNumber)
+                        {
+                            BranchNumber_ComboBox.SelectedItem = k;
+                        }
+                    }
+
+                }
+            }
         }
 
         /// <summary>
@@ -75,17 +102,22 @@ namespace PLWPF
 
         private void CancelChanges_PreviewMouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (!newHost) FillTheFeilds();
-            else {
-                FamilyName.Text =null;
+            if (!newHost)
+            {
+                FillTheFeilds();
+                SetBankData();
+            }
+            else
+            {
+                FamilyName.Text = null;
                 PrivateName.Text = null;
                 PhoneNumber.Text = null;
                 MailAddress.Text = null;
 
                 Bank_ComboBox.Text = null;
-                BranchCity.Text =   null;
+                BranchCity.Text = null;
                 //BranchAddress_ComboBox.Text =null;
-                BankNumber.Text =            null;
+                BankNumber.Text = null;
                 BranchNumber_ComboBox.Text = null;
                 BankAccountNumber.Text = null;
             }
@@ -124,7 +156,7 @@ namespace PLWPF
                         {
                             host.PasswordKey = myBL.KeyForPassword(Int32.Parse(FirstPassword.PasswordHidden.Password));
                         }
-
+                        
                         bankAccount.BankName = ((BankDetails)Bank_ComboBox.SelectedItem).BankName;
                         bankAccount.BranchCity = BranchCity.Text;
                         //bankAccount.BranchAddress = BranchAddress_ComboBox.Text;
@@ -229,14 +261,17 @@ namespace PLWPF
          */
         private void Bank_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            BranchNumber_ComboBox.ItemsSource = (Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches);
+            if (Bank_ComboBox.SelectedIndex != -1)
+                BranchNumber_ComboBox.ItemsSource = (Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches);
             BranchNumber_ComboBox.DisplayMemberPath = "BranchNumber";
             //Branches = new ObservableCollection<BankBranch>((Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches));
+            if(Bank_ComboBox.SelectedIndex!=-1)
             BankNumber.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).BankNumber.ToString();
         }
 
         private void BranchNumber_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if(BranchNumber_ComboBox.SelectedIndex!=-1)
             BranchCity.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches.ElementAt(BranchNumber_ComboBox.SelectedIndex).BranchCity;
         }
 
