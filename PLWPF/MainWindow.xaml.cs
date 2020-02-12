@@ -24,11 +24,6 @@ namespace PLWPF
            
         }
 
-         
-    
-
-       
-
         /// <summary>
         /// AddRequest_Click event call AddRequestWindow
         /// </summary>
@@ -123,11 +118,16 @@ namespace PLWPF
                     logout.Visibility = Visibility.Visible;
                     if (host.HostKey == 00000000)
                     {
+                        orderButton.Visibility = Visibility.Hidden;
+                        editUnitButton.Visibility = Visibility.Hidden;
+                        editHostButton.Visibility = Visibility.Hidden;
                         ShowInfoButton.Visibility = Visibility.Visible;
                         statButton.Visibility = Visibility.Visible;
                     }
                     else
                     {
+                        ShowInfoButton.Visibility = Visibility.Hidden;
+                        statButton.Visibility = Visibility.Hidden;
                         orderButton.Visibility = Visibility.Visible;
                         editUnitButton.Visibility = Visibility.Visible;
                         editHostButton.Visibility = Visibility.Visible;

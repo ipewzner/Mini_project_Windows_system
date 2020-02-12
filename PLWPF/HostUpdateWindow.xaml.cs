@@ -25,6 +25,7 @@ namespace PLWPF
             InitializeComponent();
             UpdateHostFrame.Content = new HostUserControl(host,false,this);
             DeleteHostFrame.Content = new HostUserControl(host,true,this);
+            
         }
     }
 }
