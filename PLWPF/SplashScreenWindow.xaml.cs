@@ -26,14 +26,13 @@ namespace PLWPF
         public SplashScreenWindow()
         {
             InitializeComponent();
-            //  myBL.BootingUp(this);
-
 
             try
             {
                 Thread thread = new Thread(myBL.RefreshDatabase);
                 thread.Start();
-
+                Thread thread2 = new Thread(fun);
+                thread2.Start();
             }
             catch (Exception ex)
             {
@@ -41,9 +40,19 @@ namespace PLWPF
                 // throw new Exception("Can't get bank info from the web " + ex);
                 MessageBox.Show("Fail to refresh the database! \n " + ex.Message);
             }
-            this.Close();
         }
 
+       public void fun()
+        {
+            Thread.Sleep(5000);
+            Action action=fun2;
+           Dispatcher.BeginInvoke(action);
+        }
+
+        public void fun2()
+        {
+            this.Close();
+        }
         private void Window_Closed(object sender, EventArgs e)
         {
             mainwindow.Show();

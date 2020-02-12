@@ -649,6 +649,7 @@ namespace BL
         /// </summary>
         public void RefreshDatabase()
         {
+            
             try
             {
                 TimeSpan timeSpan = new TimeSpan(30, 0, 0, 0, 0);
