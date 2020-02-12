@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows;
 using BE;
 using BL;
@@ -11,30 +12,54 @@ namespace PLWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+
         Host host = null;
         MyBl myBL = new MyBl();
-
+        /// <summary>
+        /// c-tor
+        /// </summary>
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent ();
+           
         }
 
+         
+    
+
+       
+
+        /// <summary>
+        /// AddRequest_Click event call AddRequestWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddRequest_Click(object sender, RoutedEventArgs e)
         {
             Window win = new AddRequestWindow();
             win.Show();
         }
 
+        /// <summary>
+        /// HostingUnit_Click event call HostingUnitWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HostingUnit_Click(object sender, RoutedEventArgs e)
         {
             if (host != null)
             {
                 Window win = new HostingUnitWindow(host);
-            win.Show();
+                win.Show();
             }
             else MessageBox.Show("Select User Or Sign Up");
         }
 
+        /// <summary>
+        /// Orders_Click event call OrdersWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Orders_Click(object sender, RoutedEventArgs e)
         {
             if (host != null)
@@ -45,24 +70,45 @@ namespace PLWPF
             else MessageBox.Show("Select User Or Sign Up");
         }
 
+        /// <summary>
+        /// Stat_Click event call StatisticsWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Stat_Click(object sender, RoutedEventArgs e)
         {
             Window win = new StatisticsWindow();
             win.Show();
         }
 
+        /// <summary>
+        /// ShowInfo_Click event call ShowInfoWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ShowInfo_Click(object sender, RoutedEventArgs e)
         {
             Window win = new Windows.ShowInfoWindows.ShowInfoWindow();
             win.Show();
         }
 
+        /// <summary>
+        /// editHost_Click event call HostUpdateWindow
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void editHost_Click(object sender, RoutedEventArgs e)
         {
             Window win = new HostUpdateWindow(host);
             win.Show();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        /// <summary>
+        /// Button_Click event call LogInWindow and handle visibility of some window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -70,7 +116,7 @@ namespace PLWPF
                 win.ShowDialog();
                 if (win.DialogResult == true)
                 {
-  
+
                     host = win.HostfromLogin;
                     user.Content = host.PrivateName + " " + host.FamilyName;
                     guestButton.Visibility = Visibility.Hidden;
@@ -86,7 +132,7 @@ namespace PLWPF
                         editUnitButton.Visibility = Visibility.Visible;
                         editHostButton.Visibility = Visibility.Visible;
                         statButton.Visibility = Visibility.Hidden;
-  
+
                     }
                 }
             }
@@ -99,7 +145,12 @@ namespace PLWPF
 
         }
 
-        private void button_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// LogOut_Click event logOut and change visibility of some windows
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogOut_Click(object sender, RoutedEventArgs e)
         {
             host = null;
             user.Content = "";

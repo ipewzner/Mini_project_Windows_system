@@ -1,18 +1,9 @@
 ﻿using BE;
 using BL;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PLWPF
 {
@@ -60,7 +51,12 @@ namespace PLWPF
             myBL.UpdateOrder(order);
             this.Close();
         }
-        
+
+        /// <summary>
+        /// OrderKey_TextChanged event find order by order key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderKey_TextChanged(object sender, TextChangedEventArgs e)
         {
             order = myBL.GetOrders(x => x.OrderKey == Int32.Parse(OrderKey.Text)).FirstOrDefault();
@@ -80,6 +76,8 @@ namespace PLWPF
                 Continue.Visibility = Visibility.Hidden;
             }
         }
+     
+        /*
         private void GuestRequestKey_TextChanged(object sender, TextChangedEventArgs e)
         {
             //order = myBL.GetOrders(x => x.GuestRequestKey == Int32.Parse(GuestRequestKey.Text)).FirstOrDefault();
@@ -99,7 +97,7 @@ namespace PLWPF
             //   // Continue.Visibility = Visibility.Hidden;
             //}
         }
-          
+           */
 
         /// <summary>
         /// Status changed
@@ -108,31 +106,38 @@ namespace PLWPF
         /// <param name="e"></param>
         private void ComboBox_StatusChanged(object sender, SelectionChangedEventArgs e)
         {
-            try {
+            try
+            {
                 Enum.TryParse(StatusComboBox.SelectedItem.ToString(), out OrderStatus OrderStatus);
                 order.Status = OrderStatus;
             }         
             catch
             {        
-                 MessageBox.Show("No Order faund!");
-                StatusComboBox.Text = null;
-            }
-        }
-
-        private void ComboBox_HostingUnitChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-               // StatusComboBox.SelectedItem.ToString();
-                
-            }
-            catch
-            {
                 MessageBox.Show("No Order faund!");
                 StatusComboBox.Text = null;
             }
         }
+        /*
+       private void ComboBox_HostingUnitChanged(object sender, SelectionChangedEventArgs e)
+       {
+           try
+           {
+              // StatusComboBox.SelectedItem.ToString();
 
+           }
+           catch
+           {
+               MessageBox.Show("No Order faund!");
+               StatusComboBox.Text = null;
+           }
+       }
+       */
+
+        /// <summary>
+        /// comboBox_SelectionChanged event find order by order key
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             order = myBL.GetOrders(x => x.OrderKey == (comboBox.SelectedItem as Order).OrderKey).FirstOrDefault();

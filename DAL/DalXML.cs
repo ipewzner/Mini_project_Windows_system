@@ -8,7 +8,6 @@ using System.Xml.Serialization;
 using BE;
 using DataSource;
 using System.Net;
-using System.Windows.Forms;
 
 namespace DAL
 {
@@ -469,7 +468,6 @@ namespace DAL
         /// Return All Locel Bank
         /// </summary>
         /// <returns></returns>
-
         public IEnumerable<BankDetails> ReturnAllLocelBank(Func<BankDetails, bool> predicate = null)
         {
             try

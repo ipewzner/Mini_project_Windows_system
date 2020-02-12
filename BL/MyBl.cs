@@ -640,40 +640,29 @@ namespace BL
 
         /// <summary>
         /// BootingUp the progrem.  
-        /// 1) Receive bank data from the web
-        /// 2)
+        /// 1)Refresh Database
         /// </summary>
-        public void bootingUp()
+       
+
+        /// <summary>
+        /// run on Order database and if Month pass for Order and the status is mail-send it change to CloseByClientTimeOut
+        /// </summary>
+        public void RefreshDatabase()
         {
             try
             {
-                Thread thread = new Thread(GetBankInfoFromTheWeb);
-                thread.Start();
+                TimeSpan timeSpan = new TimeSpan(30, 0, 0, 0, 0);
+                var t = from order in GetOrders(x => (DateTime.Now - x.OrderDate) > timeSpan)
+                        where order.Status == OrderStatus.MailSent
+                        select order.Status = OrderStatus.CloseByClientTimeOut;
             }
             catch (Exception ex)
             {
-                // throw new Exception("Can't get bank info from the web " + ex);
-                MessageBox.Show("Can't get bank info from the web\n " + ex);
-            }
+                MessageBox.Show("" + ex.Message);
 
-            if (NewDay())
-            {
-                try
-                {
-                    Thread thread = new Thread(RefreshDatabase);
-                    thread.Start();
-                }
-                catch (Exception ex)
-                {
-                    // throw new Exception("Can't get bank info from the web " + ex);
-                    MessageBox.Show("Fail to refresh the database! \n " + ex);
-                }
             }
-
+           
         }
-
-        private void RefreshDatabase() { }
-        private bool NewDay() { return true; }
 
         /// <summary>
         /// Sending Email to client 
