@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
-  <lastSerial>10000074</lastSerial>
+  <lastSerial>10000075</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>11111111</HostKey>
     <PrivateName>david</PrivateName>
@@ -250,13 +250,13 @@
     <PrivateName>pewzner</PrivateName>
     <FamilyName>iasayau</FamilyName>
     <PhoneNumber>0548410620</PhoneNumber>
-    <MailAddress>ipewzner@mail.com</MailAddress>
+    <MailAddress>ipewzner@gmail.com</MailAddress>
     <PasswordKey>0.066778548244450411</PasswordKey>
     <BankAccount>
-      <BankNumber>10</BankNumber>
-      <BankName>בנק לאומי לישראל בע"מ</BankName>
-      <BranchNumber>946</BranchNumber>
-      <BranchCity>כפר סבא</BranchCity>
+      <BankNumber>4</BankNumber>
+      <BankName>בנק יהב לעובדי המדינה בע"מ</BankName>
+      <BranchNumber>125</BranchNumber>
+      <BranchCity>אשקלון</BranchCity>
       <BankAccountNumber>520</BankAccountNumber>
     </BankAccount>
   </Host>

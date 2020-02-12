@@ -13,7 +13,7 @@ namespace BL
     public class MyBl : IBL
     {
         DalXML myDAL = FactorySingletonDal.Instance;
-
+        MailMessage mail;
         /// <summary>
         /// Add Guest Request
         /// </summary>
@@ -660,9 +660,7 @@ namespace BL
             catch (Exception ex)
             {
                 MessageBox.Show("" + ex.Message);
-
             }
-           
         }
 
         /// <summary>
@@ -706,18 +704,15 @@ namespace BL
         /// Send email with new password
         /// </summary>
         /// <param name="host"></param>
-        public bool SendMailWithNewPassword(Host host)
+        public void SendMailWithNewPassword(Host host)
         {
-            // Manager manager = new Manager();
-            // manager.MailAddress = "dotnetproject2020@gmail.com";
             var rand = new Random();
             int password = rand.Next(10000000, 99999999);
             host.PasswordKey = KeyForPassword(password);
 
-            MailMessage mail = new MailMessage();
+            mail = new MailMessage();
             mail.To.Add(host.MailAddress);
-            // mail.From = new MailAddress("ipewzner@g.jct.ac.il");
-            mail.From = new MailAddress("dotnetproject2020 @gmail.com");
+            mail.From = new MailAddress("dotnetproject2020@gmail.com");
 
             mail.Subject = "New password - do not replay!";
             mail.Body = "You'r new password is: " + password +
@@ -731,33 +726,49 @@ namespace BL
             smtp.EnableSsl = true;
             try
             {
-                smtp.Send(mail);
-                return true;
+                //  smtp.Send(mail);
+                string userState = "test message1";
+                smtp.SendCompleted += Smtp_SendCompleted;
+                smtp.SendAsync(mail, userState);
             }
             catch (SmtpFailedRecipientsException ex)
             {
                 MessageBox.Show(ex.Message+ " Can't send the message for one or more of the recipients");
-                return false;
             }
             catch (SmtpException ex)
             {
                 MessageBox.Show(ex.Message + " Server conction error");
-                return false;
             }
             catch (ArgumentNullException ex)
             {
                 MessageBox.Show(ex.Message + " Message is empty");
-                return false;
             }
             catch (InvalidOperationException ex)
             {
                 MessageBox.Show(ex.Message + "Some info is missing or incorrect");
-                return false;
             }
-            finally
+           
+        }
+
+        private void Smtp_SendCompleted(object sender, System.ComponentModel.AsyncCompletedEventArgs e)
+        {
+            String token = (string)e.UserState;
+
+            if (e.Cancelled)
             {
-                mail.Dispose();
+               MessageBox.Show(" Send canceled."+ token);
             }
+            if (e.Error != null)
+            {
+                MessageBox.Show(""+ token+ e.Error.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Message sent.");
+            }
+            mail.Dispose();
+
+            //mailSent = true;
         }
 
         /// <summary>

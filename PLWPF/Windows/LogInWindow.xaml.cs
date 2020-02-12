@@ -85,9 +85,7 @@ namespace PLWPF
 
         private void Worker_SendMailWithNewPassword(object sender, DoWorkEventArgs e)
         {
-           if( myBL.SendMailWithNewPassword(host))
-            MessageBox.Show("Email was sent!", "Massage", MessageBoxButton.OK, MessageBoxImage.Information);
-
+            myBL.SendMailWithNewPassword(host);
         }
 
         /// <summary>

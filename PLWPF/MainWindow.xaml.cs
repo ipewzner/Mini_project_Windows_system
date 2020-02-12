@@ -99,8 +99,23 @@ namespace PLWPF
         /// <param name="e"></param>
         private void editHost_Click(object sender, RoutedEventArgs e)
         {
-            Window win = new HostUpdateWindow(host);
-            win.Show();
+            HostUpdateWindow win = new HostUpdateWindow(host,this);
+            win.ShowDialog();
+
+            if (win.DialogResult == true)
+            {
+               if(win.HostDeleted)
+                {
+                    host = null;
+                    user.Content = "";
+                    guestButton.Visibility = Visibility.Visible;
+                    orderButton.Visibility = Visibility.Hidden;
+                    editUnitButton.Visibility = Visibility.Hidden;
+                    editHostButton.Visibility = Visibility.Hidden;
+                    statButton.Visibility = Visibility.Hidden;
+                    ShowInfoButton.Visibility = Visibility.Hidden;
+                }
+            }
         }
 
         /// <summary>
@@ -116,7 +131,7 @@ namespace PLWPF
                 win.ShowDialog();
                 if (win.DialogResult == true)
                 {
-
+                          
                     host = win.HostfromLogin;
                     user.Content = host.PrivateName + " " + host.FamilyName;
                     guestButton.Visibility = Visibility.Hidden;

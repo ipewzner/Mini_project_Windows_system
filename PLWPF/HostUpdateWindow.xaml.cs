@@ -20,11 +20,24 @@ namespace PLWPF
     /// </summary>
     public partial class HostUpdateWindow : Window
     {
-        public HostUpdateWindow(Host host)
+
+        public bool HostDeleted;
+        Window mainWindow;
+        public HostUpdateWindow(Host host,Window mainWindow)
         {
+            HostDeleted = false;
+            this.mainWindow = mainWindow;
+            mainWindow.Hide();
             InitializeComponent();
             UpdateHostFrame.Content = new HostUserControl(host,false,this);
             DeleteHostFrame.Content = new HostUserControl(host,true,this);
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+
+                DialogResult = true;
+                mainWindow.Visibility = Visibility.Visible;
         }
     }
 }
