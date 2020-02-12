@@ -87,6 +87,7 @@ namespace PLWPF
                 bool check = myBL.AddGuestRequest(guest);
                 if(check)
                 MessageBox.Show("Recived Seccessfully");
+                    this.Close();
             }
             catch (Exception ex)
             {
