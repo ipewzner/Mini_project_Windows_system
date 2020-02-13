@@ -47,7 +47,7 @@
         <Label   Content="Children" HorizontalAlignment="Left" Margin="260,133,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.603,0.158"/>
         <TextBox x:Name="Children" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Height="32" Margin="258,159,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="156" FontSize="18" />
 
-        <Button x:Name="button"  HorizontalAlignment="Left" Margin="363,554,0,0" VerticalAlignment="Top" Width="105" Height="36" Click="button_Click"/>
+        <Button x:Name="button" Focusable="False" HorizontalAlignment="Left" Margin="363,554,0,0" VerticalAlignment="Top" Width="105" Height="36" Click="button_Click"/>
         <Label x:Name="CancelChanges" Content="Cancel changes" PreviewMouseDown="CancelChanges_PreviewMouseDown"  HorizontalAlignment="Left" Margin="73,510,0,0" VerticalAlignment="Top" />
 
     </Grid>

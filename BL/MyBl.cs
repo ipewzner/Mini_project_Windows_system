@@ -144,7 +144,6 @@ namespace BL
             {
                 if (!CanUnitBeDeleted(unit.HostingUnitKey))
                 {
-                    myDAL.DeleteHost(host);
                     throw new Exception("Can't delete the Host, whan some order still open in some of the units!");
                 }
             }
@@ -279,7 +278,7 @@ namespace BL
         {
             foreach (var order in myDAL.ReturenAllOrders())
             {
-                if ((order.HostingUnitKey == unitKey) && (order.Status == OrderStatus.UntreatedYet))
+                if ((order.HostingUnitKey == unitKey) && (order.Status == OrderStatus.MailSent))
                 {
                     return false;
                 }

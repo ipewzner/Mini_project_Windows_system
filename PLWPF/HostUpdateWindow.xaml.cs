@@ -11,7 +11,7 @@ namespace PLWPF
     {
 
         public bool HostDeleted { set; get; }
-        HostUserControl c;
+        HostUserControl hostUserControl;
 
         Window mainWindow;
         public HostUpdateWindow(Host host,Window mainWindow)
@@ -21,14 +21,14 @@ namespace PLWPF
             mainWindow.Hide();
             InitializeComponent();
             UpdateHostFrame.Content = new HostUserControl(host,false,this);
-            c= new HostUserControl(host, true, this);
-            DeleteHostFrame.Content = c;
+            hostUserControl = new HostUserControl(host, true, this);
+            DeleteHostFrame.Content = hostUserControl;
 
         }
         
         private void Window_Closed(object sender, EventArgs e)
         {
-            HostDeleted = c.HostDeleted  ;
+            HostDeleted = hostUserControl.HostDeleted  ;
             mainWindow.Visibility = Visibility.Visible;
         }
     }

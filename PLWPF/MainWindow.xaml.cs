@@ -44,7 +44,7 @@ namespace PLWPF
         {
             if (host != null)
             {
-                Window win = new HostingUnitWindow(host);
+                Window win = new HostingUnitWindow(host,this);
                 win.Show();
             }
             else MessageBox.Show("Select User Or Sign Up");
@@ -99,19 +99,13 @@ namespace PLWPF
 
             if (win.DialogResult == true)
             {
-               if(win.HostDeleted)
-                {
-                    host = null;
-                    user.Content = "";
-                    guestButton.Visibility = Visibility.Visible;
-                    orderButton.Visibility = Visibility.Hidden;
-                    editUnitButton.Visibility = Visibility.Hidden;
-                    editHostButton.Visibility = Visibility.Hidden;
-                    statButton.Visibility = Visibility.Hidden;
-                    ShowInfoButton.Visibility = Visibility.Hidden;
-                }
+                if (win.HostDeleted)
+                    LogOut();
             }
         }
+        /// <summary>
+        /// log out and handle visbility acording
+        /// </summary>
         public void LogOut() {
             host = null;
             user.Content = "";
@@ -177,14 +171,7 @@ namespace PLWPF
         /// <param name="e"></param>
         private void LogOut_Click(object sender, RoutedEventArgs e)
         {
-            host = null;
-            user.Content = "";
-            guestButton.Visibility = Visibility.Visible;
-            orderButton.Visibility = Visibility.Hidden;
-            editUnitButton.Visibility = Visibility.Hidden;
-            editHostButton.Visibility = Visibility.Hidden;
-            statButton.Visibility = Visibility.Hidden;
-            ShowInfoButton.Visibility = Visibility.Hidden;
+            LogOut();
         }
     }
 }

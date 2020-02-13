@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
-  <lastSerial>10000075</lastSerial>
+  <lastSerial>10000077</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>11111111</HostKey>
     <PrivateName>david</PrivateName>
@@ -81,36 +81,6 @@
     </BankAccount>
   </Host>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>10000069</HostKey>
-    <PrivateName>malcolem</PrivateName>
-    <FamilyName>mlc</FamilyName>
-    <PhoneNumber>852</PhoneNumber>
-    <MailAddress>gfd@g.com</MailAddress>
-    <PasswordKey>-0.041516320590781877</PasswordKey>
-    <BankAccount>
-      <BankNumber>12</BankNumber>
-      <BankName>בנק הפועלים בע"מ</BankName>
-      <BranchNumber>785</BranchNumber>
-      <BranchCity>חולון</BranchCity>
-      <BankAccountNumber>63852</BankAccountNumber>
-    </BankAccount>
-  </Host>
-  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>10000073</HostKey>
-    <PrivateName>edcxsx</PrivateName>
-    <FamilyName>xsxs</FamilyName>
-    <PhoneNumber>41</PhoneNumber>
-    <MailAddress>cd@fds</MailAddress>
-    <PasswordKey>0.8414709848078965</PasswordKey>
-    <BankAccount>
-      <BankNumber>14</BankNumber>
-      <BankName>בנק אוצר החייל בע"מ</BankName>
-      <BranchNumber>362</BranchNumber>
-      <BranchCity>חיפה</BranchCity>
-      <BankAccountNumber>523063</BankAccountNumber>
-    </BankAccount>
-  </Host>
-  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>10000074</HostKey>
     <PrivateName>pewzner</PrivateName>
     <FamilyName>iasayau</FamilyName>
@@ -122,6 +92,21 @@
       <BankName>בנק יהב לעובדי המדינה בע"מ</BankName>
       <BranchNumber>125</BranchNumber>
       <BranchCity>אשקלון</BranchCity>
+      <BankAccountNumber>520</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000076</HostKey>
+    <PrivateName>harry</PrivateName>
+    <FamilyName>potter</FamilyName>
+    <PhoneNumber>8</PhoneNumber>
+    <MailAddress>fds@cd</MailAddress>
+    <PasswordKey>-2.1442198634214571</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>331</BranchNumber>
+      <BranchCity>אילת</BranchCity>
       <BankAccountNumber>520</BankAccountNumber>
     </BankAccount>
   </Host>

@@ -133,7 +133,13 @@ namespace PLWPF
             {
                 if (deleteHost)
                 {
-                    try { myBL.RemoveHost(host); }
+                    try {
+                        MessageBoxResult result = MessageBox.Show("Are you sure\n?", "Delete Host", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            myBL.RemoveHost(host);
+                        }
+                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Unable to delete host");

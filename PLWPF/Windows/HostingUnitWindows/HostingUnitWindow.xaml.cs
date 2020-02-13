@@ -9,12 +9,20 @@ namespace PLWPF
     /// </summary>
     public partial class HostingUnitWindow : Window
     {
-        public HostingUnitWindow(Host host)
+        Window mainWindow;
+        public HostingUnitWindow(Host host,Window mainWindow)
         {
+           this.mainWindow = mainWindow;
+            mainWindow.Hide();
             InitializeComponent();
-            AddNewUnitFrame.Content = new HostingUnitUserControl(host,true, false);
-            UpdateUnitFrame.Content = new HostingUnitUserControl(host, false, false);
-            DeleteUnitFrame.Content = new HostingUnitUserControl(host, false, true);
+            AddNewUnitFrame.Content = new HostingUnitUserControl(host,true, false,this);
+            UpdateUnitFrame.Content = new HostingUnitUserControl(host, false, false, this);
+            DeleteUnitFrame.Content = new HostingUnitUserControl(host, false, true, this);
+        }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            mainWindow.Visibility = Visibility.Visible;
         }
     }
 }

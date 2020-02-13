@@ -1,5 +1,4 @@
 ﻿using BE;
-using BE;
 using BL;
 using System;
 using System.Linq;
@@ -18,15 +17,16 @@ namespace PLWPF.Windows.HostingUnitWindows
         Host host;
         HostingUnit hostingUnit;
         bool newUnit, deleteUnit;
-
+        Window win;
         /// <summary>
         /// c-tor
         /// </summary>
         /// <param name="host"></param>
         /// <param name="newUnit"></param>
         /// <param name="deleteUnit"></param>
-        public HostingUnitUserControl(Host host, bool newUnit, bool deleteUnit)
+        public HostingUnitUserControl(Host host, bool newUnit, bool deleteUnit ,Window win)
         {
+            this.win = win;
             this.newUnit = newUnit;
             this.deleteUnit = deleteUnit;
             InitializeComponent();
@@ -86,22 +86,31 @@ namespace PLWPF.Windows.HostingUnitWindows
         /// <param name="unit"></param>
         private void InitialHostingUnit(HostingUnit unit)
         {
-            ComboBoxHostingType.SelectedItem = unit.HostingType;
-            Adults.Text = unit.Adults.ToString();
-            Children.Text = unit.Children.ToString();
-            AreaComboBox.SelectedItem = unit.Area;
-            SubArea.Text = unit.SubArea;
-            ComboBoxPool.SelectedItem = (UnitRequirements)unit.Pool;
-            ComboBoxJacuzzi.SelectedItem = (UnitRequirements)unit.Jacuzzi;
-            ComboBoxAttrac.SelectedItem = (UnitRequirements)unit.ChildrensAttractions;
-            ComboBoxSpredBads.SelectedItem = (UnitRequirements)unit.SpredBads;
-            ComboBoxAirCondsner.SelectedItem = (UnitRequirements)unit.AirCondsner;
-            ComboBoxGarden.SelectedItem =(UnitRequirements)unit.Garden;
-            ComboBoxSingog.SelectedItem =(UnitRequirements)unit.SingogNaerBy;
-            ComboBoxTrensp.SelectedItem = (UnitRequirements)unit.NaerPublicTrensportion;
-
-           // NaerByTextBox.Text = ((UnitRequirements)hostingUnit.SingogNaerBy).ToString();
-          
+            try
+            {
+                if (!newUnit && unit!= null)
+                {
+                    ComboBoxHostingType.SelectedItem = unit.HostingType;
+                    Adults.Text = unit.Adults.ToString();
+                    Children.Text = unit.Children.ToString();
+                    AreaComboBox.SelectedItem = unit.Area;
+                    SubArea.Text = unit.SubArea;
+                    ComboBoxPool.SelectedItem = (UnitRequirements)unit.Pool;
+                    ComboBoxJacuzzi.SelectedItem = (UnitRequirements)unit.Jacuzzi;
+                    ComboBoxAttrac.SelectedItem = (UnitRequirements)unit.ChildrensAttractions;
+                    ComboBoxSpredBads.SelectedItem = (UnitRequirements)unit.SpredBads;
+                    ComboBoxAirCondsner.SelectedItem = (UnitRequirements)unit.AirCondsner;
+                    ComboBoxGarden.SelectedItem = (UnitRequirements)unit.Garden;
+                    ComboBoxSingog.SelectedItem = (UnitRequirements)unit.SingogNaerBy;
+                    ComboBoxTrensp.SelectedItem = (UnitRequirements)unit.NaerPublicTrensportion;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("" + ex);
+                MessageBox.Show("" + ex.Message);
+            }
+        
         }
     
 
@@ -112,74 +121,78 @@ namespace PLWPF.Windows.HostingUnitWindows
         /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            if (deleteUnit == true)
+            try
             {
-                MessageBoxResult result = MessageBox.Show("Are you sure\n?", "Delete unit", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-                if (result == MessageBoxResult.Yes)
+                if (deleteUnit)
                 {
+
                     try
                     {
-                        myBL.UnitRemove(hostingUnit.HostingUnitKey);
+                        if (hostingUnit == null) throw new AccessViolationException("No unit to delete!");
+                        MessageBoxResult result = MessageBox.Show("Are you sure\n?", "Delete unit", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                        if (result == MessageBoxResult.Yes)
+                        {
+                            myBL.UnitRemove(hostingUnit.HostingUnitKey);
                             MessageBox.Show("Unit deleted");
+                            win.Close();
+                        }
                     }
+                    catch (AccessViolationException ex) { throw new Exception("" + ex.Message); }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Fail to delete unit");
-                        Console.WriteLine("Fail to delete unit \n " + ex);
+                        Console.WriteLine("" + ex);
+                        throw new Exception("Fail to delete unit \n ");
                     }
                 }
-            }
 
-            else
-            {
-                if (newUnit == true)
-                {
-                    hostingUnit.HostingUnitName = HostingUnitKeyTextBox.Text;
-                    hostingUnit.Owner = host;
-                }
 
-                try
-                {
-                    hostingUnit.HostingType = (HostingType)ComboBoxHostingType.SelectedItem;
-                    hostingUnit.Children = Int32.Parse(Children.Text);
-                    hostingUnit.Adults = Int32.Parse(Adults.Text);
-                    hostingUnit.SubArea = SubArea.Text;
-                    hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
-                    hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
-                    hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
-                    hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
-                    hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
-                    hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
-                    hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
-                    hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
-                    hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("missing fields");
-                }
-               
-
-                if (newUnit == true)
-                {
-                    myBL.AddHostingUnit(hostingUnit);
-                    MessageBox.Show("Adding Hosting Unit Secsessfully!");
-                }
                 else
                 {
                     try
                     {
-                        myBL.UpdateUnit(hostingUnit);
+                        if (!newUnit && hostingUnit == null) throw new AccessViolationException("No unit to Update!");
+                        if (newUnit)
+                        {
+                            hostingUnit.HostingUnitName = HostingUnitKeyTextBox.Text;
+                            hostingUnit.Owner = host;
+                        }
+                        hostingUnit.HostingType = (HostingType)ComboBoxHostingType.SelectedItem;
+                        hostingUnit.Children = Int32.Parse(Children.Text);
+                        hostingUnit.Adults = Int32.Parse(Adults.Text);
+                        hostingUnit.SubArea = SubArea.Text;
+                        hostingUnit.Area = (Area)AreaComboBox.SelectedItem;
+                        hostingUnit.Pool = (GestRequirements)ComboBoxPool.SelectedItem;
+                        hostingUnit.Jacuzzi = (GestRequirements)ComboBoxJacuzzi.SelectedItem;
+                        hostingUnit.ChildrensAttractions = (GestRequirements)ComboBoxAttrac.SelectedItem;
+                        hostingUnit.SpredBads = (GestRequirements)ComboBoxSpredBads.SelectedItem;
+                        hostingUnit.AirCondsner = (GestRequirements)ComboBoxAirCondsner.SelectedItem;
+                        hostingUnit.Garden = (GestRequirements)ComboBoxGarden.SelectedItem;
+                        hostingUnit.SingogNaerBy = (GestRequirements)ComboBoxSingog.SelectedItem;
+                        hostingUnit.NaerPublicTrensportion = (GestRequirements)ComboBoxTrensp.SelectedItem;
                     }
-                    catch (Exception ex)
+                    catch (AccessViolationException ex){throw new Exception("" + ex.Message);}
+                    catch (Exception ex){
+                        Console.WriteLine("" + ex);
+                        throw new Exception("You'r missing some fields!");
+                    }
+
+                    try
                     {
-                        MessageBox.Show($"cannot add or update {hostingUnit.HostingUnitName}");
-                        Console.WriteLine(ex.Message);
+                    if (newUnit) myBL.AddHostingUnit(hostingUnit);
+                    else myBL.UpdateUnit(hostingUnit);
+                    MessageBox.Show((newUnit ? "Adding" : "Update") + " Unit Secsessfully!");
+                    win.Close();
+                    }
+                    catch (Exception ex){
+                        Console.WriteLine("" + ex);
+                        throw new Exception((newUnit ? "Add fail! " : "Update fail! "));
                     }
                 }
-
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(""+ex.Message);
+                Console.WriteLine("" + ex);
             }
         }
 
