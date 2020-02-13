@@ -60,6 +60,7 @@ namespace PLWPF
 
         void bank_loaded(object sender, RoutedEventArgs e)
         {
+            if(!newHost)
             SetBankData();
 
         }
