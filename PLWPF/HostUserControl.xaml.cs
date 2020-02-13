@@ -15,14 +15,16 @@ namespace PLWPF
     /// </summary>
     public partial class HostUserControl : UserControl
     {
+        public bool HostDeleted { set; get; }
         MyBl myBL = new MyBl();
         bool newHost, deleteHost;
         Host host;
         BankAccount bankAccount;
         Window win;
-        public HostUserControl(Host hosts, bool deleteHost, Window register)
+
+        public HostUserControl(Host hosts, bool deleteHost, Window win)
         {
-            this.win = register ;
+            this.win = win ;
             InitializeComponent();
             DataContext = this;
             Banks = myBL.GetBanks();
@@ -66,6 +68,7 @@ namespace PLWPF
         {
             foreach (var item in Banks)
             {
+                //if !new user 
                 if (item.BankName == bankAccount.BankName)
                 {
                     Bank_ComboBox.SelectedItem = item;
@@ -136,6 +139,9 @@ namespace PLWPF
                         Console.WriteLine("Unable to delete host" + ex.Message);
                     }
                     MessageBox.Show("Host remove seccessfully");
+                    HostDeleted = true;
+                    win.DialogResult = true;
+                    win.Close();
                 }
                 else
                 {

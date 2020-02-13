@@ -112,6 +112,16 @@ namespace PLWPF
                 }
             }
         }
+        public void LogOut() {
+            host = null;
+            user.Content = "";
+            guestButton.Visibility = Visibility.Visible;
+            orderButton.Visibility = Visibility.Hidden;
+            editUnitButton.Visibility = Visibility.Hidden;
+            editHostButton.Visibility = Visibility.Hidden;
+            statButton.Visibility = Visibility.Hidden;
+            ShowInfoButton.Visibility = Visibility.Hidden;
+        }
 
         /// <summary>
         /// Button_Click event call LogInWindow and handle visibility of some window

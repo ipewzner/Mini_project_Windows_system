@@ -203,37 +203,4 @@
     </Owner>
     <HostingUnitName>malon</HostingUnitName>
   </HostingUnit>
-  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <Area>Jerusalem</Area>
-    <SubArea>rty</SubArea>
-    <HostingType>Camping</HostingType>
-    <Adults>6</Adults>
-    <Children>45</Children>
-    <Pool>Necessary</Pool>
-    <Jacuzzi>Possible</Jacuzzi>
-    <Garden>Possible</Garden>
-    <ChildrensAttractions>Necessary</ChildrensAttractions>
-    <SpredBads>Necessary</SpredBads>
-    <AirCondsner>Possible</AirCondsner>
-    <frisider>Necessary</frisider>
-    <SingogNaerBy>Possible</SingogNaerBy>
-    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
-    <HostingUnitKey>10000000</HostingUnitKey>
-    <Owner>
-      <HostKey>10000065</HostKey>
-      <PrivateName>roman</PrivateName>
-      <FamilyName>zadorov</FamilyName>
-      <PhoneNumber>5454345</PhoneNumber>
-      <MailAddress>ksdjffh@djklf.com</MailAddress>
-      <PasswordKey>-5.1005764529180357</PasswordKey>
-      <BankAccount>
-        <BankNumber>4</BankNumber>
-        <BankName>בנק יהב לעובדי המדינה בע"מ</BankName>
-        <BranchNumber>129</BranchNumber>
-        <BranchCity>ירושלים</BranchCity>
-        <BankAccountNumber>123123</BankAccountNumber>
-      </BankAccount>
-    </Owner>
-    <HostingUnitName>rtyrty</HostingUnitName>
-  </HostingUnit>
 </HostingUnits>
