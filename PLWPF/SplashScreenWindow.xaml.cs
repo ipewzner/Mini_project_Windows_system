@@ -1,18 +1,7 @@
 ﻿using BL;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace PLWPF
 {
@@ -21,41 +10,70 @@ namespace PLWPF
     /// </summary>
     public partial class SplashScreenWindow : Window
     {
+        Thread thread;
         MainWindow mainwindow = new MainWindow();
         MyBl myBL = new MyBl();
+
+        /// <summary>
+        /// c-tor
+        /// </summary>
         public SplashScreenWindow()
         {
             InitializeComponent();
 
             try
             {
-                Thread thread = new Thread(myBL.RefreshDatabase);
+                thread = new Thread(doWork) { IsBackground = true }; 
                 thread.Start();
-                Thread thread2 = new Thread(fun);
-                thread2.Start();
             }
-            catch (Exception ex)
+            catch (Exception ex){MessageBox.Show("" + ex.Message);}
+        }
+
+
+        /// <summary>
+        ///  Refresh the Database and close the window when it finise or when 10 sec pass, the leteset 
+        /// </summary>
+        public void doWork()
+        {
+            Action closingTheWindow =()=> this.Close();
+            Action RefreshingInfoLabel = () => InfoLabel.Content = "Initialize";
+
+            TimeSpan dalta = new TimeSpan(0, 0, 0, 10);
+            DateTime bagin = DateTime.Now;
+            try { myBL.RefreshDatabase(); }
+            catch (Exception ex) { throw new Exception(""+ex); }
+            finally
             {
-
-                // throw new Exception("Can't get bank info from the web " + ex);
-                MessageBox.Show("Fail to refresh the database! \n " + ex.Message);
+                Dispatcher.BeginInvoke(RefreshingInfoLabel);
+               
+                //Wait for a  the minimel time of 10 sec
+                while (DateTime.Now - bagin < dalta) { }
+                Dispatcher.BeginInvoke(closingTheWindow);
             }
+
         }
 
-       public void fun()
-        {
-            Thread.Sleep(5000);
-            Action action=fun2;
-           Dispatcher.BeginInvoke(action);
-        }
-
-        public void fun2()
-        {
-            this.Close();
-        }
+        /// <summary>
+        /// Window Closed event thet show the main window and handle the progres bar (it not properly without it)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
             mainwindow.Show();
+            Progress.IsIndeterminate = false;
+        }
+
+        /// <summary>
+        /// handle the progres bar (it not work without it)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_ContentRendered(object sender, EventArgs e)
+        {
+            Progress.Visibility = Visibility.Visible;
+            Progress.IsIndeterminate = true;
         }
     }
 }
+ 

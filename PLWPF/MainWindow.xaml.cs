@@ -173,5 +173,15 @@ namespace PLWPF
         {
             LogOut();
         }
+
+        /// <summary>
+        /// When the main window closed, exit the environment
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            Environment.Exit(Environment.ExitCode);
+        }
     }
 }
