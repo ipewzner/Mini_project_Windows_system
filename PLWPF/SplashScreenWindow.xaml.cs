@@ -38,7 +38,7 @@ namespace PLWPF
             Action closingTheWindow =()=> this.Close();
             Action RefreshingInfoLabel = () => InfoLabel.Content = "Initialize";
 
-            TimeSpan dalta = new TimeSpan(0, 0, 0, 10);
+            TimeSpan dalta = new TimeSpan(0, 0, 0, 5);
             DateTime bagin = DateTime.Now;
             try { myBL.RefreshDatabase(); }
             catch (Exception ex) { throw new Exception(""+ex); }
@@ -60,6 +60,7 @@ namespace PLWPF
         /// <param name="e"></param>
         private void Window_Closed(object sender, EventArgs e)
         {
+            thread.Abort();
             mainwindow.Show();
             Progress.IsIndeterminate = false;
         }
