@@ -12,6 +12,7 @@ namespace BL
 {
     public class MyBl : IBL
     {
+        
         DalXML myDAL = FactorySingletonDal.Instance;
         MailMessage mail;
         /// <summary>

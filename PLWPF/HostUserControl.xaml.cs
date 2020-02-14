@@ -218,60 +218,6 @@ namespace PLWPF
         public IEnumerable<BankDetails> Banks { get; set; }
         public string selectedBank { get; set; }
 
-        // public ObservableCollection<BankBranch> Branches { get; set; }
-
-        //public IEnumerable<BankBranch> Branches
-        //{
-        //    get { return _Branches; }
-        //    set
-        //    {
-        //        if (_Branches == null)
-        //        {
-        //            _Branches = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
-
-
-        //public event PropertyChangedEventHandler PropertyChanged;
-
-        //private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-
-
-        /*
-        private void Register_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Host host = new Host();
-                BankAccount bankAccount = new BankAccount();
-
-                host.PrivateName = PrivateName.Text;
-                host.FamilyName = FamilyName.Text;
-                host.PhoneNumber = PhoneNumber.Text;
-                host.MailAddress = MailAddress.Text;
-
-                bankAccount.BankName = Bank_ComboBox.Text;
-                bankAccount.BranchCity = BranchCity.Text;
-                //bankAccount.BranchAddress = Convert.ToInt32(.Text);
-                bankAccount.BankNumber = Convert.ToInt32(BankNumber.Text);
-                bankAccount.BranchNumber = Convert.ToInt32(BranchNumber_ComboBox.SelectedItem);
-                bankAccount.BankAccountNumber = Convert.ToInt32(BankAccountNumber.Text);
-
-                host.BankAccount = bankAccount;
-                myBL.AddHost(host);
-                MessageBox.Show("Recived Seccessfully");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error! Make sure you dont miss any field!");
-            }
-        }
-         */
         private void Bank_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (Bank_ComboBox.SelectedIndex != -1)
