@@ -649,7 +649,7 @@ namespace BL
         /// </summary>
         public void RefreshDatabase()
         {
-            
+
             try
             {
                 TimeSpan timeSpan = new TimeSpan(30, 0, 0, 0, 0);
@@ -659,8 +659,9 @@ namespace BL
             }
             catch (Exception ex)
             {
-                MessageBox.Show("" + ex.Message);
+                MessageBox.Show("Fail to refresh the database! \n " + ex.Message);
             }
+           
         }
 
         /// <summary>
