@@ -1,6 +1,7 @@
 ﻿using BE;
 using BL;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,20 +25,7 @@ namespace PLWPF
         {
             this.host = host;
             InitializeComponent();
-            var source = myBL.GetOrders(x => myBL.GetHostingUnit(x.HostingUnitKey).Owner.HostKey == host.HostKey);
-            if (source != null)
-            {
-                comboBox.ItemsSource = source;
-                comboBox.DisplayMemberPath = "OrderKey";
-
-                StatusComboBox.ItemsSource = Enum.GetValues(typeof(BE.OrderStatus)).Cast<BE.OrderStatus>();
-                HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(host.HostKey);
-            }
-            else
-            {
-                MessageBox.Show("No orders to show");
-                this.Close();
-            }
+      
         }
 
         /// <summary>
@@ -49,6 +37,7 @@ namespace PLWPF
         {
             order.Status = (OrderStatus)StatusComboBox.SelectedItem;
             myBL.UpdateOrder(order);
+
             this.Close();
         }
 
@@ -158,6 +147,33 @@ namespace PLWPF
                 // Continue.Visibility = Visibility.Hidden;
             }
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var source = myBL.GetOrders(x => myBL.GetHostingUnit(x.HostingUnitKey).Owner.HostKey == host.HostKey);
+                if (source.Any())
+                {
+                    comboBox.ItemsSource = source;
+                    comboBox.DisplayMemberPath = "OrderKey";
+
+                    StatusComboBox.ItemsSource = Enum.GetValues(typeof(BE.OrderStatus)).Cast<BE.OrderStatus>();
+                    HostingUnitKeyComboBox.ItemsSource = myBL.GetHostingUnitsKeysList(host.HostKey);
+                }
+                else
+                {
+                    MessageBox.Show("No orders to show");
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Server Problem, try again Later!");
+                Console.WriteLine(ex.Message);
+                this.Close();
+            }
+        }
     }
 }
-//maybe singlton is needed    for thos to func not intersect "OrderKey_TextChanged" &"GuestRequestKey_TextChanged"

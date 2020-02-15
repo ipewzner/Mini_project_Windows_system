@@ -15,20 +15,8 @@ namespace BE
         public int HostingUnitKey { get; set; }
         public Host Owner { get; set; }
         public String HostingUnitName { get; set; }
-
-
-        [XmlIgnore]
-        //public bool[,] Diary { get; private set; }
         public List<DateTime> Diary { get; set; }
-
-        //[XmlArray("Diary")]
-        //public bool[] DiaryDto
-        //{
-        //    get { return Diary.Flatten(); }
-        //    set { Diary = value.Expand(12); }
-        //}
-
-
+  
         public HostingUnit()
         {
             Diary = new List<DateTime>();

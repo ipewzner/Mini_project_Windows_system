@@ -59,16 +59,39 @@ namespace BL
         public bool AddOrder(Order neworder)
         {
 
-            //Order order = instance.ReturenAllOrders((x)=> x.OrderKey == neworder.OrderKey).First();
-            //if (order.Status == OrderStatus.CloseByClient || order.Status == OrderStatus.CloseByClientTimeOut)
-            //{
-            //    return false;
-            //}
-            //else
-            //{
-            myDAL.addOrder(neworder);
-            //}
-            return true;
+            try
+            {
+                
+                var req = GetGusetRequest(neworder.GuestRequestKey);
+                var unit = GetHostingUnit(neworder.HostingUnitKey);
+
+                if (IsDateAvailable(req.EntryDate, req.ReleaseDate, neworder.HostingUnitKey))
+                {
+                    myDAL.addOrder(neworder);
+                    for (var i = req.EntryDate; i <= req.ReleaseDate; i = i.AddDays(1))
+                    {
+                        unit.Diary.Add(i);
+
+                    }
+                    UpdateUnit(unit);
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+               
+               
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
+      
+           
         }
 
         /// <summary>
@@ -181,7 +204,7 @@ namespace BL
 
             HostingUnit x = GetHostingUnit(unitKey);
             start.AddDays(1);
-            for (DateTime i = start; i < end; i.AddDays(1))
+            for (DateTime i = start; i < end; i = i.AddDays(1))
             {
                 if (x.Diary.FindIndex((z) => z == i) != -1)
                 {
@@ -388,7 +411,7 @@ namespace BL
         /// <returns></returns>
         GuestRequest GetGusetRequest(int key)
         {
-            return (myDAL.ReturnGuestRequestList(x => x.GuestRequestKey == key)).First();
+            return (myDAL.ReturnGuestRequestList(x => x.GuestRequestKey == key)).FirstOrDefault();
         }
 
         /// <summary>
@@ -400,18 +423,15 @@ namespace BL
         {
             try
             {
-                var unit = (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).First();
+                var unit = (myDAL.ReturnHostingUnitList(x => x.HostingUnitKey == key)).FirstOrDefault();
                 return unit;
             }
             catch (Exception)
             {
 
-                MessageBox.Show("no orders to show");
+                MessageBox.Show("No Hosting Unit No Show");
                 return new HostingUnit();
             }
-        
-
-           
 
         }
 

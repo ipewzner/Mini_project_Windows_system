@@ -117,6 +117,7 @@ namespace DataSource
             get
             {
                 hostingUnitRoot = LoadData(hostingUnitPath);
+                
                 return hostingUnitRoot;
             }
         }

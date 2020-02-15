@@ -2,6 +2,7 @@
 <HostingUnits>
   <lastSerial>10000043</lastSerial>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary></Diary>
     <Area>North</Area>
     <HostingType>Zimmer</HostingType>
     <Adults>0</Adults>
@@ -35,6 +36,7 @@
     <HostingUnitName>hotel hong-kong</HostingUnitName>
   </HostingUnit>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary></Diary>
     <Area>North</Area>
     <HostingType>Zimmer</HostingType>
     <Adults>0</Adults>
@@ -68,6 +70,7 @@
     <HostingUnitName>hotel paris</HostingUnitName>
   </HostingUnit>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary></Diary>
     <Area>Jerusalem</Area>
     <HostingType>Zimmer</HostingType>
     <Adults>0</Adults>
@@ -101,6 +104,7 @@
     <HostingUnitName>zimer of the Jerusalem</HostingUnitName>
   </HostingUnit>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary></Diary>
     <Area>South</Area>
     <HostingType>Zimmer</HostingType>
     <Adults>0</Adults>
@@ -134,6 +138,7 @@
     <HostingUnitName>zimer of the South</HostingUnitName>
   </HostingUnit>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary></Diary>
     <Area>North</Area>
     <SubArea />
     <HostingType>RentingRoom</HostingType>
@@ -169,6 +174,12 @@
     <HostingUnitName>zimer of the north</HostingUnitName>
   </HostingUnit>
   <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary>
+      <DateTime>26/02/2020 00:00:00</DateTime>
+      <DateTime>27/02/2020 00:00:00</DateTime>
+      <DateTime>28/02/2020 00:00:00</DateTime>
+      <DateTime>29/02/2020 00:00:00</DateTime>
+    </Diary>
     <Area>North</Area>
     <SubArea>wer</SubArea>
     <HostingType>Zimmer</HostingType>
@@ -202,5 +213,46 @@
       <CollectionClearance />
     </Owner>
     <HostingUnitName>malon</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary>
+      <DateTime>26/02/2020 00:00:00</DateTime>
+      <DateTime>27/02/2020 00:00:00</DateTime>
+      <DateTime>28/02/2020 00:00:00</DateTime>
+      <DateTime>29/02/2020 00:00:00</DateTime>
+    </Diary>
+    <Area>Jerusalem</Area>
+    <SubArea>rdefrg</SubArea>
+    <HostingType>RentingRoom</HostingType>
+    <Adults>34</Adults>
+    <Children>3</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <HostingUnitKey>10000000</HostingUnitKey>
+    <Owner>
+      <HostKey>33333333</HostKey>
+      <PrivateName>dan</PrivateName>
+      <FamilyName>danon</FamilyName>
+      <PhoneNumber>054-1010101</PhoneNumber>
+      <MailAddress>zimer@gmai.com</MailAddress>
+      <PasswordKey>0</PasswordKey>
+      <BankAccount>
+        <BankNumber>525</BankNumber>
+        <BankName>laomi</BankName>
+        <BranchNumber>852</BranchNumber>
+        <BranchAddress>gargmel 1010</BranchAddress>
+        <BranchCity>heifa</BranchCity>
+        <BankAccountNumber>1152582</BankAccountNumber>
+      </BankAccount>
+      <CollectionClearance />
+    </Owner>
+    <HostingUnitName>best malon</HostingUnitName>
   </HostingUnit>
 </HostingUnits>

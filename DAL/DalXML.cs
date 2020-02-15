@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 using BE;
 using DataSource;
 using System.Net;
+using System.Globalization;
 
 namespace DAL
 {
@@ -91,8 +92,28 @@ namespace DAL
 
         public List<HostingUnit> getAllHostingUnits()
         {
-            return (from o in DataSource.DataSourceXML.HostingUnits.Elements("HostingUnit")
+          var x = (from o in DataSource.DataSourceXML.HostingUnits.Elements("HostingUnit")
                     select o.ToString().ToObject<HostingUnit>()).ToList();
+
+          var list = DataSourceXML.HostingUnits.Elements("HostingUnit").ToList();
+            foreach (var item in x)
+            {               
+                foreach (var k in list)
+                {
+                    if (k.Element("HostingUnitKey").Value == item.HostingUnitKey.ToString())
+                    {
+                        var dates = k.Element("Diary").Elements("DateTime").ToList();
+                        foreach (var v in dates)
+                        {
+                            DateTime date = DateTime.ParseExact(v.Value, "dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture);
+                            item.Diary.Add(date); 
+                        }
+               
+                    }
+                }
+            }
+            return x;
+           
         }
 
         public List<Host> getAllHosts()
@@ -213,11 +234,6 @@ namespace DAL
             }
   
             return true;
-        }
-
-        public void UpdateOrder(int OrderKey, OrderStatus status)
-        {
-            throw new NotImplementedException();
         }
 
 
@@ -345,7 +361,10 @@ namespace DAL
                     hostingUnits.Element("frisider").Value = hostingUnit.frisider.ToString();
                     hostingUnits.Element("SingogNaerBy").Value = hostingUnit.SingogNaerBy.ToString();
                     hostingUnits.Element("NaerPublicTrensportion").Value = hostingUnit.NaerPublicTrensportion.ToString();
-  
+                    hostingUnits.Element("Diary").Remove();
+                    var diary = new XElement("Diary", hostingUnit.Diary.Select(x => new XElement("DateTime", x.ToString())));
+                    hostingUnits.AddFirst(diary);
+
                     DataSourceXML.SaveHostingUnits();
 
                     return true;

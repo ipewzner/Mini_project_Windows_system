@@ -22,7 +22,7 @@ namespace PLWPF.Windows
         public NewOrderWindow(Host host )
         {
             InitializeComponent();
-            BE.Order order = new BE.Order();
+            Order order = new Order();
             this.host= host;
             hostName.Text = host.FamilyName;
             hostId.Text = host.HostKey.ToString();
@@ -83,30 +83,38 @@ namespace PLWPF.Windows
 
             try
             {
-                myBL.AddOrder(order);
-                worker.DoWork += Worker_SendMailWithNewOffer;
-                worker.RunWorkerAsync(order);
-                try
+                var check = myBL.AddOrder(order);
+                if (check)
                 {
-                    if (worker.IsBusy != true) worker.RunWorkerAsync();
-                    MessageBox.Show("Email was sent!", "Massage", MessageBoxButton.OK, MessageBoxImage.Information);
+                    worker.DoWork += Worker_SendMailWithNewOffer;
+                    worker.RunWorkerAsync(order);
+                    try
+                    {
+                        if (worker.IsBusy != true) worker.RunWorkerAsync();
+                        MessageBox.Show("Email was sent!", "Massage", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Fail to send the Email\n", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    try
+                    {
+                        myBL.SendMail(order);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Can't sand mail");
+                        Console.WriteLine("Can't sand mail" + ex.Message);
+                    }
+                    MessageBox.Show("Order Created Seccessfuly!");
+                    this.Close();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show("Fail to send the Email\n", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show("No Aviable Rooms For This Date!");
                 }
 
-                try
-                {
-                    myBL.SendMail(order);                    
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Can't sand mail");
-                    Console.WriteLine("Can't sand mail" + ex.Message);
-                }
-              MessageBox.Show("Order Created Seccessfuly!");
-                this.Close();
             }
             catch (Exception ex)
             {
