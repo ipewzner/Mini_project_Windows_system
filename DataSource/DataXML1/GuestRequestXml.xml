@@ -1,42 +1,197 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <GuestRequests>
-  <lastSerial>1000001</lastSerial>
+  <lastSerial>10000010</lastSerial>
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <GuestRequestKey>1000000</GuestRequestKey>
-    <PrivateName>ASDA</PrivateName>
-    <FamilyName>ASDAS</FamilyName>
-    <MailAddress>AS@HH.KK</MailAddress>
-    <Status>NotYetApproved</Status>
-    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-    <EntryDate>2020-01-19T11:52:17.9355397+02:00</EntryDate>
-    <ReleaseDate>2020-01-21T11:52:17.9355397+02:00</ReleaseDate>
     <Area>Jerusalem</Area>
-    <SubArea>ASD</SubArea>
-    <HostingType>Zimmer</HostingType>
+    <SubArea>old city</SubArea>
+    <HostingType>Hotel</HostingType>
     <Adults>2</Adults>
-    <Children>3</Children>
+    <Children>1</Children>
     <Pool>Necessary</Pool>
-    <Jacuzzi>Necessary</Jacuzzi>
-    <Garden>Necessary</Garden>
+    <Jacuzzi>NotNecessary</Jacuzzi>
+    <Garden>NotNecessary</Garden>
     <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>NotNecessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Possible</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000000</GuestRequestKey>
+    <PrivateName>zareh</PrivateName>
+    <FamilyName>parz</FamilyName>
+    <MailAddress>penhes@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
   </GuestRequest>
   <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <GuestRequestKey>1000001</GuestRequestKey>
-    <PrivateName>dxs</PrivateName>
-    <FamilyName>EFG</FamilyName>
-    <MailAddress>GR@GG.GG</MailAddress>
-    <Status>NotYetApproved</Status>
-    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
-    <EntryDate>2020-01-19T11:53:23.7121693+02:00</EntryDate>
-    <ReleaseDate>2020-01-21T11:53:23.7121693+02:00</ReleaseDate>
-    <Area>Jerusalem</Area>
-    <SubArea>asd</SubArea>
+    <Area>North</Area>
+    <SubArea>tabrios</SubArea>
     <HostingType>Zimmer</HostingType>
-    <Adults>55</Adults>
-    <Children>54</Children>
+    <Adults>4</Adults>
+    <Children>0</Children>
     <Pool>Necessary</Pool>
     <Jacuzzi>Necessary</Jacuzzi>
     <Garden>Necessary</Garden>
+    <ChildrensAttractions>NotNecessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000001</GuestRequestKey>
+    <PrivateName>kalmen</PrivateName>
+    <FamilyName>kalmenovitz</FamilyName>
+    <MailAddress>kalmenovitz@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Center</Area>
+    <SubArea>tal aviv</SubArea>
+    <HostingType>RentingRoom</HostingType>
+    <Adults>2</Adults>
+    <Children>2</Children>
+    <Pool>NotNecessary</Pool>
+    <Jacuzzi>NotNecessary</Jacuzzi>
+    <Garden>NotNecessary</Garden>
     <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>NotNecessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <GuestRequestKey>10000003</GuestRequestKey>
+    <PrivateName>afreim</PrivateName>
+    <FamilyName>cohn</FamilyName>
+    <MailAddress>cohn@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <SubArea>old city</SubArea>
+    <HostingType>Hotel</HostingType>
+    <Adults>2</Adults>
+    <Children>5</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>NotNecessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>NotNecessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Possible</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000006</GuestRequestKey>
+    <PrivateName>aser</PrivateName>
+    <FamilyName>golomb</FamilyName>
+    <MailAddress>golomb@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>0001-01-01T00:00:00</EntryDate>
+    <ReleaseDate>0001-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>South</Area>
+    <SubArea>jhkjh</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>NotNecessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000007</GuestRequestKey>
+    <PrivateName>p</PrivateName>
+    <FamilyName>p</FamilyName>
+    <Status>Open</Status>
+    <MailAddress>ipewzner@g.jct.ac.il</MailAddress>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-02T00:00:00+02:00</EntryDate>
+    <ReleaseDate>2020-01-01T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>dfgdf</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>NotNecessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000008</GuestRequestKey>
+    <PrivateName>dfgdfggdfg</PrivateName>
+    <FamilyName>d</FamilyName>
+    <MailAddress>dfg@dd.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-04T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-29T00:00:00</ReleaseDate>
+  </GuestRequest>
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>North</Area>
+    <SubArea>dfgfd</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000009</GuestRequestKey>
+    <PrivateName>dfgdf</PrivateName>
+    <FamilyName>dfgdf</FamilyName>
+    <MailAddress>dfg@dd.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-14T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-29T00:00:00</ReleaseDate>
+  </GuestRequest>
+ 
+  <GuestRequest xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <SubArea>ert</SubArea>
+    <HostingType>Zimmer</HostingType>
+    <Adults>0</Adults>
+    <Children>0</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>NotNecessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <GuestRequestKey>10000010</GuestRequestKey>
+    <PrivateName>meni</PrivateName>
+    <FamilyName>wer</FamilyName>
+    <MailAddress>meni3a@gmail.com</MailAddress>
+    <Status>Open</Status>
+    <RegistrationDate>0001-01-01T00:00:00</RegistrationDate>
+    <EntryDate>2020-02-26T00:00:00</EntryDate>
+    <ReleaseDate>2020-02-29T00:00:00</ReleaseDate>
   </GuestRequest>
 </GuestRequests>

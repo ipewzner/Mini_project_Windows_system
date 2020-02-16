@@ -150,6 +150,10 @@ namespace PLWPF
             {
                 MessageBox.Show("error in Bank Account Number format");
             }
+            else if (!IspasswordValid(FirstPassword.Content.ToString()))
+            {
+                MessageBox.Show("error in password Number format");
+            }
             else
             {
                 if (deleteHost)
@@ -277,6 +281,11 @@ namespace PLWPF
         {
             double x;
             return double.TryParse(input, out x) && x >= 0 && x <= 99999999;
+        }
+        public static bool IspasswordValid(string input)
+        {
+            double x;
+            return double.TryParse(input, out x) && x >= 10000000 && x <= 99999999;
         }
     }
 }

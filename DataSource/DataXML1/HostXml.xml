@@ -1,30 +1,113 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
+  <lastSerial>10000077</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>123</HostKey>
-    <PrivateName>d ca suffit</PrivateName>
-    <FamilyName>qwere</FamilyName>
-    <PhoneNumber>3324</PhoneNumber>
-    <MailAddress>daas@hhh.jjj</MailAddress>
-    <BankAccount>3123</BankAccount>
-    <CollectionClearance>Yes</CollectionClearance>
+    <HostKey>11111111</HostKey>
+    <PrivateName>david</PrivateName>
+    <FamilyName>cohn</FamilyName>
+    <PhoneNumber>054-5555555</PhoneNumber>
+    <MailAddress>sale@gmai.com</MailAddress>
+    <BankAccount>
+      <BankNumber>13</BankNumber>
+      <BankName>בנק אגוד לישראל בע"מ</BankName>
+      <BranchNumber>75</BranchNumber>
+      <BranchAddress>jefo 121</BranchAddress>
+      <BranchCity>רעננה</BranchCity>
+      <BankAccountNumber>11111111</BankAccountNumber>
+    </BankAccount>
+    <CollectionClearance />
   </Host>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>5555</HostKey>
-    <PrivateName>qwre</PrivateName>
-    <FamilyName>adsa</FamilyName>
-    <PhoneNumber>232</PhoneNumber>
-    <MailAddress>fdsf</MailAddress>
-    <BankAccount>12321</BankAccount>
-    <CollectionClearance>Yes</CollectionClearance>
+    <HostKey>22222222</HostKey>
+    <PrivateName>moses</PrivateName>
+    <FamilyName>levi</FamilyName>
+    <PhoneNumber>054-6666666</PhoneNumber>
+    <MailAddress>hotel@gmai.com</MailAddress>
+    <BankAccount>
+      <BankNumber>54</BankNumber>
+      <BankName>בנק ירושלים בע"מ</BankName>
+      <BranchNumber>96</BranchNumber>
+      <BranchAddress>jefo 121</BranchAddress>
+      <BranchCity>כרמיאל</BranchCity>
+      <BankAccountNumber>11111112</BankAccountNumber>
+    </BankAccount>
+    <CollectionClearance />
   </Host>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>1424</HostKey>
-    <PrivateName>buffalo</PrivateName>
-    <FamilyName>Falery Chisqkar Destin</FamilyName>
-    <PhoneNumber>052</PhoneNumber>
-    <MailAddress>aaaa@gmail.com</MailAddress>
-    <BankAccount>15141</BankAccount>
-    <CollectionClearance>Maybe</CollectionClearance>
+    <HostKey>33333333</HostKey>
+    <PrivateName>dan</PrivateName>
+    <FamilyName>danon</FamilyName>
+    <PhoneNumber>054-1010101</PhoneNumber>
+    <MailAddress>zimer@gmai.com</MailAddress>
+    <BankAccount>
+      <BankNumber>525</BankNumber>
+      <BankName>laomi</BankName>
+      <BranchNumber>852</BranchNumber>
+      <BranchAddress>gargmel 1010</BranchAddress>
+      <BranchCity>heifa</BranchCity>
+      <BankAccountNumber>1152582</BankAccountNumber>
+    </BankAccount>
+    <CollectionClearance />
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>00000000</HostKey>
+    <PrivateName>admin</PrivateName>
+    <FamilyName>admin</FamilyName>
+    <PhoneNumber>666</PhoneNumber>
+    <MailAddress>hall</MailAddress>
+    <PasswordKey>0</PasswordKey>
+    <BankAccount>
+      <BankNumber>852</BankNumber>
+      <BankName />
+      <BranchNumber>852</BranchNumber>
+      <BranchAddress />
+      <BranchCity />
+      <BankAccountNumber>85</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000058</HostKey>
+    <PrivateName>poster</PrivateName>
+    <FamilyName>hoster</FamilyName>
+    <PhoneNumber>3455</PhoneNumber>
+    <MailAddress>sdfs@sd.co</MailAddress>
+    <PasswordKey>-10.104273848989083</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>322</BranchNumber>
+      <BranchCity>תל אביב -יפו</BranchCity>
+      <BankAccountNumber>345345</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000074</HostKey>
+    <PrivateName>pewzner</PrivateName>
+    <FamilyName>iasayau</FamilyName>
+    <PhoneNumber>0548410620</PhoneNumber>
+    <MailAddress>ipewzner@gmail.com</MailAddress>
+    <PasswordKey>0.066778548244450411</PasswordKey>
+    <BankAccount>
+      <BankNumber>4</BankNumber>
+      <BankName>בנק יהב לעובדי המדינה בע"מ</BankName>
+      <BranchNumber>125</BranchNumber>
+      <BranchCity>אשקלון</BranchCity>
+      <BankAccountNumber>520</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000076</HostKey>
+    <PrivateName>harry</PrivateName>
+    <FamilyName>potter</FamilyName>
+    <PhoneNumber>8</PhoneNumber>
+    <MailAddress>fds@cd</MailAddress>
+    <PasswordKey>-2.1442198634214571</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>331</BranchNumber>
+      <BranchCity>אילת</BranchCity>
+      <BankAccountNumber>520</BankAccountNumber>
+    </BankAccount>
   </Host>
 </Hosts>

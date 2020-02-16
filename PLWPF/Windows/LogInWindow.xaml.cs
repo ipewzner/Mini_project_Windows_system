@@ -63,7 +63,11 @@ namespace PLWPF
         /// <param name="e"></param>
         private void ENTER_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (!IspasswordValid(Password.PasswordHidden.Password))
+            {
+                MessageBox.Show("error in password Number format");
+            }
+            else try
             {
                 if (myBL.CheckePassword(host.PasswordKey, Int32.Parse(Password.PasswordHidden.Password)))
                 {
@@ -112,7 +116,11 @@ namespace PLWPF
 
         }
 
+        public static bool IspasswordValid(string input)
+        {
+            double x;
+            return double.TryParse(input, out x) && x >= 10000000 && x <= 99999999;
+        }
 
-      
     }
 }
