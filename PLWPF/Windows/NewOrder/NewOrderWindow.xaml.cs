@@ -70,7 +70,8 @@ namespace PLWPF.Windows
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void button_Click(object sender, RoutedEventArgs e)
-        {
+        {  try
+            {
             Order order = new Order()
             {
                 CreateDate = DateTime.Now,
@@ -81,8 +82,7 @@ namespace PLWPF.Windows
                 OrderKey = Configuration.serialOrder++
             };
 
-            try
-            {
+            
                 var check = myBL.AddOrder(order);
                 if (check)
                 {

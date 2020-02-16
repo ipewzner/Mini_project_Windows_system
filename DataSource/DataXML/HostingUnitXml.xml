@@ -255,4 +255,149 @@
     </Owner>
     <HostingUnitName>best malon</HostingUnitName>
   </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary>
+      <DateTime>17/02/2020 00:00:00</DateTime>
+      <DateTime>18/02/2020 00:00:00</DateTime>
+    </Diary>
+    <Area>North</Area>
+    <SubArea></SubArea>
+    <HostingType>Camping</HostingType>
+    <Adults>0</Adults>
+    <Children>-1</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Possible</SpredBads>
+    <AirCondsner>Possible</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000127</HostingUnitKey>
+    <Owner>
+      <HostKey>10000058</HostKey>
+      <PrivateName>poster</PrivateName>
+      <FamilyName>hoster</FamilyName>
+      <PhoneNumber>3455</PhoneNumber>
+      <MailAddress>sdfs@sd.co</MailAddress>
+      <PasswordKey>-10.104273848989083</PasswordKey>
+      <BankAccount>
+        <BankNumber>14</BankNumber>
+        <BankName>בנק אוצר החייל בע"מ</BankName>
+        <BranchNumber>322</BranchNumber>
+        <BranchCity>תל אביב -יפו</BranchCity>
+        <BankAccountNumber>345345</BankAccountNumber>
+      </BankAccount>
+    </Owner>
+    <HostingUnitName>ע3ק@</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Area>Jerusalem</Area>
+    <SubArea>כגד</SubArea>
+    <HostingType>Camping</HostingType>
+    <Adults>2</Adults>
+    <Children>2</Children>
+    <Pool>Possible</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <HostingUnitKey>10000240</HostingUnitKey>
+    <Owner>
+      <HostKey>10000080</HostKey>
+      <PrivateName>גרגמל</PrivateName>
+      <FamilyName>ךלןםגdsk</FamilyName>
+      <PhoneNumber>852</PhoneNumber>
+      <MailAddress>reds@reds</MailAddress>
+      <PasswordKey>0.24442702392421947</PasswordKey>
+      <BankAccount>
+        <BankNumber>14</BankNumber>
+        <BankName>בנק אוצר החייל בע"מ</BankName>
+        <BranchNumber>361</BranchNumber>
+        <BranchCity>תל אביב -יפו</BranchCity>
+        <BankAccountNumber>432</BankAccountNumber>
+      </BankAccount>
+    </Owner>
+    <HostingUnitName>111</HostingUnitName>
+    <Diary />
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary>
+      <DateTime>17/02/2020 00:00:00</DateTime>
+      <DateTime>18/02/2020 00:00:00</DateTime>
+    </Diary>
+    <Area>Jerusalem</Area>
+    <SubArea>כגק</SubArea>
+    <HostingType>Hotel</HostingType>
+    <Adults>5</Adults>
+    <Children>4</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Possible</Jacuzzi>
+    <Garden>Possible</Garden>
+    <ChildrensAttractions>Possible</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Necessary</SingogNaerBy>
+    <NaerPublicTrensportion>Possible</NaerPublicTrensportion>
+    <HostingUnitKey>10000257</HostingUnitKey>
+    <Owner>
+      <HostKey>10000080</HostKey>
+      <PrivateName>גרגמל</PrivateName>
+      <FamilyName>ךלןםגdsk</FamilyName>
+      <PhoneNumber>852</PhoneNumber>
+      <MailAddress>reds@reds</MailAddress>
+      <PasswordKey>0.24442702392421947</PasswordKey>
+      <BankAccount>
+        <BankNumber>14</BankNumber>
+        <BankName>בנק אוצר החייל בע"מ</BankName>
+        <BranchNumber>361</BranchNumber>
+        <BranchCity>תל אביב -יפו</BranchCity>
+        <BankAccountNumber>432</BankAccountNumber>
+      </BankAccount>
+    </Owner>
+    <HostingUnitName>2222</HostingUnitName>
+  </HostingUnit>
+  <HostingUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <Diary>
+      <DateTime>17/02/2020 00:00:00</DateTime>
+      <DateTime>18/02/2020 00:00:00</DateTime>
+    </Diary>
+    <Area>North</Area>
+    <SubArea></SubArea>
+    <HostingType>RentingRoom</HostingType>
+    <Adults>0</Adults>
+    <Children>8</Children>
+    <Pool>Necessary</Pool>
+    <Jacuzzi>Necessary</Jacuzzi>
+    <Garden>Necessary</Garden>
+    <ChildrensAttractions>Necessary</ChildrensAttractions>
+    <SpredBads>Necessary</SpredBads>
+    <AirCondsner>Necessary</AirCondsner>
+    <frisider>Necessary</frisider>
+    <SingogNaerBy>Possible</SingogNaerBy>
+    <NaerPublicTrensportion>Necessary</NaerPublicTrensportion>
+    <HostingUnitKey>10000276</HostingUnitKey>
+    <Owner>
+      <HostKey>10000080</HostKey>
+      <PrivateName>גרגמל</PrivateName>
+      <FamilyName>ךלןםגdsk</FamilyName>
+      <PhoneNumber>852</PhoneNumber>
+      <MailAddress>reds@reds</MailAddress>
+      <PasswordKey>0.24442702392421947</PasswordKey>
+      <BankAccount>
+        <BankNumber>14</BankNumber>
+        <BankName>בנק אוצר החייל בע"מ</BankName>
+        <BranchNumber>361</BranchNumber>
+        <BranchCity>תל אביב -יפו</BranchCity>
+        <BankAccountNumber>432</BankAccountNumber>
+      </BankAccount>
+    </Owner>
+    <HostingUnitName>3333</HostingUnitName>
+  </HostingUnit>
 </HostingUnits>

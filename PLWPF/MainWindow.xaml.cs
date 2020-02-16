@@ -113,7 +113,7 @@ namespace PLWPF
             orderButton.Visibility = Visibility.Hidden;
             editUnitButton.Visibility = Visibility.Hidden;
             editHostButton.Visibility = Visibility.Hidden;
-            statButton.Visibility = Visibility.Hidden;
+            //statButton.Visibility = Visibility.Hidden;
             ShowInfoButton.Visibility = Visibility.Hidden;
         }
 
@@ -141,16 +141,16 @@ namespace PLWPF
                         editUnitButton.Visibility = Visibility.Hidden;
                         editHostButton.Visibility = Visibility.Hidden;
                         ShowInfoButton.Visibility = Visibility.Visible;
-                        statButton.Visibility = Visibility.Visible;
+                        //statButton.Visibility = Visibility.Visible;
                     }
                     else
                     {
                         ShowInfoButton.Visibility = Visibility.Hidden;
-                        statButton.Visibility = Visibility.Hidden;
+                        //statButton.Visibility = Visibility.Hidden;
                         orderButton.Visibility = Visibility.Visible;
                         editUnitButton.Visibility = Visibility.Visible;
                         editHostButton.Visibility = Visibility.Visible;
-                        statButton.Visibility = Visibility.Hidden;
+                       // statButton.Visibility = Visibility.Hidden;
 
                     }
                 }

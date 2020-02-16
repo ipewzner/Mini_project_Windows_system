@@ -19,9 +19,7 @@ namespace Utilities
             }
             return result;
         }
-
-
-       
+        
 
 
         //https://stackoverflow.com/questions/553824/serializing-an-array-of-integers-using-xmlserializer

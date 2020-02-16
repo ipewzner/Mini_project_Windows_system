@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -59,9 +60,22 @@ namespace PLWPF
             {
                 MessageBox.Show("can't add this request, Release Date before Entry Date!");
             }
+
             else if (!IsValidEmail(mailAddress.Text))
             {
                 MessageBox.Show("error in mail address format");
+            }
+            else if (!IsTextValid(FirstName.Text))
+            {
+                MessageBox.Show("error in First Name format");
+            }
+            else if (!IsTextValid(LastName.Text))
+            {
+                MessageBox.Show("error in Last Name format");
+            }
+            else if (!IsTextValid(SubArea.Text))
+            {
+                MessageBox.Show("error in Sub Area format");
             }
             else try
             {
@@ -129,18 +143,20 @@ namespace PLWPF
            // ReleaseDate.UpdateLayout();
         }
 
-        bool IsValidEmail(string email)
+        public static bool IsValidEmail(string emailAddress)
         {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
+            var regex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+            bool isValid = Regex.IsMatch(emailAddress, regex, RegexOptions.IgnoreCase);
+            return isValid;
         }
 
+        public static bool IsTextValid(string text)
+        {
+            var regex = "^[A-Z][a-zA-Z]*$";
+            bool isValid = Regex.IsMatch(text, regex, RegexOptions.IgnoreCase);
+            return isValid;
+        }
+
+        
     }
 }

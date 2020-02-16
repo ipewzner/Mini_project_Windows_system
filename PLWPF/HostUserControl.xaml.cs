@@ -4,6 +4,7 @@ using PLWPF.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -129,7 +130,27 @@ namespace PLWPF
 
         private void Continue_Click(object sender, RoutedEventArgs e)
         {
-            if (IsValidEmail(MailAddress.Text))
+            if (!IsValidEmail(MailAddress.Text))
+            {
+                MessageBox.Show("Error in mail format please try again");
+            }
+            else if (!IsTextValid(PrivateName.Text))
+            {
+                MessageBox.Show("error in Private Name format");
+            }
+            else if (!IsTextValid(FamilyName.Text))
+            {
+                MessageBox.Show("error in Family Name Name format");
+            }
+            else if (!IsPhoneNumberValid(PhoneNumber.Text))
+            {
+                MessageBox.Show("error in Phone Number format");
+            }
+            else if (!IsBankAccountValid(BankAccountNumber.Text))
+            {
+                MessageBox.Show("error in Bank Account Number format");
+            }
+            else
             {
                 if (deleteHost)
                 {
@@ -208,10 +229,7 @@ namespace PLWPF
                     }
                 }
             }
-            else
-            {
-                MessageBox.Show("Error in mail format please try again");
-            }
+           
 
         }
 
@@ -234,18 +252,31 @@ namespace PLWPF
             BranchCity.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches.ElementAt(BranchNumber_ComboBox.SelectedIndex).BranchCity;
         }
 
-        bool IsValidEmail(string email)
+        
+        public static bool IsValidEmail(string emailAddress)
         {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
+            var regex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+            bool isValid = Regex.IsMatch(emailAddress, regex, RegexOptions.IgnoreCase);
+            return isValid;
         }
 
+        public static bool IsTextValid(string text)
+        {
+            var regex = "^[A-Z][a-zA-Z]*$";
+            bool isValid = Regex.IsMatch(text, regex, RegexOptions.IgnoreCase);
+            return isValid;
+        }
+        
+        public static bool IsPhoneNumberValid(string text)
+        {
+            var regex = @"\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})";
+            bool isValid = Regex.IsMatch(text, regex, RegexOptions.IgnoreCase);
+            return isValid;
+        }
+        public static bool IsBankAccountValid(string input)
+        {
+            double x;
+            return double.TryParse(input, out x) && x >= 0 && x <= 99999999;
+        }
     }
 }

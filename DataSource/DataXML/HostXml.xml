@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Hosts>
-  <lastSerial>10000077</lastSerial>
+  <lastSerial>10000082</lastSerial>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <HostKey>11111111</HostKey>
     <PrivateName>david</PrivateName>
@@ -96,18 +96,48 @@
     </BankAccount>
   </Host>
   <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <HostKey>10000076</HostKey>
-    <PrivateName>harry</PrivateName>
-    <FamilyName>potter</FamilyName>
-    <PhoneNumber>8</PhoneNumber>
-    <MailAddress>fds@cd</MailAddress>
-    <PasswordKey>-2.1442198634214571</PasswordKey>
+    <HostKey>10000080</HostKey>
+    <PrivateName>גרגמל</PrivateName>
+    <FamilyName>ךלןםגdsk</FamilyName>
+    <PhoneNumber>852</PhoneNumber>
+    <MailAddress>reds@reds</MailAddress>
+    <PasswordKey>0.24442702392421947</PasswordKey>
     <BankAccount>
       <BankNumber>14</BankNumber>
       <BankName>בנק אוצר החייל בע"מ</BankName>
-      <BranchNumber>331</BranchNumber>
-      <BranchCity>אילת</BranchCity>
-      <BankAccountNumber>520</BankAccountNumber>
+      <BranchNumber>361</BranchNumber>
+      <BranchCity>תל אביב -יפו</BranchCity>
+      <BankAccountNumber>432</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000081</HostKey>
+    <PrivateName>fgh</PrivateName>
+    <FamilyName>jhk</FamilyName>
+    <PhoneNumber>567</PhoneNumber>
+    <MailAddress>hjk@12.2</MailAddress>
+    <PasswordKey>0.8414709848078965</PasswordKey>
+    <BankAccount>
+      <BankNumber>13</BankNumber>
+      <BankName>בנק אגוד לישראל בע"מ</BankName>
+      <BranchNumber>75</BranchNumber>
+      <BranchCity>רעננה</BranchCity>
+      <BankAccountNumber>523</BankAccountNumber>
+    </BankAccount>
+  </Host>
+  <Host xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <HostKey>10000082</HostKey>
+    <PrivateName>gfd</PrivateName>
+    <FamilyName>fds</FamilyName>
+    <PhoneNumber>0002555444</PhoneNumber>
+    <MailAddress>fdsa@fds.d</MailAddress>
+    <PasswordKey>0.8414709848078965</PasswordKey>
+    <BankAccount>
+      <BankNumber>14</BankNumber>
+      <BankName>בנק אוצר החייל בע"מ</BankName>
+      <BranchNumber>362</BranchNumber>
+      <BranchCity>חיפה</BranchCity>
+      <BankAccountNumber>43</BankAccountNumber>
     </BankAccount>
   </Host>
 </Hosts>
