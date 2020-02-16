@@ -232,6 +232,18 @@ namespace DAL
             {
                 return false;
             }
+            else
+            {
+
+                findOrder.Element("OrderKey").Value = updateorder.OrderKey.ToString();
+                findOrder.Element("HostingUnitKey").Value = updateorder.HostingUnitKey.ToString();
+                findOrder.Element("GuestRequestKey").Value = updateorder.GuestRequestKey.ToString();
+                //findOrder.Element("OrderDate").Value = updateorder.OrderDate.ToString();
+                //findOrder.Element("CreateDate").Value = updateorder.CreateDate.ToString();
+                findOrder.Element("Status").Value = updateorder.Status.ToString();
+
+                DataSourceXML.SaveOrders();
+            }
   
             return true;
         }
@@ -348,7 +360,7 @@ namespace DAL
                 if (hostingUnits != null)
                 {
                     hostingUnits.Element("Area").Value = hostingUnit.Area.ToString();
-                    hostingUnits.Element("SubArea").Value = hostingUnit.SubArea;
+                    //hostingUnits.Element("SubArea").Value = hostingUnit.SubArea.ToString();
                     hostingUnits.Element("HostingType").Value = hostingUnit.HostingType.ToString();
                     hostingUnits.Element("Adults").Value = hostingUnit.Adults.ToString();
                     hostingUnits.Element("Children").Value = hostingUnit.Children.ToString();

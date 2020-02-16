@@ -58,10 +58,8 @@ namespace BL
         /// </summary>
         public bool AddOrder(Order neworder)
         {
-
             try
-            {
-                
+            {                
                 var req = GetGusetRequest(neworder.GuestRequestKey);
                 var unit = GetHostingUnit(neworder.HostingUnitKey);
 
@@ -327,8 +325,6 @@ namespace BL
                 MessageBox.Show($"Error during Update {hostingUnit.HostingUnitName} please try again later! " + ex);
             }
         }
-
-
 
         /// <summary>
         /// Return all units available in given date range

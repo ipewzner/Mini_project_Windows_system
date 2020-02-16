@@ -248,7 +248,7 @@ namespace PLWPF
 
         private void BranchNumber_ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(BranchNumber_ComboBox.SelectedIndex!=-1)
+            if(Bank_ComboBox.SelectedIndex!=-1&&BranchNumber_ComboBox.SelectedIndex != -1)
             BranchCity.Text = Banks.ElementAt(Bank_ComboBox.SelectedIndex).Branches.ElementAt(BranchNumber_ComboBox.SelectedIndex).BranchCity;
         }
 
